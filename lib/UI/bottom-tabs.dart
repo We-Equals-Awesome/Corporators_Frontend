@@ -10,7 +10,7 @@ class BottomTabs extends StatefulWidget {
 
 class _BottomTabsState extends State<BottomTabs> {
   int _selectedTab = 1;
-
+// select tab variable
   @override
   Widget build(BuildContext context) {
     _selectedTab = widget.selectedTab ?? 1;
