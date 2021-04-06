@@ -1,3 +1,4 @@
+import 'package:cropapp/UI/almostDone.dart';
 import 'package:flutter/material.dart';
 import 'package:fa_stepper/fa_stepper.dart';
 //import 'package:validate/validate.dart';  //for validation
@@ -12,12 +13,12 @@ class MyData {
   var voterId = '';
 }
 
-class fa extends StatefulWidget {
+class CreateAccount extends StatefulWidget {
   @override
-  _faState createState() => _faState();
+  _CreateAccountState createState() => _CreateAccountState();
 }
 
-class _faState extends State<fa> {
+class _CreateAccountState extends State<CreateAccount> {
   int currStep = 0;
   static var _focusNode = new FocusNode();
   GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
@@ -69,7 +70,7 @@ class _faState extends State<fa> {
               },
               decoration: new InputDecoration(
                   hintText: 'First Name',
-                  fillColor: Colors.grey[300],
+                  fillColor: Colors.grey[200],
                   filled: true,
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 10.0, horizontal: 10.0),
@@ -86,7 +87,7 @@ class _faState extends State<fa> {
             ),
             //last name
             new TextFormField(
-              focusNode: _focusNode,
+              // focusNode: _focusNode,
               keyboardType: TextInputType.text,
               autocorrect: false,
               onSaved: (String value) {
@@ -298,12 +299,14 @@ class _faState extends State<fa> {
           .showSnackBar(SnackBar(content: Text(message)));
     }
 
+    //method that saves the current state of the form
     void _submitDetails() {
       final FormState formState = _formKey.currentState;
-
+      //message to enter correct data if the validation returns false
       if (!formState.validate()) {
         showSnackBarMessage('Please enter correct data');
       } else {
+        //save current form state if validation returns true
         formState.save();
         print("First Name: ${data.firstName}");
         print("Last Name: ${data.lastName}");
@@ -312,63 +315,47 @@ class _faState extends State<fa> {
         print("Date of Birth: ${data.dob}");
         print("Voter ID: ${data.voterId}");
         print("Aadhar Number: ${data.aadharNumber}");
-
-        showDialog<void>(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              title: Text('Details saved:'),
-              content: SingleChildScrollView(
-                child: new ListBody(
-                  children: <Widget>[
-                    new Text("First Name : " + data.firstName),
-                    new Text("Last Name : " + data.lastName),
-                    new Text("Phone Number : " + data.phoneNumber),
-                    new Text("Email : " + data.email),
-                    new Text("date of Birth: " + data.dob),
-                    new Text("Voter ID : " + data.voterId),
-                    new Text("Aadhar Number : " + data.aadharNumber),
-                  ],
-                ),
-              ),
-              actions: <Widget>[
-                new TextButton(
-                  child: new Text('OK'),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
-              ],
-            );
-          },
-        );
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => AlmostDone()));
       }
     }
 
     return Scaffold(
-      backgroundColor: Colors.orange[200],
+      backgroundColor: const Color.fromRGBO(242, 212, 146, 1.0),
+      //body is a container with child as a form that has the textfields
       body: new Container(
           child: new Form(
         key: _formKey,
+        //textfields are wrapped in a list view
         child: new ListView(children: <Widget>[
-          SizedBox(height: 50),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.053),
+          //container has the text 'create account'
           Container(
             child: Text(
               'Create Account',
-              style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.height * 0.04,
+                  fontWeight: FontWeight.bold),
             ),
             alignment: Alignment.bottomLeft,
-            margin: new EdgeInsets.symmetric(horizontal: 20.0),
+            margin: new EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.055),
           ),
-          SizedBox(height: 20),
+
+          SizedBox(height: MediaQuery.of(context).size.height * 0.015),
+          //container has the text 'Enter your details'
           Container(
             child: Text(
               'Enter Your Details',
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: MediaQuery.of(context).size.height * 0.02,
+                  fontWeight: FontWeight.bold),
             ),
             alignment: Alignment.bottomLeft,
-            margin: new EdgeInsets.symmetric(horizontal: 20.0),
+            margin: new EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.08),
           ),
+          //creating a stepper
           new FAStepper(
             steps: steps,
             type: FAStepperType.vertical,
@@ -397,12 +384,14 @@ class _faState extends State<fa> {
                 currStep = step;
               });
             },
+            //controlBuilder used to customize the continue and cancel button
             controlsBuilder: (BuildContext context,
                 {VoidCallback onStepContinue, VoidCallback onStepCancel}) {
               return Row(
                 children: <Widget>[
                   Container(
                     margin: const EdgeInsets.all(10.0),
+                    //continue button customization
                     child: TextButton(
                       onPressed: onStepContinue,
                       child: Text(
@@ -411,7 +400,7 @@ class _faState extends State<fa> {
                       ),
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.black),
+                            MaterialStateProperty.all<Color>(Colors.grey[800]),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
@@ -420,6 +409,7 @@ class _faState extends State<fa> {
                       ),
                     ),
                   ),
+                  //cancel button customization
                   TextButton(
                     onPressed: onStepCancel,
                     child: Text(
@@ -428,7 +418,7 @@ class _faState extends State<fa> {
                     ),
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.black),
+                          MaterialStateProperty.all<Color>(Colors.grey[800]),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
@@ -439,27 +429,36 @@ class _faState extends State<fa> {
               );
             },
           ),
-          SizedBox(
-            width: 40,
-            height: 30,
-            child: ElevatedButton(
-              onPressed: _submitDetails,
-              child: Text(
-                'Continue',
-                style: TextStyle(color: Colors.amber),
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.grey[800],
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 5),
-                  textStyle: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+          //container that the final continue button
+          Container(
+            margin: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.08),
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.4,
+                child: ElevatedButton(
+                  onPressed: _submitDetails,
+                  child: Text(
+                    'Continue',
+                    style: TextStyle(color: Colors.amber),
                   ),
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(30.0),
-                  )),
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.grey[800],
+                      padding: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width * 0.01,
+                          vertical: MediaQuery.of(context).size.height * 0.01),
+                      textStyle: TextStyle(
+                        fontSize: MediaQuery.of(context).size.height * 0.02,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(30.0),
+                      )),
+                ),
+              ),
             ),
-          ),
+          )
         ]),
       )),
     );
