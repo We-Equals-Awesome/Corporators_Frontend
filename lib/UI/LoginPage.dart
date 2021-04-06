@@ -1,7 +1,4 @@
-//import 'package:cropapp/UI/CreateAccountPage2.dart';
 import 'package:flutter/material.dart';
-//import 'CreateAcount.dart';
-//import 'StepperForm.dart';
 import 'CreateAccount3.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -12,8 +9,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var password;
   var phoneNumber;
-  // final passwordCon = new TextEditingController();
-  // final phoneNumberCon = new TextEditingController();
   //formkey is used for form that takes phone number and password
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 

@@ -1,8 +1,8 @@
 import 'package:cropapp/UI/almostDone.dart';
 import 'package:flutter/material.dart';
 import 'package:fa_stepper/fa_stepper.dart';
-//import 'package:validate/validate.dart';  //for validation
 
+//clas to store info about user
 class MyData {
   var firstName = '';
   var lastName = '';
@@ -46,10 +46,7 @@ class _CreateAccountState extends State<CreateAccount> {
           'Step 1',
           style: TextStyle(color: Colors.black),
         ),
-        //subtitle: const Text('Enter your name'),
         isActive: true,
-        //state: StepState.error,
-        //state: StepFAState.indexed,
         content: Column(
           children: [
             //first name text field
@@ -87,7 +84,6 @@ class _CreateAccountState extends State<CreateAccount> {
             ),
             //last name
             new TextFormField(
-              // focusNode: _focusNode,
               keyboardType: TextInputType.text,
               autocorrect: false,
               onSaved: (String value) {
@@ -121,10 +117,7 @@ class _CreateAccountState extends State<CreateAccount> {
     //step2
     new FAStep(
         title: const Text('Step 2'),
-        //subtitle: const Text('Subtitle'),
         isActive: true,
-        //state: StepState.editing,
-        //state: StepState.indexed,
         content: Column(children: [
           new TextFormField(
             keyboardType: TextInputType.phone,
@@ -186,10 +179,7 @@ class _CreateAccountState extends State<CreateAccount> {
         ])),
     new FAStep(
         title: const Text('Step 3'),
-        // subtitle: const Text('Subtitle'),
         isActive: true,
-        //state: StepState.indexed,
-        // state: StepState.disabled,
         content: Column(children: [
           //Date of birth text field
           new TextFormField(
@@ -282,13 +272,6 @@ class _CreateAccountState extends State<CreateAccount> {
                     new TextStyle(decorationStyle: TextDecorationStyle.solid)),
           ),
         ])),
-
-    // new Step(
-    //     title: const Text('Fifth Step'),
-    //     subtitle: const Text('Subtitle'),
-    //     isActive: true,
-    //     state: StepState.complete,
-    //     content: const Text('Enjoy Step Fifth'))
   ];
 
   @override
