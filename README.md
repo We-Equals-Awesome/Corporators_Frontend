@@ -6,9 +6,6 @@ This Repository Handles Frontend for Corporator's Application
 
 <img src="https://user-images.githubusercontent.com/73482596/113662018-df5b6f80-96c4-11eb-831e-d19e7ab8b838.png" width="250" height="500">
 
-<img src="https://user-images.githubusercontent.com/73482596/113662018-df5b6f80-96c4-11eb-831e-d19e7ab8b838.png" width="250" height="500">
-
----
 
 ## Create Account Page
 <p>This is the page displayed when the user wishes to create an account. There are 3 steps to complete filling the details.</p>
@@ -24,6 +21,4 @@ This Repository Handles Frontend for Corporator's Application
 * Step 3
 
 <img src="https://user-images.githubusercontent.com/73482596/113663493-c1dbd500-96c7-11eb-8f0b-68759c63ae9e.jpeg" width="250" height="500">
-
----
 
