@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'UI/newsFeed.dart';
+import 'package:newsfeed_screen/UI/bottomNav.dart';
+//import 'package:/bottomNav.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,12 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'News_Feed',
+      title: 'Home feed',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
+      home: BottomNav(),
+      //calling nav bar
     );
   }
 }
