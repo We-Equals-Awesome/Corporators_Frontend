@@ -42,12 +42,17 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   uses-material-design: true
+<<<<<<< HEAD
   assets:
      - lib/Utils/assets/logo.jpg
      - lib/Utils/assets/user.png
      
   #  - images/a_dot_ham.jpeg
   
+=======
+  
+
+>>>>>>> 61e2f2e2af12d41f8e19ae3ea2eecb8af67491ec
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
