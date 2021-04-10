@@ -5,7 +5,7 @@ import 'package:cropapp/Utils/color.dart';
 class MyHomePage extends StatefulWidget {
   final int
       alter; //This value is to decide whether or not to show the ALterDialogue box in login page.
-  MyHomePage(this.alter); //constructor to store the value of alter
+  MyHomePage(this.alter); //constructor to store the value of alter variable
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }

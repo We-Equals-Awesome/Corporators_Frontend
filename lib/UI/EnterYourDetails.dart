@@ -68,7 +68,7 @@ class _enterYourDetailsState extends State<enterYourDetails> {
             SizedBox(
               height: 10,
             ),
-            //last name
+            //last name field
             new TextFormField(
               keyboardType: TextInputType.text,
               controller: data.lastNameCon,

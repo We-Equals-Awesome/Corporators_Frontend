@@ -9,7 +9,7 @@ class AlmostDone extends StatefulWidget {
 
 class _AlmostDoneState extends State<AlmostDone> {
   String _password;
-  String _cpassword;
+  String _cpassword; //stores the password
   PickedFile _imageFile; //this variable stores the selected profile image
   final ImagePicker _picker = ImagePicker();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
