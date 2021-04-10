@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+
+
 var appBackbround = Color(0xFFF2D492);
 var bottomNavIcon = Color(0xFFFFBC53);
 var newsBackground= Color(0xFFF3E7CD);

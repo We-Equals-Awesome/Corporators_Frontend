@@ -5,41 +5,57 @@ import 'package:newsfeed_screen/Utils/news.dart';
 import 'package:newsfeed_screen/UI/readFeeds.dart';
 
 
-
-
 class HomeFeed extends StatelessWidget {
   @override
-    Widget build(BuildContext context) {
-
+  Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appBackbround,
-      body:
-      ListView(
-        padding: const EdgeInsets.all(8),
-        children: <Widget>[
-          Container(
-            height: 50,
-            color: appBackbround,
-            child: Text("GOOD MORNING",style: headline1,textAlign: TextAlign.center,),
-          ),
-          Container(
-
-            child: feedsView(),
-          ),
-        ],
-      )
-    );
+        backgroundColor: appBackbround,
+        body: ListView(
+          children: <Widget>[
+            Material(
+              color: appBackbround,
+              elevation: 5.0,
+              child: Container(
+                height: 50,
+                color: appBackbround,
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 0.0),
+                  child: Text(
+                    (() {
+                      if (time(TimeOfDay(hour: 12, minute: 00)) >
+                          time(TimeOfDay.now())) {
+                        return "GOOD MORNING";
+                      } else if (time(TimeOfDay(hour: 16, minute: 00)) >
+                          time(TimeOfDay.now())) {
+                        return "GOOD AFTERNOON";
+                      } else if (time(TimeOfDay(hour: 21, minute: 00)) >
+                          time(TimeOfDay.now())) {
+                        return "GOOD EVENING";
+                      } else {
+                        return "GOOD NIGHT";
+                      }
+                    }()),
+                    style: headline1,
+                  textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: FeedsView(),
+            ),
+          ],
+        ));
   }
 }
 
-
 //creating news feed home page preview
 
-class feedsView extends StatelessWidget {
+class FeedsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-
       itemCount: trendingList.length,
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
@@ -52,22 +68,15 @@ class feedsView extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-
                 builder: (context) => ReadFeeds(news: trending),
               ),
             );
           },
-          child:
-
-          Container(
+          child: Container(
             width: double.infinity,
-            //height: 300.0,
             color: appBackbround,
             margin: EdgeInsets.symmetric(horizontal: 18.0, vertical: 18.0),
-            child:
-            //Container(),
-            PrimaryCard(news: trending),
-            // PrimaryCard(news: trending),
+            child: PrimaryCard(news: trending),
           ),
         );
       },
@@ -77,10 +86,16 @@ class feedsView extends StatelessWidget {
 
 // creating card design to display news feed preview
 
-class PrimaryCard extends StatelessWidget {
+class PrimaryCard extends StatefulWidget {
   final News news;
   PrimaryCard({this.news});
 
+  @override
+  _PrimaryCardState createState() => _PrimaryCardState();
+}
+
+class _PrimaryCardState extends State<PrimaryCard> {
+  IconData fav = Icons.favorite_border;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -94,14 +109,14 @@ class PrimaryCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            news.title,
+            widget.news.title,
             overflow: TextOverflow.ellipsis,
             maxLines: 2,
             style: titleCardhead,
           ),
           SizedBox(height: 20.0),
           Text(
-            news.subtitle,
+            widget.news.subtitle,
             overflow: TextOverflow.ellipsis,
             maxLines: 5,
             style: headlineSmall,
@@ -110,24 +125,36 @@ class PrimaryCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Icon(
-                Icons.favorite,
-                color: Colors.black,
-                size: 24.0,
+              IconButton(
+                icon: Icon(
+                  fav,
+                  color: Colors.black,
+                  size: 24.0,
+                ),
+                onPressed: () {
+                  setState(() {
+                    if (fav == Icons.favorite_border) {
+                      fav = Icons.favorite;
+                    } else {
+                      fav = Icons.favorite_border;
+                    }
+                  });
+                },
               ),
-
               SizedBox(width: 15.0),
-
               Icon(Icons.send, color: Colors.black, size: 24.0),
-
               SizedBox(width: 8.0),
-
               Icon(Icons.more_vert, color: Colors.black, size: 24.0),
-
             ],
           )
         ],
       ),
     );
   }
+}
+
+int time(TimeOfDay timeOfDay) {
+  var now = timeOfDay;
+  int nowInMinutes = now.hour * 60 + now.minute;
+  return nowInMinutes;
 }

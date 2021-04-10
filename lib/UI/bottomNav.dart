@@ -5,8 +5,6 @@ import 'package:newsfeed_screen/UI/NotificationView.dart';
 import 'package:newsfeed_screen/UI/ProfileView.dart';
 import 'package:newsfeed_screen/Utils/constant.dart';
 
-
-
 class BottomNav extends StatefulWidget {
   @override
   _BottomNavState createState() => _BottomNavState();
