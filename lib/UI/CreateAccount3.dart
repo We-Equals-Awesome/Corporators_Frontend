@@ -1,8 +1,9 @@
 import 'package:cropapp/UI/almostDone.dart';
 import 'package:flutter/material.dart';
-import 'package:fa_stepper/fa_stepper.dart';
+import 'package:cropapp/UI/EnterYourDetails.dart';
+import 'package:cropapp/Utils/color.dart';
 
-//clas to store info about user
+//class to store info about user
 class MyData {
   var firstName = '';
   var lastName = '';
@@ -19,267 +20,175 @@ class CreateAccount extends StatefulWidget {
 }
 
 class _CreateAccountState extends State<CreateAccount> {
-  int currStep = 0;
-  static var _focusNode = new FocusNode();
-  GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
-  static MyData data = new MyData();
-
   @override
   void initState() {
     super.initState();
-    _focusNode.addListener(() {
-      setState(() {});
-      print('Has focus: $_focusNode.hasFocus');
-    });
   }
 
-  @override
-  void dispose() {
-    _focusNode.dispose();
-    super.dispose();
+  TextEditingController Con;
+  DateTime selectedDate = DateTime.now(); //stores the value of selectedDate
+  final TextEditingController dateCon =
+      new TextEditingController(); //dateField controller
+  int currStep = 0; //set the initial step to 0
+  GlobalKey<FormState> _formKey =
+      new GlobalKey<FormState>(); //stores the form state
+  static MyData data = new MyData(); //create a new class of type Mydata
+//function that returns alter box if the user does not belong to the ward
+  Future<void> OpenAlter() async {
+    return showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            insetPadding: EdgeInsets.symmetric(horizontal: 50),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(55.0))),
+            backgroundColor: Color.fromRGBO(243, 231, 205, 1),
+            content: SingleChildScrollView(
+                child: ListBody(
+              children: <Widget>[
+                Text(
+                    'Oops seems like you are not  part of this ward.\nContact your ward incharge',
+                    style: TextStyle(
+                      fontSize: MediaQuery.of(context).size.height * 0.035,
+                      fontWeight: FontWeight.bold,
+                    )),
+                SizedBox(height: 10),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      ElevatedButton(
+                        onPressed: () {
+                          //open Enter your details page when Continue button pressed
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => enterYourDetails()));
+                        },
+                        child: Row(children: <Widget>[
+                          Text(
+                            'Continue',
+                            style: TextStyle(color: Colors.amber),
+                          ),
+                          Icon(
+                            Icons.arrow_forward,
+                            size: 20,
+                            color: Colors.amber,
+                          )
+                        ]),
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.grey[800],
+                            padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    MediaQuery.of(context).size.width * 0.12,
+                                vertical:
+                                    MediaQuery.of(context).size.height * 0.01),
+                            textStyle: TextStyle(
+                              fontSize:
+                                  MediaQuery.of(context).size.height * 0.015,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0),
+                            )),
+                      ), // button 1
+                    ])
+              ],
+            )),
+          );
+        });
   }
-
-  List<FAStep> steps = [
-    //step 1
-    new FAStep(
-        title: const Text(
-          'Step 1',
-          style: TextStyle(color: Colors.black),
-        ),
-        isActive: true,
-        content: Column(
-          children: [
-            //first name text field
-            new TextFormField(
-              focusNode: _focusNode,
-              keyboardType: TextInputType.text,
-              autocorrect: false,
-              onSaved: (String value) {
-                data.firstName = value;
-              },
-              maxLines: 1,
-              validator: (value) {
-                if (value.isEmpty) {
-                  //code to validate first name
-                  return 'Please enter name';
-                } else
-                  return null;
-              },
-              decoration: new InputDecoration(
-                  hintText: 'First Name',
-                  fillColor: Colors.grey[200],
-                  filled: true,
-                  contentPadding: const EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 10.0),
-                  border: new OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(
-                      const Radius.circular(10.0),
-                    ),
-                  ),
-                  labelStyle: new TextStyle(
-                      decorationStyle: TextDecorationStyle.solid)),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            //last name
-            new TextFormField(
-              keyboardType: TextInputType.text,
-              autocorrect: false,
-              onSaved: (String value) {
-                data.lastName = value;
-              },
-              maxLines: 1,
-              validator: (value) {
-                if (value.isEmpty || value.length < 1) {
-                  //code to validate last name
-                  return 'Please enter name';
-                } else
-                  return null;
-              },
-              decoration: new InputDecoration(
-                  hintText: 'Last Name',
-                  fillColor: Colors.grey[300],
-                  filled: true,
-                  contentPadding: const EdgeInsets.symmetric(
-                      vertical: 10.0, horizontal: 10.0),
-                  border: new OutlineInputBorder(
-                    borderRadius: const BorderRadius.all(
-                      const Radius.circular(10.0),
-                    ),
-                  ),
-                  labelStyle: new TextStyle(
-                      decorationStyle: TextDecorationStyle.solid)),
-            ),
-          ],
-        )),
-
-    //step2
-    new FAStep(
-        title: const Text('Step 2'),
-        isActive: true,
-        content: Column(children: [
-          new TextFormField(
-            keyboardType: TextInputType.phone,
-            autocorrect: false,
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter valid number';
-              } else
-                return null;
-            },
-            onSaved: (String value) {
-              data.phoneNumber = value;
-            },
-            maxLines: 1,
-            decoration: new InputDecoration(
-                hintText: 'Phone Number',
-                fillColor: Colors.grey[300],
-                filled: true,
-                contentPadding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 10.0),
-                border: new OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(
-                    const Radius.circular(10.0),
-                  ),
-                ),
-                labelStyle:
-                    new TextStyle(decorationStyle: TextDecorationStyle.solid)),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          new TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            autocorrect: false,
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter valid email id';
-              } else
-                return null;
-            },
-            onSaved: (String value) {
-              data.email = value;
-            },
-            maxLines: 1,
-            decoration: new InputDecoration(
-                hintText: 'Email ID',
-                fillColor: Colors.grey[300],
-                filled: true,
-                contentPadding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 10.0),
-                border: new OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(
-                    const Radius.circular(10.0),
-                  ),
-                ),
-                labelStyle:
-                    new TextStyle(decorationStyle: TextDecorationStyle.solid)),
-          ),
-        ])),
-    new FAStep(
-        title: const Text('Step 3'),
-        isActive: true,
-        content: Column(children: [
-          //Date of birth text field
-          new TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            autocorrect: false,
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter valid date of birth';
-              } else
-                return null;
-            },
-            onSaved: (String value) {
-              data.dob = value;
-            },
-            maxLines: 1,
-            decoration: new InputDecoration(
-                hintText: 'YYYY/MM/DD',
-                fillColor: Colors.grey[300],
-                filled: true,
-                contentPadding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 10.0),
-                border: new OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(
-                    const Radius.circular(10.0),
-                  ),
-                ),
-                labelStyle:
-                    new TextStyle(decorationStyle: TextDecorationStyle.solid)),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          //voter id
-          new TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            autocorrect: false,
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter valid voter ID';
-              } else
-                return null;
-            },
-            onSaved: (String value) {
-              data.voterId = value;
-            },
-            maxLines: 1,
-            decoration: new InputDecoration(
-                hintText: 'Voter ID',
-                fillColor: Colors.grey[300],
-                filled: true,
-                contentPadding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 10.0),
-                border: new OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(
-                    const Radius.circular(10.0),
-                  ),
-                ),
-                labelStyle:
-                    new TextStyle(decorationStyle: TextDecorationStyle.solid)),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          //aadhar number
-          new TextFormField(
-            keyboardType: TextInputType.emailAddress,
-            autocorrect: false,
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter valid aadhar number';
-              } else
-                return null;
-            },
-            onSaved: (String value) {
-              data.aadharNumber = value;
-            },
-            maxLines: 1,
-            decoration: new InputDecoration(
-                hintText: 'Aadhar Number',
-                fillColor: Colors.grey[300],
-                filled: true,
-                contentPadding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 10.0),
-                border: new OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(
-                    const Radius.circular(10.0),
-                  ),
-                ),
-                labelStyle:
-                    new TextStyle(decorationStyle: TextDecorationStyle.solid)),
-          ),
-        ])),
-  ];
 
   @override
   Widget build(BuildContext context) {
+    dateCon.text = "${selectedDate.toLocal()}".split(' ')[0];
+    //function to show snack bar if all the fields are not filled
     void showSnackBarMessage(String message,
         [MaterialColor color = Colors.red]) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(message)));
+    }
+
+    //method that returns the selected date from the calender
+    _selectDate(BuildContext context) async {
+      DateTime picked = await showDatePicker(
+          context: context,
+          initialDate: selectedDate, // Refer step 1
+          firstDate: DateTime(2000),
+          lastDate: DateTime(2025),
+          builder: (context, child) {
+            return Theme(
+              data: ThemeData.dark(),
+              child: child,
+            );
+          });
+      if (picked != null && picked != selectedDate)
+        setState(() {
+          selectedDate = picked;
+        });
+    }
+
+    //function that returns a texteformfield
+    Widget txtformfield(String s, BuildContext context) {
+      //function for the Text Fields
+      return Padding(
+        padding: const EdgeInsets.only(top: 8),
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.06,
+          child: TextFormField(
+            controller: Con,
+            keyboardType:
+                s == 'Phone Number' ? TextInputType.phone : TextInputType.text,
+            autocorrect: false,
+            onSaved: (value) {
+              if (s == 'First Name')
+                data.firstName = value;
+              else if (s == 'Last Name')
+                data.lastName = value;
+              else if (s == 'Phone Number')
+                data.phoneNumber = value;
+              else if (s == 'Email Id')
+                data.email = value;
+              else if (s == 'Voter Id')
+                data.voterId = value;
+              else if (s == 'Aadhar Number')
+                data.aadharNumber = value;
+              else if (s == 'Last Name') data.lastName = value;
+            },
+            validator: (value) {
+              if (value.isEmpty) {
+                return s + ' is required.';
+              } else
+                return null;
+            },
+            decoration: new InputDecoration(
+              enabledBorder: OutlineInputBorder(
+                borderRadius: new BorderRadius.circular(10.0),
+                borderSide: BorderSide(width: 1.5),
+              ),
+              fillColor: textBoxBack,
+              filled: true,
+              labelText: s,
+              border: new OutlineInputBorder(
+                borderRadius: new BorderRadius.circular(10.0),
+                borderSide: BorderSide(width: 100),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    //textbox function returns the text with the required styling
+    Widget textbox(String a, BuildContext context) {
+      return Align(
+        alignment: Alignment.centerLeft,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20, top: 40),
+          child: Text(
+            a,
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          ),
+        ),
+      );
     }
 
     //method that saves the current state of the form
@@ -287,19 +196,21 @@ class _CreateAccountState extends State<CreateAccount> {
       final FormState formState = _formKey.currentState;
       //message to enter correct data if the validation returns false
       if (!formState.validate()) {
-        showSnackBarMessage('Please enter correct data');
+        showSnackBarMessage('Please fill all fields');
       } else {
-        //save current form state if validation returns true
-        formState.save();
-        print("First Name: ${data.firstName}");
-        print("Last Name: ${data.lastName}");
-        print("Phone Number: ${data.phoneNumber}");
-        print("Email: ${data.email}");
-        print("Date of Birth: ${data.dob}");
-        print("Voter ID: ${data.voterId}");
-        print("Aadhar Number: ${data.aadharNumber}");
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => AlmostDone()));
+        //show alter box if voter id doesnt below to the ward
+        if (data.voterId == '1') {
+          print('Voter id 1');
+          OpenAlter();
+        } else {
+          //save current form state if validation returns true
+          formState.save();
+          print('First Name : ' + data.firstName);
+          print('last name :' + data.lastName);
+          print('voter : ' + data.voterId);
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => AlmostDone()));
+        }
       }
     }
 
@@ -338,47 +249,155 @@ class _CreateAccountState extends State<CreateAccount> {
             margin: new EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width * 0.08),
           ),
-          //creating a stepper
-          new FAStepper(
-            steps: steps,
-            type: FAStepperType.vertical,
-            stepNumberColor: Colors.black,
-            currentStep: this.currStep,
-            onStepContinue: () {
-              setState(() {
-                if (currStep < steps.length - 1) {
-                  currStep = currStep + 1;
-                } else {
-                  currStep = 0;
-                }
-              });
-            },
-            onStepCancel: () {
-              setState(() {
-                if (currStep > 0) {
-                  currStep = currStep - 1;
-                } else {
-                  currStep = 0;
-                }
-              });
-            },
-            onStepTapped: (step) {
-              setState(() {
-                currStep = step;
-              });
-            },
-            //controlBuilder used to customize the continue and cancel button
-            controlsBuilder: (BuildContext context,
-                {VoidCallback onStepContinue, VoidCallback onStepCancel}) {
-              return Row(
-                children: <Widget>[
-                  Container(
-                    margin: const EdgeInsets.all(10.0),
-                    //continue button customization
-                    child: TextButton(
-                      onPressed: onStepContinue,
+          Theme(
+            data: ThemeData(
+                //all the colors are set to black as per the requirements in the design
+                accentColor: Colors.black,
+                primaryColor: Colors.black,
+                colorScheme: ColorScheme.light(
+                  primary: Colors.black,
+                )),
+            child: new Stepper(
+              steps: [
+                //step 1
+                new Step(
+                    title: const Text(
+                      'Step 1',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    isActive: true,
+                    content: Column(
+                      children: [
+                        //first name text field
+                        txtformfield('First Name', context),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        //last name
+                        txtformfield('Last Name', context),
+                      ],
+                    )),
+                //step2
+                new Step(
+                    title: const Text('Step 2'),
+                    isActive: true,
+                    content: Column(children: [
+                      //phone number
+                      txtformfield('Phone Number', context),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      txtformfield('Email Id', context),
+                    ])),
+                new Step(
+                  title: const Text('Step 3'),
+                  isActive: true,
+                  content: Column(
+                    children: <Widget>[
+                      //row widget has a txtfield and a calender icon
+                      Row(
+                        children: <Widget>[
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.06,
+                            width: MediaQuery.of(context).size.width * 0.65,
+                            child: TextFormField(
+                              onSaved: (value) {
+                                data.dob = value;
+                              },
+                              validator: (value) {
+                                if (value.isEmpty) {
+                                  return 'Please enter the Date';
+                                } else
+                                  return null;
+                              },
+                              controller: dateCon,
+                              decoration: new InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: new BorderRadius.circular(10.0),
+                                  borderSide: BorderSide(width: 1),
+                                ),
+                                fillColor: textBoxBack,
+                                filled: true,
+                                labelText: 'YYYY-MM-DD',
+                                border: new OutlineInputBorder(
+                                  borderRadius: new BorderRadius.circular(10.0),
+                                  borderSide: BorderSide(width: 100),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.01),
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.1,
+                              height: 50,
+                              child: TextButton(
+                                child: Icon(Icons.calendar_today),
+                                onPressed: () => _selectDate(context),
+                              )),
+                        ],
+                      ),
+                      txtformfield('Voter Id', context),
+                      txtformfield('Aadhar Number', context)
+                    ],
+                  ),
+                ),
+              ],
+              //working of the stepper is defined here
+              currentStep: this.currStep,
+              onStepContinue: () {
+                setState(() {
+                  if (currStep < 2) {
+                    currStep = currStep + 1;
+                  } else {
+                    currStep = 0;
+                  }
+                });
+              },
+              onStepCancel: () {
+                setState(() {
+                  if (currStep > 0) {
+                    currStep = currStep - 1;
+                  } else {
+                    currStep = 0;
+                  }
+                });
+              },
+              onStepTapped: (step) {
+                setState(() {
+                  currStep = step;
+                });
+              },
+              //controlBuilder used to customize the continue and cancel button
+              controlsBuilder: (BuildContext context,
+                  {VoidCallback onStepContinue, VoidCallback onStepCancel}) {
+                return Row(
+                  children: <Widget>[
+                    Container(
+                      margin: const EdgeInsets.all(10.0),
+                      //continue button customization
+                      child: TextButton(
+                        onPressed: onStepContinue,
+                        child: Text(
+                          'Next',
+                          style: TextStyle(color: Colors.amber),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Colors.grey[800]),
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                          )),
+                        ),
+                      ),
+                    ),
+                    //cancel button customization
+                    TextButton(
+                      onPressed: onStepCancel,
                       child: Text(
-                        'Next',
+                        'Back',
                         style: TextStyle(color: Colors.amber),
                       ),
                       style: ButtonStyle(
@@ -391,59 +410,28 @@ class _CreateAccountState extends State<CreateAccount> {
                         )),
                       ),
                     ),
-                  ),
-                  //cancel button customization
-                  TextButton(
-                    onPressed: onStepCancel,
-                    child: Text(
-                      'Back',
-                      style: TextStyle(color: Colors.amber),
-                    ),
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.grey[800]),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                      )),
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
-          //container that the final continue button
-          Container(
-            margin: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * 0.08),
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width * 0.4,
-                child: ElevatedButton(
-                  onPressed: _submitDetails,
-                  child: Text(
-                    'Continue',
-                    style: TextStyle(color: Colors.amber),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.grey[800],
-                      padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.01,
-                          vertical: MediaQuery.of(context).size.height * 0.01),
-                      textStyle: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.02,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0),
-                      )),
-                ),
-              ),
+                  ],
+                );
+              },
             ),
-          )
+          ),
         ]),
       )),
+      floatingActionButton: SizedBox(
+        width: MediaQuery.of(context).size.width * 0.3,
+        height: MediaQuery.of(context).size.height * 0.06,
+        child: FloatingActionButton.extended(
+          onPressed: _submitDetails,
+          label: Text(
+            'Continue',
+            style: TextStyle(
+              color: navIcon,
+              fontSize: 13.0,
+            ),
+          ),
+          backgroundColor: submitGrey,
+        ),
+      ),
     );
   }
 }
