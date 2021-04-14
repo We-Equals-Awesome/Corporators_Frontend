@@ -1,0 +1,1 @@
+const calendar = 'assets/icons/calendar.svg';

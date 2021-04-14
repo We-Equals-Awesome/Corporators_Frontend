@@ -1,9 +1,7 @@
+import 'package:cropapp/Utils/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:cropapp/Utils/color.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-//calender icon of type svg
-const calendar = 'assets/icons/calendar.svg';
 
 //A list called Details is created to store the data given by the User
 var Details = new List();
@@ -151,9 +149,11 @@ class _dataEntryState extends State<dataEntry> {
                           isActive: true,
                           content: Column(
                             children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.only(top:5),
                               //Since the design requires the Calender beside the textField, Row widget is used
                               //The row consists of the box Widget function and the Icon Widget
-                              Row(
+                              child: Row(
                                 children: <Widget>[
                                   Container(
                                     height: 50,
@@ -197,6 +197,7 @@ class _dataEntryState extends State<dataEntry> {
                                         onPressed: () => _selectDate(context),
                                       )),
                                 ],
+                              ),
                               ),
                               //calling the box Widget function
                               _textForm('Voter ID', context),
