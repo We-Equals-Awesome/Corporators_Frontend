@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'UI/DataEntry.dart';
+
+
 //import 'UI/HomePage.dart';
 //import 'Utils/color.dart';
-import 'UI/Page1.dart';
+//import 'UI/pageextra.dart';
 
 void main() => runApp(MyApp());
 
