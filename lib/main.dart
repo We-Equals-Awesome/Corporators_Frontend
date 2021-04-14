@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //theme: new ThemeData(scaffoldBackgroundColor: background),
       debugShowCheckedModeBanner: false,
-      home: new home(),
+      home: new dataEntry(),
     );
   }
 }

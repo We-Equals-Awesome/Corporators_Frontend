@@ -8,12 +8,12 @@ const calendar = 'assets/icons/calendar.svg';
 //A list called Details is created to store the data given by the User
 var Details = new List();
 
-class home extends StatefulWidget {
+class dataEntry extends StatefulWidget {
   @override
-  _homeState createState() => _homeState();
+  _dataEntryState createState() => _dataEntryState();
 }
 
-class _homeState extends State<home> {
+class _dataEntryState extends State<dataEntry> {
   //sets the Details list back to empty list when a new state is begun
   void initState() {
     Details = [];
