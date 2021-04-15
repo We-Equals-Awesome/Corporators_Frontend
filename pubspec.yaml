@@ -20,19 +20,20 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.7.0 <3.0.0"
 
+
+  
 dependencies:
   flutter:
     sdk: flutter
-
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  fa_stepper: ^0.0.2 
-  cupertino_stepper: ^0.2.0
+  intl:
+  flutter_rounded_date_picker: 1.0.4
   image_picker: ^0.7.4
+  flutter_svg: ^0.21.0+1
   
-  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -41,18 +42,21 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+  fonts:
+    - family: product-sans
+      fonts:
+        - asset: lib/Utils/fonts/Product Sans Regular.ttf
+        - asset: lib/Utils/fonts/Product Sans Italic.ttf
+          style: italic
   uses-material-design: true
-<<<<<<< HEAD
-  assets:
+  assets :
      - lib/Utils/assets/logo.jpg
      - lib/Utils/assets/user.png
-     
+     - lib/Utils/assets/calendar.svg
+     - lib/Utils/assets/camera.svg
   #  - images/a_dot_ham.jpeg
   
-=======
-  
 
->>>>>>> 61e2f2e2af12d41f8e19ae3ea2eecb8af67491ec
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
