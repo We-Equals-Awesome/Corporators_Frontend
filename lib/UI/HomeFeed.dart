@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+//import 'package:flutter_svg/flutter_svg.dart';
 import 'package:newsfeed_screen/Utils/constant.dart';
 import 'package:newsfeed_screen/Utils/news.dart';
 import 'package:newsfeed_screen/UI/readFeeds.dart';
+
 
 
 class HomeFeed extends StatelessWidget {
@@ -28,7 +30,7 @@ class HomeFeed extends StatelessWidget {
                       } else if (time(TimeOfDay(hour: 16, minute: 00)) >
                           time(TimeOfDay.now())) {
                         return "GOOD AFTERNOON";
-                      } else if (time(TimeOfDay(hour: 21, minute: 00)) >
+                      } else if (time(TimeOfDay(hour: 23, minute: 59)) >
                           time(TimeOfDay.now())) {
                         return "GOOD EVENING";
                       } else {
@@ -46,9 +48,12 @@ class HomeFeed extends StatelessWidget {
               child: FeedsView(),
             ),
           ],
-        ));
+        )
+
+    );
   }
 }
+
 
 //creating news feed home page preview
 

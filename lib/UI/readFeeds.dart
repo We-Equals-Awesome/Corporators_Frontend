@@ -1,25 +1,66 @@
 import 'package:flutter/material.dart';
 import 'package:newsfeed_screen/Utils/news.dart';
 import 'package:newsfeed_screen/Utils/constant.dart';
-
-
+import 'package:share/share.dart';
 
 class ReadFeeds extends StatefulWidget {
   final News news;
   ReadFeeds({this.news});
-
   @override
   _ReadFeedsState createState() => _ReadFeedsState();
 }
+
 
 class _ReadFeedsState extends State<ReadFeeds> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(55.0),
+        child: Center(
+          child: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 0,horizontal: 0),
+              child: Row(
+                children: [
+                  CircleButton(
+                    icon: Icons.arrow_back_ios,
+                    onTap: () => Navigator.pop(context),
+                    ),
+                  Spacer(),
+                  IconButton(
+                    icon: Icon(
+                      Icons.share_outlined,
+                      color: Colors.black,
+                      size: 24.0,
+                    ),
+                    onPressed: () {
+                      Share.share('check out my website https://example.com');
+                    },
+                  ),
+
+                  // CircleButton(
+                  //   icon: Icons.share,
+                  //   onTap: () {
+                  //     Share.share('check out my website https://instagram.com');
+                  //   },
+                  // ),
+
+                  // CircleButton(
+                  //   icon: Icons.favorite_border,
+                  //   onTap: () {},
+                  // ),
+
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
       backgroundColor: appBackbround,
       body: Center(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 15),
           decoration: BoxDecoration(
               color: appBackbround, border: Border.all(color: blk, width: 1.0)),
           child: ListView(
@@ -61,7 +102,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
                   SizedBox(width: 5.0),
                   Text(
                     widget.news.author,
-                    style: detailContent.copyWith(color: Colors.black),
+                    style: detailContent.copyWith(color: blk),
                   ),
                 ],
               ),
@@ -75,16 +116,16 @@ class _ReadFeedsState extends State<ReadFeeds> {
                     ),
                   ),
                   Spacer(),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.send,
-                        color: blk,
-                      ),
-                      SizedBox(width: 4.0),
-                      Text((widget.news.seen).toString(), style: detailContent),
-                    ],
-                  ),
+                  // Row(
+                  //   children: [
+                  //     Icon(
+                  //       Icons.send,
+                  //       color: blk,
+                  //     ),
+                  //     SizedBox(width: 4.0),
+                  //     Text((widget.news.seen).toString(), style: detailContent),
+                  //   ],
+                  // ),
                   SizedBox(width: 15.0),
                   Status(
                     icon: Icons.favorite_border,
@@ -98,6 +139,8 @@ class _ReadFeedsState extends State<ReadFeeds> {
           ),
         ),
       ),
+
+
     );
   }
 }
@@ -138,3 +181,42 @@ class _StatusState extends State<Status> {
     );
   }
 }
+
+
+// app bar circle button
+
+class CircleButton extends StatelessWidget {
+  final IconData icon;
+  final Function onTap;
+  CircleButton({this.icon, this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(25.0),
+      child: Container(
+        width: 50.0,
+        height: 50.0,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+
+        ),
+        child: Card(
+          elevation: 1.0,
+          color: newsBackground,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(25.0),
+
+          ),
+          child: Icon(
+            icon,
+            color: blk,
+            size: 15.0,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
