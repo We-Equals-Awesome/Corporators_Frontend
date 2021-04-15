@@ -12,12 +12,13 @@ class MyData {
   var address2 = '';
 }
 
-class EnterYourDetails extends StatefulWidget {
+//page to enter your details
+class RegisterPage3 extends StatefulWidget {
   @override
-  _EnterYourDetailsState createState() => _EnterYourDetailsState();
+  _RegisterPage3State createState() => _RegisterPage3State();
 }
 
-class _EnterYourDetailsState extends State<EnterYourDetails> {
+class _RegisterPage3State extends State<RegisterPage3> {
   @override
   void initState() {
     super.initState();
@@ -123,7 +124,7 @@ class _EnterYourDetailsState extends State<EnterYourDetails> {
         //save current form state if validation returns true
         formState.save();
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => MyHomePage(1)));
+            .push(MaterialPageRoute(builder: (context) => LoginPage1(1)));
       }
     }
 

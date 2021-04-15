@@ -18,12 +18,13 @@ class MyData {
   var voterId = '';
 }
 
-class CreateAccount extends StatefulWidget {
+//create account page
+class RegisterPage1 extends StatefulWidget {
   @override
-  _CreateAccountState createState() => _CreateAccountState();
+  _RegisterPage1State createState() => _RegisterPage1State();
 }
 
-class _CreateAccountState extends State<CreateAccount> {
+class _RegisterPage1State extends State<RegisterPage1> {
   @override
   void initState() {
     super.initState();
@@ -66,7 +67,7 @@ class _CreateAccountState extends State<CreateAccount> {
                         onPressed: () {
                           //open Enter your details page when Continue button pressed
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => EnterYourDetails()));
+                              builder: (context) => RegisterPage3()));
                         },
                         child: Row(children: <Widget>[
                           Text(
@@ -138,6 +139,8 @@ class _CreateAccountState extends State<CreateAccount> {
         context,
         minimumYear: 1900,
         maximumYear: 2040,
+        borderRadius: 20,
+        fontFamily: 'product-sans',
         onDateTimeChanged: (dateTime) {
           setState(() {
             _currentdate = dateTime;
@@ -210,7 +213,7 @@ class _CreateAccountState extends State<CreateAccount> {
           child: Text(
             a,
             style: TextStyle(
-                fontSize: a == 'Create Account' ? 25 : 20,
+                fontSize: a == 'Create Account' ? 25 : 18,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'product-sans'),
           ),
@@ -233,7 +236,7 @@ class _CreateAccountState extends State<CreateAccount> {
           //save current form state if validation returns true
           formState.save();
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => AlmostDone()));
+              .push(MaterialPageRoute(builder: (context) => RegisterPage2()));
         }
       }
     }
@@ -294,6 +297,7 @@ class _CreateAccountState extends State<CreateAccount> {
                   isActive: true,
                   content: Column(
                     children: <Widget>[
+                      SizedBox(height: 10),
                       //row widget has a txtfield and a calender icon
                       Row(
                         children: <Widget>[
@@ -320,7 +324,10 @@ class _CreateAccountState extends State<CreateAccount> {
                                 ),
                                 fillColor: textBoxBack,
                                 filled: true,
-                                labelText: 'YYYY-MM-DD',
+                                labelText: 'Date of Birth',
+                                labelStyle: TextStyle(
+                                    color: hintText,
+                                    fontFamily: 'product-sans'),
                                 border: new OutlineInputBorder(
                                   borderRadius: new BorderRadius.circular(10.0),
                                   borderSide: BorderSide(width: 100),

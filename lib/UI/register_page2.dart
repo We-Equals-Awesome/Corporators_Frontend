@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cropapp/Utils/color.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:cropapp/UI/login_page1.dart';
 
-class AlmostDone extends StatefulWidget {
+//almost done page
+class RegisterPage2 extends StatefulWidget {
   @override
-  _AlmostDoneState createState() => _AlmostDoneState();
+  _RegisterPage2State createState() => _RegisterPage2State();
 }
 
-class _AlmostDoneState extends State<AlmostDone> {
+class _RegisterPage2State extends State<RegisterPage2> {
   String _password;
   String _cpassword; //stores the password
   PickedFile _imageFile; //this variable stores the selected profile image
@@ -174,8 +176,8 @@ class _AlmostDoneState extends State<AlmostDone> {
                       return;
                     }
                     _formKey.currentState.save();
-                    print("Password: $_password");
-                    print("Confirm Password: $_cpassword");
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => LoginPage1(0)));
                     //Send to API
                   },
                   child: Text(

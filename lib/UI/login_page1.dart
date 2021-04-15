@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'register_page1.dart';
 import 'package:cropapp/Utils/color.dart';
 
-class MyHomePage extends StatefulWidget {
+class LoginPage1 extends StatefulWidget {
   final int
       alter; //This value is to decide whether or not to show the ALterDialogue box in login page.
-  MyHomePage(this.alter); //constructor to store the value of alter variable
+  LoginPage1(this.alter); //constructor to store the value of alter variable
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _LoginPage1State createState() => _LoginPage1State();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LoginPage1State extends State<LoginPage1> {
   var password;
   var phoneNumber;
   //formkey is used for form that takes phone number and password
@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
               s == 'Phone Number' ? TextInputType.phone : TextInputType.text,
           validator: (String value) {
             if (value.isEmpty) {
-              if (s == 'Phone Numer')
+              if (s == 'Phone Number')
                 return 'Phone Number is required';
               else
                 return 'Password is required';
@@ -93,7 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
           : () {
               //open CreateAccountPage when Create button pressed
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => CreateAccount()));
+                  MaterialPageRoute(builder: (context) => RegisterPage1()));
             },
       child: Text(s == 'Login' ? 'Login' : 'Create',
           style: TextStyle(color: navIcon, fontFamily: 'product-sans')),
