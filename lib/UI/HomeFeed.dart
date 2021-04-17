@@ -32,19 +32,19 @@ class HomeFeed extends StatelessWidget {
                 (() {
                   if (time(TimeOfDay(hour: 12, minute: 00)) >
                       time(TimeOfDay.now())) {
-                    return "GOOD  MORNING";
+                    return "Good Morning,";
                   } else if (time(TimeOfDay(hour: 16, minute: 00)) >
                       time(TimeOfDay.now())) {
-                    return "GOOD  AFTERNOON";
+                    return "Good Afternoon,";
                   } else if (time(TimeOfDay(hour: 23, minute: 59)) >
                       time(TimeOfDay.now())) {
-                    return "GOOD  EVENING";
+                    return "Good Evening,";
                   } else {
-                    return "GOOD  NIGHT";
+                    return "GOOD  NIGHT,";
                   }
                 }()),
                 style: headline1,
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.start,
               ),
             ),
             Container(
@@ -53,7 +53,7 @@ class HomeFeed extends StatelessWidget {
               //as there should we styling in which news is displayed so all the styling is described in the FeedView() function
               //and we call FeedView Function here
 
-              padding:  EdgeInsets.fromLTRB(5, 10, 5, 10),
+              padding:  EdgeInsets.fromLTRB(25, 10, 25, 10),
               child: FeedsView(),
             ),
           ],

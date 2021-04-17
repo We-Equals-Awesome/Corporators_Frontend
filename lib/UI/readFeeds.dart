@@ -44,12 +44,12 @@ class _ReadFeedsState extends State<ReadFeeds> {
                     onTap: () => Navigator.pop(context),
                   ),
                   Spacer(),
-                  CircleButton(
-                    //share button
-                    icon: Icons.share_outlined,
-                    // sharing the title of the news and the subtitle of the news
-                    onTap: ()=> Share.share ('TITLE -----------${"\n"}${widget.news.title}${"\n\n\n"}INFO -----------${"\n"}${widget.news.subtitle}'),
-                  ),
+                  // CircleButton(
+                  //   //share button
+                  //   icon: Icons.share_outlined,
+                  //   // sharing the title of the news and the subtitle of the news
+                  //   onTap: ()=> Share.share ('TITLE -----------${"\n"}${widget.news.title}${"\n\n\n"}INFO -----------${"\n"}${widget.news.subtitle}'),
+                  // ),
                 ],
               ),
 
@@ -213,7 +213,7 @@ class CircleButton extends StatelessWidget {
 
         ),
         child: Card(
-          elevation: 2,
+          elevation: 0,
           color: background,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25.0),
