@@ -129,7 +129,8 @@ class _PrimaryCardState extends State<PrimaryCard> {
       decoration: BoxDecoration(
           color: textBoxBack,
           borderRadius: BorderRadius.circular(35.0),
-          border: Border.all(color: blk, width: 1.0)),
+
+      ),
 
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
