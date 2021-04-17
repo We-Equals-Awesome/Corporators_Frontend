@@ -2,13 +2,15 @@
 This Repository Handles Frontend for Corporator's Application
 images
 Home Screen page
-![image](https://user-images.githubusercontent.com/47321390/115117197-036b5a80-9fbb-11eb-968e-8cfde2ee5346.png)
+![image](https://user-images.githubusercontent.com/47321390/115122623-7c2be000-9fd6-11eb-9dff-2aedfc18af25.png)
 
 scroling home page
-![image](https://user-images.githubusercontent.com/47321390/115117227-2433b000-9fbb-11eb-8e4e-e83e3385633a.png)
+![image](https://user-images.githubusercontent.com/47321390/115122638-94036400-9fd6-11eb-9094-e4c04c8bb788.png)
+
 
 opening particular newsfeed
-![image](https://user-images.githubusercontent.com/47321390/115117256-475e5f80-9fbb-11eb-838f-20e243b93317.png)
+![image](https://user-images.githubusercontent.com/47321390/115122652-aed5d880-9fd6-11eb-8323-23cb22a69d70.png)
+
 
 sharing
 
