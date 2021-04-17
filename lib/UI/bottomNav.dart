@@ -3,8 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:newsfeed_screen/UI/HomeFeed.dart';
 import 'package:newsfeed_screen/UI/NotificationView.dart';
 import 'package:newsfeed_screen/UI/ProfileView.dart';
-import 'package:newsfeed_screen/Utils/constant.dart';
+import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
+
+// creating the stateful  of BottomNav( Bottom Navigation Bar)
 
 class BottomNav extends StatefulWidget {
   @override
@@ -12,8 +14,14 @@ class BottomNav extends StatefulWidget {
 }
 
 class _BottomNavState extends State<BottomNav> {
+
+  //initializing the variable current index   and   pageControler
+  //Default index is 1 so when the app start it will display the News Feed(HomeFeed)  page as a default selection
+
   int _currentIndex = 1;
   PageController _pageController;
+
+  //Creating the object of the page controller class to initiate and dispose the page
 
   @override
   void initState() {
@@ -27,22 +35,34 @@ class _BottomNavState extends State<BottomNav> {
     super.dispose();
   }
 
-    // calling profiles
+    // creating list of profiles view  for Bottom Navigation Bar
+    //index of Notification is 0 , HomeFeed is 1 , Profile is 2
+
     static List<Widget> _bottomNavView = [
     NotificationView(),
     HomeFeed(),
     ProfileView(),
   ];
 
+
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
 
-        body: SafeArea(
-        child: _bottomNavView.elementAt(_currentIndex),
-      ),
+    //returning the Scaffold which contains the Bottom Navigation Bar And Profile View in Body
+
+    return Scaffold(
+        backgroundColor: background,
+
+        //profile view as per the Index of the Bottom Navigation Bar
+
+
+        body: _bottomNavView.elementAt(_currentIndex),
+
+      // Bottom Navigation Bar
+
       bottomNavigationBar: BottomNavyBar(
-        backgroundColor: blk,
+        backgroundColor: navBarBackground,
         selectedIndex: _currentIndex,
         onItemSelected: (index) {
           setState(() => _currentIndex = index
@@ -53,24 +73,27 @@ class _BottomNavState extends State<BottomNav> {
         },
 
 
+        //items of the bottom navigation bar  -> i.e Complaints , News Feed , Profile
+
+
         items: <BottomNavyBarItem>[
           BottomNavyBarItem(
-              title: Text('Notification'),
-              icon: SvgPicture.asset('assets/alert-octagon.svg',width: 25,color: bottomNavIcon, ),
-              activeColor: bottomNavIcon,
-              inactiveColor: newsBackground,
+              title: Center(child: Text('Complaints')),
+              icon: SvgPicture.asset('assets/alert-octagon.svg',width: 25,color: navIcon, ),
+              activeColor: navIcon,
+              inactiveColor: navBarSelectedGrey,
           ),
           BottomNavyBarItem(
-              title: Text('Home feed'),
-              icon: SvgPicture.asset('assets/home.svg',width: 25,color: bottomNavIcon, ),
-              activeColor: bottomNavIcon,
-              inactiveColor: newsBackground,
+              title: Center(child: Text('News feed')),
+              icon: SvgPicture.asset('assets/home.svg',width: 25,color: navIcon, ),
+              activeColor: navIcon,
+              inactiveColor: navBarSelectedGrey,
           ),
           BottomNavyBarItem(
-              title: Text('Profile'),
-              icon: SvgPicture.asset('assets/user.svg',width: 25,color: bottomNavIcon, ),
-              activeColor: bottomNavIcon,
-              inactiveColor: newsBackground,
+              title: Center(child: Text('Profile')),
+              icon: SvgPicture.asset('assets/user.svg',width: 25,color: navIcon, ),
+              activeColor: navIcon,
+              inactiveColor: navBarSelectedGrey,
           ),
         ],
       ),

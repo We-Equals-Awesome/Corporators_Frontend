@@ -1,3 +1,6 @@
+//class NEWS
+// Dummy News
+
 class News {
   final String title;
   final String subtitle;

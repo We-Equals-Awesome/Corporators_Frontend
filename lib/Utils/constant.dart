@@ -1,51 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-
-
-var appBackbround = Color(0xFFF2D492);
-var bottomNavIcon = Color(0xFFFFBC53);
-var newsBackground= Color(0xFFF3E7CD);
 var blk = Color(0xFF000000);
-var bottomBar = Color(0xFF636366);
-var gry = Color(0xFF636366);
+// colour of all the texts and the stepper
+var textcolor = Color(0xff3B2234);
+// hint text
+Color hintText = Color(0xff626262);
 
-var headline1 = GoogleFonts.playfairDisplay(
-  fontSize: 35.0,
+// styling of the fonts
+
+var headline1 = TextStyle(
+  fontFamily: 'ProductSans' ,
+  fontSize: 32.0,
   fontWeight: FontWeight.w700,
-  color: blk,
+  color: textcolor,
 );
-var detailContent = GoogleFonts.roboto(
-  textStyle: TextStyle(
+
+var detailContent = TextStyle(
+  fontFamily: 'ProductSans' ,
     fontSize: 14.0,
-    color: gry,
-  ),
+    color: textcolor,
 );
 
-var headlineSmall = GoogleFonts.roboto(
+var postDetail = TextStyle(
+  fontFamily: 'ProductSans' ,
+  fontSize: 14.0,
+  fontWeight: FontWeight.w300,
+  color: hintText,
+);
+
+var headlineSmall = TextStyle(
+  fontFamily: 'ProductSans' ,
   fontSize: 17.0,
-  fontWeight: FontWeight.w500,
-  color: Colors.black,
+  fontWeight: FontWeight.w800,
+  color: textcolor,
 );
-var titleCardhead = GoogleFonts.roboto(
-  textStyle: TextStyle(
+
+var titleCardhead = TextStyle(
+    fontFamily: 'ProductSans' ,
     fontSize: 30.0,
-    color: blk,
+    color: textcolor ,
     fontWeight: FontWeight.bold,
-  ),
 );
 
-
-var titleCard = GoogleFonts.roboto(
-  textStyle: TextStyle(
+var titleCard = TextStyle(
+  fontFamily: 'ProductSans' ,
     fontSize: 18.0,
-    color: blk,
+    color: textcolor,
     fontWeight: FontWeight.bold,
-  ),
 );
 
-var descriptionStyle = GoogleFonts.roboto(
-    textStyle: TextStyle(
+var descriptionStyle = TextStyle(
+  fontFamily: 'ProductSans' ,
+      color: textcolor,
       fontSize: 15.0,
       height: 2.0,
-    ));
+);

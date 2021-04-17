@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      //calling Bottom Nav Bar Function
       home: BottomNav(),
       //calling nav bar
     );
