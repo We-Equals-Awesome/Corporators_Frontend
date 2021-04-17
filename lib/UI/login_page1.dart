@@ -129,11 +129,14 @@ class _LoginPage1State extends State<LoginPage1> {
             content: SingleChildScrollView(
                 child: ListBody(
               children: <Widget>[
-                Text('Our booth volunteer will soon be in touch with you.',
-                    style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.035,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'product-sans')),
+                Text(
+                  'Our booth volunteer will soon be in touch with you.',
+                  style: TextStyle(
+                      fontSize: MediaQuery.of(context).size.height * 0.035,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'product-sans',
+                      color: text),
+                ),
                 SizedBox(height: 10),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -196,7 +199,7 @@ class _LoginPage1State extends State<LoginPage1> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                              image: AssetImage('lib/Utils/assets/logo.jpg'),
+                              image: AssetImage('Assets/assets/logo.jpg'),
                               fit: BoxFit.fill),
                         ),
                       ),
@@ -207,6 +210,7 @@ class _LoginPage1State extends State<LoginPage1> {
                         child: Text(
                           'App Something',
                           style: TextStyle(
+                              color: text,
                               fontSize:
                                   MediaQuery.of(context).size.height * 0.035,
                               fontWeight: FontWeight.bold,
@@ -232,6 +236,7 @@ class _LoginPage1State extends State<LoginPage1> {
                         child: Text(
                           'Are you a citizen of this ward? Create Account',
                           style: TextStyle(
+                              color: text,
                               fontSize:
                                   MediaQuery.of(context).size.height * 0.017,
                               fontWeight: FontWeight.bold,

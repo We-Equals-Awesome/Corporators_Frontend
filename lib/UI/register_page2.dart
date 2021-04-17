@@ -37,7 +37,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
           CircleAvatar(
             backgroundColor: background,
             backgroundImage: _imageFile == null
-                ? AssetImage('lib/Utils/assets/user.png')
+                ? AssetImage('Assets/assets/user.png')
                 : FileImage(File(_imageFile.path)),
             radius: MediaQuery.of(context).size.width * 0.12,
           ),
@@ -115,14 +115,15 @@ class _RegisterPage2State extends State<RegisterPage2> {
       );
     }
 
-    Widget text(String s, BuildContext context) {
+    Widget textBox(String s, BuildContext context) {
       return Container(
         child: Text(
           s,
           style: TextStyle(
               fontSize: s == 'Almost Done' ? 27 : 17,
               fontWeight: FontWeight.bold,
-              fontFamily: 'product-sans'),
+              fontFamily: 'product-sans',
+              color: text),
         ),
         alignment: Alignment.bottomLeft,
         margin: new EdgeInsets.symmetric(
@@ -144,11 +145,11 @@ class _RegisterPage2State extends State<RegisterPage2> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.065,
                 ),
-                text('Almost Done', context),
+                textBox('Almost Done', context),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,
                 ),
-                text('Setting Up Your Profile', context),
+                textBox('Setting Up Your Profile', context),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,
                 ),
@@ -156,7 +157,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.06,
                 ),
-                text('Password', context),
+                textBox('Password', context),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
@@ -164,7 +165,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,
                 ),
-                text('Confirm Password', context),
+                textBox('Confirm Password', context),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),

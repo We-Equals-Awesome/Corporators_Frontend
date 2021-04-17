@@ -45,15 +45,16 @@ flutter:
   fonts:
     - family: product-sans
       fonts:
-        - asset: lib/Utils/fonts/Product Sans Regular.ttf
-        - asset: lib/Utils/fonts/Product Sans Italic.ttf
+        - asset: Assets/fonts/Product Sans Regular.ttf
+        - asset: Assets/fonts/Product Sans Italic.ttf
           style: italic
   uses-material-design: true
   assets :
-     - lib/Utils/assets/logo.jpg
-     - lib/Utils/assets/user.png
-     - lib/Utils/assets/calendar.svg
-     - lib/Utils/assets/camera.svg
+     - Assets/assets/logo.jpg
+     - Assets/assets/user.png
+     - Assets/assets/camera.svg
+     - Assets/assets/calendar.svg
+    
   #  - images/a_dot_ham.jpeg
   
 

@@ -54,11 +54,13 @@ class _RegisterPage1State extends State<RegisterPage1> {
                 child: ListBody(
               children: <Widget>[
                 Text(
-                    'Oops seems like you are not  part of this ward.\nContact your ward incharge',
-                    style: TextStyle(
-                        fontSize: MediaQuery.of(context).size.height * 0.035,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'product-sans')),
+                  'Oops seems like you are not  part of this ward.\nContact your ward incharge',
+                  style: TextStyle(
+                      fontSize: MediaQuery.of(context).size.height * 0.035,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'product-sans',
+                      color: text),
+                ),
                 SizedBox(height: 10),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -215,7 +217,8 @@ class _RegisterPage1State extends State<RegisterPage1> {
             style: TextStyle(
                 fontSize: a == 'Create Account' ? 25 : 18,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'product-sans'),
+                fontFamily: 'product-sans',
+                color: text),
           ),
         ),
       );
@@ -254,19 +257,22 @@ class _RegisterPage1State extends State<RegisterPage1> {
           textbox('Enter Your Details', context),
           Theme(
             data: ThemeData(
-                // colors set to black as per the requirements
-                accentColor: Colors.black,
-                primaryColor: Colors.black,
+                accentColor: text,
+                primaryColor: text,
                 colorScheme: ColorScheme.light(
-                  primary: Colors.black,
+                  primary: text,
                 )),
             child: new Stepper(
               steps: [
                 //step 1
                 new Step(
-                    title: const Text(
-                      'Step 1',
-                      style: TextStyle(color: Colors.black),
+                    title: Text(
+                      'Personal Details',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'product-sans',
+                          fontSize: 18,
+                          color: text),
                     ),
                     isActive: true,
                     content: Column(
@@ -282,7 +288,12 @@ class _RegisterPage1State extends State<RegisterPage1> {
                     )),
                 //step2
                 new Step(
-                    title: const Text('Step 2'),
+                    title: Text('Contact Details',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'product-sans',
+                            fontSize: 18,
+                            color: text)),
                     isActive: true,
                     content: Column(children: [
                       //phone number
@@ -293,7 +304,12 @@ class _RegisterPage1State extends State<RegisterPage1> {
                       txtformfield('Email Id', context),
                     ])),
                 new Step(
-                  title: const Text('Step 3'),
+                  title: Text('Voter Details',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'product-sans',
+                          fontSize: 18,
+                          color: text)),
                   isActive: true,
                   content: Column(
                     children: <Widget>[
@@ -342,7 +358,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
                               height: 50,
                               child: TextButton(
                                 child: SvgPicture.asset(
-                                    "lib/Utils/assets/calendar.svg",
+                                    "Assets/assets/calendar.svg",
                                     height: MediaQuery.of(context).size.height *
                                         0.04,
                                     width: MediaQuery.of(context).size.width *

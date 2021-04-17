@@ -144,6 +144,7 @@ class _RegisterPage3State extends State<RegisterPage3> {
               style: TextStyle(
                   fontSize: MediaQuery.of(context).size.height * 0.035,
                   fontWeight: FontWeight.bold,
+                  color: text,
                   fontFamily: 'product-sans'),
             ),
             alignment: Alignment.bottomLeft,
@@ -164,9 +165,12 @@ class _RegisterPage3State extends State<RegisterPage3> {
               steps: [
                 //step 1
                 new Step(
-                    title: const Text(
-                      'Step 1',
-                      style: TextStyle(color: Colors.black),
+                    title: Text(
+                      'Personal Details',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: text,
+                          fontFamily: 'product-sans'),
                     ),
                     isActive: true,
                     content: Column(
@@ -182,7 +186,12 @@ class _RegisterPage3State extends State<RegisterPage3> {
                     )),
                 //step2
                 new Step(
-                    title: const Text('Step 2'),
+                    title: Text('Contact Details',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'product-sans',
+                            fontSize: 18,
+                            color: text)),
                     isActive: true,
                     content: Column(children: [
                       //phone number
@@ -193,7 +202,12 @@ class _RegisterPage3State extends State<RegisterPage3> {
                       txtformfield('Email Id', context),
                     ])),
                 new Step(
-                  title: const Text('Step 3'),
+                  title: Text('Address',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'product-sans',
+                          fontSize: 18,
+                          color: text)),
                   isActive: true,
                   content: Column(
                     children: <Widget>[
