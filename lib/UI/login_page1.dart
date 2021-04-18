@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'register_page1.dart';
 import 'package:cropapp/Utils/color.dart';
+import 'package:cropapp/UI/news_feed1.dart';
 
 class LoginPage1 extends StatefulWidget {
   final int
@@ -29,6 +30,7 @@ class _LoginPage1State extends State<LoginPage1> {
     return Container(
         width: MediaQuery.of(context).size.width * 0.7,
         child: TextFormField(
+          cursorColor: hintText,
           keyboardType:
               s == 'Phone Number' ? TextInputType.phone : TextInputType.text,
           validator: (String value) {
@@ -37,6 +39,8 @@ class _LoginPage1State extends State<LoginPage1> {
                 return 'Phone Number is required';
               else
                 return 'Password is required';
+            } else if (s == 'Phone Number' && value.length < 9) {
+              return 'Please enter a valid phone number';
             }
             return null;
           },
@@ -71,8 +75,14 @@ class _LoginPage1State extends State<LoginPage1> {
                 ? IconButton(
                     onPressed: _toggleVisibility,
                     icon: _isHidden
-                        ? Icon(Icons.visibility_off)
-                        : Icon(Icons.visibility),
+                        ? Icon(
+                            Icons.visibility_off,
+                            color: hintText,
+                          )
+                        : Icon(
+                            Icons.visibility,
+                            color: hintText,
+                          ),
                   )
                 : null,
           ),
@@ -89,6 +99,8 @@ class _LoginPage1State extends State<LoginPage1> {
                 return;
               }
               _formKey.currentState.save();
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => NewsFeed()));
             }
           : () {
               //open CreateAccountPage when Create button pressed

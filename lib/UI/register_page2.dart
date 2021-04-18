@@ -12,17 +12,24 @@ class RegisterPage2 extends StatefulWidget {
 }
 
 class _RegisterPage2State extends State<RegisterPage2> {
-  String _password;
-  String _cpassword; //stores the password
   PickedFile _imageFile; //this variable stores the selected profile image
   final ImagePicker _picker = ImagePicker();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   //isHidden stores the visibility of password
   bool _isHidden = true;
+  bool _isCHidden = true;
+  TextEditingController passwordCon = TextEditingController();
+  TextEditingController confirmPasswordCon = TextEditingController();
   //method to toggle the visibility of password
   void _toggleVisibility() {
     setState(() {
       _isHidden = !_isHidden; //changes the visibility by negating it
+    });
+  }
+
+  void _toggleCVisibility() {
+    setState(() {
+      _isCHidden = !_isCHidden; //changes the visibility by negating it
     });
   }
 
@@ -72,19 +79,72 @@ class _RegisterPage2State extends State<RegisterPage2> {
 
   @override
   Widget build(BuildContext context) {
+    //function to show snack bar if all the fields are not filled
+    void showSnackBarMessage(String message,
+        [MaterialColor color = Colors.red]) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(message)));
+    }
+
     Widget _buildPassword(String s, BuildContext context) {
       return Container(
         width: MediaQuery.of(context).size.width * 0.75,
         child: TextFormField(
-          obscureText: s == 'Password' ? _isHidden : false,
+          cursorColor: hintText,
+          obscureText: _isHidden,
           validator: (String value) {
-            if (value.isEmpty) {
-              return s + ' is Required';
-            }
+            if (value.isEmpty) return s + ' is Required';
             return null;
           },
-          onSaved: (String value) {
-            _password = value;
+          controller: passwordCon,
+          decoration: new InputDecoration(
+            isDense: true,
+            contentPadding: EdgeInsets.all(8),
+            border: new OutlineInputBorder(
+              borderRadius: new BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Colors.black, width: 100),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: new BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Colors.black, width: 1.5),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: new BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Colors.black, width: 1.5),
+            ),
+            fillColor: textBoxBack,
+            filled: true,
+            labelText: s,
+            labelStyle: TextStyle(color: hintText, fontFamily: 'product-sans'),
+            suffixIcon: IconButton(
+              onPressed: _toggleVisibility,
+              icon: _isHidden
+                  ? Icon(
+                      Icons.visibility_off,
+                      color: hintText,
+                    )
+                  : Icon(
+                      Icons.visibility,
+                      color: hintText,
+                    ),
+            ),
+          ),
+        ),
+      );
+    }
+
+    Widget _buildCPassword(String s, BuildContext context) {
+      return Container(
+        width: MediaQuery.of(context).size.width * 0.75,
+        child: TextFormField(
+          cursorColor: hintText,
+          obscureText: _isCHidden,
+          controller: confirmPasswordCon,
+          validator: (String value) {
+            if (value.isEmpty) return s + ' is Required';
+            if (passwordCon.text != confirmPasswordCon.text)
+              return "Password does not match";
+            return null;
           },
           decoration: new InputDecoration(
             isDense: true, // Added this
@@ -104,11 +164,18 @@ class _RegisterPage2State extends State<RegisterPage2> {
             fillColor: textBoxBack,
             filled: true,
             labelText: s,
+            labelStyle: TextStyle(color: hintText, fontFamily: 'product-sans'),
             suffixIcon: IconButton(
-              onPressed: _toggleVisibility,
-              icon: _isHidden
-                  ? Icon(Icons.visibility_off)
-                  : Icon(Icons.visibility),
+              onPressed: _toggleCVisibility,
+              icon: _isCHidden
+                  ? Icon(
+                      Icons.visibility_off,
+                      color: hintText,
+                    )
+                  : Icon(
+                      Icons.visibility,
+                      color: hintText,
+                    ),
             ),
           ),
         ),
@@ -169,17 +236,21 @@ class _RegisterPage2State extends State<RegisterPage2> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                _buildPassword('Password', context),
+                _buildCPassword('Password', context),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.04),
                 ElevatedButton(
                   onPressed: () {
                     if (!_formKey.currentState.validate()) {
-                      return;
+                      showSnackBarMessage(
+                          'Please fill all fields with valid input');
+                    } else {
+                      _formKey.currentState.save();
+                      print('pass $passwordCon.text');
+                      print('cpass $confirmPasswordCon.text');
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => LoginPage1(0)));
+                      //Send to API
                     }
-                    _formKey.currentState.save();
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => LoginPage1(0)));
-                    //Send to API
                   },
                   child: Text(
                     'Submit',

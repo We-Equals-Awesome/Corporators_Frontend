@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cropapp/UI/register_page2.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cropapp/UI/register_page3.dart';
 import 'package:cropapp/Utils/color.dart';
@@ -74,7 +75,8 @@ class _RegisterPage1State extends State<RegisterPage1> {
                         child: Row(children: <Widget>[
                           Text(
                             'Continue',
-                            style: TextStyle(color: navIcon),
+                            style: TextStyle(
+                                color: navIcon, fontFamily: 'product-sans'),
                           ),
                           Icon(
                             Icons.arrow_forward,
@@ -107,6 +109,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
 
   @override
   Widget build(BuildContext context) {
+    final node = FocusScope.of(context);
     dateCon.text = (Platform.isAndroid)
         ? "${selectedDate.toLocal()}".split(' ')[0]
         : DateFormat.yMMMd().format(_currentdate);
@@ -126,7 +129,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
           lastDate: DateTime(2025),
           builder: (context, child) {
             return Theme(
-              data: ThemeData.dark(),
+              data: ThemeData.light(),
               child: child,
             );
           });
@@ -137,26 +140,34 @@ class _RegisterPage1State extends State<RegisterPage1> {
     }
 
     void _iosSelectDate(BuildContext context) {
-      CupertinoRoundedDatePicker.show(
-        context,
-        minimumYear: 1900,
-        maximumYear: 2040,
-        borderRadius: 20,
-        fontFamily: 'product-sans',
-        onDateTimeChanged: (dateTime) {
-          setState(() {
-            _currentdate = dateTime;
+      showModalBottomSheet(
+          context: context,
+          builder: (BuildContext) {
+            return Container(
+                height: MediaQuery.of(context).copyWith().size.height * 0.25,
+                child: CupertinoDatePicker(
+                    backgroundColor: background,
+                    initialDateTime: DateTime.now(),
+                    onDateTimeChanged: (DateTime newDate) {
+                      setState(() {
+                        _currentdate = newDate;
+                      });
+                    },
+                    minimumYear: 1900,
+                    maximumYear: 2050,
+                    mode: CupertinoDatePickerMode.date));
           });
-        },
-      );
     }
 
     //function that returns a texteformfield
     Widget txtformfield(String s, BuildContext context) {
-      //function for the Text Fields
       return Padding(
         padding: const EdgeInsets.only(top: 10),
         child: TextFormField(
+          onEditingComplete: () {
+            FocusScope.of(context).nextFocus();
+          },
+          autofocus: (s == 'First Name') ? true : false,
           controller: con,
           keyboardType:
               s == 'Phone Number' ? TextInputType.phone : TextInputType.text,
@@ -179,6 +190,10 @@ class _RegisterPage1State extends State<RegisterPage1> {
           validator: (value) {
             if (value.isEmpty) {
               return s + ' is required.';
+            } else if (s == 'Email Id' &&
+                !RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                    .hasMatch(value)) {
+              return 'Please a valid Email';
             } else
               return null;
           },
@@ -252,7 +267,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
         key: _formKey,
         //textfields are wrapped in a list view
         child: new ListView(children: <Widget>[
-          SizedBox(height: MediaQuery.of(context).size.height * 0.06),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.03),
           textbox('Create Account', context),
           textbox('Enter Your Details', context),
           Theme(
@@ -455,16 +470,23 @@ class _RegisterPage1State extends State<RegisterPage1> {
           ),
         ]),
       )),
+
       floatingActionButton: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.3,
+        width: MediaQuery.of(context).size.width * 0.35,
         height: MediaQuery.of(context).size.height * 0.06,
         child: FloatingActionButton.extended(
           onPressed: _submitDetails,
-          label: Text(
-            'Continue',
-            style: TextStyle(
-                color: navIcon, fontSize: 13.0, fontFamily: 'product-sans'),
-          ),
+          label: Row(children: <Widget>[
+            Text(
+              'Continue',
+              style: TextStyle(color: navIcon, fontFamily: 'product-sans'),
+            ),
+            Icon(
+              Icons.arrow_forward,
+              size: 20,
+              color: navIcon,
+            )
+          ]),
           backgroundColor: submitGrey,
         ),
       ),

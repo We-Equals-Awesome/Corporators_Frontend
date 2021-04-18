@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cropapp/Utils/color.dart';
 import 'package:cropapp/UI/login_page1.dart';
 
-//class to store info about users
+//class to store info about the user
 class MyData {
   var firstName = '';
   var lastName = '';
