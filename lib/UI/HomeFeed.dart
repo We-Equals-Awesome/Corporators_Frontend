@@ -40,7 +40,7 @@ class HomeFeed extends StatelessWidget {
                       time(TimeOfDay.now())) {
                     return "Good Evening,";
                   } else {
-                    return "GOOD  NIGHT,";
+                    return "Good Night,";
                   }
                 }()),
                 style: headline1,

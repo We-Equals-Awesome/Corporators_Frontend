@@ -36,20 +36,19 @@ class _ReadFeedsState extends State<ReadFeeds> {
               Row(
                 //top row of the Scaffold
                 children: [
-                  //calling CircleButton function
-                  //value which is passed is the type of icon it contain and what will happen when user press that button
-                  CircleButton(
-                    //back button
-                    icon: Icons.arrow_back_ios,
-                    onTap: () => Navigator.pop(context),
+                  //back button on the top
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios_rounded,
+                      color: Colors.black,
+                      size: 24.0,
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
+
                   Spacer(),
-                  // CircleButton(
-                  //   //share button
-                  //   icon: Icons.share_outlined,
-                  //   // sharing the title of the news and the subtitle of the news
-                  //   onTap: ()=> Share.share ('TITLE -----------${"\n"}${widget.news.title}${"\n\n\n"}INFO -----------${"\n"}${widget.news.subtitle}'),
-                  // ),
                 ],
               ),
 
@@ -190,43 +189,3 @@ class _StatusState extends State<Status> {
     );
   }
 }
-
-
-// defining the  CircleButton function
-
-class CircleButton extends StatelessWidget {
-  final IconData icon;
-  final Function onTap;
-  CircleButton({this.icon, this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(25.0),
-      child: Container(
-        width: 50.0,
-        height: 50.0,
-
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-
-        ),
-        child: Card(
-          elevation: 0,
-          color: background,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25.0),
-
-          ),
-          child: Icon(
-            icon,
-            color: blk,
-            size: 20.0,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
