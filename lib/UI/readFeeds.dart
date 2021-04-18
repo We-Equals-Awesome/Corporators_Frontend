@@ -59,7 +59,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
               SizedBox(height: 25.0),
               Hero(
                 //Image of the news
-                tag: widget.news.seen,
+                tag: widget.news.share,
                 child: Container(
                   height: 220.0,
                   decoration: BoxDecoration(
@@ -135,7 +135,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
                     },
                   ),
                   //total shared news
-                  Text((widget.news.seen).toString(), style: detailContent),
+                  Text((widget.news.share).toString(), style: detailContent),
                   SizedBox(width: 20.0),
                   Icon(Icons.more_vert, color: blk, size: 24.0),
                 ],

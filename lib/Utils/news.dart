@@ -7,7 +7,7 @@ class News {
   final String content;
   final String time;
   final String author;
-  final int seen;
+  final int share;
   final int favorite;
   final String image;
 
@@ -16,7 +16,7 @@ class News {
     this.content,
     this.favorite,
     this.image,
-    this.seen,
+    this.share,
     this.subtitle,
     this.time,
     this.title,
@@ -27,7 +27,7 @@ List<News> trendingList = [
   News(
     author: "Dhiraj Gupta",
     favorite: 700,
-    seen: 45,
+    share: 45,
     time: "Posted on 11/02/21 at 12:51 PM",
     title: "Bad road condition in my locality",
     image:
@@ -40,7 +40,7 @@ List<News> trendingList = [
   News(
     author: "Chaitanya Kumar",
     favorite: 502,
-    seen: 121,
+    share: 21,
     time: "Posted on 31/11/20 at 12:51 PM",
     title: "Big Hole in the road",
     image:
@@ -52,8 +52,8 @@ List<News> trendingList = [
   ),
   News(
     author: "Pratik Tiwari",
-    favorite: 23,
-    seen: 4051,
+    favorite: 723,
+    share: 51,
     time: "Posted on 18/03/21 at 16:51 PM",
     title: "Dangerous street drop-offs, like ravines or cliffs",
     image:
@@ -65,8 +65,8 @@ List<News> trendingList = [
   ),
   News(
     author: "Shubham J",
-    favorite: 12,
-    seen: 301,
+    favorite: 712,
+    share: 30,
     time: "Posted on 15/01/21 at 14:15 PM",
     title: " Hazards obstructing visibility at intersections and crosswalks",
     image:
@@ -78,8 +78,8 @@ List<News> trendingList = [
   ),
   News(
     author: "Anonymous",
-    favorite: 21,
-    seen: 415,
+    favorite: 421,
+    share: 15,
     time: "Posted on 15/01/21 at 14:15 PM",
     title: "Hyderabad among nine Indian cities with poor road connectivity",
     image:
