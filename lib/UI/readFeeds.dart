@@ -16,132 +16,193 @@ class ReadFeeds extends StatefulWidget {
 }
 
 class _ReadFeedsState extends State<ReadFeeds> {
-  @override
+  List<bool> isSelected;
+  int textFontSize = 15;
+  double doubleConvert = 1.0;
+  // var screenSize = MediaQuery.of(context).size;
+  // var width = screenSize.width;
+  // var height = screenSize.height;
 
+  int getFontSize(int index) {
+    if (index == 0) {
+      return 15;
+    }
+    else if (index == 1) {
+      return 18;
+    }
+    else if (index == 2) {
+      return 22;
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    isSelected = [
+      false,
+      true,
+      true,
+    ];
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
 
     //returning Scaffold
 
     return Scaffold(
       backgroundColor: background,
-      body: Center(
-        child: Container(
-          padding: EdgeInsets.fromLTRB(15,20,15,15),
-          decoration: BoxDecoration(
-            //Box decoration
-              color: background, border: Border.all(color: blk, width: 1.0)),
-          //displaying the detailed News in the Form of List
-          child: ListView(
-            children: [
-              Row(
-                //top row of the Scaffold
-                children: [
-                  //back button on the top
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_back_ios_rounded,
-                      color: Colors.black,
-                      size: 24.0,
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+      body: SafeArea(
+        child: Center(
+          child: Container(
+            padding: EdgeInsets.fromLTRB(20,20,20,20),
+            decoration: BoxDecoration(
+              //Box decoration
+                color: background, border: Border.all(color: blk, width: 1.0)),
+            //displaying the detailed News in the Form of List
+            child: ListView(
+              children: [
+                Container(
+                  padding: EdgeInsets.fromLTRB(0,20,15,15),
+                  child: Row(
+                    //top row of the Scaffold
+                    children: [
+                      //back button on the top
+                      IconButton(
+                        icon: Icon(
+                          Icons.arrow_back_ios_rounded,
+                          color: Colors.black,
+                          size: 24.0,
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+
+                      Spacer(),
+
+                  //toggle button to change the font size of description
+                  ToggleButtons(
+                    color: blk,
+                    children: [
+                    Text("A",style: TextStyle(fontSize: 15,fontFamily: 'ProductSans' ),),
+                    Text("A",style: TextStyle(fontSize: 18,fontFamily: 'ProductSans' ),),
+                    Text("A",style: TextStyle(fontSize: 22,fontFamily: 'ProductSans' ),),
+                  ],
+                      isSelected: isSelected,
+                      onPressed: (index){
+                      for(var i = 0 ; i < isSelected.length ; i++){
+                        if(i==index){
+                          isSelected[i] = true;
+                        }else{
+                          isSelected[i] = false;
+                        }
+                      }
+                      textFontSize = getFontSize(index);
+                      setState(() {
+
+                      });
+
+                      },
+                  )
+                    ],
                   ),
+                ),
 
-                  Spacer(),
-                ],
-              ),
-
-              SizedBox(height: 12.0),
-              //title of the News
-              Text(widget.news.title,
-                  style: titleCardhead),
-              SizedBox(height: 25.0),
-              Hero(
-                //Image of the news
-                tag: widget.news.share,
-                child: Container(
-                  height: 220.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    image: DecorationImage(
-                      image: NetworkImage(widget.news.image),
-                      fit: BoxFit.fill,
+                SizedBox(height: 12.0),
+                //title of the News
+                Text(widget.news.title,
+                    style: titleCardhead),
+                SizedBox(height: 25.0),
+                Hero(
+                  //Image of the news
+                  tag: widget.news.share,
+                  child: Container(
+                    height: 220.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      image: DecorationImage(
+                        image: NetworkImage(widget.news.image),
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(height: 15.0),
-              Text(
-                //content of the news
-                widget.news.content,
-                style: descriptionStyle,
-              ),
-              SizedBox(height: 15.0),
-              Row(
-                children: [
+                SizedBox(height: 15.0),
+                Text(
+                  //content of the news
+                  widget.news.content,
+                  style: TextStyle(fontSize: textFontSize*doubleConvert
+                      ,fontFamily: 'ProductSans' ),),
 
-                  //time of the news posted on
-                  Text(widget.news.time, style: postDetail),
-                  SizedBox(width: 5.0),
-                  SizedBox(
-                    width: 10.0,
-                    child: Divider(
-                      color: blk,
-                      height: 1.0,
+                SizedBox(height: 15.0),
+                Row(
+                  children: [
+
+                    //time of the news posted on
+                    Text(widget.news.time, style: postDetail),
+                    SizedBox(width: 5.0),
+                    SizedBox(
+                      width: 10.0,
+                      child: Divider(
+                        color: blk,
+                        height: 1.0,
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 5.0),
-                  Text(
-                    //Name of the user who posted news
-                    widget.news.author,
-                    style: detailContent.copyWith(color: text),
-                  ),
-                ],
-              ),
-              SizedBox(height: 15.0),
-              Row(
-
-                //Icons row
-
-                children: [
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 12.0,
-                      vertical: 15.0,
+                    SizedBox(width: 5.0),
+                    Text(
+                      //Name of the user who posted news
+                      widget.news.author,
+                      style: detailContent.copyWith(color: text),
                     ),
-                  ),
-                  Spacer(),
-                  //
-                  Status(
-                    // calling the status function in which like is incremented when the user tap the like button
-                    //display total number of the like obtain in the news
-                    icon: Icons.favorite_border,
-                    onChange: Icons.favorite,
-                    total: widget.news.favorite,
-                  ),
-                  SizedBox(width: 20),
-                  IconButton(
-                    icon: Icon(
+                  ],
+                ),
+                SizedBox(height: 15.0),
+                Row(
 
-                      Icons.send,
-                      color: Colors.black,
-                      size: 24.0,
+                  //Icons row
+
+                  children: [
+                    Container(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 12.0,
+                        vertical: 15.0,
+                      ),
                     ),
+                    Spacer(),
+                    //
+                    Status(
+                      // calling the status function in which like is incremented when the user tap the like button
+                      //display total number of the like obtain in the news
+                      icon: Icons.favorite_border,
+                      onChange: Icons.favorite,
+                      total: widget.news.favorite,
+                    ),
+                    //Text((widget.news.favorite).toString(), style: detailContent),
+                    SizedBox(width: 20),
+                    IconButton(
+                      icon: Icon(
 
-                    onPressed: () {
-                      // sharing the title of the news and the subtitle of the news
-                      Share.share ('TITLE -----------${"\n"}${widget.news.title}${"\n\n\n"}INFO -----------${"\n"}${widget.news.subtitle}');
-                    },
-                  ),
-                  //total shared news
-                  Text((widget.news.share).toString(), style: detailContent),
-                  SizedBox(width: 20.0),
-                  Icon(Icons.more_vert, color: blk, size: 24.0),
-                ],
-              ),
-              SizedBox(height: 12.0),
-            ],
+                        Icons.send,
+                        color: Colors.black,
+                        size: 24.0,
+                      ),
+
+                      onPressed: () {
+                        // sharing the title of the news and the subtitle of the news
+                        Share.share ('TITLE -----------${"\n"}${widget.news.title}${"\n\n\n"}INFO -----------${"\n"}${widget.news.subtitle}');
+                      },
+                    ),
+                    //total shared news
+                    Text((widget.news.share).toString(), style: detailContent),
+                    SizedBox(width: 20.0),
+                    Icon(Icons.more_vert, color: blk, size: 24.0),
+                  ],
+                ),
+                SizedBox(height: 12.0),
+              ],
+            ),
           ),
         ),
       ),
@@ -175,16 +236,18 @@ class _StatusState extends State<Status> {
               if (widget.icon == widget.onChange) {
                 widget.icon = Icons.favorite_border;
                 widget.total--;
-              } else {
+              }
+              else {
                 widget.icon = widget.onChange;
                 widget.total++;
               }
             });
           },
         ),
-        //SizedBox(width: 1.0),
 
+        //SizedBox(width: 1.0),
         Text((widget.total).toString(), style: detailContent),
+
       ],
     );
   }

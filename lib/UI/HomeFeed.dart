@@ -12,54 +12,63 @@ class HomeFeed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    //seeking the size of the Screen
+
+    var screenSize = MediaQuery.of(context).size;
+    var width = screenSize.width;
+    var height = screenSize.height;
+
     // returning the Scaffold
 
     return Scaffold(
+      appBar: PreferredSize(
 
-        backgroundColor: background,
-
-        // body is ListView as we display the news feed in form of the List
-
-        body: ListView(
-          children: <Widget>[
-            Container(
-
-              // in this container of the List view we have define the greeting which changes As per current time
-              // time function in this seeks the current time from the system itself
-
-              padding: EdgeInsets.symmetric(horizontal: 4.0, vertical: 6.0),
-              child: Text(
-                (() {
-                  if (time(TimeOfDay(hour: 12, minute: 00)) >
-                      time(TimeOfDay.now())) {
-                    return "Good Morning,";
-                  } else if (time(TimeOfDay(hour: 16, minute: 00)) >
-                      time(TimeOfDay.now())) {
-                    return "Good Afternoon,";
-                  } else if (time(TimeOfDay(hour: 23, minute: 59)) >
-                      time(TimeOfDay.now())) {
-                    return "Good Evening,";
-                  } else {
-                    return "Good Night,";
-                  }
-                }()),
-                style: headline1,
+        preferredSize: Size(width, 55),
+        child: SafeArea(
+          child: Container(
+            padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+            //height: height/10,
+            width: width,
+            child: Text(
+              (() {
+                if (time(TimeOfDay(hour: 12, minute: 00)) >
+                    time(TimeOfDay.now())) {
+                  return "Good Morning,";
+                } else if (time(TimeOfDay(hour: 16, minute: 00)) >
+                    time(TimeOfDay.now())) {
+                  return "Good Afternoon,";
+                } else if (time(TimeOfDay(hour: 23, minute: 59)) >
+                    time(TimeOfDay.now())) {
+                  return "Good Evening,";
+                } else {
+                  return "Good Night,";
+                }
+              }()),
+              style: headline1,
               textAlign: TextAlign.start,
-              ),
             ),
+          ),
+        ),
+      ),
+      backgroundColor: background,
+        body:
+        ListView(
+          children: <Widget>[
+
             Container(
 
               //in this container we will display the News Feed
               //as there should we styling in which news is displayed so all the styling is described in the FeedView() function
               //and we call FeedView Function here
 
-              padding:  EdgeInsets.fromLTRB(25, 10, 25, 10),
+              padding:  EdgeInsets.fromLTRB(25, 5, 25, 5),
               child: FeedsView(),
             ),
           ],
         )
 
     );
+
   }
 }
 
@@ -129,6 +138,7 @@ class _PrimaryCardState extends State<PrimaryCard> {
       decoration: BoxDecoration(
           color: textBoxBack,
           borderRadius: BorderRadius.circular(35.0),
+          border: Border.all(color: blk, width: 1.0)
 
       ),
 
@@ -148,7 +158,7 @@ class _PrimaryCardState extends State<PrimaryCard> {
             // subtitle of the news card or the news
             widget.news.subtitle,
             overflow: TextOverflow.ellipsis,
-            maxLines: 5,
+            maxLines: 3,
             style: headlineSmall,
           ),
           SizedBox(height: 30.0),
@@ -166,7 +176,7 @@ class _PrimaryCardState extends State<PrimaryCard> {
                 onChange: Icons.favorite,
                 total: widget.news.favorite,
               ),
-              SizedBox(width: 10),
+              //SizedBox(width: 10),
               // defining the share button
 
               IconButton(
@@ -183,8 +193,8 @@ class _PrimaryCardState extends State<PrimaryCard> {
                 },
               ),
               //Icon(Icons.send, color: blk, size: 24.0),
-              SizedBox(width: 10),
-              Icon(Icons.more_vert, color: blk, size: 24.0),
+              //SizedBox(width: 10),
+              //Icon(Icons.more_vert, color: blk, size: 24.0),
             ],
           )
         ],
