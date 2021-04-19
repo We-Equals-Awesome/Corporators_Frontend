@@ -1,6 +1,6 @@
 import 'package:cropapp/Utils/Icons.dart';
 import 'package:flutter/material.dart';
-import 'package:cropapp/Utils/color.dart';
+import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 //A list called Details is created to store the data given by the User
@@ -28,6 +28,8 @@ class _dataEntryState extends State<dataEntry> {
   final TextEditingController _dateController = new TextEditingController();
   final TextEditingController _textFormFeild = new TextEditingController();
 
+  String dropDownValue;
+  List dropDownItem = ["Self", "Father", "Mother", "Son", "Daughter"];
   @override
   Widget build(BuildContext context) {
     //stroing the date clicked by the user in the TextEditingController
@@ -110,7 +112,7 @@ class _dataEntryState extends State<dataEntry> {
                         //1st Step
                         Step(
                           title: new Text(
-                            'Personal Information',
+                            'Personal Details',
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
@@ -126,7 +128,7 @@ class _dataEntryState extends State<dataEntry> {
                         //2nd Step
                         Step(
                           title: new Text(
-                            'Contact Information',
+                            'Contact Details',
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold),
                           ),
@@ -150,54 +152,54 @@ class _dataEntryState extends State<dataEntry> {
                           content: Column(
                             children: <Widget>[
                               Padding(
-                                padding: EdgeInsets.only(top:5),
-                              //Since the design requires the Calender beside the textField, Row widget is used
-                              //The row consists of the box Widget function and the Icon Widget
-                              child: Row(
-                                children: <Widget>[
-                                  Container(
-                                    height: 50,
-                                    width: 260,
-                                    child: TextFormField(
-                                      onSaved: (value) {
-                                        //saving the selected date into the Details List
-                                        Details.add(value);
-                                      },
-                                      validator: (value) {
-                                        if (value.isEmpty) {
-                                          return 'Please enter the Date';
-                                        } else
-                                          return null;
-                                      },
-                                      controller: _dateController,
-                                      decoration: new InputDecoration(
-                                        enabledBorder: OutlineInputBorder(
-                                          borderRadius:
-                                              new BorderRadius.circular(10.0),
-                                          borderSide: BorderSide(width: 1.5),
-                                        ),
-                                        fillColor: textBoxBack,
-                                        filled: true,
-                                        labelText: 'YYYY-MM-DD',
-                                        border: new OutlineInputBorder(
-                                          borderRadius:
-                                              new BorderRadius.circular(10.0),
-                                          borderSide: BorderSide(width: 100),
+                                padding: EdgeInsets.only(top: 5),
+                                //Since the design requires the Calender beside the textField, Row widget is used
+                                //The row consists of the box Widget function and the Icon Widget
+                                child: Row(
+                                  children: <Widget>[
+                                    Container(
+                                      height: 50,
+                                      width: 260,
+                                      child: TextFormField(
+                                        onSaved: (value) {
+                                          //saving the selected date into the Details List
+                                          Details.add(value);
+                                        },
+                                        validator: (value) {
+                                          if (value.isEmpty) {
+                                            return 'Please enter the Date';
+                                          } else
+                                            return null;
+                                        },
+                                        controller: _dateController,
+                                        decoration: new InputDecoration(
+                                          enabledBorder: OutlineInputBorder(
+                                            borderRadius:
+                                                new BorderRadius.circular(10.0),
+                                            borderSide: BorderSide(width: 1.5),
+                                          ),
+                                          fillColor: textBoxBack,
+                                          filled: true,
+                                          labelText: 'YYYY-MM-DD',
+                                          border: new OutlineInputBorder(
+                                            borderRadius:
+                                                new BorderRadius.circular(10.0),
+                                            borderSide: BorderSide(width: 100),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(width: 10),
-                                  //following is the Calender icon of svg type
-                                  SizedBox(
-                                      width: 50,
-                                      height: 50,
-                                      child: TextButton(
-                                        child: SvgPicture.asset(calendar),
-                                        onPressed: () => _selectDate(context),
-                                      )),
-                                ],
-                              ),
+                                    SizedBox(width: 10),
+                                    //following is the Calender icon of svg type
+                                    SizedBox(
+                                        width: 50,
+                                        height: 50,
+                                        child: TextButton(
+                                          child: SvgPicture.asset(calendar),
+                                          onPressed: () => _selectDate(context),
+                                        )),
+                                  ],
+                                ),
                               ),
                               //calling the box Widget function
                               _textForm('Voter ID', context),
@@ -205,31 +207,52 @@ class _dataEntryState extends State<dataEntry> {
                             ],
                           ),
                         ),
+                        //Step 4
+                        Step(
+                          title: new Text(
+                            'Relationship with Head of Family',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          isActive: true,
+                          content: Container(
+                            decoration: BoxDecoration(
+                                color: textBoxBack,
+                                border: Border.all(color: text, width: 2),
+                                borderRadius: BorderRadius.circular(15)),
+                            padding: const EdgeInsets.only(left: 20, right: 30),
+                            child: DropdownButton(
+                              hint: Text('Relation'),
+                              dropdownColor: textBoxBack,
+                              isExpanded: true,
+                              icon: Icon(
+                                Icons.arrow_forward_ios_outlined,
+                                color: text,
+                              ),
+                              style: TextStyle(
+                                //fontSize: 24,
+                                color: text,
+                              ),
+                              value: dropDownValue,
+                              onChanged: (newValue) {
+                                setState(() {
+                                  dropDownValue = newValue;
+                                });
+                              },
+                              items: dropDownItem.map((valueItem) {
+                                return DropdownMenuItem(
+                                  value: valueItem,
+                                  child: Text(valueItem),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
                 //calling the textbox Widget function
-                _displayText('Add a Family Member', context),
-                Padding(
-                  padding: EdgeInsets.only(left: 20, top: 20),
-                  //Row is used since 2 icons are displayed beside one another as per the design
-                  child: Row(
-                    children: <Widget>[
-                      Icon(Icons.account_circle_outlined,
-                          color: hintText, size: 30),
-                      SizedBox(width: 10),
-                      Icon(
-                        Icons.add_circle_outline,
-                        color: Colors.black,
-                        size: 30,
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 80,
-                ),
               ],
             ),
           ),
@@ -310,7 +333,7 @@ class _dataEntryState extends State<dataEntry> {
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, top: 40),
+        padding: const EdgeInsets.only(left: 20, top: 60),
         child: Text(
           a,
           style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
