@@ -147,7 +147,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
 
                     onPressed: () {
                       // sharing the title of the news and the subtitle of the news
-                      Share.share ('TITLE -----------${"\n"}${widget.news.title}${"\n\n\n"}INFO -----------${"\n"}${widget.news.subtitle}');
+                      Share.share ('TITLE ${"\n"}${widget.news.title}${"\n\n\n"}INFO ${"\n"}${widget.news.subtitle}');
                     },
                   ),
                   //total shared news

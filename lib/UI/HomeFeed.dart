@@ -101,7 +101,7 @@ class FeedsView extends StatelessWidget {
           child: Container(
             width: double.infinity,
             color: background,
-            margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+            margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 20.0),
 
             //calling function primary card where the content and positioning of the card is defined
 
@@ -189,7 +189,7 @@ class _PrimaryCardState extends State<PrimaryCard> {
                 ),
                 onPressed: () {
                   // sharing the title of the news and the subtitle of the news
-                  Share.share ('TITLE -----------${"\n"}${widget.news.title}${"\n\n\n"}INFO ----------- ${"\n"}${widget.news.subtitle}');
+                  Share.share ('TITLE ${"\n"}${widget.news.title}${"\n\n\n"}INFO ${"\n"}${widget.news.subtitle}');
                 },
               ),
             ],
