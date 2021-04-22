@@ -68,7 +68,7 @@ List<News> trendingList = [
     favorite: 712,
     share: 30,
     time: "Posted on 15/01/21 at 14:15 PM",
-    title: " Hazards obstructing visibility at intersections and crosswalks",
+    title: "Hazards obstructing visibility at intersections and crosswalks",
     image:
     "https://media.istockphoto.com/photos/broken-road-in-the-woods-picture-id531854696?s=612x612",
     subtitle:

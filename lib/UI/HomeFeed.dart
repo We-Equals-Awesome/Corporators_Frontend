@@ -5,6 +5,8 @@ import 'package:newsfeed_screen/Utils/news.dart';
 import 'package:newsfeed_screen/UI/readFeeds.dart';
 import 'package:share/share.dart';
 import 'package:newsfeed_screen/Utils/color.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 
   // HomeFeed  Class
 
@@ -13,7 +15,6 @@ class HomeFeed extends StatelessWidget {
   Widget build(BuildContext context) {
 
     //seeking the size of the Screen
-
     var screenSize = MediaQuery.of(context).size;
     var width = screenSize.width;
     var height = screenSize.height;
@@ -22,12 +23,11 @@ class HomeFeed extends StatelessWidget {
 
     return Scaffold(
       appBar: PreferredSize(
-
-        preferredSize: Size(width, 55),
+        preferredSize: Size(width, 80),
         child: SafeArea(
           child: Container(
-            padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-            //height: height/10,
+            padding: EdgeInsets.fromLTRB(15, 15, 5, 5),
+
             width: width,
             child: Text(
               (() {
@@ -54,21 +54,16 @@ class HomeFeed extends StatelessWidget {
         body:
         ListView(
           children: <Widget>[
-
             Container(
-
               //in this container we will display the News Feed
               //as there should we styling in which news is displayed so all the styling is described in the FeedView() function
               //and we call FeedView Function here
-
               padding:  EdgeInsets.fromLTRB(25, 5, 25, 5),
               child: FeedsView(),
             ),
           ],
         )
-
     );
-
   }
 }
 
@@ -91,7 +86,9 @@ class FeedsView extends StatelessWidget {
 
         //on taping any card user will be pushed to the new Page where they can read the news in the detail
 
-        return InkWell(
+        return GestureDetector(
+
+
           onTap: () {
             Navigator.push(
               context,
@@ -128,23 +125,23 @@ class PrimaryCard extends StatefulWidget {
 
 class _PrimaryCardState extends State<PrimaryCard> {
   @override
+  IconData fav = Icons.favorite_border;
   Widget build(BuildContext context) {
 
     //returning the container with the content of the card i.e. title , subtitle , like button , total like on post , share button ,
     return Container(
       padding:
-      EdgeInsets.only(left: 10.0 , right: 10.0 , top: 20.0 , bottom: 15.0),
+      EdgeInsets.only(left: 10.0 , right: 5.0 , top: 25.0 , bottom: 0.0),
       //box decoration of the card
       decoration: BoxDecoration(
           color: textBoxBack,
           borderRadius: BorderRadius.circular(35.0),
           border: Border.all(color: blk, width: 1.0)
-
       ),
-
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
           Text(
             //title of the news card or news
             widget.news.title,
@@ -154,47 +151,47 @@ class _PrimaryCardState extends State<PrimaryCard> {
           ),
           SizedBox(height: 20.0), // spacing
           Text(
-
             // subtitle of the news card or the news
             widget.news.subtitle,
             overflow: TextOverflow.ellipsis,
             maxLines: 3,
             style: headlineSmall,
           ),
-          SizedBox(height: 30.0),
-
+          SizedBox(height: 5.0),
           Row(
-
             // like button and the share button
-
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               // calling the status function in which like is incremented when the user tap the like button
               //display total number of the like obtain in the news
-              Status(
-                icon: Icons.favorite_border,
-                onChange: Icons.favorite,
-                total: widget.news.favorite,
-              ),
-              //SizedBox(width: 10),
-              // defining the share button
-
               IconButton(
                 icon: Icon(
-                  Icons.send,
-                  color: blk,
+                  fav,
+                  color: Colors.black,
                   size: 24.0,
                 ),
                 onPressed: () {
-
-                  // sharing the title of the news and the subtitle of the news
-                  Share.share ('TITLE -----------${"\n"}${widget.news.title}${"\n\n\n"}INFO ----------- ${"\n"}${widget.news.subtitle}');
-
+                  setState(() {
+                    if (fav == Icons.favorite_border) {
+                      fav = Icons.favorite;
+                    } else {
+                      fav = Icons.favorite_border;
+                    }
+                  });
                 },
               ),
-              //Icon(Icons.send, color: blk, size: 24.0),
-              //SizedBox(width: 10),
-              //Icon(Icons.more_vert, color: blk, size: 24.0),
+              // defining the share button
+              IconButton(
+                icon: SvgPicture.asset(
+                  'assets/send.svg',
+                  color: blk,
+                  width: 22,
+                ),
+                onPressed: () {
+                  // sharing the title of the news and the subtitle of the news
+                  Share.share ('TITLE -----------${"\n"}${widget.news.title}${"\n\n\n"}INFO ----------- ${"\n"}${widget.news.subtitle}');
+                },
+              ),
             ],
           )
         ],

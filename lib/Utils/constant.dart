@@ -11,7 +11,7 @@ Color hintText = Color(0xff626262);
 var headline1 = TextStyle(
   fontFamily: 'ProductSans' ,
   fontSize: 32.0,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w600,
   color: textcolor,
 );
 
@@ -25,19 +25,19 @@ var postDetail = TextStyle(
   fontFamily: 'ProductSans' ,
   fontSize: 14.0,
   fontWeight: FontWeight.w300,
-  color: hintText,
+  color: textcolor,
 );
 
 var headlineSmall = TextStyle(
   fontFamily: 'ProductSans' ,
-  fontSize: 17.0,
-  fontWeight: FontWeight.w800,
+  fontSize: 18.0,
+  fontWeight: FontWeight.normal,
   color: textcolor,
 );
 
 var titleCardhead = TextStyle(
     fontFamily: 'ProductSans' ,
-    fontSize: 30.0,
+    fontSize: 28.0,
     color: textcolor ,
     fontWeight: FontWeight.bold,
 );
