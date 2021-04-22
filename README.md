@@ -2,7 +2,7 @@
 This Repository Handles Frontend for Corporator's Application
 images
 Home Screen page
-![image](https://user-images.githubusercontent.com/47321390/115785285-e250a280-a3dc-11eb-92c1-ad07936fc10f.png)
+![image](https://user-images.githubusercontent.com/47321390/115787701-3f018c80-a3e0-11eb-8e18-d2a8bb2f6a2e.png)
 
 scroling home page
 ![image](https://user-images.githubusercontent.com/47321390/115785323-ef6d9180-a3dc-11eb-8810-0e9c3a790c92.png)
@@ -19,5 +19,4 @@ increasing/decreasing font size button in article preview
 on taping share button
 ![image](https://user-images.githubusercontent.com/47321390/115785834-a23def80-a3dd-11eb-90af-8a93f2ed705c.png)
 
-sharing the news over whatsapp
-![image](https://user-images.githubusercontent.com/47321390/115785962-d0233400-a3dd-11eb-8c80-60d1c5986441.png)
+
