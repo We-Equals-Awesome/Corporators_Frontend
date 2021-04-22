@@ -26,7 +26,7 @@ class HomeFeed extends StatelessWidget {
         preferredSize: Size(width, 80),
         child: SafeArea(
           child: Container(
-            padding: EdgeInsets.fromLTRB(15, 15, 5, 5),
+            padding: EdgeInsets.fromLTRB(15, 25, 5, 5),
 
             width: width,
             child: Text(
