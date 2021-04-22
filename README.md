@@ -7,7 +7,7 @@ Home Screen page
 scroling home page
 ![image](https://user-images.githubusercontent.com/47321390/115785323-ef6d9180-a3dc-11eb-8810-0e9c3a790c92.png)
 
-when news is loked on home feed screen
+when news is liked on home feed screen
 ![image](https://user-images.githubusercontent.com/47321390/115785430-13c96e00-a3dd-11eb-86ed-edb8656c6463.png)
 
 opening particular newsfeed
