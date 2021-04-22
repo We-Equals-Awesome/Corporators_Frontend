@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'UI/DataEntry.dart';
-
-
-//import 'UI/HomePage.dart';
-//import 'Utils/color.dart';
-//import 'UI/pageextra.dart';
+import 'UI/AddressPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //theme: new ThemeData(scaffoldBackgroundColor: background),
       debugShowCheckedModeBanner: false,
-      home: new dataEntry(),
+      home: new addressPage(),
     );
   }
 }

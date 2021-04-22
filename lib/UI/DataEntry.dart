@@ -2,6 +2,7 @@ import 'package:cropapp/Utils/Icons.dart';
 import 'package:flutter/material.dart';
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'Residents.dart';
 
 //A list called Details is created to store the data given by the User
 var Details = new List();
@@ -29,7 +30,7 @@ class _dataEntryState extends State<dataEntry> {
   final TextEditingController _textFormFeild = new TextEditingController();
 
   String dropDownValue;
-  List dropDownItem = ["Self", "Father", "Mother", "Son", "Daughter"];
+  List dropDownItem = ["Self", "Father", "Mother", "Son", "Daughter", "Other"];
   @override
   Widget build(BuildContext context) {
     //stroing the date clicked by the user in the TextEditingController
@@ -44,7 +45,7 @@ class _dataEntryState extends State<dataEntry> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Column(
-              children: <Widget>[
+              children: [
                 //calling the textbox Widget function
                 _displayText('Enter the Details', context),
                 Expanded(
@@ -67,7 +68,7 @@ class _dataEntryState extends State<dataEntry> {
                         return Padding(
                           padding: EdgeInsets.only(top: 20, left: 0),
                           child: Row(
-                            children: <Widget>[
+                            children: [
                               SizedBox(
                                 width: 75,
                                 child: TextButton(
@@ -118,7 +119,7 @@ class _dataEntryState extends State<dataEntry> {
                           ),
                           isActive: true,
                           content: Column(
-                            children: <Widget>[
+                            children: [
                               //calling the box Widget function
                               _textForm('First Name', context),
                               _textForm('Last Name', context)
@@ -134,13 +135,14 @@ class _dataEntryState extends State<dataEntry> {
                           ),
                           isActive: true,
                           content: Column(
-                            children: <Widget>[
+                            children: [
                               //calling the box Widget function
                               _textForm('Phone Number', context),
                               _textForm('Email', context)
                             ],
                           ),
                         ),
+
                         //3rd Step
                         Step(
                           title: new Text(
@@ -150,13 +152,13 @@ class _dataEntryState extends State<dataEntry> {
                           ),
                           isActive: true,
                           content: Column(
-                            children: <Widget>[
+                            children: [
                               Padding(
                                 padding: EdgeInsets.only(top: 5),
                                 //Since the design requires the Calender beside the textField, Row widget is used
                                 //The row consists of the box Widget function and the Icon Widget
                                 child: Row(
-                                  children: <Widget>[
+                                  children: [
                                     Container(
                                       height: 50,
                                       width: 260,
@@ -168,8 +170,7 @@ class _dataEntryState extends State<dataEntry> {
                                         validator: (value) {
                                           if (value.isEmpty) {
                                             return 'Please enter the Date';
-                                          } else
-                                            return null;
+                                          }
                                         },
                                         controller: _dateController,
                                         decoration: new InputDecoration(
@@ -208,6 +209,7 @@ class _dataEntryState extends State<dataEntry> {
                           ),
                         ),
                         //Step 4
+
                         Step(
                           title: new Text(
                             'Relationship with Head of Family',
@@ -221,7 +223,16 @@ class _dataEntryState extends State<dataEntry> {
                                 border: Border.all(color: text, width: 2),
                                 borderRadius: BorderRadius.circular(15)),
                             padding: const EdgeInsets.only(left: 20, right: 30),
-                            child: DropdownButton(
+                            child: DropdownButtonFormField(
+                              validator: (value) {
+                                if (value == null) {
+                                  return 'Select the Relation';
+                                }
+                              },
+                              onSaved: (value) {
+                                //saving the selected date into the Details List
+                                Details.add(value);
+                              },
                               hint: Text('Relation'),
                               dropdownColor: textBoxBack,
                               isExpanded: true,
@@ -284,7 +295,7 @@ class _dataEntryState extends State<dataEntry> {
   }
 
   continued() {
-    _currentStep < 2 ? setState(() => _currentStep += 1) : null;
+    _currentStep < 3 ? setState(() => _currentStep += 1) : null;
   }
 
   cancel() {
@@ -298,7 +309,7 @@ class _dataEntryState extends State<dataEntry> {
       child: Container(
         height: 50,
         child: TextFormField(
-          controller: _textFormFeild,
+          //controller: _textFormFeild,
           autocorrect: false,
           onSaved: (value) {
             //appends the textFormFeild into the Details List
@@ -307,8 +318,7 @@ class _dataEntryState extends State<dataEntry> {
           validator: (value) {
             if (value.isEmpty) {
               return 'Please enter the ' + a;
-            } else
-              return null;
+            }
           },
           decoration: new InputDecoration(
             enabledBorder: OutlineInputBorder(
@@ -347,7 +357,13 @@ class _dataEntryState extends State<dataEntry> {
     final FormState formState = _formKey.currentState;
     _formKey.currentState.save();
     print(Details);
-    formState.validate();
+    if (formState.validate()) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => resident()),
+      );
+    }
+    ;
   }
 
   //following is the code for selecting the date
