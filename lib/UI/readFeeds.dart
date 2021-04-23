@@ -38,7 +38,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
         //top: false,
         child: Center(
           child: Container(
-            padding: EdgeInsets.fromLTRB(20,0,20,0),
+            padding: EdgeInsets.fromLTRB(20,0,20,10),
             decoration: BoxDecoration(
 
               //Box decoration
