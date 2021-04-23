@@ -84,13 +84,13 @@ class _BottomNavState extends State<BottomNav> {
               inactiveColor: navBarSelectedGrey,
           ),
           BottomNavyBarItem(
-              title: Center(child: Text('News feed')),
+              title: Center(child: Text('News Feed')),
               icon: SvgPicture.asset('assets/home.svg',width: 25,color: navIcon, ),
               activeColor: navIcon,
               inactiveColor: navBarSelectedGrey,
           ),
           BottomNavyBarItem(
-              title: Center(child: Text('Profile')),
+              title: Center(child: Text('Login')),
               icon: SvgPicture.asset('assets/user.svg',width: 25,color: navIcon, ),
               activeColor: navIcon,
               inactiveColor: navBarSelectedGrey,

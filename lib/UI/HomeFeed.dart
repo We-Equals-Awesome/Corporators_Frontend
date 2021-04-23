@@ -145,8 +145,8 @@ class _PrimaryCardState extends State<PrimaryCard> {
           Text(
             //title of the news card or news
             widget.news.title,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 2,
+            // overflow: TextOverflow.ellipsis,
+            // maxLines: 2,
             style: titleCardhead,
           ),
           SizedBox(height: 20.0), // spacing
@@ -154,7 +154,7 @@ class _PrimaryCardState extends State<PrimaryCard> {
             // subtitle of the news card or the news
             widget.news.subtitle,
             overflow: TextOverflow.ellipsis,
-            maxLines: 3,
+            maxLines: 5,
             style: headlineSmall,
           ),
           SizedBox(height: 5.0),
@@ -183,7 +183,7 @@ class _PrimaryCardState extends State<PrimaryCard> {
               // defining the share button
               IconButton(
                 icon: SvgPicture.asset(
-                  'assets/send.svg',
+                  'assets/share.svg',
                   color: blk,
                   width: 22,
                 ),
