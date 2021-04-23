@@ -32,7 +32,7 @@ dependencies:
   flutter_rounded_date_picker: 1.0.4
   image_picker: ^0.7.4
   flutter_svg: ^0.21.0+1
-  
+  bottom_navy_bar: ^6.0.0
 
 dev_dependencies:
   flutter_test:
@@ -50,10 +50,7 @@ flutter:
           style: italic
   uses-material-design: true
   assets :
-     - Assets/assets/logo.jpg
-     - Assets/assets/user.png
-     - Assets/assets/camera.svg
-     - Assets/assets/calendar.svg
+     - Assets/assets/
     
   #  - images/a_dot_ham.jpeg
   

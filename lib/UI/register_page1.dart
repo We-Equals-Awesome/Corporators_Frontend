@@ -3,10 +3,9 @@ import 'package:cropapp/UI/register_page2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cropapp/UI/register_page3.dart';
-import 'package:cropapp/Utils/color.dart';
+import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 
 //class to store info about users
 class MyData {
@@ -49,60 +48,64 @@ class _RegisterPage1State extends State<RegisterPage1> {
           return AlertDialog(
             insetPadding: EdgeInsets.symmetric(horizontal: 50),
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(55.0))),
-            backgroundColor: background,
+                borderRadius: BorderRadius.all(Radius.circular(70.0))),
+            backgroundColor: textBoxBack,
             content: SingleChildScrollView(
-                child: ListBody(
-              children: <Widget>[
-                Text(
-                  'Oops seems like you are not  part of this ward.\nContact your ward incharge',
-                  style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.height * 0.035,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'product-sans',
-                      color: text),
-                ),
-                SizedBox(height: 10),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      ElevatedButton(
-                        onPressed: () {
-                          //open Enter your details page when Continue button pressed
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => RegisterPage3()));
-                        },
-                        child: Row(children: <Widget>[
-                          Text(
-                            'Continue',
-                            style: TextStyle(
-                                color: navIcon, fontFamily: 'product-sans'),
-                          ),
-                          Icon(
-                            Icons.arrow_forward,
-                            size: 20,
-                            color: navIcon,
-                          )
-                        ]),
-                        style: ElevatedButton.styleFrom(
-                            primary: submitGrey,
-                            padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    MediaQuery.of(context).size.width * 0.12,
-                                vertical:
-                                    MediaQuery.of(context).size.height * 0.01),
-                            textStyle: TextStyle(
-                                fontSize:
-                                    MediaQuery.of(context).size.height * 0.015,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'product-sans'),
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(30.0),
-                            )),
-                      ), // button 1
-                    ])
-              ],
-            )),
+              child: ListBody(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(15),
+                    child: Text(
+                      'It seems like you are not part of this ward.\n\nContact your ward incharge',
+                      style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.height * 0.035,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'product-sans',
+                          color: text),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        ElevatedButton(
+                          onPressed: () {
+                            //open Enter your details page when Continue button pressed
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => RegisterPage3()));
+                          },
+                          child: Row(children: <Widget>[
+                            Text(
+                              'Continue',
+                              style: TextStyle(
+                                  color: navIcon, fontFamily: 'product-sans'),
+                            ),
+                            Icon(
+                              Icons.arrow_forward,
+                              size: 20,
+                              color: navIcon,
+                            )
+                          ]),
+                          style: ElevatedButton.styleFrom(
+                              primary: submitGrey,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      MediaQuery.of(context).size.width * 0.06,
+                                  vertical: MediaQuery.of(context).size.height *
+                                      0.01),
+                              textStyle: TextStyle(
+                                  fontSize: MediaQuery.of(context).size.height *
+                                      0.015,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'product-sans'),
+                              shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(30.0),
+                              )),
+                        ), // button 1
+                      ])
+                ],
+              ),
+            ),
           );
         });
   }
@@ -141,12 +144,12 @@ class _RegisterPage1State extends State<RegisterPage1> {
 
     void _iosSelectDate(BuildContext context) {
       showModalBottomSheet(
+          backgroundColor: Colors.white,
           context: context,
           builder: (BuildContext) {
             return Container(
                 height: MediaQuery.of(context).copyWith().size.height * 0.25,
                 child: CupertinoDatePicker(
-                    backgroundColor: background,
                     initialDateTime: DateTime.now(),
                     onDateTimeChanged: (DateTime newDate) {
                       setState(() {
@@ -169,8 +172,9 @@ class _RegisterPage1State extends State<RegisterPage1> {
           },
           autofocus: (s == 'First Name') ? true : false,
           controller: con,
-          keyboardType:
-              s == 'Phone Number' ? TextInputType.phone : TextInputType.text,
+          keyboardType: (s == 'Phone Number' || s == 'Aadhar Number')
+              ? TextInputType.phone
+              : TextInputType.text,
           autocorrect: false,
           onSaved: (value) {
             if (s == 'First Name')
@@ -388,7 +392,9 @@ class _RegisterPage1State extends State<RegisterPage1> {
                               )),
                         ],
                       ),
+                      SizedBox(height: 10),
                       txtformfield('Voter Id', context),
+                      SizedBox(height: 10),
                       txtformfield('Aadhar Number', context)
                     ],
                   ),
@@ -401,7 +407,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
                   if (currStep < 2) {
                     currStep = currStep + 1;
                   } else {
-                    currStep = 0;
+                    _submitDetails();
                   }
                 });
               },
