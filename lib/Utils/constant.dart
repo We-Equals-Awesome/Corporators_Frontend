@@ -11,7 +11,14 @@ Color hintText = Color(0xff626262);
 var headline1 = TextStyle(
   fontFamily: 'ProductSans' ,
   fontSize: 32.0,
-  fontWeight: FontWeight.w600,
+  fontWeight: FontWeight.bold,
+  color: textcolor,
+);
+
+var headline2 = TextStyle(
+  fontFamily: 'ProductSans' ,
+  fontSize: 27.0,
+  fontWeight: FontWeight.bold,
   color: textcolor,
 );
 
@@ -32,6 +39,13 @@ var headlineSmall = TextStyle(
   fontFamily: 'ProductSans' ,
   fontSize: 18.0,
   fontWeight: FontWeight.normal,
+  color: textcolor,
+);
+
+var headlineSmall2 = TextStyle(
+  fontFamily: 'ProductSans' ,
+  fontSize: 18.0,
+  fontWeight: FontWeight.bold,
   color: textcolor,
 );
 

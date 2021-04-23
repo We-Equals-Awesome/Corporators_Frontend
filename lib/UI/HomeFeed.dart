@@ -7,13 +7,11 @@ import 'package:share/share.dart';
 import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
-  // HomeFeed  Class
+// HomeFeed  Class
 
 class HomeFeed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     //seeking the size of the Screen
     var screenSize = MediaQuery.of(context).size;
     var width = screenSize.width;
@@ -22,43 +20,41 @@ class HomeFeed extends StatelessWidget {
     // returning the Scaffold
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(width, 80),
-        child: SafeArea(
-          child: Container(
-            padding: EdgeInsets.fromLTRB(15, 25, 5, 5),
-
-            width: width,
-            child: Text(
-              (() {
-                if (time(TimeOfDay(hour: 12, minute: 00)) >
-                    time(TimeOfDay.now())) {
-                  return "Good Morning,";
-                } else if (time(TimeOfDay(hour: 16, minute: 00)) >
-                    time(TimeOfDay.now())) {
-                  return "Good Afternoon,";
-                } else if (time(TimeOfDay(hour: 23, minute: 59)) >
-                    time(TimeOfDay.now())) {
-                  return "Good Evening,";
-                } else {
-                  return "Good Night,";
-                }
-              }()),
-              style: headline1,
-              textAlign: TextAlign.start,
+        appBar: PreferredSize(
+          preferredSize: Size(width, 80),
+          child: SafeArea(
+            child: Container(
+              padding: EdgeInsets.fromLTRB(15, 25, 5, 5),
+              width: width,
+              child: Text(
+                (() {
+                  if (time(TimeOfDay(hour: 12, minute: 00)) >
+                      time(TimeOfDay.now())) {
+                    return "Good Morning,";
+                  } else if (time(TimeOfDay(hour: 16, minute: 00)) >
+                      time(TimeOfDay.now())) {
+                    return "Good Afternoon,";
+                  } else if (time(TimeOfDay(hour: 23, minute: 59)) >
+                      time(TimeOfDay.now())) {
+                    return "Good Evening,";
+                  } else {
+                    return "Good Night,";
+                  }
+                }()),
+                style: headline1,
+                textAlign: TextAlign.start,
+              ),
             ),
           ),
         ),
-      ),
-      backgroundColor: background,
-        body:
-        ListView(
+        backgroundColor: background,
+        body: ListView(
           children: <Widget>[
             Container(
               //in this container we will display the News Feed
               //as there should we styling in which news is displayed so all the styling is described in the FeedView() function
               //and we call FeedView Function here
-              padding:  EdgeInsets.fromLTRB(25, 5, 25, 5),
+              padding: EdgeInsets.fromLTRB(25, 5, 25, 5),
               child: FeedsView(),
             ),
           ],
@@ -67,13 +63,10 @@ class HomeFeed extends StatelessWidget {
   }
 }
 
-
 //creating the FeedView
 class FeedsView extends StatelessWidget {
   @override
-
   Widget build(BuildContext context) {
-
     //as there is n number of news so there will be n number of the FeedView card so here we will be using the ListView.Builder
 
     return ListView.builder(
@@ -87,8 +80,6 @@ class FeedsView extends StatelessWidget {
         //on taping any card user will be pushed to the new Page where they can read the news in the detail
 
         return GestureDetector(
-
-
           onTap: () {
             Navigator.push(
               context,
@@ -97,7 +88,6 @@ class FeedsView extends StatelessWidget {
               ),
             );
           },
-
           child: Container(
             width: double.infinity,
             color: background,
@@ -127,21 +117,17 @@ class _PrimaryCardState extends State<PrimaryCard> {
   @override
   IconData fav = Icons.favorite_border;
   Widget build(BuildContext context) {
-
     //returning the container with the content of the card i.e. title , subtitle , like button , total like on post , share button ,
     return Container(
-      padding:
-      EdgeInsets.only(left: 10.0 , right: 5.0 , top: 25.0 , bottom: 0.0),
+      padding: EdgeInsets.only(left: 10.0, right: 5.0, top: 25.0, bottom: 0.0),
       //box decoration of the card
       decoration: BoxDecoration(
           color: textBoxBack,
           borderRadius: BorderRadius.circular(35.0),
-          border: Border.all(color: blk, width: 1.0)
-      ),
+          border: Border.all(color: blk, width: 1.0)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           Text(
             //title of the news card or news
             widget.news.title,
@@ -189,7 +175,8 @@ class _PrimaryCardState extends State<PrimaryCard> {
                 ),
                 onPressed: () {
                   // sharing the title of the news and the subtitle of the news
-                  Share.share ('TITLE ${"\n"}${widget.news.title}${"\n\n\n"}INFO ${"\n"}${widget.news.subtitle}');
+                  Share.share(
+                      'TITLE ${"\n"}${widget.news.title}${"\n\n\n"}INFO ${"\n"}${widget.news.subtitle}');
                 },
               ),
             ],

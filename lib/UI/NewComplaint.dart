@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 
-
-class NotificationView extends StatelessWidget {
+class NewComplaint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text("NotificationView"),
+        child: Text("Add new Complaint"),
       ),
     );
   }
