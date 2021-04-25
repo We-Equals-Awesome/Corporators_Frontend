@@ -3,16 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'Residents.dart';
+import 'dropDownMenu.dart';
 
 //A list called Details is created to store the data given by the User
 var Details = new List();
 
 class dataEntry extends StatefulWidget {
+  var address = new List();
+  dataEntry({this.address});
   @override
-  _dataEntryState createState() => _dataEntryState();
+  _dataEntryState createState() => _dataEntryState(address);
 }
 
 class _dataEntryState extends State<dataEntry> {
+  var address = new List();
+  _dataEntryState(this.address);
   //sets the Details list back to empty list when a new state is begun
   void initState() {
     Details = [];
@@ -25,12 +30,9 @@ class _dataEntryState extends State<dataEntry> {
   //variable for the form
   final _formKey = GlobalKey<FormState>();
 
-  //TextEditingControllers for storing the date and textFormFeild data respectively
+  //TextEditingControllers for storing the date
   final TextEditingController _dateController = new TextEditingController();
-  final TextEditingController _textFormFeild = new TextEditingController();
 
-  String dropDownValue;
-  List dropDownItem = ["Self", "Father", "Mother", "Son", "Daughter", "Other"];
   @override
   Widget build(BuildContext context) {
     //stroing the date clicked by the user in the TextEditingController
@@ -42,11 +44,10 @@ class _dataEntryState extends State<dataEntry> {
         child: Form(
           key: _formKey,
           child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
             child: Column(
               children: [
                 //calling the textbox Widget function
+
                 _displayText('Enter the Details', context),
                 Expanded(
                   //Theme is called to change the colors of the Stepper Widget from default to the required Colors
@@ -75,7 +76,9 @@ class _dataEntryState extends State<dataEntry> {
                                   onPressed: onStepContinue,
                                   child: Text(
                                     'Next',
-                                    style: TextStyle(color: navIcon),
+                                    style: TextStyle(
+                                        color: navIcon,
+                                        fontFamily: 'Product_Sans_Bold'),
                                   ),
                                   style: ButtonStyle(
                                     backgroundColor:
@@ -97,7 +100,9 @@ class _dataEntryState extends State<dataEntry> {
                                   onPressed: onStepCancel,
                                   child: Text(
                                     'Back',
-                                    style: TextStyle(color: hintText),
+                                    style: TextStyle(
+                                        color: hintText,
+                                        fontFamily: 'Product_Sans_Bold'),
                                   ),
                                 ),
                               ),
@@ -115,7 +120,9 @@ class _dataEntryState extends State<dataEntry> {
                           title: new Text(
                             'Personal Details',
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                                fontSize: 18,
+                                fontFamily: 'Product_Sans_Bold',
+                                fontWeight: FontWeight.bold),
                           ),
                           isActive: true,
                           content: Column(
@@ -131,7 +138,9 @@ class _dataEntryState extends State<dataEntry> {
                           title: new Text(
                             'Contact Details',
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                                fontSize: 18,
+                                fontFamily: 'Product_Sans_Bold',
+                                fontWeight: FontWeight.bold),
                           ),
                           isActive: true,
                           content: Column(
@@ -148,7 +157,9 @@ class _dataEntryState extends State<dataEntry> {
                           title: new Text(
                             'Voter Details',
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
+                                fontSize: 18,
+                                fontFamily: 'Product_Sans_Bold',
+                                fontWeight: FontWeight.bold),
                           ),
                           isActive: true,
                           content: Column(
@@ -160,7 +171,6 @@ class _dataEntryState extends State<dataEntry> {
                                 child: Row(
                                   children: [
                                     Container(
-                                      height: 50,
                                       width: 260,
                                       child: TextFormField(
                                         onSaved: (value) {
@@ -209,61 +219,20 @@ class _dataEntryState extends State<dataEntry> {
                           ),
                         ),
                         //Step 4
-
                         Step(
-                          title: new Text(
-                            'Relationship with Head of Family',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                          isActive: true,
-                          content: Container(
-                            decoration: BoxDecoration(
-                                color: textBoxBack,
-                                border: Border.all(color: text, width: 2),
-                                borderRadius: BorderRadius.circular(15)),
-                            padding: const EdgeInsets.only(left: 20, right: 30),
-                            child: DropdownButtonFormField(
-                              validator: (value) {
-                                if (value == null) {
-                                  return 'Select the Relation';
-                                }
-                              },
-                              onSaved: (value) {
-                                //saving the selected date into the Details List
-                                Details.add(value);
-                              },
-                              hint: Text('Relation'),
-                              dropdownColor: textBoxBack,
-                              isExpanded: true,
-                              icon: Icon(
-                                Icons.arrow_forward_ios_outlined,
-                                color: text,
-                              ),
+                            title: new Text(
+                              'Relationship with Head of Family',
                               style: TextStyle(
-                                //fontSize: 24,
-                                color: text,
-                              ),
-                              value: dropDownValue,
-                              onChanged: (newValue) {
-                                setState(() {
-                                  dropDownValue = newValue;
-                                });
-                              },
-                              items: dropDownItem.map((valueItem) {
-                                return DropdownMenuItem(
-                                  value: valueItem,
-                                  child: Text(valueItem),
-                                );
-                              }).toList(),
+                                  fontSize: 18,
+                                  fontFamily: 'Product_Sans_Bold',
+                                  fontWeight: FontWeight.bold),
                             ),
-                          ),
-                        ),
+                            isActive: true,
+                            content: ExampleScreen()),
                       ],
                     ),
                   ),
                 ),
-                //calling the textbox Widget function
               ],
             ),
           ),
@@ -279,6 +248,7 @@ class _dataEntryState extends State<dataEntry> {
           label: Text(
             'Submit',
             style: TextStyle(
+              fontFamily: 'Product_Sans_Bold',
               color: navIcon,
               fontSize: 13.0,
             ),
@@ -307,9 +277,7 @@ class _dataEntryState extends State<dataEntry> {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Container(
-        height: 50,
         child: TextFormField(
-          //controller: _textFormFeild,
           autocorrect: false,
           onSaved: (value) {
             //appends the textFormFeild into the Details List
@@ -321,13 +289,21 @@ class _dataEntryState extends State<dataEntry> {
             }
           },
           decoration: new InputDecoration(
+            contentPadding:
+                EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
             enabledBorder: OutlineInputBorder(
               borderRadius: new BorderRadius.circular(10.0),
-              borderSide: BorderSide(width: 1.5),
+              borderSide: BorderSide(color: Colors.black, width: 1.5),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: new BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Colors.black, width: 1.5),
             ),
             fillColor: textBoxBack,
             filled: true,
             labelText: a,
+            labelStyle:
+                TextStyle(color: hintText, fontFamily: 'Product_Sans_Bold'),
             border: new OutlineInputBorder(
               borderRadius: new BorderRadius.circular(10.0),
               borderSide: BorderSide(width: 100),
@@ -346,7 +322,10 @@ class _dataEntryState extends State<dataEntry> {
         padding: const EdgeInsets.only(left: 20, top: 60),
         child: Text(
           a,
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              fontSize: 25,
+              fontFamily: 'Product_Sans_Bold',
+              fontWeight: FontWeight.bold),
         ),
       ),
     );
@@ -356,12 +335,10 @@ class _dataEntryState extends State<dataEntry> {
   void _submitDetails() {
     final FormState formState = _formKey.currentState;
     _formKey.currentState.save();
-    print(Details);
     if (formState.validate()) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => resident()),
-      );
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => resident(address: address),
+      ));
     }
     ;
   }

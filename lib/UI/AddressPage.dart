@@ -1,9 +1,8 @@
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
-
 import 'Residents.dart';
 
-var addressDetails = new List();
+var address = new List();
 
 class addressPage extends StatefulWidget {
   @override
@@ -11,8 +10,11 @@ class addressPage extends StatefulWidget {
 }
 
 class _addressPageState extends State<addressPage> {
-  final _formKey = GlobalKey<FormState>();
+  void initState() {
+    address = [];
+  }
 
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,6 +39,7 @@ class _addressPageState extends State<addressPage> {
           label: Text(
             'Continue',
             style: TextStyle(
+              fontFamily: 'Product_Sans_Bold',
               color: navIcon,
               fontSize: 13.0,
             ),
@@ -50,12 +53,13 @@ class _addressPageState extends State<addressPage> {
   void _submitDetails() {
     final FormState formState = _formKey.currentState;
     _formKey.currentState.save();
-    print(addressDetails);
+    print(address);
     if (formState.validate()) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => resident()),
-      );
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => resident(address: address),
+      ));
+    } else {
+      address = [];
     }
     ;
   }
@@ -65,13 +69,11 @@ class _addressPageState extends State<addressPage> {
     return Padding(
       padding: const EdgeInsets.only(top: 20, left: 30, right: 45),
       child: Container(
-        height: 50,
         child: TextFormField(
-          //controller: _textFormFeild,
           autocorrect: false,
           onSaved: (value) {
             //appends the textFormFeild into the Details List
-            addressDetails.add(value);
+            address.add(value);
           },
           validator: (value) {
             if (value.isEmpty) {
@@ -79,16 +81,24 @@ class _addressPageState extends State<addressPage> {
             }
           },
           decoration: new InputDecoration(
+            contentPadding:
+                EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
             enabledBorder: OutlineInputBorder(
               borderRadius: new BorderRadius.circular(10.0),
-              borderSide: BorderSide(width: 1.5, color: Colors.red),
+              borderSide: BorderSide(color: Colors.black, width: 1.5),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: new BorderRadius.circular(10.0),
+              borderSide: BorderSide(color: Colors.black, width: 1.5),
             ),
             fillColor: textBoxBack,
             filled: true,
             labelText: a,
+            labelStyle:
+                TextStyle(color: hintText, fontFamily: 'Product_Sans_Bold'),
             border: new OutlineInputBorder(
               borderRadius: new BorderRadius.circular(10.0),
-              borderSide: BorderSide(width: 10, color: Colors.red),
+              borderSide: BorderSide(width: 100),
             ),
           ),
         ),
@@ -104,8 +114,11 @@ class _addressPageState extends State<addressPage> {
         padding: const EdgeInsets.only(left: 20, top: 60),
         child: Text(
           a,
-          style:
-              TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: text),
+          style: TextStyle(
+              fontSize: 25,
+              fontFamily: 'Product_Sans_Bold',
+              fontWeight: FontWeight.bold,
+              color: text),
         ),
       ),
     );

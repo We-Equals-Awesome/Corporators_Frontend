@@ -1,14 +1,23 @@
 import 'package:cropapp/UI/AddressPage.dart';
+import 'package:cropapp/UI/ViewAll.dart';
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
 import 'DataEntry.dart';
 
 class resident extends StatefulWidget {
+  var address = new List();
+
+  resident({this.address});
+
   @override
-  _residentState createState() => _residentState();
+  _residentState createState() => _residentState(address);
 }
 
 class _residentState extends State<resident> {
+  var address = new List();
+
+  _residentState(this.address);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,9 +29,12 @@ class _residentState extends State<resident> {
             Padding(
               padding: const EdgeInsets.only(left: 20, top: 60),
               child: Text(
-                'No. X, Y Street(Booth B)',
+                'No. ' + address[0] + ', ' + address[1] + ' Street',
                 style: TextStyle(
-                    fontSize: 30, fontWeight: FontWeight.bold, color: text),
+                    fontSize: 30,
+                    fontFamily: 'Product_Sans_Bold',
+                    fontWeight: FontWeight.bold,
+                    color: text),
               ),
             ),
             Padding(
@@ -30,24 +42,32 @@ class _residentState extends State<resident> {
               child: Text(
                 'Add Residents',
                 style: TextStyle(
-                    fontSize: 25, fontWeight: FontWeight.bold, color: text),
+                    fontSize: 25,
+                    fontFamily: 'Product_Sans_Bold',
+                    fontWeight: FontWeight.bold,
+                    color: text),
               ),
             ),
             relationName('Head', context),
-            Row(
+            Wrap(
               children: [
                 relationName('Father', context),
                 relationName('Mother', context),
+                relationName('Son', context),
+                relationName('Daughter', context),
                 relationName('Wife', context),
                 relationName('Brother', context),
+                relationName('Sister', context),
+                relationName('Nephew', context),
+                relationName('Neice', context),
                 Padding(
-                  padding: const EdgeInsets.only(left: 10, bottom: 10),
+                  padding: const EdgeInsets.only(left: 20, top: 12),
                   child: IconButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => dataEntry()),
-                      );
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            dataEntry(address: address),
+                      ));
                     },
                     icon: Icon(
                       Icons.add_circle_rounded,
@@ -57,7 +77,7 @@ class _residentState extends State<resident> {
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
@@ -68,12 +88,13 @@ class _residentState extends State<resident> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => addressPage()),
+              MaterialPageRoute(builder: (context) => viewAll()),
             );
           },
           label: Text(
-            'Next House',
+            'View All',
             style: TextStyle(
+              fontFamily: 'Product_Sans_Bold',
               color: navIcon,
               fontSize: 13.0,
             ),
@@ -93,14 +114,19 @@ class _residentState extends State<resident> {
             onPressed: () {},
             icon: Icon(
               Icons.account_circle_outlined,
-              size: 35,
-              color: Colors.grey[800],
+              size: 38,
+              //color: Colors.grey[800],
             ),
           ),
+
+          //padding: const EdgeInsets.all(8),
           Text(
             a,
             style: TextStyle(
-                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+                fontSize: 18,
+                fontFamily: 'Product_Sans_Bold',
+                fontWeight: FontWeight.bold,
+                color: text),
           ),
         ],
       ),

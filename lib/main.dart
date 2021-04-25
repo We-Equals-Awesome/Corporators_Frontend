@@ -1,5 +1,5 @@
+import 'package:cropapp/UI/ViewAll.dart';
 import 'package:flutter/material.dart';
-import 'UI/AddressPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //theme: new ThemeData(scaffoldBackgroundColor: background),
       debugShowCheckedModeBanner: false,
-      home: new addressPage(),
+      home: new viewAll(),
     );
   }
 }
