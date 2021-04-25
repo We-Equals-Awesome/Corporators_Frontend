@@ -4,7 +4,9 @@ import 'package:newsfeed_screen/Utils/constant.dart';
 import 'package:share/share.dart';
 import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:video_player/video_player.dart';
+import 'package:newsfeed_screen/Utils/chewie_item.dart';
+import 'package:async/async.dart';
 
 class ReadFeeds extends StatefulWidget {
   //creating the constructor of the ReedFeeds
@@ -12,26 +14,58 @@ class ReadFeeds extends StatefulWidget {
   final News news;
   ReadFeeds({this.news});
 
+
+
   @override
   _ReadFeedsState createState() => _ReadFeedsState();
 }
 
 class _ReadFeedsState extends State<ReadFeeds> {
-
   int textFontSize = 20;
   double doubleConvert = 1.0;
-
+  VideoPlayerController _controller;
+  Future<void> _initializeVideoPlayerFuture;
   // var screenSize = MediaQuery.of(context).size;
   // var width = screenSize.width;
   // var height = screenSize.height;
+  Widget _detectpost() {
+
+    if (widget.news.postType=="img") {
+      return Container(
+        height: 220.0,
+
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+
+          image: DecorationImage(
+            image: NetworkImage(widget.news.post),
+            fit: BoxFit.fill,
+          ),
+        ),
+      );
+        //ImagePost();
+    }
+    else if (widget.news.postType=="vid") {
+      return Container(
+        height: 220.0,
+
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20.0),
+
+        ),
+        child: ChewieListItem(
+          videoPlayerController: VideoPlayerController.network(widget.news.post),
+        ),
+      );
+    }
+  }
+
 
 
   @override
   Widget build(BuildContext context) {
-
     //returning Scaffold
-
-    return Scaffold(
+    return  Scaffold(
       backgroundColor: background,
       body: SafeArea(
         //bottom: false,
@@ -45,7 +79,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
 
                 color: background, border: Border.all(color: blk, width: 1.0)),
 
-              //displaying the detailed News in the Form of List
+            //displaying the detailed News in the Form of List
             child: ListView(
               children: [
                 SafeArea(
@@ -80,9 +114,6 @@ class _ReadFeedsState extends State<ReadFeeds> {
                             });
                           },
                         ),
-
-
-
                       ],
                     ),
                   ),
@@ -92,19 +123,12 @@ class _ReadFeedsState extends State<ReadFeeds> {
                 Text(widget.news.title,
                     style: titleCardhead),
                 SizedBox(height: 15.0),
-                Hero(
+                Container(
+
                   //Image of the news
-                  tag: widget.news.image,
-                  child: Container(
-                    height: 220.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20.0),
-                      image: DecorationImage(
-                        image: NetworkImage(widget.news.image),
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
+                  //tag: widget.news.post,
+                  child:_detectpost()
+
                 ),
                 SizedBox(height: 15.0),
                 Text(
@@ -157,7 +181,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
                     ),
                     //total shared news
                     //Text((widget.news.share).toString(), style: detailContent),
-                   // SizedBox(width: 20.0),
+                    // SizedBox(width: 20.0),
                     //Icon(Icons.more_vert, color: blk, size: 24.0),
                   ],
                 ),
@@ -167,6 +191,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
           ),
         ),
       ),
+      // floatingActionButton: _Videobutton(),
     );
   }
 }
@@ -201,6 +226,7 @@ class _StatusState extends State<Status> {
               else {
                 widget.icon = widget.onChange;
                 widget.total++;
+
               }
             });
           },
@@ -213,3 +239,5 @@ class _StatusState extends State<Status> {
     );
   }
 }
+
+

@@ -27,7 +27,7 @@ class ComplaintsView extends StatelessWidget {
           //icon: Icon(Icons.edit),
           label: Text(
             'New Complaint',
-            style: TextStyle(color: background),
+            style: TextStyle(color: background,fontFamily: 'ProductSans'),
           ),
         ),
         body: SafeArea(
@@ -145,7 +145,7 @@ class _ComplaintsCardState extends State<ComplaintsCard> {
           //Column(children: [Text("gh")],),
           Container(
             alignment: Alignment.centerLeft,
-            width: width / 2.12,
+            width: width / 2.3,
             // height: ,
             child: Text(
               widget.complaint.title,

@@ -9,17 +9,19 @@ class News {
   final String author;
   final int share;
   final int favorite;
-  final String image;
+  final String post;
+  final String postType;
 
   News({
     this.author,
     this.content,
     this.favorite,
-    this.image,
+    this.post,
     this.share,
     this.subtitle,
     this.time,
     this.title,
+    this.postType,
   });
 }
 
@@ -29,8 +31,9 @@ List<News> trendingList = [
     favorite: 700,
     share: 45,
     time: "Posted on 11/02/21 at 12:51 PM",
-    title: "Bad road condition in my locality",
-    image:
+    title: "(Image post)Bad road condition in my locality",
+    postType: "img",
+    post:
     "https://media.istockphoto.com/photos/broken-road-in-the-woods-picture-id531854696?s=612x612",
     subtitle:
     "Pavement with inadequate skid resistance. Hazards obstructing visibility at intersections and crosswalks. Absent, defective or improper warning signs.",
@@ -42,9 +45,10 @@ List<News> trendingList = [
     favorite: 502,
     share: 21,
     time: "Posted on 31/11/20 at 12:51 PM",
-    title: "Big Hole in the road",
-    image:
-    "https://media.istockphoto.com/photos/of-holes-road-for-cars-picture-id490064147?s=612x612",
+    title: "(Video Post)Big Hole in the road",
+    postType: "vid",
+    post:
+    "https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4",
     subtitle:
     "Ignoring evidence that accidents keep occurring on a certain road due to bad conditions , Changing patterns by pedestrians and vehicles ",
     content:
@@ -55,8 +59,9 @@ List<News> trendingList = [
     favorite: 723,
     share: 51,
     time: "Posted on 18/03/21 at 16:51 PM",
-    title: "Dangerous street drop-offs, like ravines or cliffs",
-    image:
+    title: "(Image Post)Dangerous street drop-offs, like ravines or cliffs",
+    postType: "img",
+    post:
     "https://assets.change.org/photos/2/ma/ye/cqmaYEcvkOVzQbb-800x450-noPad.jpg?1509361645",
     subtitle:
     "Even the best designed and constructed roads require routine maintenance in order to keep them safe. When road surfaces become damaged with potholes, for example, a car may hit the hole at an odd angle, causing the vehicle to spin and collide with other vehicles and obstacles in the road.",
@@ -68,9 +73,10 @@ List<News> trendingList = [
     favorite: 712,
     share: 30,
     time: "Posted on 15/01/21 at 14:15 PM",
-    title: "Hazards obstructing visibility at intersections and crosswalks",
-    image:
-    "https://media.istockphoto.com/photos/broken-road-in-the-woods-picture-id531854696?s=612x612",
+    title: "(Video post)Hazards obstructing visibility at intersections and crosswalks",
+    postType: "vid",
+    post:
+    "https://assets.mixkit.co/videos/preview/mixkit-a-girl-blowing-a-bubble-gum-at-an-amusement-park-1226-large.mp4",
     subtitle:
     "Poorly-maintained roads cause half of the fatal auto accidents that happen each year in the United States",
     content:
@@ -81,9 +87,10 @@ List<News> trendingList = [
     favorite: 421,
     share: 15,
     time: "Posted on 15/01/21 at 14:15 PM",
-    title: "Hyderabad among nine Indian cities with poor road connectivity",
-    image:
-    "https://assets.change.org/photos/2/ma/ye/cqmaYEcvkOVzQbb-800x450-noPad.jpg?1509361645",
+    title: "(Video post)Hyderabad among nine Indian cities with poor road connectivity",
+    postType: "vid",
+    post:
+    "https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4",
     subtitle:
     "Nine out of 100 cities with the worst street-network connectivity are from India, according to a new report. Vijayawada ranks 35th in the list with an SNDi (street-network disconnectedness index) score of 4.9, while Hyderabad ranks 80th with an SNDi score of 3.8. Notably, Vijayawada is the third-worst among the nine Indian cities.",
     content:
