@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:newsfeed_screen/Utils/news.dart';
-import 'package:newsfeed_screen/Utils/constant.dart';
-import 'package:share/share.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:video_player/video_player.dart';
 import 'package:newsfeed_screen/Utils/chewie_item.dart';
-import 'package:async/async.dart';
+import 'package:newsfeed_screen/Utils/color.dart';
+import 'package:newsfeed_screen/Utils/constant.dart';
+import 'package:newsfeed_screen/Utils/news.dart';
+import 'package:share/share.dart';
+import 'package:video_player/video_player.dart';
 
 class ReadFeeds extends StatefulWidget {
   //creating the constructor of the ReedFeeds
 
   final News news;
+
   ReadFeeds({this.news});
-
-
 
   @override
   _ReadFeedsState createState() => _ReadFeedsState();
@@ -25,72 +23,66 @@ class _ReadFeedsState extends State<ReadFeeds> {
   double doubleConvert = 1.0;
   VideoPlayerController _controller;
   Future<void> _initializeVideoPlayerFuture;
+
   // var screenSize = MediaQuery.of(context).size;
   // var width = screenSize.width;
   // var height = screenSize.height;
   Widget _detectpost() {
-
-    if (widget.news.postType=="img") {
+    if (widget.news.postType == "img") {
       return Container(
         height: 220.0,
-
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-
           image: DecorationImage(
             image: NetworkImage(widget.news.post),
             fit: BoxFit.fill,
           ),
         ),
       );
-        //ImagePost();
-    }
-    else if (widget.news.postType=="vid") {
+      //ImagePost();
+    } else if (widget.news.postType == "vid") {
       return Container(
         height: 220.0,
-
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
-
         ),
         child: ChewieListItem(
-          videoPlayerController: VideoPlayerController.network(widget.news.post),
+          videoPlayerController:
+              VideoPlayerController.network(widget.news.post),
         ),
       );
     }
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     //returning Scaffold
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: background,
       body: SafeArea(
         //bottom: false,
         //top: false,
         child: Center(
           child: Container(
-            padding: EdgeInsets.fromLTRB(20,0,20,10),
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
             decoration: BoxDecoration(
 
-              //Box decoration
+                //Box decoration
 
-                color: background, border: Border.all(color: blk, width: 1.0)),
+                color: background,
+                border: Border.all(color: blk, width: 1.0)),
 
             //displaying the detailed News in the Form of List
             child: ListView(
               children: [
                 SafeArea(
                   child: Container(
-                    padding: EdgeInsets.fromLTRB(0,0,0,0),
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                     child: Row(
                       //top row of the Scaffold
 
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-
                         //back button on the top
                         //Icon button to change the font size of description
 
@@ -100,16 +92,14 @@ class _ReadFeedsState extends State<ReadFeeds> {
                             color: blk,
                             width: 30,
                           ),
-                          onPressed: (){
+                          onPressed: () {
                             setState(() {
-                              if(textFontSize==20){
-                                textFontSize=23;
-                              }
-                              else if(textFontSize==23){
-                                textFontSize=26;
-                              }
-                              else {
-                                textFontSize=20;
+                              if (textFontSize == 20) {
+                                textFontSize = 23;
+                              } else if (textFontSize == 23) {
+                                textFontSize = 26;
+                              } else {
+                                textFontSize = 20;
                               }
                             });
                           },
@@ -120,22 +110,22 @@ class _ReadFeedsState extends State<ReadFeeds> {
                 ),
 
                 //title of the News
-                Text(widget.news.title,
-                    style: titleCardhead),
+                Text(widget.news.title, style: titleCardhead),
                 SizedBox(height: 15.0),
                 Container(
 
-                  //Image of the news
-                  //tag: widget.news.post,
-                  child:_detectpost()
-
-                ),
+                    //Image of the news
+                    //tag: widget.news.post,
+                    child: _detectpost()),
                 SizedBox(height: 15.0),
                 Text(
                   //content of the news
                   widget.news.content,
-                  style: TextStyle(fontSize: textFontSize*doubleConvert
-                      ,fontFamily: 'ProductSans' ,fontWeight: FontWeight.normal),),
+                  style: TextStyle(
+                      fontSize: textFontSize * doubleConvert,
+                      fontFamily: 'ProductSans',
+                      fontWeight: FontWeight.normal),
+                ),
 
                 SizedBox(height: 15.0),
                 Row(
@@ -173,10 +163,10 @@ class _ReadFeedsState extends State<ReadFeeds> {
                         color: blk,
                         width: 22,
                       ),
-
                       onPressed: () {
                         // sharing the title of the news and the subtitle of the news
-                        Share.share ('TITLE ${"\n"}${widget.news.title}${"\n\n\n"}INFO ${"\n"}${widget.news.subtitle}');
+                        Share.share(
+                            'TITLE ${"\n"}${widget.news.title}${"\n\n\n"}INFO ${"\n"}${widget.news.subtitle}');
                       },
                     ),
                     //total shared news
@@ -204,7 +194,9 @@ class Status extends StatefulWidget {
   IconData icon;
   IconData onChange;
   int total;
+
   Status({this.icon, this.total, this.onChange});
+
   @override
   _StatusState createState() => _StatusState();
 }
@@ -222,11 +214,9 @@ class _StatusState extends State<Status> {
               if (widget.icon == widget.onChange) {
                 widget.icon = Icons.favorite_border;
                 widget.total--;
-              }
-              else {
+              } else {
                 widget.icon = widget.onChange;
                 widget.total++;
-
               }
             });
           },
@@ -234,10 +224,7 @@ class _StatusState extends State<Status> {
 
         //SizedBox(width: 1.0),
         Text((widget.total).toString(), style: detailContent),
-
       ],
     );
   }
 }
-
-

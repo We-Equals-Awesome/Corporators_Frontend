@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:newsfeed_screen/UI/readFeeds.dart';
+import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:newsfeed_screen/Utils/constant.dart';
 import 'package:newsfeed_screen/Utils/news.dart';
-import 'package:newsfeed_screen/UI/readFeeds.dart';
 import 'package:share/share.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 // HomeFeed  Class
 
@@ -58,8 +58,7 @@ class HomeFeed extends StatelessWidget {
               child: FeedsView(),
             ),
           ],
-        )
-    );
+        ));
   }
 }
 
@@ -107,6 +106,7 @@ class FeedsView extends StatelessWidget {
 
 class PrimaryCard extends StatefulWidget {
   final News news;
+
   PrimaryCard({this.news});
 
   @override
@@ -116,6 +116,7 @@ class PrimaryCard extends StatefulWidget {
 class _PrimaryCardState extends State<PrimaryCard> {
   @override
   IconData fav = Icons.favorite_border;
+
   Widget build(BuildContext context) {
     //returning the container with the content of the card i.e. title , subtitle , like button , total like on post , share button ,
     return Container(

@@ -34,7 +34,10 @@ class _ChewieListItemState extends State<ChewieListItem> {
       // from a non-existent URL
       errorBuilder: (context, errorMessage) {
         return Center(
-          child: Text("Video Not Found",style: TextStyle(color: Colors.white,fontFamily: 'ProductSans', fontSize: 20),
+          child: Text(
+            "Video Not Found",
+            style: TextStyle(
+                color: Colors.white, fontFamily: 'ProductSans', fontSize: 20),
           ),
         );
       },
@@ -51,11 +54,11 @@ class _ChewieListItemState extends State<ChewieListItem> {
     );
   }
 
-  // @override
-  // void dispose() {
-  //   super.dispose();
-  //   // IMPORTANT to dispose of all the used resources
-  //   widget.videoPlayerController.dispose();
-  //   _chewieController.dispose();
-  // }
+// @override
+// void dispose() {
+//   super.dispose();
+//   // IMPORTANT to dispose of all the used resources
+//   widget.videoPlayerController.dispose();
+//   _chewieController.dispose();
+// }
 }
