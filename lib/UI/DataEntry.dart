@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:cropapp/Utils/Icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -206,9 +209,13 @@ class _dataEntryState extends State<dataEntry> {
                                         width: 50,
                                         height: 50,
                                         child: TextButton(
-                                          child: SvgPicture.asset(calendar),
-                                          onPressed: () => _selectDate(context),
-                                        )),
+                                            child: SvgPicture.asset(calendar),
+                                            onPressed: () {
+                                              if (Platform.isIOS)
+                                                _iosDate();
+                                              else
+                                                _androidDate(context);
+                                            })),
                                   ],
                                 ),
                               ),
@@ -344,7 +351,7 @@ class _dataEntryState extends State<dataEntry> {
   }
 
   //following is the code for selecting the date
-  _selectDate(BuildContext context) async {
+  _androidDate(BuildContext context) async {
     DateTime picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
@@ -361,5 +368,61 @@ class _dataEntryState extends State<dataEntry> {
       setState(() {
         selectedDate = picked;
       });
+  }
+
+  _iosDate() async {
+    DateTime picked = await showModalBottomSheet<DateTime>(
+      context: context,
+      builder: (context) {
+        DateTime tempPickedDate = selectedDate ?? DateTime.now();
+        return Container(
+          height: 250,
+          child: Column(
+            children: <Widget>[
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    CupertinoButton(
+                      child: Text('Cancel'),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    CupertinoButton(
+                      child: Text('Done'),
+                      onPressed: () {
+                        Navigator.of(context).pop(tempPickedDate);
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Divider(
+                height: 0,
+                thickness: 1,
+              ),
+              Expanded(
+                child: Container(
+                  child: CupertinoDatePicker(
+                    mode: CupertinoDatePickerMode.date,
+                    onDateTimeChanged: (DateTime dateTime) {
+                      tempPickedDate = dateTime;
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        _dateController.text = picked.toString();
+      });
+    }
   }
 }

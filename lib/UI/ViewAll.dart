@@ -81,27 +81,29 @@ class _viewAllState extends State<viewAll> {
           color: textBoxBack,
           child: Padding(
             padding: const EdgeInsets.only(left: 15, top: 10, bottom: 10),
-            child: Row(children: [
-              Expanded(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _leftText('No: ', a, context),
-                      SizedBox(height: 10),
-                      _leftText('Name: ', b, context)
-                    ]),
-              ),
-              SizedBox(width: 50),
-              Expanded(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _rightText('Booth No: ', c, context),
-                      SizedBox(height: 10),
-                      _rightText('', d, context)
-                    ]),
-              )
-            ]),
+            child: Row(
+                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _leftText('No: ', a, context),
+                          SizedBox(height: 10),
+                          _leftText('Name: ', b, context)
+                        ]),
+                  ),
+                  SizedBox(width: 25),
+                  Expanded(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _rightText('Booth No: ', c, context),
+                          SizedBox(height: 10),
+                          _rightText('', d, context)
+                        ]),
+                  )
+                ]),
           ),
         ),
       ),
