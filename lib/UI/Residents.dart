@@ -1,4 +1,3 @@
-import 'package:cropapp/UI/AddressPage.dart';
 import 'package:cropapp/UI/ViewAll.dart';
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
@@ -65,8 +64,7 @@ class _residentState extends State<resident> {
                   child: IconButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            dataEntry(address: address),
+                        builder: (context) => dataEntry(address: address),
                       ));
                     },
                     icon: Icon(
@@ -115,11 +113,8 @@ class _residentState extends State<resident> {
             icon: Icon(
               Icons.account_circle_outlined,
               size: 38,
-              //color: Colors.grey[800],
             ),
           ),
-
-          //padding: const EdgeInsets.all(8),
           Text(
             a,
             style: TextStyle(
