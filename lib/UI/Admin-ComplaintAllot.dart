@@ -3,10 +3,15 @@ import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:newsfeed_screen/Utils/constant.dart';
 import 'package:newsfeed_screen/Utils/Admin-complaint.dart';
 
-class AdminComplaintAllot extends StatelessWidget {
+class AdminComplaintAllot extends StatefulWidget {
   final AdminComplaint adminComplaint;
   AdminComplaintAllot({this.adminComplaint});
 
+  @override
+  _AdminComplaintAllotState createState() => _AdminComplaintAllotState();
+}
+
+class _AdminComplaintAllotState extends State<AdminComplaintAllot> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -25,7 +30,7 @@ class AdminComplaintAllot extends StatelessWidget {
                   width: width,
                   padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                   child: Text(
-                    "17/18/21",
+                    widget.adminComplaint.time,
                     textAlign: TextAlign.right,
                   ),
                 ),

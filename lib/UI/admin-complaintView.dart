@@ -103,7 +103,7 @@ class _AdminComplaintInfoState extends State<AdminComplaintInfo> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AdminComplaintAllot(),
+                      builder: (context) => AdminComplaintAllot(adminComplaint: totalComplaint),
                       //builder: (context) => ReadFeeds(news: trending),
                     ),
                   );
@@ -116,7 +116,6 @@ class _AdminComplaintInfoState extends State<AdminComplaintInfo> {
 
 class AdminComplaintsCard extends StatefulWidget {
   final AdminComplaint complaint;
-
   AdminComplaintsCard({this.complaint});
   @override
   _AdminComplaintsCardState createState() => _AdminComplaintsCardState();
