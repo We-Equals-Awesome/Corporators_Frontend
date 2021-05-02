@@ -68,7 +68,6 @@ class _ReadFeedsState extends State<ReadFeeds> {
             decoration: BoxDecoration(
 
                 //Box decoration
-
                 color: background,
                 border: Border.all(color: blk, width: 1.0)),
 
@@ -113,7 +112,6 @@ class _ReadFeedsState extends State<ReadFeeds> {
                 Text(widget.news.title, style: titleCardhead),
                 SizedBox(height: 15.0),
                 Container(
-
                     //Image of the news
                     //tag: widget.news.post,
                     child: _detectpost()),
