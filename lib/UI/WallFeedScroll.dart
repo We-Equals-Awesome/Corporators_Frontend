@@ -20,7 +20,7 @@ class _wallFeedState extends State<wallFeed> {
                 'Wall Feed',
                 style: TextStyle(
                     fontSize: 35,
-                    fontFamily: 'Product_Sans_Bold',
+                    fontFamily: 'ProductSans',
                     fontWeight: FontWeight.bold,
                     color: text),
               ),
@@ -40,7 +40,7 @@ class _wallFeedState extends State<wallFeed> {
           label: Text(
             '???',
             style: TextStyle(
-              fontFamily: 'Product_Sans_Bold',
+              fontFamily: 'ProductSans',
               color: navIcon,
               fontSize: 13.0,
             ),
