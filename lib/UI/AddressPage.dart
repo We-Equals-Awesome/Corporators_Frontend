@@ -39,7 +39,7 @@ class _addressPageState extends State<addressPage> {
           label: Text(
             'Continue',
             style: TextStyle(
-              fontFamily: 'Product_Sans_Bold',
+              fontFamily: 'ProductSans',
               color: navIcon,
               fontSize: 13.0,
             ),
@@ -94,8 +94,7 @@ class _addressPageState extends State<addressPage> {
             fillColor: textBoxBack,
             filled: true,
             labelText: a,
-            labelStyle:
-                TextStyle(color: hintText, fontFamily: 'Product_Sans_Bold'),
+            labelStyle: TextStyle(color: hintText, fontFamily: 'ProductSans'),
             border: new OutlineInputBorder(
               borderRadius: new BorderRadius.circular(10.0),
               borderSide: BorderSide(width: 100),
@@ -116,7 +115,7 @@ class _addressPageState extends State<addressPage> {
           a,
           style: TextStyle(
               fontSize: 25,
-              fontFamily: 'Product_Sans_Bold',
+              fontFamily: 'ProductSans',
               fontWeight: FontWeight.bold,
               color: text),
         ),

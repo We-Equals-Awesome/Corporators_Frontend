@@ -22,7 +22,7 @@ class _viewAllState extends State<viewAll> {
                 'Recently Added',
                 style: TextStyle(
                     fontSize: 35,
-                    fontFamily: 'Product_Sans_Bold',
+                    fontFamily: 'ProductSans',
                     fontWeight: FontWeight.bold,
                     color: text),
               ),
@@ -52,7 +52,7 @@ class _viewAllState extends State<viewAll> {
           label: Text(
             'New Home',
             style: TextStyle(
-              fontFamily: 'Product_Sans_Bold',
+              fontFamily: 'ProductSans',
               color: navIcon,
               fontSize: 13.0,
             ),
@@ -115,7 +115,7 @@ class _viewAllState extends State<viewAll> {
           style: TextStyle(
             fontSize: 25,
             letterSpacing: 1,
-            fontFamily: 'Product_Sans',
+            fontFamily: 'ProductSans',
             fontWeight: FontWeight.bold,
             color: text,
           ),
@@ -125,7 +125,7 @@ class _viewAllState extends State<viewAll> {
           style: TextStyle(
             fontSize: 20,
             letterSpacing: 1,
-            fontFamily: 'Product_Sans',
+            fontFamily: 'ProductSans',
             fontWeight: FontWeight.bold,
             color: text,
           ),
@@ -142,7 +142,7 @@ class _viewAllState extends State<viewAll> {
           style: TextStyle(
             fontSize: 22,
             letterSpacing: 1,
-            fontFamily: 'Product_Sans',
+            fontFamily: 'ProductSans',
             fontWeight: FontWeight.bold,
             color: text,
           ),
@@ -152,7 +152,7 @@ class _viewAllState extends State<viewAll> {
           style: TextStyle(
             fontSize: 18,
             letterSpacing: 1,
-            fontFamily: 'Product_Sans',
+            fontFamily: 'ProductSans',
             fontWeight: FontWeight.bold,
             color: text,
           ),

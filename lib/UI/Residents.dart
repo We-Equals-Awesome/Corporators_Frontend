@@ -31,7 +31,7 @@ class _residentState extends State<resident> {
                 'No. ' + address[0] + ', ' + address[1] + ' Street',
                 style: TextStyle(
                     fontSize: 30,
-                    fontFamily: 'Product_Sans_Bold',
+                    fontFamily: 'ProductSans',
                     fontWeight: FontWeight.bold,
                     color: text),
               ),
@@ -42,7 +42,7 @@ class _residentState extends State<resident> {
                 'Add Residents',
                 style: TextStyle(
                     fontSize: 25,
-                    fontFamily: 'Product_Sans_Bold',
+                    fontFamily: 'ProductSans',
                     fontWeight: FontWeight.bold,
                     color: text),
               ),
@@ -92,7 +92,7 @@ class _residentState extends State<resident> {
           label: Text(
             'View All',
             style: TextStyle(
-              fontFamily: 'Product_Sans_Bold',
+              fontFamily: 'ProductSans',
               color: navIcon,
               fontSize: 13.0,
             ),
@@ -119,7 +119,7 @@ class _residentState extends State<resident> {
             a,
             style: TextStyle(
                 fontSize: 18,
-                fontFamily: 'Product_Sans_Bold',
+                fontFamily: 'ProductSans',
                 fontWeight: FontWeight.bold,
                 color: text),
           ),
