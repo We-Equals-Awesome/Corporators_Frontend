@@ -15,6 +15,8 @@ Color hintText = Color(0xff626262);
 // colour of all the texts and the stepper
 Color text = Color(0xff3B2234);
 
+//color of text box for data preview
+Color entryBox = Color(0xffF2D492);
 
 
 // nav bar colours

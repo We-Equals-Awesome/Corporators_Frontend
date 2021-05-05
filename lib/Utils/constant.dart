@@ -42,6 +42,13 @@ var headlineSmall = TextStyle(
   color: textcolor,
 );
 
+var textHint = TextStyle(
+  fontFamily: 'ProductSans' ,
+  fontSize: 18.0,
+  fontWeight: FontWeight.normal,
+  color: hintText,
+);
+
 var headlineSmall2 = TextStyle(
   fontFamily: 'ProductSans' ,
   fontSize: 18.0,
