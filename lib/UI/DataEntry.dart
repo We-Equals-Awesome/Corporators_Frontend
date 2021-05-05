@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cropapp/Utils/Icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +6,11 @@ import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'Residents.dart';
 import 'dropDownMenu.dart';
+//import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 
 //A list called Details is created to store the data given by the User
 var Details = new List();
+var Address = new List();
 
 class dataEntry extends StatefulWidget {
   var address = new List();
@@ -19,11 +20,13 @@ class dataEntry extends StatefulWidget {
 }
 
 class _dataEntryState extends State<dataEntry> {
+  String _chosenValue;
   var address = new List();
   _dataEntryState(this.address);
   //sets the Details list back to empty list when a new state is begun
   void initState() {
     Details = [];
+    Address = [];
   }
 
   int _currentStep = 0; //variable for the stepper count
@@ -81,7 +84,7 @@ class _dataEntryState extends State<dataEntry> {
                                     'Next',
                                     style: TextStyle(
                                         color: navIcon,
-                                        fontFamily: 'Product_Sans_Bold'),
+                                        fontFamily: 'ProductSans'),
                                   ),
                                   style: ButtonStyle(
                                     backgroundColor:
@@ -105,7 +108,7 @@ class _dataEntryState extends State<dataEntry> {
                                     'Back',
                                     style: TextStyle(
                                         color: hintText,
-                                        fontFamily: 'Product_Sans_Bold'),
+                                        fontFamily: 'ProductSans'),
                                   ),
                                 ),
                               ),
@@ -124,7 +127,7 @@ class _dataEntryState extends State<dataEntry> {
                             'Personal Details',
                             style: TextStyle(
                                 fontSize: 18,
-                                fontFamily: 'Product_Sans_Bold',
+                                fontFamily: 'ProductSans',
                                 fontWeight: FontWeight.bold),
                           ),
                           isActive: true,
@@ -142,13 +145,15 @@ class _dataEntryState extends State<dataEntry> {
                             'Contact Details',
                             style: TextStyle(
                                 fontSize: 18,
-                                fontFamily: 'Product_Sans_Bold',
+                                fontFamily: 'ProductSans',
                                 fontWeight: FontWeight.bold),
                           ),
                           isActive: true,
                           content: Column(
                             children: [
                               //calling the box Widget function
+                              _dropdown('Street Number', context),
+                              _textForm('House Number', context),
                               _textForm('Phone Number', context),
                               _textForm('Email', context)
                             ],
@@ -161,7 +166,7 @@ class _dataEntryState extends State<dataEntry> {
                             'Voter Details',
                             style: TextStyle(
                                 fontSize: 18,
-                                fontFamily: 'Product_Sans_Bold',
+                                fontFamily: 'ProductSans',
                                 fontWeight: FontWeight.bold),
                           ),
                           isActive: true,
@@ -203,7 +208,9 @@ class _dataEntryState extends State<dataEntry> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(width: 10),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width,
+                                    ),
                                     //following is the Calender icon of svg type
                                     SizedBox(
                                         width: 50,
@@ -231,7 +238,7 @@ class _dataEntryState extends State<dataEntry> {
                               'Relationship with Head of Family',
                               style: TextStyle(
                                   fontSize: 18,
-                                  fontFamily: 'Product_Sans_Bold',
+                                  fontFamily: 'ProductSans',
                                   fontWeight: FontWeight.bold),
                             ),
                             isActive: true,
@@ -255,7 +262,7 @@ class _dataEntryState extends State<dataEntry> {
           label: Text(
             'Submit',
             style: TextStyle(
-              fontFamily: 'Product_Sans_Bold',
+              fontFamily: 'ProductSans',
               color: navIcon,
               fontSize: 13.0,
             ),
@@ -285,6 +292,9 @@ class _dataEntryState extends State<dataEntry> {
       padding: const EdgeInsets.only(top: 10),
       child: Container(
         child: TextFormField(
+          //autofillHints: ['Father','Mother','Sister','Sister-in-Law'],
+          // enableSuggestions: true,
+          textInputAction: TextInputAction.next,
           autocorrect: false,
           onSaved: (value) {
             //appends the textFormFeild into the Details List
@@ -309,8 +319,7 @@ class _dataEntryState extends State<dataEntry> {
             fillColor: textBoxBack,
             filled: true,
             labelText: a,
-            labelStyle:
-                TextStyle(color: hintText, fontFamily: 'Product_Sans_Bold'),
+            labelStyle: TextStyle(color: hintText, fontFamily: 'ProductSans'),
             border: new OutlineInputBorder(
               borderRadius: new BorderRadius.circular(10.0),
               borderSide: BorderSide(width: 100),
@@ -326,12 +335,12 @@ class _dataEntryState extends State<dataEntry> {
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, top: 60),
+        padding: const EdgeInsets.only(left: 20, top: 25),
         child: Text(
           a,
           style: TextStyle(
               fontSize: 25,
-              fontFamily: 'Product_Sans_Bold',
+              fontFamily: 'ProductSans',
               fontWeight: FontWeight.bold),
         ),
       ),
@@ -343,11 +352,14 @@ class _dataEntryState extends State<dataEntry> {
     final FormState formState = _formKey.currentState;
     _formKey.currentState.save();
     if (formState.validate()) {
+      Address.add(Details[4]);
+      Address.add(Details[3]);
+      address = Address;
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => resident(address: address),
       ));
-    }
-    ;
+    };
+    
   }
 
   //following is the code for selecting the date
@@ -424,5 +436,44 @@ class _dataEntryState extends State<dataEntry> {
         _dateController.text = picked.toString();
       });
     }
+  }
+
+  Widget _dropdown(String a, BuildContext context) {
+    //function for the textFormFeilds
+    return DropdownButtonFormField(
+      dropdownColor: textBoxBack,
+      items:
+          <String>['1', '2', '3'].map<DropdownMenuItem<String>>((String value) {
+        return new DropdownMenuItem(value: value, child: Text(value));
+      }).toList(),
+      onChanged: (newValue) {
+        // do other stuff with _category
+        setState(() => _chosenValue = newValue);
+      },
+      onSaved: (value) {
+        //appends the textFormFeild into the Details List
+        Details.add(value);
+      },
+      value: _chosenValue,
+      decoration: new InputDecoration(
+        contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: new BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.black, width: 1.5),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: new BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.black, width: 1.5),
+        ),
+        fillColor: textBoxBack,
+        filled: true,
+        labelText: a,
+        labelStyle: TextStyle(color: hintText, fontFamily: 'ProductSans'),
+        border: new OutlineInputBorder(
+          borderRadius: new BorderRadius.circular(10.0),
+          borderSide: BorderSide(width: 100),
+        ),
+      ),
+    );
   }
 }

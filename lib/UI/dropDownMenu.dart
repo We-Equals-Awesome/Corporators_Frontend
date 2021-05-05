@@ -1,10 +1,9 @@
 import 'package:cropapp/UI/DataEntry.dart';
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
 
 class ExampleItem {
+  //uncle aunt grandfather grandmother
   static const Self = ExampleItem._('Self');
   static const Father = ExampleItem._('Father');
   static const Mother = ExampleItem._('Mother');
@@ -69,7 +68,7 @@ class _ExampleScreenState extends State<ExampleScreen> {
             ExampleItem.values.length * 2 - 1, (int index) {
           if (index.isEven) {
             final item = ExampleItem.values[index ~/ 2];
-            return DropdownMenuItem<ExampleItem>(value: item, text: item.text);
+            return DropDownMenuItems<ExampleItem>(value: item, text: item.text);
           } else {
             return DropdownDivider();
           }
@@ -96,8 +95,8 @@ class _ExampleScreenState extends State<ExampleScreen> {
   }
 }
 
-class DropdownMenuItem<T> extends PopupMenuEntry<T> {
-  const DropdownMenuItem({
+class DropDownMenuItems<T> extends PopupMenuEntry<T> {
+  const DropDownMenuItems({
     Key key,
     this.value,
     @required this.text,
@@ -109,7 +108,7 @@ class DropdownMenuItem<T> extends PopupMenuEntry<T> {
   final String text;
 
   @override
-  _DropdownMenuItemState<T> createState() => _DropdownMenuItemState<T>();
+  _DropDownMenuItemsState<T> createState() => _DropDownMenuItemsState<T>();
 
   @override
   double get height => 32.0;
@@ -118,7 +117,7 @@ class DropdownMenuItem<T> extends PopupMenuEntry<T> {
   bool represents(T value) => this.value == value;
 }
 
-class _DropdownMenuItemState<T> extends State<DropdownMenuItem<T>> {
+class _DropDownMenuItemsState<T> extends State<DropDownMenuItems<T>> {
   @override
   Widget build(BuildContext context) {
     return InkWell(

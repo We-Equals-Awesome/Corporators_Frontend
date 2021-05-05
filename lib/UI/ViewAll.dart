@@ -1,4 +1,5 @@
-import 'package:cropapp/UI/AddressPage.dart';
+
+import 'package:cropapp/UI/DataEntry.dart';
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
 import 'Residents.dart';
@@ -17,26 +18,26 @@ class _viewAllState extends State<viewAll> {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 60),
+              padding: const EdgeInsets.only(left: 20, top: 25),
               child: Text(
                 'Recently Added',
                 style: TextStyle(
-                    fontSize: 35,
-                    fontFamily: 'Product_Sans_Bold',
+                    fontSize: 36,
+                    fontFamily: 'ProductSans',
                     fontWeight: FontWeight.bold,
                     color: text),
               ),
             ),
-            _card('21', 'abcd', '15', '21/21/21', context),
-            _card('123456789123456789', '5', 'abc', '21/21/21', context),
-            _card('21', 'abcdefghijklmnopqrst', 'abc', '21/21/21', context),
-            _card('21', 'a', 'abcdefghijklmnopqrst', '21/21/21', context),
-            _card('21', '5', 'abc', '21/21/2121/21/2121/21/21', context),
-            _card('21', 'abcd', '15', '21/21/21', context),
-            _card('123456789123456789', '5', 'abc', '21/21/21', context),
-            _card('21', 'abcdefghijklmnopqrst', 'abc', '21/21/21', context),
-            _card('21', 'a', 'abcdefghijklmnopqrst', '21/21/21', context),
-            _card('21', '5', 'abc', '21/21/2121/21/2121/21/21', context),
+            _card('213/A', 'abcdefghijklmnop', '15', '21/21/21', context),
+            _card('123/B', 'Hellllllo World', '78', '21/21/21', context),
+            _card('328/B', 'Welcome Back ', '12', '21/21/2001', context),
+            _card('308/Z', 'Flutter Hello World', '127', '21/21/21', context),
+            _card('217/M', 'hello', '75', '21/21/21', context),
+            _card('213/T', 'abcd', '15', '21/21/21', context),
+            _card('120/Z', 'mnopqrstuvwxyz', '12', '21/21/21', context),
+            _card('211/V', 'abcd', '36', '21/21/21', context),
+            _card('210/P', 'a', '89', '21/21/21', context),
+            _card('213/C', 'mkolpuhb', '4', '21/21/21', context),
           ],
         ),
       ),
@@ -46,15 +47,16 @@ class _viewAllState extends State<viewAll> {
         child: FloatingActionButton.extended(
           onPressed: () {
             Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => addressPage(),
+              builder: (context) => dataEntry(),
             ));
           },
           label: Text(
             'New Home',
             style: TextStyle(
-              fontFamily: 'Product_Sans_Bold',
+              
+              fontFamily: 'ProductSans',
               color: navIcon,
-              fontSize: 13.0,
+              fontSize: 14.0,
             ),
           ),
           backgroundColor: submitGrey,
@@ -73,91 +75,76 @@ class _viewAllState extends State<viewAll> {
             builder: (context) => resident(address: address),
           ));
         },
-        child: Card(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-              side: BorderSide(width: 1)),
-          color: textBoxBack,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15, top: 10, bottom: 10),
-            child: Row(children: [
-              Expanded(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _leftText('No: ', a, context),
-                      SizedBox(height: 10),
-                      _leftText('Name: ', b, context)
-                    ]),
-              ),
-              SizedBox(width: 25),
-              Expanded(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _rightText('Booth No: ', c, context),
-                      SizedBox(height: 10),
-                      _rightText(d, '', context)
-                    ]),
-              )
-            ]),
+        child: Container(
+          child: Card(
+            elevation: 5,
+            shadowColor: Colors.black,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+                side: BorderSide(width: 1)),
+            color: textBoxBack,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15, top: 10, bottom: 10),
+              child: Row(children: [
+                Expanded(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _lefttopText('No: ' + a, context),
+                        SizedBox(height: 10),
+                        _leftbottomText(b, context),
+                        //_leftText('', b, context)
+                      ]),
+                ),
+                SizedBox(width: 25),
+                Expanded(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _rightText('Booth No: ' + c, context),
+                        SizedBox(height: 10),
+                        _rightText(d, context)
+                      ]),
+                )
+              ]),
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _leftText(String a, String b, BuildContext context) {
-    return RichText(
-      text: TextSpan(children: [
-        TextSpan(
-          text: a,
-          style: TextStyle(
-            fontSize: 25,
-            letterSpacing: 1,
-            fontFamily: 'Product_Sans',
-            fontWeight: FontWeight.bold,
-            color: text,
-          ),
-        ),
-        TextSpan(
-          text: b,
-          style: TextStyle(
-            fontSize: 20,
-            letterSpacing: 1,
-            fontFamily: 'Product_Sans',
-            fontWeight: FontWeight.bold,
-            color: text,
-          ),
-        )
-      ]),
+  Widget _lefttopText(String a, BuildContext context) {
+    return Text(a,
+        style: TextStyle(
+          fontSize: 24,
+          letterSpacing: 1,
+          fontFamily: 'ProductSans',
+          fontWeight: FontWeight.bold,
+          color: text,
+        ));
+  }
+
+  Widget _rightText(String a, BuildContext context) {
+    return Text(
+      a,
+      style: TextStyle(
+        fontSize: 20,
+        letterSpacing: 1,
+        fontFamily: 'ProductSans',
+        fontWeight: FontWeight.bold,
+        color: text,
+      ),
     );
   }
 
-  Widget _rightText(String a, String b, BuildContext context) {
-    return RichText(
-      text: TextSpan(children: [
-        TextSpan(
-          text: a,
-          style: TextStyle(
-            fontSize: 22,
-            letterSpacing: 1,
-            fontFamily: 'Product_Sans',
-            fontWeight: FontWeight.bold,
-            color: text,
-          ),
-        ),
-        TextSpan(
-          text: b,
-          style: TextStyle(
-            fontSize: 18,
-            letterSpacing: 1,
-            fontFamily: 'Product_Sans',
-            fontWeight: FontWeight.bold,
-            color: text,
-          ),
-        )
-      ]),
-    );
+  _leftbottomText(String a, BuildContext context) {
+    return FittedBox(
+        fit: BoxFit.fitWidth,
+        child: Text(
+          a,
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        ));
   }
 }
+

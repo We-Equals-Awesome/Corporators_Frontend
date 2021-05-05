@@ -1,5 +1,7 @@
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:cropapp/Utils/Icons.dart';
 
 class wallFeed extends StatefulWidget {
   @override
@@ -15,19 +17,23 @@ class _wallFeedState extends State<wallFeed> {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 60),
+              padding: const EdgeInsets.only(left: 20, top: 25),
               child: Text(
                 'Wall Feed',
                 style: TextStyle(
                     fontSize: 35,
-                    fontFamily: 'Product_Sans_Bold',
+                    fontFamily: 'ProductSans',
                     fontWeight: FontWeight.bold,
                     color: text),
               ),
             ),
-            _card('abc', '23', '17', '15/05/21', context),
-            _card('def', '56', '20', '06/08/2018', context),
-            _card('ghi', '89', '32', '21/21/21', context),
+            _card('Hello World', '23', '17', '15/05/21', context),
+            _card('Hiiiiiiiiiiiiii', '56', '20', '06/08/2018', context),
+            _card('Welcome Back', '89', '32', '21/21/21', context),
+            _card('abcdefghijklmnop', '108', '123', '21/21/21', context),
+            _card('Hello World', '23', '17', '15/05/21', context),
+            _card('Hiiiiiiiiiiiiii', '56', '20', '06/08/2018', context),
+            _card('Welcome Back', '89', '32', '21/21/21', context),
             _card('abcdefghijklmnop', '108', '123', '21/21/21', context),
           ],
         ),
@@ -40,7 +46,7 @@ class _wallFeedState extends State<wallFeed> {
           label: Text(
             '???',
             style: TextStyle(
-              fontFamily: 'Product_Sans_Bold',
+              fontFamily: 'ProductSans',
               color: navIcon,
               fontSize: 13.0,
             ),
@@ -64,30 +70,25 @@ class _wallFeedState extends State<wallFeed> {
           child: Padding(
             padding: const EdgeInsets.only(left: 15, top: 10, bottom: 10),
             child: Row(children: [
-              Expanded(
-                child: _leftText(a, context),
-              ),
+              SizedBox(
+                width: 140,
+                child: _leftText(a, context)),
+              SizedBox(width:20),
               Expanded(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          IconButton(
-                              icon: Icon(
+                           Icon(
                                 Icons.favorite_rounded,
                                 size: 35,
                                 color: submitGrey,
                               ),
-                              onPressed: () {}),
+                              
                           _rightText(b, context),
                           IconButton(
-                              icon: Icon(
-                                Icons.send_rounded,
-                                size: 35,
-                                color: submitGrey,
-                              ),
-                              onPressed: () {}),
+                              icon: SvgPicture.asset(share), onPressed: () {}),
                           _rightText(c, context)
                         ],
                       ),
@@ -105,15 +106,19 @@ class _wallFeedState extends State<wallFeed> {
   }
 
   Widget _leftText(String a, BuildContext context) {
-    return Text(
-      a,
-      style: TextStyle(
-        fontSize: 25,
-        letterSpacing: 1,
-        fontFamily: 'Product_Sans',
-        fontWeight: FontWeight.bold,
-        color: text,
-      ),
+    return  FittedBox(
+        fit: BoxFit.fitWidth,
+        child: Text(
+          a,
+          style: TextStyle(
+            fontSize: 25,
+            letterSpacing: 1,
+            fontFamily: 'ProductSans',
+            fontWeight: FontWeight.bold,
+            color: text,
+          ),
+        ),
+      
     );
   }
 
@@ -123,7 +128,7 @@ class _wallFeedState extends State<wallFeed> {
       style: TextStyle(
         fontSize: 20,
         letterSpacing: 1,
-        fontFamily: 'Product_Sans',
+        fontFamily: 'ProductSans',
         fontWeight: FontWeight.bold,
         color: text,
       ),

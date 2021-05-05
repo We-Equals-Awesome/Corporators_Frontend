@@ -15,17 +15,17 @@ class _complaintListState extends State<complaintList> {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 60),
+              padding: const EdgeInsets.only(left: 20, top: 25),
               child: Text(
                 'Complaints',
                 style: TextStyle(
-                    fontSize: 35,
-                    fontFamily: 'Product_Sans_Bold',
+                    fontSize: 36,
+                    fontFamily: 'ProductSans',
                     fontWeight: FontWeight.bold,
                     color: text),
               ),
             ),
-            _card('11', '15', '21/21/21', context),
+            _card('11', '151', '21/21/21', context),
             _card('23', '17', '20/21/2018', context),
             _card('12', '22', '21/21/21', context),
             _card('21', '20', '21/21/21', context),
@@ -40,9 +40,9 @@ class _complaintListState extends State<complaintList> {
           label: Text(
             '???',
             style: TextStyle(
-              fontFamily: 'Product_Sans_Bold',
+              fontFamily: 'ProductSans',
               color: navIcon,
-              fontSize: 13.0,
+              fontSize: 14.0,
             ),
           ),
           backgroundColor: submitGrey,
@@ -64,21 +64,20 @@ class _complaintListState extends State<complaintList> {
           child: Padding(
             padding:
                 const EdgeInsets.only(left: 25, top: 10, bottom: 10, right: 10),
-            child: Row(
-                children: [
-                  Expanded(
-                    child: _leftText('#' + a, context),
-                  ),
-                  Expanded(
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _rightText('Booth No: ', b, context),
-                          SizedBox(height: 10),
-                          _rightText(c, '', context)
-                        ]),
-                  )
-                ]),
+            child: Row(children: [
+              Expanded(
+                child: _leftText('#' + a, context),
+              ),
+              Expanded(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _rightText('Booth No: ' + b, context),
+                      SizedBox(height: 10),
+                      _rightText(c, context)
+                    ]),
+              )
+            ]),
           ),
         ),
       ),
@@ -89,39 +88,25 @@ class _complaintListState extends State<complaintList> {
     return Text(
       a,
       style: TextStyle(
-        fontSize: 25,
+        fontSize: 36,
         letterSpacing: 1,
-        fontFamily: 'Product_Sans',
+        fontFamily: 'ProductSans',
         fontWeight: FontWeight.bold,
         color: text,
       ),
     );
   }
 
-  Widget _rightText(String a, String b, BuildContext context) {
-    return RichText(
-      text: TextSpan(children: [
-        TextSpan(
-          text: a,
-          style: TextStyle(
-            fontSize: 22,
-            letterSpacing: 1,
-            fontFamily: 'Product_Sans',
-            fontWeight: FontWeight.bold,
-            color: text,
-          ),
-        ),
-        TextSpan(
-          text: b,
-          style: TextStyle(
-            fontSize: 18,
-            letterSpacing: 1,
-            fontFamily: 'Product_Sans',
-            fontWeight: FontWeight.bold,
-            color: text,
-          ),
-        )
-      ]),
+  Widget _rightText(String a, BuildContext context) {
+    return Text(
+      a,
+      style: TextStyle(
+        fontSize: 24,
+        letterSpacing: 1,
+        fontFamily: 'ProductSans',
+        fontWeight: FontWeight.bold,
+        color: text,
+      ),
     );
   }
 }

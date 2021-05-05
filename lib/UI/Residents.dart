@@ -26,23 +26,23 @@ class _residentState extends State<resident> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 60),
+              padding: const EdgeInsets.only(left: 20, top: 30),
               child: Text(
                 'No. ' + address[0] + ', ' + address[1] + ' Street',
                 style: TextStyle(
-                    fontSize: 30,
-                    fontFamily: 'Product_Sans_Bold',
+                    fontSize: 28,
+                    fontFamily: 'ProductSans',
                     fontWeight: FontWeight.bold,
                     color: text),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 20),
+              padding: const EdgeInsets.only(left: 20, top: 22),
               child: Text(
                 'Add Residents',
                 style: TextStyle(
-                    fontSize: 25,
-                    fontFamily: 'Product_Sans_Bold',
+                    fontSize: 24,
+                    fontFamily: 'ProductSans',
                     fontWeight: FontWeight.bold,
                     color: text),
               ),
@@ -57,20 +57,23 @@ class _residentState extends State<resident> {
                 relationName('Wife', context),
                 relationName('Brother', context),
                 relationName('Sister', context),
-                relationName('Nephew', context),
+                relationName('Grand Father', context),
                 relationName('Neice', context),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, top: 12),
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => dataEntry(address: address),
-                      ));
-                    },
-                    icon: Icon(
-                      Icons.add_circle_rounded,
-                      size: 35,
-                      color: Colors.grey[800],
+                SizedBox(
+                  width:100,
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 20),
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => dataEntry(address: address),
+                        ));
+                      },
+                      icon: Icon(
+                        Icons.add_circle_rounded,
+                        size: 35,
+                        color: Colors.grey[800],
+                      ),
                     ),
                   ),
                 ),
@@ -92,9 +95,9 @@ class _residentState extends State<resident> {
           label: Text(
             'View All',
             style: TextStyle(
-              fontFamily: 'Product_Sans_Bold',
+              fontFamily: 'ProductSans',
               color: navIcon,
-              fontSize: 13.0,
+              fontSize: 14,
             ),
           ),
           backgroundColor: submitGrey,
@@ -105,25 +108,31 @@ class _residentState extends State<resident> {
 
   Widget relationName(String a, BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 20, top: 10),
-      child: Column(
-        children: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.account_circle_outlined,
-              size: 38,
+      padding: EdgeInsets.only(top: 15),
+      child: SizedBox(
+        width: 100,
+        child: Column(
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.account_circle_outlined,
+                size: 38,
+              ),
             ),
-          ),
-          Text(
-            a,
-            style: TextStyle(
-                fontSize: 18,
-                fontFamily: 'Product_Sans_Bold',
-                fontWeight: FontWeight.bold,
-                color: text),
-          ),
-        ],
+            FittedBox(
+              fit: BoxFit.fitWidth,
+              child: Text(
+                a,
+                style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'ProductSans',
+                    fontWeight: FontWeight.bold,
+                    color: text),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
