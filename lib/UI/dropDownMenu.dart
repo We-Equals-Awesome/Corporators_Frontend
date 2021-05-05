@@ -82,14 +82,13 @@ class _ExampleScreenState extends State<ExampleScreen> {
     if (_current == null) {
       return Text(
         'Relation',
-        style: TextStyle(
-            fontSize: 16, fontFamily: 'Product_Sans_Bold', color: hintText),
+        style:
+            TextStyle(fontSize: 16, fontFamily: 'ProductSans', color: hintText),
       );
     } else {
       return Text(
         _current.text,
-        style: TextStyle(
-            fontSize: 15, fontFamily: 'Product_Sans_Bold', color: text),
+        style: TextStyle(fontSize: 15, fontFamily: 'ProductSans', color: text),
       );
     }
   }
@@ -128,7 +127,7 @@ class _DropDownMenuItemsState<T> extends State<DropDownMenuItems<T>> {
           //drop down items
           widget.text,
           style: TextStyle(
-            fontFamily: 'Product_Sans_Bold',
+            fontFamily: 'ProductSans',
             fontSize: 15.0,
             color: text,
           ),
