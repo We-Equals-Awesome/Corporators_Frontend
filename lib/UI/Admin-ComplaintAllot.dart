@@ -12,6 +12,10 @@ class AdminComplaintAllot extends StatefulWidget {
 }
 
 class _AdminComplaintAllotState extends State<AdminComplaintAllot> {
+  String valueChose1 ;
+  String valueChose2 ;
+  List listitems = ["Random Guy","Vishnu","Name1","Name2"];
+
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -150,11 +154,93 @@ class _AdminComplaintAllotState extends State<AdminComplaintAllot> {
                   ),
                 ),
               ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: width/2.5,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    border: Border.all(color: blk, width: 1.0)),
+                child: Center(
+                  child: DropdownButton(
+                    hint: Text("Select"),
+                    dropdownColor: entryBox,
+                    value: valueChose1,
+                    icon: Icon(Icons.keyboard_arrow_down_sharp,
+                    size: 30,),
+                    underline: SizedBox(),
 
+                    onChanged: (newValue1){
+                      setState(() {
+                        valueChose1 = newValue1;
+                      });
+                    },
+                    items: listitems.map((valueItem) {
+                      return DropdownMenuItem(
+                        value: valueItem,
+                        child: Text(valueItem),
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ),
+              SizedBox(width: 20,),
+              Container(
+                width: width/2.5,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    border: Border.all(color: blk, width: 1.0)),
+                child: Center(
+                  child: DropdownButton(
+                    hint: Text("Select"),
+                    dropdownColor: entryBox,
+                    value: valueChose2,
+                    icon: Icon(Icons.keyboard_arrow_down_sharp,
+                      size: 30,),
+                    underline: SizedBox(),
+
+                    onChanged: (newValue){
+                      setState(() {
+                        valueChose2 = newValue;
+                      });
+                    },
+                    items: listitems.map((valueItem) {
+                      return DropdownMenuItem(
+                        value: valueItem,
+                        child: Text(valueItem),
+
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ),
             ],
           ),
+            ],
+          ),
+
         ),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text("Completed",
+          style: TextStyle(color: background, fontFamily: 'ProductSans'),
+        ),
+        elevation: 2,
+        backgroundColor: submitGrey,
+        onPressed: () {
+          // if(valueChose1.isEmpty){
+          //   print("volenteer 1 is null");
+          // }
+          print("Volenteer 1 name is = "+valueChose1);
+          print("Volenteer 2 name is = "+valueChose2);
+          Navigator.pop(context);
+        },
+      ),
+
     );
+
+
+
   }
 }

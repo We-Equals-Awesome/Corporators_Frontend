@@ -129,7 +129,7 @@ class _AdminComplaintsCardState extends State<AdminComplaintsCard> {
     var height = screenSize.height;
     return Container(
       height: 80,
-      padding: EdgeInsets.only(left: 15.0, right: 5.0, top: 5.0, bottom: 10.0),
+      padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0, bottom: 10.0),
       //box decoration of the card
       decoration: BoxDecoration(
           color: textBoxBack,
@@ -149,6 +149,7 @@ class _AdminComplaintsCardState extends State<AdminComplaintsCard> {
               maxLines: 1,
             ),
           ),
+          Spacer(),
           Container(
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.fromLTRB(0, 10, 0, 0),

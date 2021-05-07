@@ -180,6 +180,7 @@ class _PrimaryCardState extends State<PrimaryCard> {
                       'TITLE ${"\n"}${widget.news.title}${"\n\n\n"}INFO ${"\n"}${widget.news.subtitle}');
                 },
               ),
+              SizedBox(width: 15,),
             ],
           )
         ],

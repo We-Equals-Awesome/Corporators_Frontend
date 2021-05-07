@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:newsfeed_screen/UI/admin-complaintView.dart';
@@ -25,10 +26,13 @@ class NewComplaint extends StatelessWidget {
           SizedBox(
             height: 300,
           ),
-          Container(
-            child: Text(
-              "Tap Button to go Admin complain view page",
-              style: TextStyle(fontSize: 30),
+          Center(
+            child: Container(
+              padding: EdgeInsets.fromLTRB(50, 10, 10, 10),
+              child: Text(
+                "Tap Button to go Admin complain view page",
+                style: TextStyle(fontSize: 30),
+              ),
             ),
           )
         ],
