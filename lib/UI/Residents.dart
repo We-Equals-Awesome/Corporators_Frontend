@@ -5,17 +5,17 @@ import 'DataEntry.dart';
 
 class resident extends StatefulWidget {
   var address = new List();
-
-  resident({this.address});
+  int sflag;
+  resident({this.address, this.sflag});
 
   @override
-  _residentState createState() => _residentState(address);
+  _residentState createState() => _residentState(address, sflag);
 }
 
 class _residentState extends State<resident> {
   var address = new List();
-
-  _residentState(this.address);
+  int sflag;
+  _residentState(this.address, this.sflag);
 
   @override
   Widget build(BuildContext context) {
@@ -26,25 +26,27 @@ class _residentState extends State<resident> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 30),
+              padding: EdgeInsets.only(left: 20, top: 30),
               child: Text(
                 'No. ' + address[0] + ', ' + address[1] + ' Street',
                 style: TextStyle(
-                    fontSize: 28,
-                    fontFamily: 'ProductSans',
-                    fontWeight: FontWeight.bold,
-                    color: text),
+                  fontSize: 28,
+                  fontFamily: 'ProductSans',
+                  fontWeight: FontWeight.bold,
+                  color: text,
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 22),
+              padding: EdgeInsets.only(left: 20, top: 22),
               child: Text(
                 'Add Residents',
                 style: TextStyle(
-                    fontSize: 24,
-                    fontFamily: 'ProductSans',
-                    fontWeight: FontWeight.bold,
-                    color: text),
+                  fontSize: 24,
+                  fontFamily: 'ProductSans',
+                  fontWeight: FontWeight.bold,
+                  color: text,
+                ),
               ),
             ),
             relationName('Head', context),
@@ -58,15 +60,18 @@ class _residentState extends State<resident> {
                 relationName('Brother', context),
                 relationName('Sister', context),
                 relationName('Grand Father', context),
+                relationName('Father-In-Law', context),
                 relationName('Neice', context),
                 SizedBox(
-                  width:100,
+                  width: 100,
                   child: Padding(
                     padding: EdgeInsets.only(top: 20),
                     child: IconButton(
                       onPressed: () {
+                        sflag = 0;
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => dataEntry(address: address),
+                          builder: (context) =>
+                              dataEntry(address: address, sflag: sflag),
                         ));
                       },
                       icon: Icon(
@@ -110,7 +115,7 @@ class _residentState extends State<resident> {
     return Padding(
       padding: EdgeInsets.only(top: 15),
       child: SizedBox(
-        width: 100,
+        width: MediaQuery.of(context).size.width * 0.24,
         child: Column(
           children: [
             IconButton(
@@ -120,15 +125,16 @@ class _residentState extends State<resident> {
                 size: 38,
               ),
             ),
-            FittedBox(
-              fit: BoxFit.fitWidth,
+            SizedBox(
               child: Text(
                 a,
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                    fontSize: 18,
-                    fontFamily: 'ProductSans',
-                    fontWeight: FontWeight.bold,
-                    color: text),
+                  fontSize: 18,
+                  fontFamily: 'ProductSans',
+                  fontWeight: FontWeight.bold,
+                  color: text,
+                ),
               ),
             ),
           ],

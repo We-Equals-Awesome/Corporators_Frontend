@@ -15,16 +15,21 @@ class _complaintListState extends State<complaintList> {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 25),
+              padding: EdgeInsets.only(left: 20, top: 25),
               child: Text(
                 'Complaints',
                 style: TextStyle(
-                    fontSize: 36,
-                    fontFamily: 'ProductSans',
-                    fontWeight: FontWeight.bold,
-                    color: text),
+                  fontSize: 36,
+                  fontFamily: 'ProductSans',
+                  fontWeight: FontWeight.bold,
+                  color: text,
+                ),
               ),
             ),
+            _card('11', '151', '21/21/21', context),
+            _card('23', '17', '20/21/2018', context),
+            _card('12', '22', '21/21/21', context),
+            _card('21', '20', '21/21/21', context),
             _card('11', '151', '21/21/21', context),
             _card('23', '17', '20/21/2018', context),
             _card('12', '22', '21/21/21', context),
@@ -38,7 +43,7 @@ class _complaintListState extends State<complaintList> {
         child: FloatingActionButton.extended(
           onPressed: () {},
           label: Text(
-            '???',
+            '?????',
             style: TextStyle(
               fontFamily: 'ProductSans',
               color: navIcon,
@@ -58,26 +63,29 @@ class _complaintListState extends State<complaintList> {
         onTap: () {},
         child: Card(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-              side: BorderSide(width: 1)),
+            borderRadius: BorderRadius.circular(10),
+            side: BorderSide(width: 1),
+          ),
           color: textBoxBack,
           child: Padding(
-            padding:
-                const EdgeInsets.only(left: 25, top: 10, bottom: 10, right: 10),
-            child: Row(children: [
-              Expanded(
-                child: _leftText('#' + a, context),
-              ),
-              Expanded(
-                child: Column(
+            padding: EdgeInsets.only(left: 25, top: 10, bottom: 10, right: 10),
+            child: Row(
+              children: [
+                Expanded(
+                  child: _leftText('#' + a, context),
+                ),
+                Expanded(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _rightText('Booth No: ' + b, context),
                       SizedBox(height: 10),
                       _rightText(c, context)
-                    ]),
-              )
-            ]),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -89,7 +97,6 @@ class _complaintListState extends State<complaintList> {
       a,
       style: TextStyle(
         fontSize: 36,
-        letterSpacing: 1,
         fontFamily: 'ProductSans',
         fontWeight: FontWeight.bold,
         color: text,
@@ -102,7 +109,6 @@ class _complaintListState extends State<complaintList> {
       a,
       style: TextStyle(
         fontSize: 24,
-        letterSpacing: 1,
         fontFamily: 'ProductSans',
         fontWeight: FontWeight.bold,
         color: text,

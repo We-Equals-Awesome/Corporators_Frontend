@@ -1,8 +1,9 @@
-
 import 'package:cropapp/UI/DataEntry.dart';
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
 import 'Residents.dart';
+
+int sflag;
 
 class viewAll extends StatefulWidget {
   @override
@@ -18,14 +19,15 @@ class _viewAllState extends State<viewAll> {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 25),
+              padding: EdgeInsets.only(left: 20, top: 25),
               child: Text(
                 'Recently Added',
                 style: TextStyle(
-                    fontSize: 36,
-                    fontFamily: 'ProductSans',
-                    fontWeight: FontWeight.bold,
-                    color: text),
+                  fontSize: 36,
+                  fontFamily: 'ProductSans',
+                  fontWeight: FontWeight.bold,
+                  color: text,
+                ),
               ),
             ),
             _card('213/A', 'abcdefghijklmnop', '15', '21/21/21', context),
@@ -46,14 +48,16 @@ class _viewAllState extends State<viewAll> {
         height: 41,
         child: FloatingActionButton.extended(
           onPressed: () {
+            sflag = 1;
             Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => dataEntry(),
+              builder: (context) => dataEntry(
+                sflag: sflag,
+              ),
             ));
           },
           label: Text(
             'New Home',
             style: TextStyle(
-              
               fontFamily: 'ProductSans',
               color: navIcon,
               fontSize: 14.0,
@@ -84,29 +88,32 @@ class _viewAllState extends State<viewAll> {
                 side: BorderSide(width: 1)),
             color: textBoxBack,
             child: Padding(
-              padding: const EdgeInsets.only(left: 15, top: 10, bottom: 10),
-              child: Row(children: [
-                Expanded(
-                  child: Column(
+              padding: EdgeInsets.only(left: 15, top: 10, bottom: 10),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _lefttopText('No: ' + a, context),
                         SizedBox(height: 10),
                         _leftbottomText(b, context),
-                        //_leftText('', b, context)
-                      ]),
-                ),
-                SizedBox(width: 25),
-                Expanded(
-                  child: Column(
+                      ],
+                    ),
+                  ),
+                  SizedBox(width: 25),
+                  Expanded(
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _rightText('Booth No: ' + c, context),
                         SizedBox(height: 10),
                         _rightText(d, context)
-                      ]),
-                )
-              ]),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -118,7 +125,6 @@ class _viewAllState extends State<viewAll> {
     return Text(a,
         style: TextStyle(
           fontSize: 24,
-          letterSpacing: 1,
           fontFamily: 'ProductSans',
           fontWeight: FontWeight.bold,
           color: text,
@@ -143,8 +149,10 @@ class _viewAllState extends State<viewAll> {
         fit: BoxFit.fitWidth,
         child: Text(
           a,
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+          ),
         ));
   }
 }
-

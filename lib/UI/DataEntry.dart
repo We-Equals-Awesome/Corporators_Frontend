@@ -5,24 +5,47 @@ import 'package:flutter/material.dart';
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'Residents.dart';
-import 'dropDownMenu.dart';
-//import 'package:autocomplete_textfield/autocomplete_textfield.dart';
+import 'package:simple_autocomplete_formfield/simple_autocomplete_formfield.dart';
 
-//A list called Details is created to store the data given by the User
 var Details = new List();
 var Address = new List();
 
+final people = <Person>[
+  Person('Self'),
+  Person('Father'),
+  Person('Mother'),
+  Person('Brother'),
+  Person('Sister'),
+  Person('Son'),
+  Person('Daughter'),
+  Person('Husband'),
+  Person('Wife'),
+  Person('Father-In-Law'),
+  Person('Mother-In-Law'),
+  Person('Brother-In-Law'),
+  Person('Sister-in-Law'),
+  Person('Nephew'),
+  Person('Neice'),
+  Person('Uncle'),
+  Person('Aunt'),
+  Person('Grand Father'),
+  Person('Grand Mother')
+];
+
 class dataEntry extends StatefulWidget {
   var address = new List();
-  dataEntry({this.address});
+  int sflag;
+  dataEntry({this.address, this.sflag});
   @override
-  _dataEntryState createState() => _dataEntryState(address);
+  _dataEntryState createState() => _dataEntryState(address, sflag);
 }
 
 class _dataEntryState extends State<dataEntry> {
   String _chosenValue;
+  Person selectedPerson;
   var address = new List();
-  _dataEntryState(this.address);
+  int sflag = 0;
+  _dataEntryState(this.address, this.sflag);
   //sets the Details list back to empty list when a new state is begun
   void initState() {
     Details = [];
@@ -53,18 +76,16 @@ class _dataEntryState extends State<dataEntry> {
             child: Column(
               children: [
                 //calling the textbox Widget function
-
                 _displayText('Enter the Details', context),
                 Expanded(
                   //Theme is called to change the colors of the Stepper Widget from default to the required Colors
                   child: Theme(
                     data: ThemeData(
-                        //all the colors are set to black as per the requirements in the design
-                        accentColor: Colors.black,
-                        primaryColor: Colors.black,
-                        colorScheme: ColorScheme.light(
-                          primary: Colors.black,
-                        )),
+                      //all the colors are set to black as per the requirements in the design
+                      accentColor: Colors.black,
+                      primaryColor: Colors.black,
+                      colorScheme: ColorScheme.light(primary: Colors.black),
+                    ),
                     //the Stepper Widget is called here
                     child: Stepper(
                       //controlsBuilder is used for changing the continue and cancel
@@ -83,8 +104,9 @@ class _dataEntryState extends State<dataEntry> {
                                   child: Text(
                                     'Next',
                                     style: TextStyle(
-                                        color: navIcon,
-                                        fontFamily: 'ProductSans'),
+                                      color: navIcon,
+                                      fontFamily: 'ProductSans',
+                                    ),
                                   ),
                                   style: ButtonStyle(
                                     backgroundColor:
@@ -100,15 +122,31 @@ class _dataEntryState extends State<dataEntry> {
                                   ),
                                 ),
                               ),
-                              SizedBox(
-                                width: 75,
-                                child: TextButton(
-                                  onPressed: onStepCancel,
-                                  child: Text(
-                                    'Back',
-                                    style: TextStyle(
-                                        color: hintText,
-                                        fontFamily: 'ProductSans'),
+                              Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: SizedBox(
+                                  width: 75,
+                                  child: TextButton(
+                                    onPressed: onStepContinue,
+                                    child: Text(
+                                      'Back',
+                                      style: TextStyle(
+                                        color: navIcon,
+                                        fontFamily: 'ProductSans',
+                                      ),
+                                    ),
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              submitGrey),
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(18.0),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -126,9 +164,10 @@ class _dataEntryState extends State<dataEntry> {
                           title: new Text(
                             'Personal Details',
                             style: TextStyle(
-                                fontSize: 18,
-                                fontFamily: 'ProductSans',
-                                fontWeight: FontWeight.bold),
+                              fontSize: 18,
+                              fontFamily: 'ProductSans',
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           isActive: true,
                           content: Column(
@@ -144,87 +183,89 @@ class _dataEntryState extends State<dataEntry> {
                           title: new Text(
                             'Contact Details',
                             style: TextStyle(
-                                fontSize: 18,
-                                fontFamily: 'ProductSans',
-                                fontWeight: FontWeight.bold),
+                              fontSize: 18,
+                              fontFamily: 'ProductSans',
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           isActive: true,
                           content: Column(
                             children: [
-                              //calling the box Widget function
-                              _dropdown('Street Number', context),
-                              _textForm('House Number', context),
+                              sflag == 1
+                                  ? _dropdown(context)
+                                  : SizedBox(width: 0, height: 0),
+                              sflag == 1
+                                  ? _textForm('House Number', context)
+                                  : SizedBox(width: 0, height: 0),
                               _textForm('Phone Number', context),
                               _textForm('Email', context)
                             ],
                           ),
                         ),
-
                         //3rd Step
                         Step(
                           title: new Text(
                             'Voter Details',
                             style: TextStyle(
-                                fontSize: 18,
-                                fontFamily: 'ProductSans',
-                                fontWeight: FontWeight.bold),
+                              fontSize: 18,
+                              fontFamily: 'ProductSans',
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                           isActive: true,
                           content: Column(
                             children: [
-                              Padding(
-                                padding: EdgeInsets.only(top: 5),
-                                //Since the design requires the Calender beside the textField, Row widget is used
-                                //The row consists of the box Widget function and the Icon Widget
-                                child: Row(
-                                  children: [
-                                    Container(
-                                      width: 260,
-                                      child: TextFormField(
-                                        onSaved: (value) {
-                                          //saving the selected date into the Details List
-                                          Details.add(value);
-                                        },
-                                        validator: (value) {
-                                          if (value.isEmpty) {
-                                            return 'Please enter the Date';
-                                          }
-                                        },
-                                        controller: _dateController,
-                                        decoration: new InputDecoration(
-                                          enabledBorder: OutlineInputBorder(
-                                            borderRadius:
-                                                new BorderRadius.circular(10.0),
-                                            borderSide: BorderSide(width: 1.5),
-                                          ),
-                                          fillColor: textBoxBack,
-                                          filled: true,
-                                          labelText: 'YYYY-MM-DD',
-                                          border: new OutlineInputBorder(
-                                            borderRadius:
-                                                new BorderRadius.circular(10.0),
-                                            borderSide: BorderSide(width: 100),
-                                          ),
+                              //Since the design requires the Calender beside the textField, Row widget is used
+                              //The row consists of the box Widget function and the Icon Widget
+                              Row(
+                                children: [
+                                  Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        0.65,
+                                    child: TextFormField(
+                                      onSaved: (value) {
+                                        //saving the selected date into the Details List
+                                        Details.add(value);
+                                      },
+                                      validator: (value) {
+                                        if (value.isEmpty) {
+                                          return 'Please enter the Date';
+                                        }
+                                      },
+                                      controller: _dateController,
+                                      decoration: new InputDecoration(
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius:
+                                              new BorderRadius.circular(10.0),
+                                          borderSide: BorderSide(width: 1.5),
+                                        ),
+                                        fillColor: textBoxBack,
+                                        filled: true,
+                                        labelText: 'YYYY-MM-DD',
+                                        border: new OutlineInputBorder(
+                                          borderRadius:
+                                              new BorderRadius.circular(10.0),
+                                          borderSide: BorderSide(width: 100),
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: MediaQuery.of(context).size.width,
+                                  ),
+                                  //following is the Calender icon of svg type
+                                  IconButton(
+                                    padding: EdgeInsets.only(left: 15),
+                                    icon: SvgPicture.asset(
+                                      calendar,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.2,
                                     ),
-                                    //following is the Calender icon of svg type
-                                    SizedBox(
-                                        width: 50,
-                                        height: 50,
-                                        child: TextButton(
-                                            child: SvgPicture.asset(calendar),
-                                            onPressed: () {
-                                              if (Platform.isIOS)
-                                                _iosDate();
-                                              else
-                                                _androidDate(context);
-                                            })),
-                                  ],
-                                ),
+                                    onPressed: () {
+                                      if (Platform.isIOS)
+                                        _iosDate();
+                                      else
+                                        _androidDate(context);
+                                    },
+                                  ),
+                                ],
                               ),
                               //calling the box Widget function
                               _textForm('Voter ID', context),
@@ -234,15 +275,17 @@ class _dataEntryState extends State<dataEntry> {
                         ),
                         //Step 4
                         Step(
-                            title: new Text(
-                              'Relationship with Head of Family',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontFamily: 'ProductSans',
-                                  fontWeight: FontWeight.bold),
+                          title: new Text(
+                            'Relationship with Head of Family',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontFamily: 'ProductSans',
+                              fontWeight: FontWeight.bold,
                             ),
-                            isActive: true,
-                            content: ExampleScreen()),
+                          ),
+                          isActive: true,
+                          content: _autofill(),
+                        ),
                       ],
                     ),
                   ),
@@ -252,7 +295,6 @@ class _dataEntryState extends State<dataEntry> {
           ),
         ),
       ),
-
       //The floating action button for the Submit Button as per the design
       floatingActionButton: SizedBox(
         width: 125,
@@ -289,7 +331,7 @@ class _dataEntryState extends State<dataEntry> {
   Widget _textForm(String a, BuildContext context) {
     //function for the textFormFeilds
     return Padding(
-      padding: const EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(top: 10),
       child: Container(
         child: TextFormField(
           //autofillHints: ['Father','Mother','Sister','Sister-in-Law'],
@@ -335,13 +377,14 @@ class _dataEntryState extends State<dataEntry> {
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, top: 25),
+        padding: EdgeInsets.only(left: 20, top: 25),
         child: Text(
           a,
           style: TextStyle(
-              fontSize: 25,
-              fontFamily: 'ProductSans',
-              fontWeight: FontWeight.bold),
+            fontSize: 25,
+            fontFamily: 'ProductSans',
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
@@ -352,34 +395,38 @@ class _dataEntryState extends State<dataEntry> {
     final FormState formState = _formKey.currentState;
     _formKey.currentState.save();
     if (formState.validate()) {
-      Address.add(Details[4]);
+      //print(Details);
       Address.add(Details[3]);
+      Address.add(Details[2]);
       address = Address;
       Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => resident(address: address),
       ));
-    };
-    
+    }
   }
 
   //following is the code for selecting the date
   _androidDate(BuildContext context) async {
     DateTime picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(1975),
-        lastDate: DateTime(2030),
-        initialDatePickerMode: DatePickerMode.year,
-        builder: (context, child) {
-          return Theme(
-            data: ThemeData.dark(),
-            child: child,
-          );
-        });
-    if (picked != null && picked != selectedDate)
-      setState(() {
-        selectedDate = picked;
-      });
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(1975),
+      lastDate: DateTime(2030),
+      initialDatePickerMode: DatePickerMode.year,
+      builder: (context, child) {
+        return Theme(
+          data: ThemeData.dark(),
+          child: child,
+        );
+      },
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(
+        () {
+          selectedDate = picked;
+        },
+      );
+    }
   }
 
   _iosDate() async {
@@ -429,21 +476,27 @@ class _dataEntryState extends State<dataEntry> {
         );
       },
     );
-
     if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-        _dateController.text = picked.toString();
-      });
+      setState(
+        () {
+          selectedDate = picked;
+          _dateController.text = picked.toString();
+        },
+      );
     }
   }
 
-  Widget _dropdown(String a, BuildContext context) {
+  Widget _dropdown(BuildContext context) {
     //function for the textFormFeilds
     return DropdownButtonFormField(
+      icon: Icon(
+        Icons.keyboard_arrow_down_rounded,
+        size: 35,
+        color: Colors.black,
+      ),
       dropdownColor: textBoxBack,
-      items:
-          <String>['1', '2', '3'].map<DropdownMenuItem<String>>((String value) {
+      items: <String>['Street 1', 'Street 2', 'Street 3']
+          .map<DropdownMenuItem<String>>((String value) {
         return new DropdownMenuItem(value: value, child: Text(value));
       }).toList(),
       onChanged: (newValue) {
@@ -451,8 +504,11 @@ class _dataEntryState extends State<dataEntry> {
         setState(() => _chosenValue = newValue);
       },
       onSaved: (value) {
+        List D = ['Street 1', 'Street 2', 'Street 3'];
         //appends the textFormFeild into the Details List
-        Details.add(value);
+        int i = D.indexOf(value) + 1;
+
+        Details.add(i.toString());
       },
       value: _chosenValue,
       decoration: new InputDecoration(
@@ -467,13 +523,166 @@ class _dataEntryState extends State<dataEntry> {
         ),
         fillColor: textBoxBack,
         filled: true,
-        labelText: a,
+        labelText: 'Street Number',
         labelStyle: TextStyle(color: hintText, fontFamily: 'ProductSans'),
         border: new OutlineInputBorder(
           borderRadius: new BorderRadius.circular(10.0),
           borderSide: BorderSide(width: 100),
         ),
       ),
+      validator: (value) {
+        if (value == null) {
+          return 'Please enter the Street Number';
+        }
+      },
     );
   }
+
+  Widget _autofill() {
+    return SimpleAutocompleteFormField<Person>(
+      decoration: InputDecoration(
+        contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+        labelText: 'Relation',
+        enabledBorder: OutlineInputBorder(
+          borderRadius: new BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.black, width: 1.5),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: new BorderRadius.circular(10.0),
+          borderSide: BorderSide(color: Colors.black, width: 1.5),
+        ),
+        fillColor: textBoxBack,
+        filled: true,
+        labelStyle: TextStyle(color: hintText, fontFamily: 'ProductSans'),
+        border: new OutlineInputBorder(
+          borderRadius: new BorderRadius.circular(10.0),
+          borderSide: BorderSide(width: 100),
+        ),
+      ),
+      itemBuilder: (context, person) => Container(
+        decoration: BoxDecoration(
+          border: Border.symmetric(),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(left: 10, top: 6, bottom: 6),
+          child: Text(
+            person.name,
+            style: TextStyle(
+              fontSize: 18,
+              fontFamily: 'ProductSans',
+            ),
+          ),
+        ),
+      ),
+      onSearch: (search) async => people
+          .where((person) =>
+              person.name.toLowerCase().contains(search.toLowerCase()))
+          .toList(),
+      itemFromString: (string) {
+        final matches = people.where(
+            (person) => person.name.toLowerCase() == string.toLowerCase());
+        return matches.isEmpty ? null : matches.first;
+      },
+      onSaved: (value) {
+        setState(() => selectedPerson = value);
+        Details.add(value);
+      },
+      validator: (person) {
+        if (person == null) {
+          return 'Invalid Relation';
+        }
+      },
+    );
+  }
+
+  // int _selectedValue;
+  // void _showPicker(BuildContext ctx) {
+  //   showCupertinoModalPopup(
+  //       context: ctx,
+  //       builder: (_) => Container(
+  //             width: 300,
+  //             height: 250,
+  //             child: CupertinoPicker(
+  //               backgroundColor: Colors.white,
+  //               itemExtent: 30,
+  //               scrollController: FixedExtentScrollController(initialItem: 1),
+  //               children: [
+  //                 Text('Street 1', style: TextStyle(color: Colors.black)),
+  //                 Text('Street 2', style: TextStyle(color: Colors.black)),
+  //                 Text('Street 3', style: TextStyle(color: Colors.black)),
+  //               ],
+  //               onSelectedItemChanged: (value) {
+  //                 setState(() {
+  //                   _selectedValue = value + 1;
+  //                   Details.add(_selectedValue);
+  //                 });
+  //               },
+  //             ),
+  //           ));
+  // }
+
+  // Widget _picker() {
+  //   return Container(
+  //     height: 50,
+  //     decoration: BoxDecoration(
+  //         color: textBoxBack,
+  //         borderRadius: new BorderRadius.circular(10.0),
+  //         border: Border.all(
+  //           color: Colors.black,
+  //           width: 1.5,
+  //         )
+  //         //borderSide: BorderSide(color: Colors.black, width: 1.5),
+
+  //         ),
+  //     child: Row(
+  //       //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //       children: [
+  //         Padding(
+  //           padding: const EdgeInsets.only(left: 7),
+  //           child: _text,
+  //         ),
+  //         Padding(
+  //           padding: const EdgeInsets.only(left:130),
+  //           child: CupertinoButton(
+  //             child: Icon(
+  //               Icons.keyboard_arrow_down_rounded,
+  //               size: 35,
+  //               color: Colors.black,
+  //             ),
+  //             onPressed: () => _showPicker(context),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+
+  // Widget get _text {
+  //   if (_selectedValue == null) {
+  //     return Text(
+  //       'Street Number',
+  //       style: TextStyle(
+  //         color: hintText,
+  //         fontFamily: 'ProductSans',
+  //         fontSize: 16,
+  //       ),
+  //     );
+  //   } else {
+  //     return Text(
+  //       'Street $_selectedValue',
+  //       style: TextStyle(
+  //         color: text,
+  //         fontFamily: 'ProductSans',
+  //         fontSize: 16,
+  //       ),
+  //     );
+  //   }
+  // }
+}
+
+class Person {
+  Person(this.name);
+  final String name;
+  @override
+  String toString() => name;
 }

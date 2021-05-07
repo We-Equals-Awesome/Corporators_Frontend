@@ -17,7 +17,7 @@ class _wallFeedState extends State<wallFeed> {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20, top: 25),
+              padding: EdgeInsets.only(left: 20, top: 25),
               child: Text(
                 'Wall Feed',
                 style: TextStyle(
@@ -68,37 +68,43 @@ class _wallFeedState extends State<wallFeed> {
               side: BorderSide(width: 1)),
           color: textBoxBack,
           child: Padding(
-            padding: const EdgeInsets.only(left: 15, top: 10, bottom: 10),
-            child: Row(children: [
-              SizedBox(
-                width: 140,
-                child: _leftText(a, context)),
-              SizedBox(width:20),
-              Expanded(
-                child: Column(
+            padding: EdgeInsets.only(left: 15, top: 10, bottom: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(width: 140, child: _leftText(a, context)),
+                //SizedBox(width:MediaQuery.of(context).size.width*0.),
+                // Expanded(
+                //   child:
+                Padding(
+                  padding: EdgeInsets.only(right: 15),
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                           Icon(
-                                Icons.favorite_rounded,
-                                size: 35,
-                                color: submitGrey,
-                              ),
-                              
+                          Icon(
+                            Icons.favorite_rounded,
+                            size: 35,
+                            color: submitGrey,
+                          ),
                           _rightText(b, context),
-                          IconButton(
-                              icon: SvgPicture.asset(share), onPressed: () {}),
+                          Padding(
+                            padding: EdgeInsets.only(left: 15, right: 5),
+                            child: SvgPicture.asset(share),
+                          ),
                           _rightText(c, context)
                         ],
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 15),
+                        padding: EdgeInsets.only(left: 15),
                         child: _rightText(d, context),
                       )
-                    ]),
-              ),
-            ]),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -106,19 +112,18 @@ class _wallFeedState extends State<wallFeed> {
   }
 
   Widget _leftText(String a, BuildContext context) {
-    return  FittedBox(
-        fit: BoxFit.fitWidth,
-        child: Text(
-          a,
-          style: TextStyle(
-            fontSize: 25,
-            letterSpacing: 1,
-            fontFamily: 'ProductSans',
-            fontWeight: FontWeight.bold,
-            color: text,
-          ),
+    return FittedBox(
+      fit: BoxFit.fitWidth,
+      child: Text(
+        a,
+        style: TextStyle(
+          fontSize: 25,
+          letterSpacing: 1,
+          fontFamily: 'ProductSans',
+          fontWeight: FontWeight.bold,
+          color: text,
         ),
-      
+      ),
     );
   }
 
