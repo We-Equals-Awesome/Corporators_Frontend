@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'UI/login_page1.dart';
-import 'UI/buttom_nav_bar.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,9 +15,9 @@ class MyApp extends StatelessWidget {
        *  This value is used to decide whether or not to show the ALterDialogue box in login page.
        *  When the user opens the app then the AlterDialogue is not shown
        *  When the user is redirected to the Login page from the 'EnterYourDetailsPage',
-         then the AlterDialogue Box is  shown.
+       *   then the AlterDialogue Box is  shown.
       */
-      home: LoginPage1(0),
+      home: LoginPage1(0), //LoginPage1(0),
     );
   }
 }
