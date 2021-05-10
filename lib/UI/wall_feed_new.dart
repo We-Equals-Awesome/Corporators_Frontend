@@ -82,7 +82,7 @@ class _WallFeedNewState extends State<WallFeedNew> {
               hintText: s,
               hintStyle: TextStyle(
                   color: text,
-                  fontFamily: 'product-sans',
+                  fontFamily: 'ProductSans',
                   fontWeight:
                       s == 'Title' ? FontWeight.bold : FontWeight.normal,
                   fontSize: s == 'Title' ? 25 : 15),
@@ -103,7 +103,7 @@ class _WallFeedNewState extends State<WallFeedNew> {
           style: TextStyle(
               fontSize: a == 'Details' ? 20 : 15,
               fontWeight: a == 'Details' ? FontWeight.bold : FontWeight.normal,
-              fontFamily: 'product-sans',
+              fontFamily: 'ProductSans',
               color: text),
         ),
       ),
@@ -115,7 +115,7 @@ class _WallFeedNewState extends State<WallFeedNew> {
     return ElevatedButton(
       onPressed: pickImages,
       child:
-          Text(s, style: TextStyle(color: navIcon, fontFamily: 'product-sans')),
+          Text(s, style: TextStyle(color: navIcon, fontFamily: 'ProductSans')),
       style: ElevatedButton.styleFrom(
           primary: submitGrey,
           padding: EdgeInsets.symmetric(
@@ -200,7 +200,7 @@ class _WallFeedNewState extends State<WallFeedNew> {
             label: Text(
               'Post',
               style: TextStyle(
-                  color: navIcon, fontSize: 13.0, fontFamily: 'product-sans'),
+                  color: navIcon, fontSize: 13.0, fontFamily: 'ProductSans'),
             ),
             backgroundColor: submitGrey,
           ),

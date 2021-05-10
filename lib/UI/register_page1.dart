@@ -60,7 +60,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
                       style: TextStyle(
                           fontSize: MediaQuery.of(context).size.height * 0.035,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'product-sans',
+                          fontFamily: 'ProductSans',
                           color: text),
                     ),
                   ),
@@ -78,7 +78,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
                             Text(
                               'Continue',
                               style: TextStyle(
-                                  color: navIcon, fontFamily: 'product-sans'),
+                                  color: navIcon, fontFamily: 'ProductSans'),
                             ),
                             Icon(
                               Icons.arrow_forward,
@@ -97,7 +97,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
                                   fontSize: MediaQuery.of(context).size.height *
                                       0.015,
                                   fontWeight: FontWeight.bold,
-                                  fontFamily: 'product-sans'),
+                                  fontFamily: 'ProductSans'),
                               shape: new RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(30.0),
                               )),
@@ -215,7 +215,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
             fillColor: textBoxBack,
             filled: true,
             labelText: s,
-            labelStyle: TextStyle(color: hintText, fontFamily: 'product-sans'),
+            labelStyle: TextStyle(color: hintText, fontFamily: 'ProductSans'),
             border: new OutlineInputBorder(
               borderRadius: new BorderRadius.circular(10.0),
               borderSide: BorderSide(width: 100),
@@ -236,7 +236,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
             style: TextStyle(
                 fontSize: a == 'Create Account' ? 25 : 18,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'product-sans',
+                fontFamily: 'ProductSans',
                 color: text),
           ),
         ),
@@ -289,7 +289,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
                       'Personal Details',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'product-sans',
+                          fontFamily: 'ProductSans',
                           fontSize: 18,
                           color: text),
                     ),
@@ -310,7 +310,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
                     title: Text('Contact Details',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'product-sans',
+                            fontFamily: 'ProductSans',
                             fontSize: 18,
                             color: text)),
                     isActive: true,
@@ -326,7 +326,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
                   title: Text('Voter Details',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'product-sans',
+                          fontFamily: 'ProductSans',
                           fontSize: 18,
                           color: text)),
                   isActive: true,
@@ -361,8 +361,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
                                 filled: true,
                                 labelText: 'Date of Birth',
                                 labelStyle: TextStyle(
-                                    color: hintText,
-                                    fontFamily: 'product-sans'),
+                                    color: hintText, fontFamily: 'ProductSans'),
                                 border: new OutlineInputBorder(
                                   borderRadius: new BorderRadius.circular(10.0),
                                   borderSide: BorderSide(width: 100),
@@ -438,11 +437,11 @@ class _RegisterPage1State extends State<RegisterPage1> {
                         child: Text(
                           'Next',
                           style: TextStyle(
-                              color: navIcon, fontFamily: 'product-sans'),
+                              color: navIcon, fontFamily: 'ProductSans'),
                         ),
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all<Color>(submitGrey),
+                              MaterialStateProperty.all(submitGrey),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
@@ -457,11 +456,10 @@ class _RegisterPage1State extends State<RegisterPage1> {
                       child: Text(
                         'Back',
                         style: TextStyle(
-                            color: navIcon, fontFamily: 'product-sans'),
+                            color: navIcon, fontFamily: 'ProductSans'),
                       ),
                       style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(submitGrey),
+                        backgroundColor: MaterialStateProperty.all(submitGrey),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
@@ -485,7 +483,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
           label: Row(children: <Widget>[
             Text(
               'Continue',
-              style: TextStyle(color: navIcon, fontFamily: 'product-sans'),
+              style: TextStyle(color: navIcon, fontFamily: 'ProductSans'),
             ),
             Icon(
               Icons.arrow_forward,

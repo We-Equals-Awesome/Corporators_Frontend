@@ -47,7 +47,7 @@ class _MapPageState extends State<MapPage> {
             label: Text(
               'Submit',
               style: TextStyle(
-                  color: navIcon, fontSize: 13.0, fontFamily: 'product-sans'),
+                  color: navIcon, fontSize: 13.0, fontFamily: 'ProductSans'),
             ),
             backgroundColor: submitGrey,
           ),

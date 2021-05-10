@@ -87,7 +87,7 @@ class _RegisterPage3State extends State<RegisterPage3> {
             fillColor: textBoxBack,
             filled: true,
             labelText: s,
-            labelStyle: TextStyle(color: hintText, fontFamily: 'product-sans'),
+            labelStyle: TextStyle(color: hintText, fontFamily: 'ProductSans'),
             border: new OutlineInputBorder(
               borderRadius: new BorderRadius.circular(10.0),
               borderSide: BorderSide(width: 100),
@@ -108,7 +108,7 @@ class _RegisterPage3State extends State<RegisterPage3> {
             style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'product-sans'),
+                fontFamily: 'ProductSans'),
           ),
         ),
       );
@@ -145,7 +145,7 @@ class _RegisterPage3State extends State<RegisterPage3> {
                   fontSize: MediaQuery.of(context).size.height * 0.035,
                   fontWeight: FontWeight.bold,
                   color: text,
-                  fontFamily: 'product-sans'),
+                  fontFamily: 'ProductSans'),
             ),
             alignment: Alignment.bottomLeft,
             margin: new EdgeInsets.symmetric(
@@ -170,7 +170,7 @@ class _RegisterPage3State extends State<RegisterPage3> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: text,
-                          fontFamily: 'product-sans'),
+                          fontFamily: 'ProductSans'),
                     ),
                     isActive: true,
                     content: Column(
@@ -189,7 +189,7 @@ class _RegisterPage3State extends State<RegisterPage3> {
                     title: Text('Contact Details',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontFamily: 'product-sans',
+                            fontFamily: 'ProductSans',
                             fontSize: 18,
                             color: text)),
                     isActive: true,
@@ -205,7 +205,7 @@ class _RegisterPage3State extends State<RegisterPage3> {
                   title: Text('Address',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'product-sans',
+                          fontFamily: 'ProductSans',
                           fontSize: 18,
                           color: text)),
                   isActive: true,
@@ -255,11 +255,11 @@ class _RegisterPage3State extends State<RegisterPage3> {
                         child: Text(
                           'Next',
                           style: TextStyle(
-                              color: navIcon, fontFamily: 'product-sans'),
+                              color: navIcon, fontFamily: 'ProductSans'),
                         ),
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all<Color>(submitGrey),
+                              MaterialStateProperty.all(submitGrey),
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
@@ -274,11 +274,10 @@ class _RegisterPage3State extends State<RegisterPage3> {
                       child: Text(
                         'Back',
                         style: TextStyle(
-                            color: navIcon, fontFamily: 'product-sans'),
+                            color: navIcon, fontFamily: 'ProductSans'),
                       ),
                       style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all<Color>(submitGrey),
+                        backgroundColor: MaterialStateProperty.all(submitGrey),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
@@ -301,7 +300,7 @@ class _RegisterPage3State extends State<RegisterPage3> {
           label: Text(
             'Submit',
             style: TextStyle(
-                color: navIcon, fontSize: 13.0, fontFamily: 'product-sans'),
+                color: navIcon, fontSize: 13.0, fontFamily: 'ProductSans'),
           ),
           backgroundColor: submitGrey,
         ),

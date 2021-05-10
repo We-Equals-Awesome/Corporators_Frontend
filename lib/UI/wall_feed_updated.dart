@@ -62,7 +62,7 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
                   color: text,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'product-sans',
+                  fontFamily: 'ProductSans',
                 )
               : TextStyle(color: text, fontSize: 15),
           controller: con,
@@ -88,7 +88,7 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
               hintText: s,
               hintStyle: TextStyle(
                   color: text,
-                  fontFamily: 'product-sans',
+                  fontFamily: 'ProductSans',
                   fontWeight:
                       s == 'Title' ? FontWeight.bold : FontWeight.normal,
                   fontSize: s == 'Title' ? 25 : 15),
@@ -109,7 +109,7 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
           style: TextStyle(
               fontSize: a == 'Details' ? 20 : 15,
               fontWeight: a == 'Details' ? FontWeight.bold : FontWeight.normal,
-              fontFamily: 'product-sans',
+              fontFamily: 'ProductSans',
               color: text),
         ),
       ),
@@ -121,7 +121,7 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
     return ElevatedButton(
       onPressed: pickImages,
       child:
-          Text(s, style: TextStyle(color: navIcon, fontFamily: 'product-sans')),
+          Text(s, style: TextStyle(color: navIcon, fontFamily: 'ProductSans')),
       style: ElevatedButton.styleFrom(
           primary: submitGrey,
           padding: EdgeInsets.symmetric(
@@ -153,7 +153,7 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
         style: TextStyle(
           color: text,
           fontSize: MediaQuery.of(context).size.height * 0.03,
-          fontFamily: 'product-sans',
+          fontFamily: 'ProductSans',
         ));
   }
 
@@ -251,7 +251,7 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
             label: Text(
               'Post',
               style: TextStyle(
-                  color: navIcon, fontSize: 13.0, fontFamily: 'product-sans'),
+                  color: navIcon, fontSize: 13.0, fontFamily: 'ProductSans'),
             ),
             backgroundColor: submitGrey,
           ),

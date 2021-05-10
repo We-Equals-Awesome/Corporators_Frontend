@@ -52,7 +52,7 @@ class _LoginPage1State extends State<LoginPage1> {
             ),
             filled: true,
             labelStyle:
-                new TextStyle(color: hintText, fontFamily: 'product-sans'),
+                new TextStyle(color: hintText, fontFamily: 'ProductSans'),
             labelText: "Phone Number",
             fillColor: textBoxBack,
           ),
@@ -78,7 +78,7 @@ class _LoginPage1State extends State<LoginPage1> {
                   MaterialPageRoute(builder: (context) => RegisterPage1()));
             },
       child: Text(s == 'Generate OTP' ? 'Generate OTP' : 'Create',
-          style: TextStyle(color: navIcon, fontFamily: 'product-sans')),
+          style: TextStyle(color: navIcon, fontFamily: 'ProductSans')),
       style: ElevatedButton.styleFrom(
           primary: submitGrey,
           padding: EdgeInsets.symmetric(
@@ -118,7 +118,7 @@ class _LoginPage1State extends State<LoginPage1> {
                   style: TextStyle(
                       fontSize: MediaQuery.of(context).size.height * 0.035,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'product-sans',
+                      fontFamily: 'ProductSans',
                       color: text),
                 ),
                 SizedBox(height: 10),
@@ -133,7 +133,7 @@ class _LoginPage1State extends State<LoginPage1> {
                         child: Text(
                           'Okay',
                           style: TextStyle(
-                              color: navIcon, fontFamily: 'product-sans'),
+                              color: navIcon, fontFamily: 'ProductSans'),
                         ),
                         style: ElevatedButton.styleFrom(
                             primary: submitGrey,
@@ -198,7 +198,7 @@ class _LoginPage1State extends State<LoginPage1> {
                               fontSize:
                                   MediaQuery.of(context).size.height * 0.035,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'product-sans'),
+                              fontFamily: 'ProductSans'),
                         ),
                       ),
                       SizedBox(
@@ -219,7 +219,7 @@ class _LoginPage1State extends State<LoginPage1> {
                               fontSize:
                                   MediaQuery.of(context).size.height * 0.017,
                               fontWeight: FontWeight.bold,
-                              fontFamily: 'product-sans'),
+                              fontFamily: 'ProductSans'),
                         ),
                       ),
                       SizedBox(

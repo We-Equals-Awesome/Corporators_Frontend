@@ -115,7 +115,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
             fillColor: textBoxBack,
             filled: true,
             labelText: s,
-            labelStyle: TextStyle(color: hintText, fontFamily: 'product-sans'),
+            labelStyle: TextStyle(color: hintText, fontFamily: 'ProductSans'),
             suffixIcon: IconButton(
               onPressed: _toggleVisibility,
               icon: _isHidden
@@ -164,7 +164,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
             fillColor: textBoxBack,
             filled: true,
             labelText: s,
-            labelStyle: TextStyle(color: hintText, fontFamily: 'product-sans'),
+            labelStyle: TextStyle(color: hintText, fontFamily: 'ProductSans'),
             suffixIcon: IconButton(
               onPressed: _toggleCVisibility,
               icon: _isCHidden
@@ -189,7 +189,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
           style: TextStyle(
               fontSize: s == 'Almost Done' ? 27 : 17,
               fontWeight: FontWeight.bold,
-              fontFamily: 'product-sans',
+              fontFamily: 'ProductSans',
               color: text),
         ),
         alignment: Alignment.bottomLeft,
@@ -263,7 +263,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
                       textStyle: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'product-sans'),
+                          fontFamily: 'ProductSans'),
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(30.0),
                       )),
