@@ -44,3 +44,20 @@ This Repository Handles Frontend for Corporator's Application
 <img src="https://user-images.githubusercontent.com/73482596/114283943-42088e80-9a6a-11eb-8b80-c3651b98e59c.jpeg" width="250" height="500">
 
 <img src="https://user-images.githubusercontent.com/73482596/114283894-f0f89a80-9a69-11eb-94f8-0783ae3e02fc.jpeg" width="250" height="500">
+
+# Adding Google Maps to your app
+
+<p>To add goggle maps to your app, you need to make the the following two changes.</p>
+
+*  Step 1 
+
+<p>Specify your API key in the application manifest android/app/src/main/AndroidManifest.xml</p>
+
+![1](https://user-images.githubusercontent.com/73482596/117604797-ebc76200-b173-11eb-9d91-230a60338c92.JPG)
+
+*  Step 2
+
+<p>In your swift code, specify your API key in the application delegate ios/Runner/AppDelegate.swift:</p>
+
+![2](https://user-images.githubusercontent.com/73482596/117604805-f124ac80-b173-11eb-8946-a7198e6dc7d2.JPG)
+
