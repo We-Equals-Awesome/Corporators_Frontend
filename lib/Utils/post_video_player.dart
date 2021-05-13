@@ -26,10 +26,13 @@ class _ChewieListItemState extends State<ChewieListItem> {
     // Wrapper on top of the videoPlayerController
     _chewieController = ChewieController(
       videoPlayerController: widget.videoPlayerController,
-      //aspectRatio: 16 / 9,
+      aspectRatio: 16 / 9,
       // Prepare the video to be played and display the first frame
       autoInitialize: true,
+      showControlsOnInitialize: false,
       looping: widget.looping,
+      allowPlaybackSpeedChanging: false,
+
       // Errors can occur for example when trying to play a video
       // from a non-existent URL
       errorBuilder: (context, errorMessage) {

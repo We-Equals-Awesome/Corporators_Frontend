@@ -219,7 +219,6 @@ class _AdminComplaintAllotState extends State<AdminComplaintAllot> {
           ),
             ],
           ),
-
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
@@ -229,12 +228,21 @@ class _AdminComplaintAllotState extends State<AdminComplaintAllot> {
         elevation: 2,
         backgroundColor: submitGrey,
         onPressed: () {
-          // if(valueChose1.isEmpty){
-          //   print("volenteer 1 is null");
-          // }
-          print("Volenteer 1 name is = "+valueChose1);
-          print("Volenteer 2 name is = "+valueChose2);
-          Navigator.pop(context);
+          if(valueChose1 == null && valueChose2 == null){
+            print("Both Volenteer cant be null");
+          }
+          else if(valueChose1 != null && valueChose2 == null){
+            print("Volenteer 2  null");
+          }
+          else if(valueChose1 != null && valueChose2 != null){
+            print("no  null");
+          }
+          else if(valueChose1 == null && valueChose2 != null){
+            print("please enter vollenteer 1 name");
+          }
+          // print("Volenteer 1 name is = "+valueChose1);
+          // print("Volenteer 2 name is = "+valueChose2);
+          // Navigator.pop(context);
         },
       ),
 

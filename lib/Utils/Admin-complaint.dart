@@ -1,5 +1,7 @@
 //class complaints
 // Dummy complaint
+String allotment1 = 'kishore' ;
+String allotment2 = 'RD burman';
 
 class AdminComplaint {
   final String title;

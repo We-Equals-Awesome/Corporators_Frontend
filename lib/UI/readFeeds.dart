@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:newsfeed_screen/Utils/chewie_item.dart';
+import 'package:newsfeed_screen/Utils/post_video_player.dart';
 import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:newsfeed_screen/Utils/constant.dart';
 import 'package:newsfeed_screen/Utils/news.dart';
@@ -20,7 +20,6 @@ class ReadFeeds extends StatefulWidget {
 
 class _ReadFeedsState extends State<ReadFeeds> {
   int textFontSize = 20;
-  double doubleConvert = 1.0;
   VideoPlayerController _controller;
   Future<void> _initializeVideoPlayerFuture;
 
@@ -120,7 +119,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
                   //content of the news
                   widget.news.content,
                   style: TextStyle(
-                      fontSize: textFontSize * doubleConvert,
+                      fontSize: textFontSize.toDouble(),
                       fontFamily: 'ProductSans',
                       fontWeight: FontWeight.normal),
                 ),
@@ -167,13 +166,8 @@ class _ReadFeedsState extends State<ReadFeeds> {
                             'TITLE ${"\n"}${widget.news.title}${"\n\n\n"}INFO ${"\n"}${widget.news.subtitle}');
                       },
                     ),
-                    //total shared news
-                    //Text((widget.news.share).toString(), style: detailContent),
-                    // SizedBox(width: 20.0),
-                    //Icon(Icons.more_vert, color: blk, size: 24.0),
                   ],
                 ),
-                //SizedBox(height: 12.0),
               ],
             ),
           ),

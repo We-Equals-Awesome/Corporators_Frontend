@@ -31,7 +31,7 @@ List<News> trendingList = [
     favorite: 700,
     share: 45,
     time: "Posted on 11/02/21 at 12:51 PM",
-    title: "(Image post)Bad road condition in my locality",
+    title: "pics of Bad road condition in my locality",
     postType: "img",
     post:
     "https://media.istockphoto.com/photos/broken-road-in-the-woods-picture-id531854696?s=612x612",
@@ -45,10 +45,10 @@ List<News> trendingList = [
     favorite: 502,
     share: 21,
     time: "Posted on 31/11/20 at 12:51 PM",
-    title: "(Video Post)Big Hole in the road",
+    title: "Big Hole in the road",
     postType: "vid",
     post:
-    "https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4",
+    "https://user-images.githubusercontent.com/47321390/117865775-f0932f80-b2b3-11eb-9b0c-cbe575efeb84.mp4",
     subtitle:
     "Ignoring evidence that accidents keep occurring on a certain road due to bad conditions , Changing patterns by pedestrians and vehicles ",
     content:
@@ -59,7 +59,7 @@ List<News> trendingList = [
     favorite: 723,
     share: 51,
     time: "Posted on 18/03/21 at 16:51 PM",
-    title: "(Image Post)Dangerous street drop-offs, like ravines or cliffs",
+    title: "Dangerous street drop-offs, like ravines or cliffs",
     postType: "img",
     post:
     "https://assets.change.org/photos/2/ma/ye/cqmaYEcvkOVzQbb-800x450-noPad.jpg?1509361645",
@@ -73,10 +73,10 @@ List<News> trendingList = [
     favorite: 712,
     share: 30,
     time: "Posted on 15/01/21 at 14:15 PM",
-    title: "(Video post)Hazards obstructing visibility at intersections and crosswalks",
+    title: "Hazards obstructing visibility at intersections and crosswalks",
     postType: "vid",
     post:
-    "https://assets.mixkit.co/videos/preview/mixkit-a-girl-blowing-a-bubble-gum-at-an-amusement-park-1226-large.mp4",
+    "https://user-images.githubusercontent.com/47321390/117865775-f0932f80-b2b3-11eb-9b0c-cbe575efeb84.mp4",
     subtitle:
     "Poorly-maintained roads cause half of the fatal auto accidents that happen each year in the United States",
     content:
@@ -87,10 +87,10 @@ List<News> trendingList = [
     favorite: 421,
     share: 15,
     time: "Posted on 15/01/21 at 14:15 PM",
-    title: "(Video post)Hyderabad among nine Indian cities with poor road connectivity",
+    title: "Hyderabad among nine Indian cities with poor road connectivity",
     postType: "vid",
     post:
-    "https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4",
+    "https://user-images.githubusercontent.com/47321390/117865775-f0932f80-b2b3-11eb-9b0c-cbe575efeb84.mp4",
     subtitle:
     "Nine out of 100 cities with the worst street-network connectivity are from India, according to a new report. Vijayawada ranks 35th in the list with an SNDi (street-network disconnectedness index) score of 4.9, while Hyderabad ranks 80th with an SNDi score of 3.8. Notably, Vijayawada is the third-worst among the nine Indian cities.",
     content:
