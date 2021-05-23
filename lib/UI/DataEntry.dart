@@ -7,11 +7,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'Residents.dart';
 import 'package:simple_autocomplete_formfield/simple_autocomplete_formfield.dart';
 
+//this page is used to collect the details of the Users to store them in the Database
+
+//the Details list is used to store the details of the User has entered in the TextFormFeilds
 var Details = new List();
+//the Address List is used to store the Street anf House number of the User has entered in the TextFormFeilds
 var Address = new List();
 
+//the people is a list of class Person which consists of all the family members relationships
 final people = <Person>[
-  Person('Self'),
   Person('Father'),
   Person('Mother'),
   Person('Brother'),
@@ -32,27 +36,38 @@ final people = <Person>[
   Person('Grand Mother')
 ];
 
+//constructor to get the Street and House number from the other pages whenever necessary
 class dataEntry extends StatefulWidget {
+  //address list to store the street and house number
   var address = new List();
+  //sflag to check if the family member is head of family or a different member
   int sflag;
+  //constructor of the dataEntry class
   dataEntry({this.address, this.sflag});
   @override
   _dataEntryState createState() => _dataEntryState(address, sflag);
 }
 
 class _dataEntryState extends State<dataEntry> {
+  //_chosenvalue represents the value chosen in the dropdown for the Street Number
   String _chosenValue;
+  //selectedPerson represents the relationship selected
   Person selectedPerson;
+  //address list to store the street and house number
   var address = new List();
+  //sflag to check if the family member is head of family or a different member
   int sflag = 0;
+  //constructor of the _dataEntryState class
   _dataEntryState(this.address, this.sflag);
-  //sets the Details list back to empty list when a new state is begun
+
+  //to set the Details and Address list to empty when a new state is begun
   void initState() {
     Details = [];
     Address = [];
   }
 
-  int _currentStep = 0; //variable for the stepper count
+  //variable for the stepper count
+  int _currentStep = 0;
 
   //variable for storing the Date which is initilaized to current date
   DateTime selectedDate = DateTime.now();
@@ -64,10 +79,9 @@ class _dataEntryState extends State<dataEntry> {
 
   @override
   Widget build(BuildContext context) {
-    //stroing the date clicked by the user in the TextEditingController
+    //storing the date clicked by the user in the TextEditingController
     _dateController.text = "${selectedDate.toLocal()}".split(' ')[0];
     return Scaffold(
-      //defines the background of the Application; Color background is defined in Utils/color.dart
       backgroundColor: background,
       body: SafeArea(
         child: Form(
@@ -75,10 +89,9 @@ class _dataEntryState extends State<dataEntry> {
           child: Container(
             child: Column(
               children: [
-                //calling the textbox Widget function
+                //calling the _displayText function which is defined below
                 _displayText('Enter the Details', context),
                 Expanded(
-                  //Theme is called to change the colors of the Stepper Widget from default to the required Colors
                   child: Theme(
                     data: ThemeData(
                       //all the colors are set to black as per the requirements in the design
@@ -86,10 +99,9 @@ class _dataEntryState extends State<dataEntry> {
                       primaryColor: Colors.black,
                       colorScheme: ColorScheme.light(primary: Colors.black),
                     ),
-                    //the Stepper Widget is called here
+                    //Stepper Widget
                     child: Stepper(
-                      //controlsBuilder is used for changing the continue and cancel
-                      //button of the original stepper to the required buttons
+                      //controlsBuilder to change the Continue and Cancel button as per the design
                       controlsBuilder: (BuildContext context,
                           {VoidCallback onStepContinue,
                           VoidCallback onStepCancel}) {
@@ -97,6 +109,7 @@ class _dataEntryState extends State<dataEntry> {
                           padding: EdgeInsets.only(top: 20, left: 0),
                           child: Row(
                             children: [
+                              //Next Button
                               SizedBox(
                                 width: 75,
                                 child: TextButton(
@@ -122,6 +135,7 @@ class _dataEntryState extends State<dataEntry> {
                                   ),
                                 ),
                               ),
+                              //Back Button
                               Padding(
                                 padding: EdgeInsets.only(left: 10),
                                 child: SizedBox(
@@ -172,7 +186,7 @@ class _dataEntryState extends State<dataEntry> {
                           isActive: true,
                           content: Column(
                             children: [
-                              //calling the box Widget function
+                              //calling the _textForm function which is defined below
                               _textForm('First Name', context),
                               _textForm('Last Name', context)
                             ],
@@ -191,12 +205,16 @@ class _dataEntryState extends State<dataEntry> {
                           isActive: true,
                           content: Column(
                             children: [
+                              //if the User is head of the family then take Street and House number inputs otherwise don't
                               sflag == 1
+                                  //calling the _dropdown function which is defined below
                                   ? _dropdown(context)
                                   : SizedBox(width: 0, height: 0),
                               sflag == 1
+                                  //calling the _textForm function which is defined below
                                   ? _textForm('House Number', context)
                                   : SizedBox(width: 0, height: 0),
+                              //calling the _textForm function which is defined below
                               _textForm('Phone Number', context),
                               _textForm('Email', context)
                             ],
@@ -215,8 +233,6 @@ class _dataEntryState extends State<dataEntry> {
                           isActive: true,
                           content: Column(
                             children: [
-                              //Since the design requires the Calender beside the textField, Row widget is used
-                              //The row consists of the box Widget function and the Icon Widget
                               Row(
                                 children: [
                                   Container(
@@ -227,6 +243,7 @@ class _dataEntryState extends State<dataEntry> {
                                         //saving the selected date into the Details List
                                         Details.add(value);
                                       },
+                                      //validator to check if the user has entered the date or not
                                       validator: (value) {
                                         if (value.isEmpty) {
                                           return 'Please enter the Date';
@@ -250,7 +267,7 @@ class _dataEntryState extends State<dataEntry> {
                                       ),
                                     ),
                                   ),
-                                  //following is the Calender icon of svg type
+                                  //IconButton with Calender icon of svg type
                                   IconButton(
                                     padding: EdgeInsets.only(left: 15),
                                     icon: SvgPicture.asset(
@@ -258,6 +275,7 @@ class _dataEntryState extends State<dataEntry> {
                                       width: MediaQuery.of(context).size.width *
                                           0.2,
                                     ),
+                                    //calling the different calendars based on the platforms
                                     onPressed: () {
                                       if (Platform.isIOS)
                                         _iosDate();
@@ -267,7 +285,7 @@ class _dataEntryState extends State<dataEntry> {
                                   ),
                                 ],
                               ),
-                              //calling the box Widget function
+                              //calling the _textForm function which is defined below
                               _textForm('Voter ID', context),
                               _textForm('Aadhar Number', context)
                             ],
@@ -284,8 +302,9 @@ class _dataEntryState extends State<dataEntry> {
                             ),
                           ),
                           isActive: true,
-                          content: _autofill(),
-                        ),
+                          //calling the _autofill or _headoffamily function which are defined below
+                          content: sflag == 0 ? _autofill() : _headoffamily(),
+                        )
                       ],
                     ),
                   ),
@@ -295,7 +314,7 @@ class _dataEntryState extends State<dataEntry> {
           ),
         ),
       ),
-      //The floating action button for the Submit Button as per the design
+      //to display the floating action button
       floatingActionButton: SizedBox(
         width: 125,
         height: 41,
@@ -315,7 +334,7 @@ class _dataEntryState extends State<dataEntry> {
     );
   }
 
-  //following are the functions for the working of the Stepper Widget
+  //functions for the working of the Stepper Widget
   tapped(int step) {
     setState(() => _currentStep = step);
   }
@@ -328,20 +347,19 @@ class _dataEntryState extends State<dataEntry> {
     _currentStep > 0 ? setState(() => _currentStep -= 1) : null;
   }
 
+  //function to display the TextFormFeild
   Widget _textForm(String a, BuildContext context) {
-    //function for the textFormFeilds
     return Padding(
       padding: EdgeInsets.only(top: 10),
       child: Container(
         child: TextFormField(
-          //autofillHints: ['Father','Mother','Sister','Sister-in-Law'],
-          // enableSuggestions: true,
           textInputAction: TextInputAction.next,
           autocorrect: false,
+          //saving the entered details into the Details List
           onSaved: (value) {
-            //appends the textFormFeild into the Details List
             Details.add(value);
           },
+          //validator to check if the user has entered the details or not
           validator: (value) {
             if (value.isEmpty) {
               return 'Please enter the ' + a;
@@ -372,8 +390,8 @@ class _dataEntryState extends State<dataEntry> {
     );
   }
 
+  //function to display the Text
   Widget _displayText(String a, BuildContext context) {
-    //function for displaying any text as per the requirement
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
@@ -390,12 +408,14 @@ class _dataEntryState extends State<dataEntry> {
     );
   }
 
-  //following is the code for sacing the form data and validating if text is entered or not
+  //code for saving the form data and validating if text is entered or not
   void _submitDetails() {
     final FormState formState = _formKey.currentState;
     _formKey.currentState.save();
     if (formState.validate()) {
-      //print(Details);
+      if (sflag == 1) {
+        Details.add('Self');
+      }
       Address.add(Details[3]);
       Address.add(Details[2]);
       address = Address;
@@ -405,7 +425,7 @@ class _dataEntryState extends State<dataEntry> {
     }
   }
 
-  //following is the code for selecting the date
+  //code for selecting the date if the platform is android
   _androidDate(BuildContext context) async {
     DateTime picked = await showDatePicker(
       context: context,
@@ -429,6 +449,7 @@ class _dataEntryState extends State<dataEntry> {
     }
   }
 
+  //code for selecting the date if the platform is IOS
   _iosDate() async {
     DateTime picked = await showModalBottomSheet<DateTime>(
       context: context,
@@ -486,8 +507,8 @@ class _dataEntryState extends State<dataEntry> {
     }
   }
 
+  //function to display the DropDownMenu for selecting the Street Number
   Widget _dropdown(BuildContext context) {
-    //function for the textFormFeilds
     return DropdownButtonFormField(
       icon: Icon(
         Icons.keyboard_arrow_down_rounded,
@@ -500,14 +521,12 @@ class _dataEntryState extends State<dataEntry> {
         return new DropdownMenuItem(value: value, child: Text(value));
       }).toList(),
       onChanged: (newValue) {
-        // do other stuff with _category
         setState(() => _chosenValue = newValue);
       },
       onSaved: (value) {
         List D = ['Street 1', 'Street 2', 'Street 3'];
-        //appends the textFormFeild into the Details List
+        //adding the Street Number to the Details List
         int i = D.indexOf(value) + 1;
-
         Details.add(i.toString());
       },
       value: _chosenValue,
@@ -538,6 +557,7 @@ class _dataEntryState extends State<dataEntry> {
     );
   }
 
+  //code to autofill the relationship of the family member
   Widget _autofill() {
     return SimpleAutocompleteFormField<Person>(
       decoration: InputDecoration(
@@ -583,10 +603,12 @@ class _dataEntryState extends State<dataEntry> {
             (person) => person.name.toLowerCase() == string.toLowerCase());
         return matches.isEmpty ? null : matches.first;
       },
+      //adding the relationship to the Details List
       onSaved: (value) {
         setState(() => selectedPerson = value);
         Details.add(value);
       },
+      //validator to check if the user has entered the details or not
       validator: (person) {
         if (person == null) {
           return 'Invalid Relation';
@@ -595,6 +617,50 @@ class _dataEntryState extends State<dataEntry> {
     );
   }
 
+  //function to display Container of member is head of family
+  Widget _headoffamily() {
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 5, top: 10),
+        child: Text(
+          'Head of the Family',
+          style: TextStyle(
+            fontSize: 18,
+            fontFamily: 'ProductSans',
+          ),
+        ),
+      ),
+      width: double.infinity,
+      height: 50,
+      //color: textBoxBack,
+      decoration: BoxDecoration(
+        color: textBoxBack,
+        border: Border.all(
+          color: Colors.black,
+          width: 1.5,
+        ),
+        borderRadius: BorderRadius.circular(10),
+        //shape: BoxShape.rectangle,
+      ),
+
+      // Positioned(
+      //     left: 50,
+      //     top: 12,
+      //     child: Container(
+      //       padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
+      //       color: background,
+      //       child: Text(
+      //         'Relationship',
+      //         style: TextStyle(
+      //           fontSize: 18,
+      //           fontFamily: 'ProductSans',
+      //         ),
+      //       ),
+      //     )),
+    );
+  }
+
+  //cupertino street number picker if necessary
   // int _selectedValue;
   // void _showPicker(BuildContext ctx) {
   //   showCupertinoModalPopup(

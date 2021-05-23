@@ -1,11 +1,16 @@
-import 'package:cropapp/UI/ViewAll.dart';
+import 'package:cropapp/UI/viewAllCitizen.dart';
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
 import 'DataEntry.dart';
 
+//page to display the members of the family whose details have been collected
+
 class resident extends StatefulWidget {
+  //address list to store the street and house number
   var address = new List();
+  //sflag to check if the family member is head of family or a different member
   int sflag;
+  //constructor of the resident class
   resident({this.address, this.sflag});
 
   @override
@@ -13,8 +18,11 @@ class resident extends StatefulWidget {
 }
 
 class _residentState extends State<resident> {
+  //address list to store the street and house number
   var address = new List();
+  //sflag to check if the family member is head of family or a different member
   int sflag;
+  //constructor of the _residentState class
   _residentState(this.address, this.sflag);
 
   @override
@@ -49,9 +57,11 @@ class _residentState extends State<resident> {
                 ),
               ),
             ),
+            //calling the relationName functioin which is defined below
             relationName('Head', context),
             Wrap(
               children: [
+                //calling the relationName functioin which is defined below
                 relationName('Father', context),
                 relationName('Mother', context),
                 relationName('Son', context),
@@ -63,7 +73,7 @@ class _residentState extends State<resident> {
                 relationName('Father-In-Law', context),
                 relationName('Neice', context),
                 SizedBox(
-                  width: 100,
+                  width: 90,
                   child: Padding(
                     padding: EdgeInsets.only(top: 20),
                     child: IconButton(
@@ -87,6 +97,7 @@ class _residentState extends State<resident> {
           ],
         ),
       ),
+      //to display the floating action button
       floatingActionButton: SizedBox(
         width: 125,
         height: 41,
@@ -111,6 +122,7 @@ class _residentState extends State<resident> {
     );
   }
 
+  //function to display the members of the family who are added into the database
   Widget relationName(String a, BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 15),

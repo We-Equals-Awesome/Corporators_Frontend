@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cropapp/Utils/Icons.dart';
 
+//page to display the wall feed in the form of cards in a list
+
 class wallFeed extends StatefulWidget {
   @override
   _wallFeedState createState() => _wallFeedState();
@@ -27,6 +29,7 @@ class _wallFeedState extends State<wallFeed> {
                     color: text),
               ),
             ),
+            //calling the _card function which is defined below
             _card('Hello World', '23', '17', '15/05/21', context),
             _card('Hiiiiiiiiiiiiii', '56', '20', '06/08/2018', context),
             _card('Welcome Back', '89', '32', '21/21/21', context),
@@ -38,6 +41,7 @@ class _wallFeedState extends State<wallFeed> {
           ],
         ),
       ),
+      //to display the floating action button
       floatingActionButton: SizedBox(
         width: 125,
         height: 41,
@@ -57,6 +61,7 @@ class _wallFeedState extends State<wallFeed> {
     );
   }
 
+  //function to display the Card
   Widget _card(String a, String b, String c, String d, BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 20, left: 20, right: 20),
@@ -72,10 +77,11 @@ class _wallFeedState extends State<wallFeed> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(width: 140, child: _leftText(a, context)),
-                //SizedBox(width:MediaQuery.of(context).size.width*0.),
-                // Expanded(
-                //   child:
+                SizedBox(
+                  width: 140,
+                  //calling the _leftText function which is defined below
+                  child: _leftText(a, context),
+                ),
                 Padding(
                   padding: EdgeInsets.only(right: 15),
                   child: Column(
@@ -88,16 +94,19 @@ class _wallFeedState extends State<wallFeed> {
                             size: 35,
                             color: submitGrey,
                           ),
+                          //calling the _rightText function which is defined below
                           _rightText(b, context),
                           Padding(
                             padding: EdgeInsets.only(left: 15, right: 5),
                             child: SvgPicture.asset(share),
                           ),
+                          //calling the _rightText function which is defined below
                           _rightText(c, context)
                         ],
                       ),
                       Padding(
                         padding: EdgeInsets.only(left: 15),
+                        //calling the _rightText function which is defined below
                         child: _rightText(d, context),
                       )
                     ],
@@ -111,6 +120,7 @@ class _wallFeedState extends State<wallFeed> {
     );
   }
 
+  //function to display the text on the left of the card
   Widget _leftText(String a, BuildContext context) {
     return FittedBox(
       fit: BoxFit.fitWidth,
@@ -127,6 +137,7 @@ class _wallFeedState extends State<wallFeed> {
     );
   }
 
+  //function to display the text on the right of the card
   Widget _rightText(String a, BuildContext context) {
     return Text(
       a,
@@ -140,6 +151,7 @@ class _wallFeedState extends State<wallFeed> {
     );
   }
 
+  //dynamic like button if necessary
   // Widget Favorite() {
   //   return IconButton(
   //       icon: Icon(
