@@ -1,4 +1,4 @@
-import 'package:cropapp/UI/citizenPage.dart';
+import 'package:cropapp/Pages/citizenPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
