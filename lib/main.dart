@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
        *  When the user is redirected to the Login page from the 'EnterYourDetailsPage',
        *   then the AlterDialogue Box is  shown.
        */
-
       home: LoginPage1(0),
     );
   }
