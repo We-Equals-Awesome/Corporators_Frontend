@@ -23,9 +23,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
   VideoPlayerController _controller;
   Future<void> _initializeVideoPlayerFuture;
 
-  // var screenSize = MediaQuery.of(context).size;
-  // var width = screenSize.width;
-  // var height = screenSize.height;
+
   Widget _detectpost() {
     if (widget.news.postType == "img") {
       return Container(

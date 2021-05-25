@@ -116,40 +116,40 @@ class PrimaryCard extends StatefulWidget {
 }
 
 class _PrimaryCardState extends State<PrimaryCard> {
-  Widget _detectpost() {
-    if (widget.news.postType == "img") {
-      return Container(
-        height: 220.0,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
-          image: DecorationImage(
-            image: NetworkImage(widget.news.post),
-            fit: BoxFit.fill,
-          ),
-        ),
-      );
-      //ImagePost();
-    } else if (widget.news.postType == "vid") {
-      return Container(
-        height: 220.0,
-
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        child: ChewieListItem(
-          videoPlayerController:
-          VideoPlayerController.network(widget.news.post),
-        ),
-      );
-    }
-  }
+  // Widget _detectpost() {
+  //   if (widget.news.postType == "img") {
+  //     return Container(
+  //       height: 220.0,
+  //       decoration: BoxDecoration(
+  //         borderRadius: BorderRadius.circular(20.0),
+  //         image: DecorationImage(
+  //           image: NetworkImage(widget.news.post),
+  //           fit: BoxFit.fill,
+  //         ),
+  //       ),
+  //     );
+  //     //ImagePost();
+  //   } else if (widget.news.postType == "vid") {
+  //     return Container(
+  //       height: 220.0,
+  //
+  //       decoration: BoxDecoration(
+  //         borderRadius: BorderRadius.circular(20.0),
+  //       ),
+  //       child: ChewieListItem(
+  //         videoPlayerController:
+  //         VideoPlayerController.network(widget.news.post),
+  //       ),
+  //     );
+  //   }
+  // }
   @override
   IconData fav = Icons.favorite_border;
 
   Widget build(BuildContext context) {
     //returning the container with the content of the card i.e. title , subtitle , like button , total like on post , share button ,
     return Container(
-      padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 25.0, bottom: 0.0),
+      padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 20.0, bottom: 0.0),
       //box decoration of the card
       decoration: BoxDecoration(
           color: textBoxBack,
@@ -165,11 +165,11 @@ class _PrimaryCardState extends State<PrimaryCard> {
             // maxLines: 2,
             style: titleCardhead,
           ),
-          SizedBox(height: 10.0), // spacing
-          Container(
-            //Image of the news
-            //tag: widget.news.post,
-              child: _detectpost() ),
+          // SizedBox(height: 10.0), // spacing
+          // Container(
+          //   //Image of the news
+          //   //tag: widget.news.post,
+          //     child: _detectpost() ),
           SizedBox(height: 10.0),
           Text(
             // subtitle of the news card or the news
