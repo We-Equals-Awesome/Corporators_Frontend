@@ -1,7 +1,7 @@
+import 'package:cropapp/Screens/admin_view/news_feed.dart';
 import 'package:flutter/material.dart';
 import 'package:cropapp/Screens/login_and_signup/register_page_1.dart';
 import 'package:cropapp/Utils/colours.dart';
-import 'package:cropapp/UI/news_feed1.dart';
 
 class LoginPage2 extends StatefulWidget {
   @override
