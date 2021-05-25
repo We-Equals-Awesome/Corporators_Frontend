@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'register_page1.dart';
+import 'package:cropapp/Screens/login_and_signup/register_page_1.dart';
 import 'package:cropapp/Utils/colours.dart';
-import 'package:cropapp/UI/login_page2.dart';
+import 'package:cropapp/Screens/login_and_signup/login_page_2.dart';
 
 /*Login Page 1 takes the phone number from the user to login
 or allows the user to navigate to Register Page1.*/
@@ -21,7 +21,7 @@ class _LoginPage1State extends State<LoginPage1> {
   //function that returns the textformfields
   Widget txtformfield(String s, BuildContext context) {
     return Container(
-        width: MediaQuery.of(context).size.width * 0.7,
+        width: MediaQuery.of(context).size.width * 0.8,
         child: TextFormField(
           cursorColor: hintText,
           keyboardType: TextInputType.phone,
@@ -78,7 +78,8 @@ class _LoginPage1State extends State<LoginPage1> {
                   MaterialPageRoute(builder: (context) => RegisterPage1()));
             },
       child: Text(s == 'Generate OTP' ? 'Generate OTP' : 'Create',
-          style: TextStyle(color: navIcon, fontFamily: 'ProductSans')),
+          style: TextStyle(
+              color: navIcon, fontFamily: 'ProductSans', fontSize: 12)),
       style: ElevatedButton.styleFrom(
           primary: submitGrey,
           padding: EdgeInsets.symmetric(
@@ -116,7 +117,7 @@ class _LoginPage1State extends State<LoginPage1> {
                 Text(
                   'Our booth volunteer will soon be in touch with you.',
                   style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.height * 0.035,
+                      fontSize: MediaQuery.of(context).size.height * 0.03,
                       fontWeight: FontWeight.bold,
                       fontFamily: 'ProductSans',
                       color: text),
@@ -183,7 +184,7 @@ class _LoginPage1State extends State<LoginPage1> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                              image: AssetImage('Assets/assets/logo.jpg'),
+                              image: AssetImage('Assets/assets/logo.png'),
                               fit: BoxFit.fill),
                         ),
                       ),
@@ -196,13 +197,13 @@ class _LoginPage1State extends State<LoginPage1> {
                           style: TextStyle(
                               color: text,
                               fontSize:
-                                  MediaQuery.of(context).size.height * 0.035,
+                                  MediaQuery.of(context).size.height * 0.04,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
                       ),
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.045),
+                          height: MediaQuery.of(context).size.height * 0.03),
                       //container that has a textformfield to store phone number
                       txtformfield('Phone Number', context),
                       SizedBox(

@@ -1,8 +1,8 @@
 import 'dart:io';
-import 'package:cropapp/UI/register_page2.dart';
+import 'package:cropapp/Screens/login_and_signup/register_page_2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:cropapp/UI/register_page3.dart';
+import 'package:cropapp/Screens/login_and_signup/register_page_3.dart';
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
@@ -65,6 +65,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
                     ),
                   ),
                   SizedBox(height: 10),
+                  //continue button to save the form and move to next page
                   Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[

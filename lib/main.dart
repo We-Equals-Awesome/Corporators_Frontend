@@ -1,6 +1,8 @@
 //import 'package:cropapp/UI/citizenPage.dart';
 import 'package:flutter/material.dart';
-import 'Screens/login_and_signup/login_page1.dart';
+import 'Screens/admin_view/news_feed.dart';
+import 'Screens/admin_view/news_feed_updated.dart';
+import 'Screens/login_and_signup/login_page_1.dart';
 //import 'Screens/Navigation_Bar.dart';
 
 void main() {
@@ -18,8 +20,8 @@ class MyApp extends StatelessWidget {
        *  When the user opens the app then the AlterDialogue is not shown
        *  When the user is redirected to the Login page from the 'EnterYourDetailsPage',
        *   then the AlterDialogue Box is  shown.
-      */
-      home: LoginPage1(0), //LoginPage1(0),
+       */
+      home: LoginPage1(0),
     );
   }
 }

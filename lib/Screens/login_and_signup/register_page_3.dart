@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cropapp/Utils/colours.dart';
-import 'package:cropapp/Screens/login_and_signup/login_page1.dart';
+import 'package:cropapp/Screens/login_and_signup/login_page_1.dart';
 
 //class to store info about the user
 class MyData {
@@ -136,7 +136,7 @@ class _RegisterPage3State extends State<RegisterPage3> {
         key: _formKey,
         //textfields are wrapped in a list view
         child: new ListView(children: <Widget>[
-          SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+          SizedBox(height: MediaQuery.of(context).size.height * 0.04),
           //container has the text 'create account'
           Container(
             child: Text(
@@ -170,6 +170,7 @@ class _RegisterPage3State extends State<RegisterPage3> {
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: text,
+                          fontSize: 18,
                           fontFamily: 'ProductSans'),
                     ),
                     isActive: true,
@@ -224,7 +225,7 @@ class _RegisterPage3State extends State<RegisterPage3> {
                   if (currStep < 2) {
                     currStep = currStep + 1;
                   } else {
-                    currStep = 0;
+                    _submitDetails();
                   }
                 });
               },

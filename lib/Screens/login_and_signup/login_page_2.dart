@@ -1,39 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:cropapp/Screens/login_and_signup/register_page1.dart';
+import 'package:cropapp/Screens/login_and_signup/register_page_1.dart';
 import 'package:cropapp/Utils/colours.dart';
-import 'package:cropapp/Screens/login_and_signup/login_page2.dart';
+import 'package:cropapp/UI/news_feed1.dart';
 
-/*Login Page 1 takes the phone number from the user to login
-or allows the user to navigate to Register Page1.*/
-class LoginPage1 extends StatefulWidget {
-  //Alter is to decide whether or not to show the ALterDialogue box in login page.
-  final int alter;
-  LoginPage1(this.alter); //constructor to store the value of alter variable
+class LoginPage2 extends StatefulWidget {
   @override
-  _LoginPage1State createState() => _LoginPage1State();
+  _LoginPage2State createState() => _LoginPage2State();
 }
 
-class _LoginPage1State extends State<LoginPage1> {
-  var phoneNumber;
-  //formkey is used for form that takes phone number and password
+class _LoginPage2State extends State<LoginPage2> {
+  var OTP;
+  //formkey is used for form that takes phone number and OTP
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   //function that returns the textformfields
   Widget txtformfield(String s, BuildContext context) {
     return Container(
-        width: MediaQuery.of(context).size.width * 0.7,
+        width: MediaQuery.of(context).size.width * 0.8,
         child: TextFormField(
           cursorColor: hintText,
           keyboardType: TextInputType.phone,
           validator: (String value) {
-            if (value.isEmpty)
-              return 'Phone Number is required';
-            else if (value.length < 9)
-              return 'Please enter a valid phone number';
+            if (value.isEmpty) {
+              return 'OTP is required';
+            }
             return null;
           },
           onSaved: (String value) {
-            phoneNumber = value;
+            OTP = value;
           },
           decoration: new InputDecoration(
             contentPadding:
@@ -53,7 +47,7 @@ class _LoginPage1State extends State<LoginPage1> {
             filled: true,
             labelStyle:
                 new TextStyle(color: hintText, fontFamily: 'ProductSans'),
-            labelText: "Phone Number",
+            labelText: 'OTP',
             fillColor: textBoxBack,
           ),
         ));
@@ -62,7 +56,7 @@ class _LoginPage1State extends State<LoginPage1> {
 //widget that returns a button
   Widget button(String s, BuildContext context) {
     return ElevatedButton(
-      onPressed: s == 'Generate OTP'
+      onPressed: s == 'Login'
           ? () {
               //when login button clicked, the formstate is saved if valid
               if (!_formKey.currentState.validate()) {
@@ -70,21 +64,20 @@ class _LoginPage1State extends State<LoginPage1> {
               }
               _formKey.currentState.save();
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => LoginPage2()));
+                  .push(MaterialPageRoute(builder: (context) => NewsFeed()));
             }
           : () {
               //open CreateAccountPage when Create button pressed
               Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => RegisterPage1()));
             },
-      child: Text(s == 'Generate OTP' ? 'Generate OTP' : 'Create',
-          style: TextStyle(color: navIcon, fontFamily: 'ProductSans')),
+      child: Text(s == 'Login' ? 'Login' : 'Create',
+          style: TextStyle(
+              color: navIcon, fontFamily: 'ProductSans', fontSize: 12)),
       style: ElevatedButton.styleFrom(
           primary: submitGrey,
           padding: EdgeInsets.symmetric(
-              horizontal: s == 'Create'
-                  ? MediaQuery.of(context).size.width * 0.12
-                  : MediaQuery.of(context).size.width * 0.07,
+              horizontal: MediaQuery.of(context).size.width * 0.12,
               vertical: MediaQuery.of(context).size.height * 0.01),
           textStyle: TextStyle(
             fontSize: MediaQuery.of(context).size.height * 0.015,
@@ -94,70 +87,6 @@ class _LoginPage1State extends State<LoginPage1> {
             borderRadius: new BorderRadius.circular(30.0),
           )),
     );
-  }
-
-  //init state to call alter dialgoue
-  void initState() {
-    super.initState();
-    /*When the user is redirected to the Login page from the 'EnterYourDetailsPage',
-      then the AlterDialogue Box is shown. The value of alter passed is 1 in this case*/
-    if (widget.alter == 1) {
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await showDialog<String>(
-          context: context,
-          builder: (BuildContext context) => AlertDialog(
-            insetPadding: EdgeInsets.symmetric(horizontal: 50),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(55.0))),
-            backgroundColor: textBoxBack,
-            content: SingleChildScrollView(
-                child: ListBody(
-              children: <Widget>[
-                Text(
-                  'Our booth volunteer will soon be in touch with you.',
-                  style: TextStyle(
-                      fontSize: MediaQuery.of(context).size.height * 0.035,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'ProductSans',
-                      color: text),
-                ),
-                SizedBox(height: 10),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context)
-                              .pop(); //go back to login page when Continue is clicked
-                        },
-                        child: Text(
-                          'Okay',
-                          style: TextStyle(
-                              color: navIcon, fontFamily: 'ProductSans'),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                            primary: submitGrey,
-                            padding: EdgeInsets.symmetric(
-                                horizontal:
-                                    MediaQuery.of(context).size.width * 0.12,
-                                vertical:
-                                    MediaQuery.of(context).size.height * 0.01),
-                            textStyle: TextStyle(
-                              fontSize:
-                                  MediaQuery.of(context).size.height * 0.015,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(30.0),
-                            )),
-                      ), // button 1
-                    ])
-              ],
-            )),
-          ),
-        );
-      });
-    }
   }
 
   @override
@@ -183,7 +112,7 @@ class _LoginPage1State extends State<LoginPage1> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                              image: AssetImage('Assets/assets/logo.jpg'),
+                              image: AssetImage('Assets/assets/logo.png'),
                               fit: BoxFit.fill),
                         ),
                       ),
@@ -196,19 +125,20 @@ class _LoginPage1State extends State<LoginPage1> {
                           style: TextStyle(
                               color: text,
                               fontSize:
-                                  MediaQuery.of(context).size.height * 0.035,
+                                  MediaQuery.of(context).size.height * 0.04,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
                       ),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.045),
-                      //container that has a textformfield to store phone number
-                      txtformfield('Phone Number', context),
+                      txtformfield('OTP', context),
+                      //container that has a textformfield to store OTP
                       SizedBox(
-                          height: MediaQuery.of(context).size.height * 0.01),
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
                       //elevated button Login
-                      button('Generate OTP', context),
+                      button('Login', context),
                       SizedBox(
                           height: MediaQuery.of(context).size.height * 0.14),
                       Container(

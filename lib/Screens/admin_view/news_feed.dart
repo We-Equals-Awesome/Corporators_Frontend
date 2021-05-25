@@ -1,24 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:cropapp/Utils/colours.dart';
-import 'package:geocoder/geocoder.dart';
-import 'package:intl/intl.dart';
-import 'package:cropapp/UI/map_page.dart';
 import 'dart:async';
 import 'package:multi_image_picker/multi_image_picker.dart';
 
-class ComplaintsPage2 extends StatefulWidget {
-  final Coordinates c;
-  final int selected;
-  ComplaintsPage2(this.c, this.selected);
+class NewsFeed extends StatefulWidget {
   @override
-  _ComplaintsPage2State createState() => _ComplaintsPage2State();
+  _NewsFeedState createState() => _NewsFeedState();
 }
 
-class _ComplaintsPage2State extends State<ComplaintsPage2> {
-  Address address2 = new Address();
-  String addressString;
-  var now = new DateTime.now();
-  var formatter = new DateFormat('yMd');
+class _NewsFeedState extends State<NewsFeed> {
   TextEditingController con;
   String title;
   String contxt;
@@ -27,26 +17,6 @@ class _ComplaintsPage2State extends State<ComplaintsPage2> {
   @override
   void initState() {
     super.initState();
-    setState(() {
-      convertCoordinatesToAddress(widget.c).then((value) {
-        address2 = value;
-        addressString = value.addressLine;
-      });
-    });
-  }
-
-  Future<Address> convertCoordinatesToAddress(Coordinates cod) async {
-    var address = await Geocoder.local.findAddressesFromCoordinates(widget.c);
-    return address.first;
-  }
-
-  Future<String> getLoc() async {
-    await convertCoordinatesToAddress(widget.c).then((value) {
-      address2 = value;
-      addressString = value.addressLine;
-      print("get loc  value  " + addressString);
-    });
-    return addressString;
   }
 
   void dispose() {
@@ -78,29 +48,27 @@ class _ComplaintsPage2State extends State<ComplaintsPage2> {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Container(
-        height: s == 'Title'
-            ? MediaQuery.of(context).size.height * 0.06
-            : MediaQuery.of(context).size.height * 0.35,
+        height: s == 'Title' ? 30 : MediaQuery.of(context).size.height * 0.35,
         child: TextFormField(
           onEditingComplete: () {
             FocusScope.of(context).nextFocus();
           },
           style: s == 'Title'
               ? TextStyle(
-                  color: text, fontSize: 25, fontWeight: FontWeight.bold)
+                  color: text, fontSize: 30, fontWeight: FontWeight.bold)
               : TextStyle(color: text, fontSize: 15),
           controller: con,
-          maxLines: null,
-          expands: true,
+          maxLines: s == 'Title' ? 1 : null,
+          expands: s == 'Title' ? false : true,
           autocorrect: false,
           onSaved: (value) {
             if (s == 'Title')
               title = value;
-            else if (s == 'Context') contxt = value;
+            else if (s == 'Start Typing...') contxt = value;
           },
           validator: (value) {
             if (value.isEmpty) {
-              return s + ' is required.';
+              return 'Field is required.';
             } else
               return null;
           },
@@ -112,7 +80,7 @@ class _ComplaintsPage2State extends State<ComplaintsPage2> {
               hintText: s,
               hintStyle: TextStyle(
                   color: text,
-                  fontFamily: 'product-sans',
+                  fontFamily: 'ProductSans',
                   fontWeight:
                       s == 'Title' ? FontWeight.bold : FontWeight.normal,
                   fontSize: s == 'Title' ? 25 : 15),
@@ -133,7 +101,7 @@ class _ComplaintsPage2State extends State<ComplaintsPage2> {
           style: TextStyle(
               fontSize: a == 'Details' ? 20 : 15,
               fontWeight: a == 'Details' ? FontWeight.bold : FontWeight.normal,
-              fontFamily: 'product-sans',
+              fontFamily: 'ProductSans',
               color: text),
         ),
       ),
@@ -143,21 +111,17 @@ class _ComplaintsPage2State extends State<ComplaintsPage2> {
 //widget that returns a button
   Widget button(String s, BuildContext context) {
     return ElevatedButton(
-      onPressed: s == ('Pick Images')
-          ? pickImages
-          : () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      MapPage(Coordinates(12.9716, 77.5946))));
-            },
-      child:
-          Text(s, style: TextStyle(color: navIcon, fontFamily: 'product-sans')),
+      onPressed: pickImages,
+      child: Text(s,
+          style: TextStyle(
+              color: navIcon,
+              fontFamily: 'ProductSans',
+              fontSize: 13,
+              fontWeight: FontWeight.bold)),
       style: ElevatedButton.styleFrom(
           primary: submitGrey,
           padding: EdgeInsets.symmetric(
-              horizontal: s == 'Create'
-                  ? MediaQuery.of(context).size.width * 0.12
-                  : MediaQuery.of(context).size.width * 0.07,
+              horizontal: MediaQuery.of(context).size.width * 0.06,
               vertical: MediaQuery.of(context).size.height * 0.01),
           textStyle: TextStyle(
             fontSize: MediaQuery.of(context).size.height * 0.015,
@@ -184,51 +148,11 @@ class _ComplaintsPage2State extends State<ComplaintsPage2> {
               key: _formKey,
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: 50),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: Text(
-                      formatter.format(now),
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.height * 0.02,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'product-sans',
-                          color: text),
-                    ),
-                  ),
+                  SizedBox(height: 60),
                   txtformfield('Title', context),
-                  txtformfield('Context', context),
-                  textbox('Details', context),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: FutureBuilder(
-                          future: getLoc(),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return TextButton(
-                                onPressed: () => {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => MapPage(widget.c)))
-                                },
-                                child: Text(
-                                  addressString,
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontFamily: 'product-sans',
-                                      color: text),
-                                ),
-                              );
-                            }
-                            return Text('Add Location');
-                          }),
-                    ),
-                  ),
+                  txtformfield('Start Typing...', context),
                   SizedBox(height: 10),
-                  button('Add Location', context),
-                  textbox('Add images/videos of the issue', context),
+                  textbox('Add Images/Videos', context),
                   button('Pick Images', context),
                   Container(
                     width: MediaQuery.of(context).size.width,
@@ -269,14 +193,14 @@ class _ComplaintsPage2State extends State<ComplaintsPage2> {
           ),
         ),
         floatingActionButton: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.3,
-          height: MediaQuery.of(context).size.height * 0.06,
+          width: MediaQuery.of(context).size.width * 0.25,
+          height: MediaQuery.of(context).size.height * 0.04,
           child: FloatingActionButton.extended(
             onPressed: _submitDetails,
             label: Text(
-              'Submit',
+              'Post',
               style: TextStyle(
-                  color: navIcon, fontSize: 13.0, fontFamily: 'product-sans'),
+                  color: navIcon, fontSize: 13.0, fontFamily: 'ProductSans'),
             ),
             backgroundColor: submitGrey,
           ),

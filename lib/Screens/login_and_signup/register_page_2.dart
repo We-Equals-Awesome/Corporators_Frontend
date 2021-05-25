@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:cropapp/Screens/login_and_signup/login_page1.dart';
+import 'package:cropapp/Screens/login_and_signup/login_page_1.dart';
 
 //almost done page
 class RegisterPage2 extends StatefulWidget {
@@ -15,23 +15,8 @@ class _RegisterPage2State extends State<RegisterPage2> {
   PickedFile _imageFile; //this variable stores the selected profile image
   final ImagePicker _picker = ImagePicker();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  //isHidden stores the visibility of password
-  bool _isHidden = true;
-  bool _isCHidden = true;
-  TextEditingController passwordCon = TextEditingController();
-  TextEditingController confirmPasswordCon = TextEditingController();
-  //method to toggle the visibility of password
-  void _toggleVisibility() {
-    setState(() {
-      _isHidden = !_isHidden; //changes the visibility by negating it
-    });
-  }
-
-  void _toggleCVisibility() {
-    setState(() {
-      _isCHidden = !_isCHidden; //changes the visibility by negating it
-    });
-  }
+  TextEditingController Con =
+      TextEditingController(); //controller for OTP field
 
   //this function returns the profile image
   Widget imageProfile() {
@@ -86,24 +71,20 @@ class _RegisterPage2State extends State<RegisterPage2> {
           .showSnackBar(SnackBar(content: Text(message)));
     }
 
-    Widget _buildPassword(String s, BuildContext context) {
-      return Container(
-        width: MediaQuery.of(context).size.width * 0.75,
+    //this function returns a textformfield for OTP
+    Widget textfield(String s, BuildContext context) {
+      return Padding(
+        padding: const EdgeInsets.only(top: 10, left: 5),
         child: TextFormField(
           cursorColor: hintText,
-          obscureText: _isHidden,
           validator: (String value) {
             if (value.isEmpty) return s + ' is Required';
             return null;
           },
-          controller: passwordCon,
+          controller: Con,
           decoration: new InputDecoration(
-            isDense: true,
-            contentPadding: EdgeInsets.all(8),
-            border: new OutlineInputBorder(
-              borderRadius: new BorderRadius.circular(10.0),
-              borderSide: BorderSide(color: Colors.black, width: 100),
-            ),
+            contentPadding:
+                EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
             enabledBorder: OutlineInputBorder(
               borderRadius: new BorderRadius.circular(10.0),
               borderSide: BorderSide(color: Colors.black, width: 1.5),
@@ -116,72 +97,16 @@ class _RegisterPage2State extends State<RegisterPage2> {
             filled: true,
             labelText: s,
             labelStyle: TextStyle(color: hintText, fontFamily: 'ProductSans'),
-            suffixIcon: IconButton(
-              onPressed: _toggleVisibility,
-              icon: _isHidden
-                  ? Icon(
-                      Icons.visibility_off,
-                      color: hintText,
-                    )
-                  : Icon(
-                      Icons.visibility,
-                      color: hintText,
-                    ),
-            ),
-          ),
-        ),
-      );
-    }
-
-    Widget _buildCPassword(String s, BuildContext context) {
-      return Container(
-        width: MediaQuery.of(context).size.width * 0.75,
-        child: TextFormField(
-          cursorColor: hintText,
-          obscureText: _isCHidden,
-          controller: confirmPasswordCon,
-          validator: (String value) {
-            if (value.isEmpty) return s + ' is Required';
-            if (passwordCon.text != confirmPasswordCon.text)
-              return "Password does not match";
-            return null;
-          },
-          decoration: new InputDecoration(
-            isDense: true, // Added this
-            contentPadding: EdgeInsets.all(8),
             border: new OutlineInputBorder(
               borderRadius: new BorderRadius.circular(10.0),
-              borderSide: BorderSide(color: Colors.black, width: 100),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: new BorderRadius.circular(10.0),
-              borderSide: BorderSide(color: Colors.black, width: 1.5),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: new BorderRadius.circular(10.0),
-              borderSide: BorderSide(color: Colors.black, width: 1.5),
-            ),
-            fillColor: textBoxBack,
-            filled: true,
-            labelText: s,
-            labelStyle: TextStyle(color: hintText, fontFamily: 'ProductSans'),
-            suffixIcon: IconButton(
-              onPressed: _toggleCVisibility,
-              icon: _isCHidden
-                  ? Icon(
-                      Icons.visibility_off,
-                      color: hintText,
-                    )
-                  : Icon(
-                      Icons.visibility,
-                      color: hintText,
-                    ),
+              borderSide: BorderSide(width: 100),
             ),
           ),
         ),
       );
     }
 
+    //this function returns text with the required styling
     Widget textBox(String s, BuildContext context) {
       return Container(
         child: Text(
@@ -194,7 +119,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
         ),
         alignment: Alignment.bottomLeft,
         margin: new EdgeInsets.symmetric(
-          horizontal: 10.0,
+          horizontal: 5.0,
         ),
       );
     }
@@ -203,14 +128,14 @@ class _RegisterPage2State extends State<RegisterPage2> {
       backgroundColor: background,
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(24),
+          margin: EdgeInsets.all(20),
           child: Form(
             key: _formKey,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.065,
+                  height: MediaQuery.of(context).size.height * 0.043,
                 ),
                 textBox('Almost Done', context),
                 SizedBox(
@@ -224,20 +149,16 @@ class _RegisterPage2State extends State<RegisterPage2> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.06,
                 ),
-                textBox('Password', context),
+                textBox('Confirm OTP', context),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                _buildPassword('Password', context),
+                textfield('OTP', context),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.03,
                 ),
-                textBox('Confirm Password', context),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.02,
-                ),
-                _buildCPassword('Password', context),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.04),
+                //submit button that directs to login page 1
                 ElevatedButton(
                   onPressed: () {
                     if (!_formKey.currentState.validate()) {
@@ -245,11 +166,9 @@ class _RegisterPage2State extends State<RegisterPage2> {
                           'Please fill all fields with valid input');
                     } else {
                       _formKey.currentState.save();
-                      print('pass $passwordCon.text');
-                      print('cpass $confirmPasswordCon.text');
+                      print('pass $Con.text');
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => LoginPage1(0)));
-                      //Send to API
+                          builder: (context) => LoginPage1(1)));
                     }
                   },
                   child: Text(

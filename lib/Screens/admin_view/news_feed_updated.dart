@@ -4,12 +4,12 @@ import 'dart:async';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class WallFeedUpdated extends StatefulWidget {
+class NewsFeedUpdated extends StatefulWidget {
   @override
-  _WallFeedUpdatedState createState() => _WallFeedUpdatedState();
+  _NewsFeedUpdatedState createState() => _NewsFeedUpdatedState();
 }
 
-class _WallFeedUpdatedState extends State<WallFeedUpdated> {
+class _NewsFeedUpdatedState extends State<NewsFeedUpdated> {
   TextEditingController con;
   String title;
   String contxt;
@@ -50,9 +50,7 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Container(
-        height: s == 'Title'
-            ? MediaQuery.of(context).size.height * 0.06
-            : MediaQuery.of(context).size.height * 0.35,
+        height: s == 'Title' ? 40 : MediaQuery.of(context).size.height * 0.35,
         child: TextFormField(
           onEditingComplete: () {
             FocusScope.of(context).nextFocus();
@@ -60,7 +58,7 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
           style: s == 'Title'
               ? TextStyle(
                   color: text,
-                  fontSize: 20,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                   fontFamily: 'ProductSans',
                 )
@@ -152,7 +150,7 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
         text: n,
         style: TextStyle(
           color: text,
-          fontSize: MediaQuery.of(context).size.height * 0.03,
+          fontSize: 20,
           fontFamily: 'ProductSans',
         ));
   }
@@ -174,78 +172,74 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
               child: Column(
                 children: <Widget>[
                   SizedBox(height: 50),
+                  txtformfield('Title', context),
+                  SizedBox(height: 10),
                   //adding the likes and share icon in a row
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0, left: 200),
-                    child: Container(
-                      width: 100,
-                      height: 50,
-                      child: RichText(
-                        text: TextSpan(
-                          children: [
-                            WidgetSpan(
-                              child: Icon(Icons.favorite, size: 25),
-                            ),
-                            shareLike(context, 'likes'),
-                            WidgetSpan(
-                                child: SvgPicture.asset(
-                                    "Assets/assets/share.svg",
-                                    height: MediaQuery.of(context).size.height *
-                                        0.035,
-                                    width: MediaQuery.of(context).size.width *
-                                        .035)),
-                            shareLike(context, 'shares')
-                          ],
-                        ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 50,
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          WidgetSpan(
+                            child: Icon(Icons.favorite, size: 23),
+                          ),
+                          shareLike(context, 'likes'),
+                          WidgetSpan(
+                              child: SvgPicture.asset("Assets/assets/share.svg",
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.03,
+                                  width: MediaQuery.of(context).size.width *
+                                      .035)),
+                          shareLike(context, 'shares')
+                        ],
                       ),
                     ),
                   ),
-                  txtformfield('Title', context),
+
                   txtformfield('Start Typing...', context),
                   SizedBox(height: 10),
                   textbox('Add Images/Videos', context),
-                  button('Pick Images', context),
+                  button('Pick Images', context), SizedBox(height: 10),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    child: GridView.count(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      children: List.generate(images.length, (index) {
-                        Asset asset = images[index];
-                        return Stack(
-                          children: <Widget>[
-                            AssetThumb(
-                              asset: asset,
-                              width: 100,
-                              height: 100,
-                            ),
-                            Positioned(
-                                right: -2,
-                                top: -9,
-                                child: IconButton(
-                                    icon: Icon(
-                                      Icons.cancel_rounded,
-                                      color: Colors.black.withOpacity(0.8),
-                                      size: 20,
-                                    ),
-                                    onPressed: () => setState(() {
-                                          images.removeAt(index);
-                                        })))
-                          ],
-                        );
-                      }),
-                    ),
-                  )
+                    height: 120,
+                    child: ListView.builder(
+                        itemCount: images.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          Asset asset = images[index];
+                          return Stack(
+                            children: <Widget>[
+                              AssetThumb(
+                                asset: asset,
+                                width: 100,
+                                height: 100,
+                              ),
+                              Positioned(
+                                  right: -2,
+                                  top: -9,
+                                  child: IconButton(
+                                      icon: Icon(
+                                        Icons.cancel_rounded,
+                                        color: Colors.black.withOpacity(0.8),
+                                        size: 20,
+                                      ),
+                                      onPressed: () => setState(() {
+                                            images.removeAt(index);
+                                          })))
+                            ],
+                          );
+                        }),
+                  ),
                 ],
               ),
             ),
           ),
         ),
         floatingActionButton: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.3,
-          height: MediaQuery.of(context).size.height * 0.06,
+          width: MediaQuery.of(context).size.width * 0.25,
+          height: MediaQuery.of(context).size.height * 0.045,
           child: FloatingActionButton.extended(
             onPressed: _submitDetails,
             label: Text(
