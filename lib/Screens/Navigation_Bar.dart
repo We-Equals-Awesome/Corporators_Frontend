@@ -1,11 +1,12 @@
 import 'package:cropapp/Screens/HomePage.dart';
-import 'package:cropapp/Screens/ProfileView.dart';
+import 'package:cropapp/Screens/Login%20and%20Signup/login_page_1.dart';
 import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:cropapp/Screens/complaints/complaint_page2.dart';
 import 'package:geocoder/geocoder.dart';
+
+import 'complaints/complaint_page_2.dart';
 
 // creating the stateful  of BottomNav( Bottom Navigation Bar)
 
@@ -41,7 +42,7 @@ class _Navigation_BarState extends State<Navigation_Bar> {
   static List<Widget> _bottomNavView = [
     ComplaintsPage2(Coordinates(0, 0), 0),
     HomeFeed(),
-    Profile_View(),
+    LoginPage1(0),
   ];
 
   @override

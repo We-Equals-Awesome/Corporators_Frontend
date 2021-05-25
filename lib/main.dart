@@ -1,8 +1,8 @@
 //import 'package:cropapp/UI/citizenPage.dart';
+import 'package:cropapp/Screens/Complaints/complaint_page_2.dart';
 import 'package:flutter/material.dart';
-import 'Screens/admin_view/news_feed.dart';
-import 'Screens/admin_view/news_feed_updated.dart';
-import 'Screens/login_and_signup/login_page_1.dart';
+
+import 'Screens/Login and Signup/login_page_1.dart';
 //import 'Screens/Navigation_Bar.dart';
 
 void main() {

@@ -49,9 +49,8 @@ flutter:
   
   uses-material-design: true
   assets :
-    - assets/assets/
+    - Assets/icons/
     
-  #  - images/a_dot_ham.jpeg
   
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -68,7 +67,7 @@ flutter:
   fonts:
     - family: ProductSans
       fonts:
-        - asset: assets/fonts/Product_Sans_Regular.ttf
+        - asset: Assets/fonts/Product_Sans_Regular.ttf
         - asset: assets/fonts/Product_Sans_Bold.ttf
   
   # For details regarding fonts from package dependencies,
