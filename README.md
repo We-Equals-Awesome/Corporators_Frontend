@@ -13,9 +13,6 @@ when news is liked on home feed screen
 opening particular newsfeed
 ![image](https://user-images.githubusercontent.com/47321390/115785471-217ef380-a3dd-11eb-9553-83d65f2ccd0e.png)
 
-playing video inside the post
-
-https://user-images.githubusercontent.com/47321390/116007696-b9bfe700-a62e-11eb-9b8a-320ed39df8d7.mp4
 
 
 increasing/decreasing font size button in article preview
