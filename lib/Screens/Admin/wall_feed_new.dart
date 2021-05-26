@@ -48,16 +48,14 @@ class _WallFeedNewState extends State<WallFeedNew> {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Container(
-        height: s == 'Title'
-            ? MediaQuery.of(context).size.height * 0.06
-            : MediaQuery.of(context).size.height * 0.35,
+        height: s == 'Title' ? 40 : MediaQuery.of(context).size.height * 0.35,
         child: TextFormField(
           onEditingComplete: () {
             FocusScope.of(context).nextFocus();
           },
           style: s == 'Title'
               ? TextStyle(
-                  color: text, fontSize: 20, fontWeight: FontWeight.bold)
+                  color: text, fontSize: 30, fontWeight: FontWeight.bold)
               : TextStyle(color: text, fontSize: 15),
           controller: con,
           maxLines: s == 'Title' ? 1 : null,
@@ -85,7 +83,7 @@ class _WallFeedNewState extends State<WallFeedNew> {
                   fontFamily: 'ProductSans',
                   fontWeight:
                       s == 'Title' ? FontWeight.bold : FontWeight.normal,
-                  fontSize: s == 'Title' ? 25 : 15),
+                  fontSize: s == 'Title' ? 30 : 15),
               border: InputBorder.none),
         ),
       ),
@@ -156,36 +154,34 @@ class _WallFeedNewState extends State<WallFeedNew> {
                   button('Pick Images', context),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    child: GridView.count(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      children: List.generate(images.length, (index) {
-                        Asset asset = images[index];
-                        return Stack(
-                          children: <Widget>[
-                            AssetThumb(
-                              asset: asset,
-                              width: 100,
-                              height: 100,
-                            ),
-                            Positioned(
-                                right: -2,
-                                top: -9,
-                                child: IconButton(
-                                    icon: Icon(
-                                      Icons.cancel_rounded,
-                                      color: Colors.black.withOpacity(0.8),
-                                      size: 20,
-                                    ),
-                                    onPressed: () => setState(() {
-                                          images.removeAt(index);
-                                        })))
-                          ],
-                        );
-                      }),
-                    ),
+                    height: 120,
+                    child: ListView.builder(
+                        itemCount: images.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          Asset asset = images[index];
+                          return Stack(
+                            children: <Widget>[
+                              AssetThumb(
+                                asset: asset,
+                                width: 100,
+                                height: 100,
+                              ),
+                              Positioned(
+                                  right: -2,
+                                  top: -9,
+                                  child: IconButton(
+                                      icon: Icon(
+                                        Icons.cancel_rounded,
+                                        color: Colors.black.withOpacity(0.8),
+                                        size: 20,
+                                      ),
+                                      onPressed: () => setState(() {
+                                            images.removeAt(index);
+                                          })))
+                            ],
+                          );
+                        }),
                   )
                 ],
               ),

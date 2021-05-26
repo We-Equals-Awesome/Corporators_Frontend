@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:geocoder/geocoder.dart';
-
 import 'complaints/complaint_page_2.dart';
 
 // creating the stateful  of BottomNav( Bottom Navigation Bar)
@@ -38,10 +37,21 @@ class _Navigation_BarState extends State<Navigation_Bar> {
 
   // creating list of profiles view  for Bottom Navigation Bar
   //index of Notification is 0 , HomeFeed is 1 , Profile is 2
-
   static List<Widget> _bottomNavView = [
+    /*
+    Complaints page takes two parameters in its constructor. The Coordinates are used
+    to set the initial coordinates in the map. 
+    0 inidcated that no location has been selected by the user yet
+    */
     ComplaintsPage2(Coordinates(0, 0), 0),
     HomeFeed(),
+    /*
+       *  Value 0 is passed to MyhomePage.
+       *  This value is used to decide whether or not to show the ALterDialogue box in login page.
+       *  When the user opens the app then the AlterDialogue is not shown
+       *  When the user is redirected to the Login page from the 'EnterYourDetailsPage',
+       *   then the AlterDialogue Box is  shown.
+       */
     LoginPage1(0),
   ];
 

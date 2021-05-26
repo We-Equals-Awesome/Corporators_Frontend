@@ -197,7 +197,7 @@ class _LoginPage1State extends State<LoginPage1> {
                           style: TextStyle(
                               color: text,
                               fontSize:
-                                  MediaQuery.of(context).size.height * 0.04,
+                                  MediaQuery.of(context).size.height * 0.045,
                               fontWeight: FontWeight.bold,
                               fontFamily: 'ProductSans'),
                         ),
