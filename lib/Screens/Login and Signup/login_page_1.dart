@@ -184,7 +184,7 @@ class _LoginPage1State extends State<LoginPage1> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                              image: AssetImage('Assets/assets/logo.png'),
+                              image: AssetImage('assets/icons/logo.png'),
                               fit: BoxFit.fill),
                         ),
                       ),

@@ -378,7 +378,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
                               height: 50,
                               child: TextButton(
                                 child: SvgPicture.asset(
-                                    "Assets/assets/calendar.svg",
+                                    "assets/icons/calendar.svg",
                                     height: MediaQuery.of(context).size.height *
                                         0.04,
                                     width: MediaQuery.of(context).size.width *

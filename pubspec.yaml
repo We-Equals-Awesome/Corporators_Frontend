@@ -49,7 +49,7 @@ flutter:
   
   uses-material-design: true
   assets :
-    - Assets/icons/
+    - assets/icons/
     
   
 

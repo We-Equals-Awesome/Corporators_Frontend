@@ -29,7 +29,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
           CircleAvatar(
             backgroundColor: background,
             backgroundImage: _imageFile == null
-                ? AssetImage('Assets/assets/user.png')
+                ? AssetImage('assets/icons/user.png')
                 : FileImage(File(_imageFile.path)),
             radius: MediaQuery.of(context).size.width * 0.12,
           ),
@@ -45,7 +45,7 @@ class _RegisterPage2State extends State<RegisterPage2> {
                 },
                 elevation: 1.0,
                 fillColor: textBoxBack,
-                child: SvgPicture.asset("lib/Utils/assets/camera.svg"),
+                child: SvgPicture.asset("assets/icons/camera.svg"),
                 padding: EdgeInsets.all(1.0),
                 shape: CircleBorder(),
               )),

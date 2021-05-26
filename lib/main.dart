@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
       /*
        *  Value 0 is passed to MyhomePage.
        *  This value is used to decide whether or not to show the ALterDialogue box in login page.
