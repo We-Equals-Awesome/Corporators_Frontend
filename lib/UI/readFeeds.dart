@@ -115,7 +115,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
                             color: blk,
                             blurRadius: 2.0,
                             spreadRadius: 0.0,
-                            offset: Offset(3.0, 3.0), // shadow direction: bottom right
+                            offset: Offset(2.0, 2.0), // shadow direction: bottom right
                           )
                         ],
                         borderRadius: BorderRadius.circular(21.0),
