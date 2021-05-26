@@ -1,4 +1,5 @@
-import 'package:cropapp/UI/citizenPage.dart';
+import 'package:cropapp/Pages/addVolunteer.dart';
+import 'package:cropapp/Pages/citizenPage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: CitizenPage(),
+      home: AddVolunteer(),
     );
   }
 }
