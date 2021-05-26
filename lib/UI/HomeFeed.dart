@@ -116,33 +116,6 @@ class PrimaryCard extends StatefulWidget {
 }
 
 class _PrimaryCardState extends State<PrimaryCard> {
-  // Widget _detectpost() {
-  //   if (widget.news.postType == "img") {
-  //     return Container(
-  //       height: 220.0,
-  //       decoration: BoxDecoration(
-  //         borderRadius: BorderRadius.circular(20.0),
-  //         image: DecorationImage(
-  //           image: NetworkImage(widget.news.post),
-  //           fit: BoxFit.fill,
-  //         ),
-  //       ),
-  //     );
-  //     //ImagePost();
-  //   } else if (widget.news.postType == "vid") {
-  //     return Container(
-  //       height: 220.0,
-  //
-  //       decoration: BoxDecoration(
-  //         borderRadius: BorderRadius.circular(20.0),
-  //       ),
-  //       child: ChewieListItem(
-  //         videoPlayerController:
-  //         VideoPlayerController.network(widget.news.post),
-  //       ),
-  //     );
-  //   }
-  // }
   @override
   IconData fav = Icons.favorite_border;
 
@@ -165,11 +138,6 @@ class _PrimaryCardState extends State<PrimaryCard> {
             // maxLines: 2,
             style: titleCardhead,
           ),
-          // SizedBox(height: 10.0), // spacing
-          // Container(
-          //   //Image of the news
-          //   //tag: widget.news.post,
-          //     child: _detectpost() ),
           SizedBox(height: 10.0),
           Text(
             // subtitle of the news card or the news

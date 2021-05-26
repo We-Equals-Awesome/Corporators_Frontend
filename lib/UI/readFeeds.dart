@@ -29,7 +29,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
       return Container(
         height: 220.0,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(18.0),
           image: DecorationImage(
             image: NetworkImage(widget.news.post),
             fit: BoxFit.fill,
@@ -41,7 +41,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
       return Container(
         height: 220.0,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(18.0),
         ),
         child: ChewieListItem(
           videoPlayerController:
@@ -57,8 +57,6 @@ class _ReadFeedsState extends State<ReadFeeds> {
     return Scaffold(
       backgroundColor: background,
       body: SafeArea(
-        //bottom: false,
-        //top: false,
         child: Center(
           child: Container(
             padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
@@ -109,6 +107,20 @@ class _ReadFeedsState extends State<ReadFeeds> {
                 Text(widget.news.title, style: titleCardhead),
                 SizedBox(height: 15.0),
                 Container(
+                    decoration: BoxDecoration(
+                      //Box decoration
+                        color: background,
+                        boxShadow: [
+                          BoxShadow(
+                            color: blk,
+                            blurRadius: 2.0,
+                            spreadRadius: 0.0,
+                            offset: Offset(3.0, 3.0), // shadow direction: bottom right
+                          )
+                        ],
+                        borderRadius: BorderRadius.circular(21.0),
+                        // border: Border.all(color: Colors.grey, width: 2.0)
+                    ),
                     //Image of the news
                     //tag: widget.news.post,
                     child: _detectpost()),
