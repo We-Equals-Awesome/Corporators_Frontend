@@ -12,50 +12,56 @@ class _volunteerListState extends State<volunteerList> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: background,
-      body: SafeArea(
-        //listview to display all the complaints in a card in a list format
-        child: ListView(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(left: 20, top: 25),
-              child: Text(
-                'Volunteers',
-                style: TextStyle(
-                  fontSize: 36,
-                  fontFamily: 'ProductSans',
-                  fontWeight: FontWeight.bold,
-                  color: text,
+      body: ConstrainedBox(
+        constraints: BoxConstraints.tight(MediaQuery.of(context).size),
+        child: SafeArea(
+          //listview to display all the complaints in a card in a list format
+          child: ListView(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(left: 20, top: 25),
+                child: Text(
+                  'Volunteers',
+                  style: TextStyle(
+                    fontSize: 36,
+                    fontFamily: 'ProductSans',
+                    fontWeight: FontWeight.bold,
+                    color: text,
+                  ),
                 ),
               ),
-            ),
-            //_card function is called which is defined below
-            _card('11', 'abcdefgh', context),
-            _card('23', 'abcd', context),
-            _card('12', 'Hello World', context),
-            _card('21', 'mnopqrst', context),
-            _card('11', 'asdf ;lkj', context),
-            _card('23', 'asdf ;lkj', context),
-            _card('12', 'asdf ;lkj', context),
-            _card('21', 'Hello World', context),
-            _card('11', 'asdf ;lkj', context),
-            _card('23', 'asdf ;lkj', context),
-            _card('12', 'asdf ;lkj', context),
-            _card('21', 'Hello World', context),
-          ],
+              //_card function is called which is defined below
+              _card('11', 'abcdefgh', context),
+              _card('23', 'abcd', context),
+              _card('12', 'Hello World', context),
+              _card('21', 'mnopqrst', context),
+              _card('11', 'asdf ;lkj', context),
+              _card('23', 'asdf ;lkj', context),
+              _card('12', 'asdf ;lkj', context),
+              _card('21', 'Hello World', context),
+              _card('11', 'asdf ;lkj', context),
+              _card('23', 'asdf ;lkj', context),
+              _card('12', 'asdf ;lkj', context),
+              _card('21', 'Hello World', context),
+            ],
+          ),
         ),
       ),
       //to display the floating action button
       floatingActionButton: SizedBox(
-        width: 125,
+        width: 150,
         height: 41,
         child: FloatingActionButton.extended(
           onPressed: () {},
-          label: Text(
-            '?????',
-            style: TextStyle(
-              fontFamily: 'ProductSans',
-              color: navIcon,
-              fontSize: 14.0,
+          label: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Add a volunteer',
+              style: TextStyle(
+                fontFamily: 'ProductSans',
+                color: navIcon,
+                fontSize: 14.0,
+              ),
             ),
           ),
           backgroundColor: submitGrey,
@@ -82,7 +88,7 @@ class _volunteerListState extends State<volunteerList> {
               children: [
                 Expanded(
                   //calling the function _leftText which is defined below
-                  child: _leftText('#' + a, context),
+                  child: _leftText('Booth: ' + a, context),
                 ),
                 Expanded(
                   //calling the function _rightText which is defined below
@@ -101,7 +107,7 @@ class _volunteerListState extends State<volunteerList> {
     return Text(
       a,
       style: TextStyle(
-        fontSize: 36,
+        fontSize: 26,
         fontFamily: 'ProductSans',
         fontWeight: FontWeight.bold,
         color: text,
@@ -113,13 +119,16 @@ class _volunteerListState extends State<volunteerList> {
   Widget _rightText(String a, BuildContext context) {
     return FittedBox(
       fit: BoxFit.fitWidth,
-      child: Text(
-        a,
-        style: TextStyle(
-          fontSize: 24,
-          fontFamily: 'ProductSans',
-          fontWeight: FontWeight.bold,
-          color: text,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Text(
+          a,
+          style: TextStyle(
+            fontSize: 30,
+            fontFamily: 'ProductSans',
+            fontWeight: FontWeight.bold,
+            color: text,
+          ),
         ),
       ),
     );
