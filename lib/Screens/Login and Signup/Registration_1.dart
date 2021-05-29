@@ -5,8 +5,8 @@ import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
-import 'register_page_2.dart';
-import 'register_page_3.dart';
+import 'Registration_2.dart';
+import 'Registration_3.dart';
 
 //class to store info about users
 class MyData {
