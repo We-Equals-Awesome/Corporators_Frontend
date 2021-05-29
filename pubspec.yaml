@@ -1,9 +1,11 @@
-name: cropapp
+
+
+name: newsfeed_screen
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -17,8 +19,10 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.2
 
+
+
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.7.0 <3.0.0'
 
 
   
@@ -38,6 +42,21 @@ dependencies:
   permission_handler: ^8.0.0+2
   geocoder: ^0.2.1
 
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+
+
+  dropdown_below: ^0.0.7
+  simple_autocomplete_formfield: ^0.3.0
+  autocomplete_textfield: ^1.7.3
+
+  share: ^2.0.1
+  video_player: ^2.1.1
+  chewie: ^1.0.0
+
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -45,13 +64,20 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
-flutter:
+
   
+
+flutter:
   uses-material-design: true
   assets:
-    - assets/icons/
-    
-  
+    - assets/icons/calendar.svg
+    - assets/icons/share.svg
+    - assets/icon/share.svg
+    - assets/icons/alert-octagon.svg
+    - assets/icons/home.svg
+    - assets/icons/user.svg
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -69,6 +95,3 @@ flutter:
       fonts:
         - asset: Assets/fonts/Product_Sans_Regular.ttf
         - asset: assets/fonts/Product_Sans_Bold.ttf
-  
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
