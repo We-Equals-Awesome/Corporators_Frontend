@@ -1,4 +1,4 @@
-import 'package:cropapp/Screens/Login%20and%20Signup/register_page_1.dart';
+import 'package:cropapp/Screens/Login%20and%20Signup/Registration_1.dart';
 import 'package:flutter/material.dart';
 import 'package:cropapp/Utils/colours.dart';
 

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:geocoder/geocoder.dart';
-import 'complaints/complaint_page_2.dart';
+import 'complaints/Citizen_Complaints_2.dart';
 
 // creating the stateful  of BottomNav( Bottom Navigation Bar)
 
