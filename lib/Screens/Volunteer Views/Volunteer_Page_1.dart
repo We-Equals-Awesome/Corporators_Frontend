@@ -1,7 +1,7 @@
-import 'package:cropapp/UI/DataEntry.dart';
-import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
-import '../Volunteer Views/Residents.dart';
+import 'package:newsfeed_screen/Utils/colours.dart';
+import 'Volunteer_Page_2.dart';
+import 'Volunteer_Page_3.dart';
 
 //page to display all the citizens and their details in cards in the form of a list
 

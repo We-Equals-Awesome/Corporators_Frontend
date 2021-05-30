@@ -1,5 +1,5 @@
-import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
+import 'package:newsfeed_screen/Utils/colours.dart';
 
 //page to display all the complaints that are registered with details like Complaint number, booth number and date.
 class complaintList extends StatefulWidget {
