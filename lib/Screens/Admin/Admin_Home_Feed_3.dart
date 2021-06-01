@@ -1,9 +1,10 @@
-import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:cropapp/Utils/Icons.dart';
+import 'package:newsfeed_screen/Utils/colours.dart';
 
 //page to display the wall feed in the form of cards in a list
+
+const share = 'assets/icons/share.svg';
 
 class wallFeed extends StatefulWidget {
   @override

@@ -1,13 +1,15 @@
 import 'dart:io';
-import 'package:cropapp/Utils/Icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'Residents.dart';
+import 'package:newsfeed_screen/Utils/colours.dart';
+import 'Volunteer_Page_3.dart';
 import 'package:simple_autocomplete_formfield/simple_autocomplete_formfield.dart';
 
 //this page is used to collect the details of the Users to store them in the Database
+
+//icons used in this page
+const calendar = 'assets/icons/calendar.svg';
 
 //the Details list is used to store the details of the User has entered in the TextFormFeilds
 var Details = new List();

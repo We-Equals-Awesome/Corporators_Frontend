@@ -1,7 +1,7 @@
-import 'package:cropapp/UI/viewAllCitizen.dart';
-import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
-import 'DataEntry.dart';
+import 'package:newsfeed_screen/Utils/colours.dart';
+import 'Volunteer_Page_1.dart';
+import 'Volunteer_Page_2.dart';
 
 //page to display the members of the family whose details have been collected
 
