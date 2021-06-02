@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:newsfeed_screen/Utils/Admin-complaint.dart';
 import 'package:newsfeed_screen/Utils/constant.dart';
-import 'package:newsfeed_screen/UI/Admin-ComplaintAllot.dart';
+import 'package:newsfeed_screen/UI/Admin_Complaints_2.dart';
 
 class AdminComplaintview extends StatelessWidget {
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:newsfeed_screen/Utils/color.dart';
-import 'package:newsfeed_screen/UI/admin-complaintView.dart';
+import 'package:newsfeed_screen/UI/Admin_Complaints_1.dart';
 
 class NewComplaint extends StatelessWidget {
   @override
