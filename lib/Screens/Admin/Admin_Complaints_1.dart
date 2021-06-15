@@ -1,7 +1,7 @@
+import 'package:Corporator_Mobile_App/Utils/Admin-complaint.dart';
+import 'package:Corporator_Mobile_App/Utils/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
-import 'package:newsfeed_screen/Utils/Admin-complaint.dart';
-import 'package:newsfeed_screen/Utils/constant.dart';
+import 'package:Corporator_Mobile_App/Utils/color.dart';
 
 import 'Admin_Complaints_2.dart';
 
@@ -56,12 +56,12 @@ class _AdminComplaintInfoState extends State<AdminComplaintInfo> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: complaintList.length,
+      itemCount: complaintListfromadmin.length,
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
-        var totalComplaint = complaintList[index];
+        var totalComplaint = complaintListfromadmin[index];
 
         //on taping any card user will be pushed to the new Page where they can read the news in the detail
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
+import 'package:Corporator_Mobile_App/Utils/color.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:geocoder/geocoder.dart';
 

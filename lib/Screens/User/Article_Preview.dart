@@ -1,9 +1,9 @@
+import 'package:Corporator_Mobile_App/Utils/Video_Player.dart';
+import 'package:Corporator_Mobile_App/Utils/color.dart';
+import 'package:Corporator_Mobile_App/Utils/constant.dart';
+import 'package:Corporator_Mobile_App/Utils/news.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:newsfeed_screen/Utils/post_video_player.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
-import 'package:newsfeed_screen/Utils/constant.dart';
-import 'package:newsfeed_screen/Utils/news.dart';
 import 'package:share/share.dart';
 import 'package:video_player/video_player.dart';
 
@@ -22,7 +22,6 @@ class _ReadFeedsState extends State<ReadFeeds> {
   int textFontSize = 20;
   VideoPlayerController _controller;
   Future<void> _initializeVideoPlayerFuture;
-
 
   Widget _detectpost() {
     if (widget.news.postType == "img") {
@@ -109,17 +108,18 @@ class _ReadFeedsState extends State<ReadFeeds> {
                 Container(
                     decoration: BoxDecoration(
                       //Box decoration
-                        color: background,
-                        boxShadow: [
-                          BoxShadow(
-                            color: blk,
-                            blurRadius: 2.0,
-                            spreadRadius: 0.0,
-                            offset: Offset(2.0, 2.0), // shadow direction: bottom right
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(21.0),
-                        // border: Border.all(color: Colors.grey, width: 2.0)
+                      color: background,
+                      boxShadow: [
+                        BoxShadow(
+                          color: blk,
+                          blurRadius: 2.0,
+                          spreadRadius: 0.0,
+                          offset: Offset(
+                              2.0, 2.0), // shadow direction: bottom right
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(21.0),
+                      // border: Border.all(color: Colors.grey, width: 2.0)
                     ),
                     //Image of the news
                     //tag: widget.news.post,

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:geocoder/geocoder.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
 import '../Screens/Home_Page.dart';
-import '../Screens/Login and Signup/login_page_1.dart';
+import '../Screens/Login and Signup/Login_Page_1.dart';
 import '../Screens/complaints/Citizen_Complaints_2.dart';
+import 'color.dart';
 
 // creating the stateful  of BottomNav( Bottom Navigation Bar)
 

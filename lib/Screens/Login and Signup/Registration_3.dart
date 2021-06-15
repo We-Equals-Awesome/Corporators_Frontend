@@ -1,6 +1,6 @@
+import 'package:Corporator_Mobile_App/Utils/color.dart';
 import 'package:flutter/material.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
-import 'login_page_1.dart';
+import 'Login_Page_1.dart';
 
 //class to store info about the user
 class MyData {

@@ -1,5 +1,5 @@
+import 'package:Corporator_Mobile_App/Utils/color.dart';
 import 'package:flutter/material.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
 import 'Volunteer_Page_2.dart';
 import 'Volunteer_Page_3.dart';
 

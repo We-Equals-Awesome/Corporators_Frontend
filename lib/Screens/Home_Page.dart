@@ -1,11 +1,10 @@
+import 'package:Corporator_Mobile_App/Utils/color.dart';
+import 'package:Corporator_Mobile_App/Utils/constant.dart';
+import 'package:Corporator_Mobile_App/Utils/news.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
-import 'package:newsfeed_screen/Utils/constant.dart';
-import 'package:newsfeed_screen/Utils/news.dart';
-import 'package:video_player/video_player.dart';
-import 'package:newsfeed_screen/Utils/post_video_player.dart';
+
 import 'package:share/share.dart';
 
 import 'User/Article_Preview.dart';

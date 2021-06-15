@@ -1,10 +1,10 @@
+import 'package:Corporator_Mobile_App/Utils/Admin-complaint.dart';
+import 'package:Corporator_Mobile_App/Utils/complaint.dart';
+import 'package:Corporator_Mobile_App/Utils/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
+import 'package:Corporator_Mobile_App/Utils/color.dart';
 
-import 'package:newsfeed_screen/Utils/complaint.dart';
-import 'package:newsfeed_screen/Utils/constant.dart';
-
-import 'NewComplaint.dart';
+import 'New_Complaint.dart';
 
 class ComplaintsView extends StatelessWidget {
   @override
@@ -76,53 +76,10 @@ class ComplaintsView extends StatelessWidget {
   }
 }
 
-class ComplaintInfo extends StatefulWidget {
-  @override
-  _ComplaintInfoState createState() => _ComplaintInfoState();
-}
-
-class _ComplaintInfoState extends State<ComplaintInfo> {
-  @override
-  Widget build(BuildContext context) {
-    //as there is n number of news so there will be n number of the FeedView card so here we will be using the ListView.Builder
-
-    return ListView.builder(
-      itemCount: complaintList.length,
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      physics: BouncingScrollPhysics(),
-      itemBuilder: (context, index) {
-        var totalComplaint = complaintList[index];
-
-        //on taping any card user will be pushed to the new Page where they can read the news in the detail
-
-        return Container(
-            width: double.infinity,
-            color: background,
-            margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
-            child: ComplaintsCard(complaint: totalComplaint));
-
-        // GestureDetector(
-        // onTap: () {
-        //   Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (context) => NewComplaint(),
-        //      //builder: (context) => ReadFeeds(news: trending),
-        //     ),
-        //   );
-        // },
-        // child: ComplaintsCard(),
-        // );
-      },
-    );
-  }
-}
-
 class ComplaintsCard extends StatefulWidget {
-  final Complaint complaint;
+  final Complaintfromstatic complaintfromhere;
 
-  ComplaintsCard({this.complaint});
+  ComplaintsCard({this.complaintfromhere});
 
   @override
   _ComplaintsCardState createState() => _ComplaintsCardState();
@@ -150,7 +107,7 @@ class _ComplaintsCardState extends State<ComplaintsCard> {
             width: width / 2.3,
             // height: ,
             child: Text(
-              widget.complaint.title,
+              widget.complaintfromhere.title,
               style: headline1,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
@@ -167,7 +124,7 @@ class _ComplaintsCardState extends State<ComplaintsCard> {
                   children: [
                     Container(
                         child: Text(
-                      widget.complaint.time,
+                      widget.complaintfromhere.time,
                       textAlign: TextAlign.left,
                       style: headlineSmall2,
                     )),
@@ -182,7 +139,7 @@ class _ComplaintsCardState extends State<ComplaintsCard> {
                     )),
                     Container(
                         child: Text(
-                      widget.complaint.status,
+                      widget.complaintfromhere.status,
                       style: headlineSmall2,
                     )),
                   ],
@@ -192,6 +149,37 @@ class _ComplaintsCardState extends State<ComplaintsCard> {
           )
         ],
       ),
+    );
+  }
+}
+
+class ComplaintInfo extends StatefulWidget {
+  @override
+  _ComplaintInfoState createState() => _ComplaintInfoState();
+}
+
+class _ComplaintInfoState extends State<ComplaintInfo> {
+  @override
+  Widget build(BuildContext context) {
+    //as there is n number of news so there will be n number of the FeedView card so here we will be using the ListView.Builder
+
+    // TODO Check here with the list again
+    return ListView.builder(
+      itemCount: complaintListfromadmin.length,
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      physics: BouncingScrollPhysics(),
+      itemBuilder: (context, index) {
+        var totalComplaint = complaintListfromadmin[index];
+
+        //on taping any card user will be pushed to the new Page where they can read the news in the detail
+
+        // return Container(
+        //     width: double.infinity,
+        //     color: background,
+        //     margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
+        // child: ComplaintsCard(complaintfromhere: totalComplaint));
+      },
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
+import 'package:Corporator_Mobile_App/Utils/color.dart';
 import 'Registration_1.dart';
-import 'login_page_2.dart';
+import 'Login_Page_2.dart';
 
 /*Login Page 1 takes the phone number from the user to login
 or allows the user to navigate to Register Page1.*/

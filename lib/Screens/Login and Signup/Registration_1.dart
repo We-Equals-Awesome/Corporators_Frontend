@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
+import 'package:Corporator_Mobile_App/Utils/color.dart';
 
 import 'Registration_2.dart';
 import 'Registration_3.dart';

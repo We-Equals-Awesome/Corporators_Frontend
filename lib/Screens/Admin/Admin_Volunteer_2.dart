@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
+import 'package:Corporator_Mobile_App/Utils/color.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
