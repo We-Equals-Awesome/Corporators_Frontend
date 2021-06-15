@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cropapp/Utils/colours.dart';
+import 'package:newsfeed_screen/Utils/color.dart';
 import 'login_page_1.dart';
 
 //class to store info about the user

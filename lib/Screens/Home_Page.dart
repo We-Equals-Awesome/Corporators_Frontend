@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:newsfeed_screen/UI/Article_Preview.dart';
 import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:newsfeed_screen/Utils/constant.dart';
 import 'package:newsfeed_screen/Utils/news.dart';
 import 'package:video_player/video_player.dart';
 import 'package:newsfeed_screen/Utils/post_video_player.dart';
 import 'package:share/share.dart';
+
+import 'User/Article_Preview.dart';
 
 // HomeFeed  Class
 
@@ -183,7 +184,9 @@ class _PrimaryCardState extends State<PrimaryCard> {
                       'TITLE ${"\n"}${widget.news.title}${"\n\n\n"}INFO ${"\n"}${widget.news.subtitle}');
                 },
               ),
-              SizedBox(width: 15,),
+              SizedBox(
+                width: 15,
+              ),
             ],
           )
         ],

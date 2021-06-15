@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:cropapp/Utils/colours.dart';
 import 'dart:async';
 import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:newsfeed_screen/Utils/color.dart';
 
 class WallFeedUpdated extends StatefulWidget {
   @override

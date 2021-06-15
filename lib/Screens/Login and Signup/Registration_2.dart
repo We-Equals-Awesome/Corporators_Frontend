@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:newsfeed_screen/Utils/color.dart';
 import 'login_page_1.dart';
 
 //almost done page

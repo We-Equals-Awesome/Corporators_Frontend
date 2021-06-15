@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:geocoder/geocoder.dart';
-import 'package:cropapp/Utils/colours.dart';
-import 'package:cropapp/Screens/Complaints/complaint_page_2.dart';
+
+import 'Citizen_Complaints_2.dart';
 
 class MapPage extends StatefulWidget {
   final Coordinates defaultCoordinates;

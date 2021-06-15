@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:newsfeed_screen/UI/NewComplaint.dart';
 import 'package:newsfeed_screen/Utils/color.dart';
+
 import 'package:newsfeed_screen/Utils/complaint.dart';
 import 'package:newsfeed_screen/Utils/constant.dart';
+
+import 'NewComplaint.dart';
 
 class ComplaintsView extends StatelessWidget {
   @override
@@ -27,7 +29,7 @@ class ComplaintsView extends StatelessWidget {
           //icon: Icon(Icons.edit),
           label: Text(
             'New Complaint',
-            style: TextStyle(color: background,fontFamily: 'ProductSans'),
+            style: TextStyle(color: background, fontFamily: 'ProductSans'),
           ),
         ),
         body: SafeArea(

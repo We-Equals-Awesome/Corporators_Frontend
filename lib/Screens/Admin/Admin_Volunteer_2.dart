@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newsfeed_screen/Utils/colours.dart';
+import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
@@ -155,4 +155,3 @@ class SlidableWidget<T> extends StatelessWidget {
         ],
       );
 }
-

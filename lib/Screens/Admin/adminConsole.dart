@@ -1,6 +1,6 @@
-import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:newsfeed_screen/Utils/color.dart';
 
 class adminConsole extends StatefulWidget {
   adminConsole({Key key}) : super(key: key);

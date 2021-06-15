@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:newsfeed_screen/UI/HomeFeed.dart';
-import 'package:newsfeed_screen/UI/ProfileView.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:newsfeed_screen/UI/complaintView.dart';
+import 'package:geocoder/geocoder.dart';
+import 'package:newsfeed_screen/Utils/color.dart';
+import '../Screens/Home_Page.dart';
+import '../Screens/Login and Signup/login_page_1.dart';
+import '../Screens/complaints/Citizen_Complaints_2.dart';
 
 // creating the stateful  of BottomNav( Bottom Navigation Bar)
 
-class BottomNav extends StatefulWidget {
+class Navigation_Bar extends StatefulWidget {
   @override
-  _BottomNavState createState() => _BottomNavState();
+  _Navigation_BarState createState() => _Navigation_BarState();
 }
 
-class _BottomNavState extends State<BottomNav> {
+class _Navigation_BarState extends State<Navigation_Bar> {
   //initializing the variable current index   and   pageControler
   //Default index is 1 so when the app start it will display the News Feed(HomeFeed)  page as a default selection
 
@@ -36,11 +37,22 @@ class _BottomNavState extends State<BottomNav> {
 
   // creating list of profiles view  for Bottom Navigation Bar
   //index of Notification is 0 , HomeFeed is 1 , Profile is 2
-
   static List<Widget> _bottomNavView = [
-    ComplaintsView(),
+    /*
+    Complaints page takes two parameters in its constructor. The Coordinates are used
+    to set the initial coordinates in the map. 
+    0 inidcated that no location has been selected by the user yet
+    */
+    ComplaintsPage2(Coordinates(0, 0), 0),
     HomeFeed(),
-    ProfileView(),
+    /*
+       *  Value 0 is passed to MyhomePage.
+       *  This value is used to decide whether or not to show the ALterDialogue box in login page.
+       *  When the user opens the app then the AlterDialogue is not shown
+       *  When the user is redirected to the Login page from the 'EnterYourDetailsPage',
+       *   then the AlterDialogue Box is  shown.
+       */
+    LoginPage1(0),
   ];
 
   @override
@@ -66,12 +78,11 @@ class _BottomNavState extends State<BottomNav> {
         },
 
         //items of the bottom navigation bar  -> i.e Complaints , News Feed , Profile
-
         items: <BottomNavyBarItem>[
           BottomNavyBarItem(
             title: Center(child: Text('Complaints')),
             icon: SvgPicture.asset(
-              'assets/alert-octagon.svg',
+              'assets/icons/alert-octagon.svg',
               width: 25,
               color: navIcon,
             ),
@@ -81,7 +92,7 @@ class _BottomNavState extends State<BottomNav> {
           BottomNavyBarItem(
             title: Center(child: Text('News Feed')),
             icon: SvgPicture.asset(
-              'assets/home.svg',
+              'assets/icons/home.svg',
               width: 25,
               color: navIcon,
             ),
@@ -91,7 +102,7 @@ class _BottomNavState extends State<BottomNav> {
           BottomNavyBarItem(
             title: Center(child: Text('Login')),
             icon: SvgPicture.asset(
-              'assets/user.svg',
+              'assets/icons/user.svg',
               width: 25,
               color: navIcon,
             ),

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:newsfeed_screen/Utils/color.dart';
 import 'package:newsfeed_screen/Utils/Admin-complaint.dart';
 import 'package:newsfeed_screen/Utils/constant.dart';
-import 'package:newsfeed_screen/UI/Admin_Complaints_2.dart';
+
+import 'Admin_Complaints_2.dart';
 
 class AdminComplaintview extends StatelessWidget {
   @override
@@ -12,24 +13,6 @@ class AdminComplaintview extends StatelessWidget {
     var height = screenSize.height;
     return Scaffold(
         backgroundColor: background,
-        // floatingActionButton: FloatingActionButton.extended(
-        //   onPressed: () {
-        //     Navigator.push(
-        //       context,
-        //       MaterialPageRoute(
-        //         builder: (context) => NewComplaint(),
-        //         //builder: (context) => ReadFeeds(news: trending),
-        //       ),
-        //     );
-        //   },
-        //   elevation: 2,
-        //   backgroundColor: submitGrey,
-        //   //icon: Icon(Icons.edit),
-        //   label: Text(
-        //     'New Complaint',
-        //     style: TextStyle(color: background,fontFamily: 'ProductSans'),
-        //   ),
-        // ),  floatin
         body: SafeArea(
           bottom: false,
           child: Column(
@@ -44,16 +27,6 @@ class AdminComplaintview extends StatelessWidget {
                   textAlign: TextAlign.start,
                 ),
               ),
-              // Container(
-              //   padding: EdgeInsets.fromLTRB(15, 10, 15, 5),
-              //   width: width,
-              //   //height: 80,
-              //   child: Text(
-              //     "Recent Complaints",
-              //     style: headline2,
-              //     textAlign: TextAlign.start,
-              //   ),
-              // ),
               Expanded(
                 child: ListView(
                   children: <Widget>[
@@ -103,8 +76,8 @@ class _AdminComplaintInfoState extends State<AdminComplaintInfo> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AdminComplaintAllot(adminComplaint: totalComplaint),
-                      //builder: (context) => ReadFeeds(news: trending),
+                      builder: (context) =>
+                          AdminComplaintAllot(adminComplaint: totalComplaint),
                     ),
                   );
                 },
@@ -137,11 +110,9 @@ class _AdminComplaintsCardState extends State<AdminComplaintsCard> {
           border: Border.all(color: blk, width: 1.0)),
       child: Row(
         children: [
-          //Column(children: [Text("gh")],),
           Container(
             alignment: Alignment.centerLeft,
             width: width / 2.3,
-            // height: ,
             child: Text(
               widget.complaint.complaintNumber,
               style: headline1,

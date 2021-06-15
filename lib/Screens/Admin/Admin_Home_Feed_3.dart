@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:newsfeed_screen/Utils/colours.dart';
+import 'package:newsfeed_screen/Utils/color.dart';
 
 //page to display the wall feed in the form of cards in a list
 
