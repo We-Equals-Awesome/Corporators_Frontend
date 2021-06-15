@@ -1,7 +1,6 @@
+import 'package:Corporator_Mobile_App/Dummy_Data/news.dart';
 import 'package:Corporator_Mobile_App/Utils/Video_Player.dart';
-import 'package:Corporator_Mobile_App/Utils/color.dart';
-import 'package:Corporator_Mobile_App/Utils/constant.dart';
-import 'package:Corporator_Mobile_App/Utils/news.dart';
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:share/share.dart';

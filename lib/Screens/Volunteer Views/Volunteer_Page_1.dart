@@ -1,4 +1,4 @@
-import 'package:Corporator_Mobile_App/Utils/color.dart';
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 import 'package:flutter/material.dart';
 import 'Volunteer_Page_2.dart';
 import 'Volunteer_Page_3.dart';

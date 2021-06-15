@@ -1,5 +1,5 @@
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 import 'package:flutter/material.dart';
-import 'package:Corporator_Mobile_App/Utils/color.dart';
 
 //page to display all the complaints that are registered with details like Complaint number, booth number and date.
 class complaintList extends StatefulWidget {

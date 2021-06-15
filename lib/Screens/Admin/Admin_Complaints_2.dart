@@ -1,7 +1,6 @@
-import 'package:Corporator_Mobile_App/Utils/Admin-complaint.dart';
-import 'package:Corporator_Mobile_App/Utils/constant.dart';
+import 'package:Corporator_Mobile_App/Dummy_Data/Admin-complaint.dart';
 import 'package:flutter/material.dart';
-import 'package:Corporator_Mobile_App/Utils/color.dart';
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 
 class AdminComplaintAllot extends StatefulWidget {
   final AdminComplaint adminComplaint;

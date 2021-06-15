@@ -1,7 +1,7 @@
 import 'package:Corporator_Mobile_App/Screens/Admin/Admin_Complaints_1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Corporator_Mobile_App/Utils/color.dart';
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 
 class NewComplaint extends StatelessWidget {
   @override

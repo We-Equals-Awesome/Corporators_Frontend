@@ -3,7 +3,7 @@ import 'package:geocoder/geocoder.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
 import 'package:multi_image_picker/multi_image_picker.dart';
-import 'package:Corporator_Mobile_App/Utils/color.dart';
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 
 import 'Map_Service_Page.dart';
 
