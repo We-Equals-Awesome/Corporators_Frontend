@@ -1,3 +1,5 @@
+import 'package:Corporator_Mobile_App/Screens/Admin/Admin_Console.dart';
+import 'package:Corporator_Mobile_App/Screens/Volunteer%20Views/Volunteer_Page_1.dart';
 import 'package:flutter/material.dart';
 import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 import 'Registration_1.dart';
@@ -26,10 +28,9 @@ class _LoginPage1State extends State<LoginPage1> {
           cursorColor: hintText,
           keyboardType: TextInputType.phone,
           validator: (String value) {
-            if (value.isEmpty)
-              return 'Phone Number is required';
-            else if (value.length < 9)
-              return 'Please enter a valid phone number';
+            if (value.isEmpty) return 'Phone Number is required';
+            // else if (value.length < 9)
+            // return 'Please enter a valid phone number';
             return null;
           },
           onSaved: (String value) {
@@ -69,8 +70,18 @@ class _LoginPage1State extends State<LoginPage1> {
                 return;
               }
               _formKey.currentState.save();
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => LoginPage2()));
+              if (phoneNumber == '1') {
+                //if phoneNumber is 1 then it leads to adminConsole
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => adminConsole()));
+              } else if (phoneNumber == '2') {
+                //if phoneNumber is 1 then it leads to volenteer View
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => viewAll()));
+              } else {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => LoginPage2()));
+              }
             }
           : () {
               //open CreateAccountPage when Create button pressed
