@@ -193,7 +193,7 @@ class _LoginPage1State extends State<LoginPage1> {
                       //text for the app name
                       Center(
                         child: Text(
-                          'App Something',
+                          'BBMP RT Nagar',
                           style: TextStyle(
                               color: text,
                               fontSize:

@@ -1,6 +1,8 @@
 import 'package:Corporator_Mobile_App/Dummy_Data/Admin-complaint.dart';
 import 'package:Corporator_Mobile_App/Dummy_Data/complaint.dart';
+import 'package:Corporator_Mobile_App/Screens/Complaints/Citizen_Complaints_2.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoder/geocoder.dart';
 import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 
 import 'New_Complaint.dart';
@@ -18,7 +20,7 @@ class ComplaintsView extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => NewComplaint(),
+                builder: (context) => ComplaintsPage2(Coordinates(0, 0), 0),
                 //builder: (context) => ReadFeeds(news: trending),
               ),
             );

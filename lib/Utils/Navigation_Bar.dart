@@ -1,3 +1,4 @@
+import 'package:Corporator_Mobile_App/Screens/Complaints/Citizen_Complaints_1.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,7 +45,7 @@ class _Navigation_BarState extends State<Navigation_Bar> {
     to set the initial coordinates in the map. 
     0 inidcated that no location has been selected by the user yet
     */
-    ComplaintsPage2(Coordinates(0, 0), 0),
+    ComplaintsView(),
     HomeFeed(),
     /*
        *  Value 0 is passed to MyhomePage.
