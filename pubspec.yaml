@@ -37,8 +37,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/icons/calendar.svg
+    - assets/icons/text-font.svg
     - assets/icons/share.svg
-    - assets/icon/share.svg
     - assets/icons/alert-octagon.svg
     - assets/icons/home.svg
     - assets/icons/user.svg

@@ -1,6 +1,6 @@
 import 'package:Corporator_Mobile_App/Dummy_Data/news.dart';
-import 'package:Corporator_Mobile_App/Utils/Video_Player.dart';
 import 'package:Corporator_Mobile_App/Utils/Colors.dart';
+import 'package:Corporator_Mobile_App/Utils/Video_Player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:share/share.dart';
@@ -27,11 +27,15 @@ class _ReadFeedsState extends State<ReadFeeds> {
       return Container(
         height: 220.0,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(18.0),
+          //Box decoration
+          // borderRadius: BorderRadius.circular(18.0),
           image: DecorationImage(
             image: NetworkImage(widget.news.post),
             fit: BoxFit.fill,
           ),
+          color: background,
+          borderRadius: BorderRadius.circular(21.0),
+          // border: Border.all(color: Colors.grey, width: 2.0)
         ),
       );
       //ImagePost();
@@ -51,20 +55,25 @@ class _ReadFeedsState extends State<ReadFeeds> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    var width = screenSize.width;
+    var height = screenSize.height;
     //returning Scaffold
     return Scaffold(
       backgroundColor: background,
-      body: SafeArea(
-        child: Center(
-          child: Container(
-            padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
-            decoration: BoxDecoration(
+      body: Center(
+        child: Container(
+          width: width,
+          height: height,
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+          decoration: BoxDecoration(
 
-                //Box decoration
-                color: background,
-                border: Border.all(color: blk, width: 1.0)),
+              //Box decoration
+              color: background,
+              border: Border.all(color: blk, width: 1.0)),
 
-            //displaying the detailed News in the Form of List
+          //displaying the detailed News in the Form of List
+          child: SafeArea(
             child: ListView(
               children: [
                 SafeArea(
@@ -80,7 +89,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
 
                         IconButton(
                           icon: SvgPicture.asset(
-                            'assets/text-font.svg',
+                            'assets/icons/text-font.svg',
                             color: blk,
                             width: 30,
                           ),
@@ -104,25 +113,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
                 //title of the News
                 Text(widget.news.title, style: titleCardhead),
                 SizedBox(height: 15.0),
-                Container(
-                    decoration: BoxDecoration(
-                      //Box decoration
-                      color: background,
-                      boxShadow: [
-                        BoxShadow(
-                          color: blk,
-                          blurRadius: 2.0,
-                          spreadRadius: 0.0,
-                          offset: Offset(
-                              2.0, 2.0), // shadow direction: bottom right
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(21.0),
-                      // border: Border.all(color: Colors.grey, width: 2.0)
-                    ),
-                    //Image of the news
-                    //tag: widget.news.post,
-                    child: _detectpost()),
+                Container(child: _detectpost()),
                 SizedBox(height: 15.0),
                 Text(
                   //content of the news
@@ -165,7 +156,7 @@ class _ReadFeedsState extends State<ReadFeeds> {
                     //SizedBox(width: 20),
                     IconButton(
                       icon: SvgPicture.asset(
-                        'assets/share.svg',
+                        'assets/icons/share.svg',
                         color: blk,
                         width: 22,
                       ),

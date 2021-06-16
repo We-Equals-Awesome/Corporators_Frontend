@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:share/share.dart';
+
 import 'Article_Preview.dart';
 
 // HomeFeed  Class
@@ -170,7 +171,7 @@ class _PrimaryCardState extends State<PrimaryCard> {
               // defining the share button
               IconButton(
                 icon: SvgPicture.asset(
-                  'assets/share.svg',
+                  'assets/icons/share.svg',
                   color: blk,
                   width: 22,
                 ),
