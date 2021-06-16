@@ -2,6 +2,10 @@ import 'package:Corporator_Mobile_App/Screens/Admin/Admin_Volunteer_1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Corporator_Mobile_App/Utils/Colors.dart';
+import 'Admin_Complaints_1.dart';
+
+import 'Admin_Home_Feed_3.dart';
+import 'Admin_Volunteer_2.dart';
 
 class adminConsole extends StatefulWidget {
   adminConsole({Key key}) : super(key: key);
@@ -61,11 +65,10 @@ class _adminConsoleState extends State<adminConsole> {
                         ),
                         onTap: () {
                           // Have to add the view all wala list here to navigate
-                          var Viewallroute;
+
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => Viewallroute),
+                            MaterialPageRoute(builder: (context) => wallFeed()),
                           );
                         },
                       ),
@@ -118,12 +121,10 @@ class _adminConsoleState extends State<adminConsole> {
                               color: text),
                         ),
                         onTap: () {
-                          // Have to add the view all wala list here to navigate
-                          var Viewallroute;
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Viewallroute),
+                                builder: (context) => AdminComplaintview()),
                           );
                         },
                       ),
@@ -210,11 +211,11 @@ class _adminConsoleState extends State<adminConsole> {
                         ),
                         onTap: () {
                           // Have to add the view all wala list here to navigate
-                          var Viewallroute;
+
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Viewallroute),
+                                builder: (context) => volunteerList()),
                           );
                         },
                       ),
