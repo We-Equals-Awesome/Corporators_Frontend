@@ -1,7 +1,4 @@
 # Corporators_Frontend
-<<<<<<< HEAD
-This Repository Handles Frontend for Corporator's Application for iOS and Android
-=======
 This Repository Handles Frontend for Corporator's Application
 
 ## Login And Sign Up Page
@@ -46,4 +43,3 @@ This Repository Handles Frontend for Corporator's Application
 <p>In your swift code, specify your API key in the application delegate ios/Runner/AppDelegate.swift:</p>
 
 <img src="https://user-images.githubusercontent.com/73482596/117604805-f124ac80-b173-11eb-8946-a7198e6dc7d2.JPG" width="600" height="200">
->>>>>>> 312641ef434cf5d43c9f3fae7bdaf1da3aae3ddf
