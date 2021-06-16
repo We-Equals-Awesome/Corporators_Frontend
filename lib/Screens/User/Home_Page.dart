@@ -170,7 +170,7 @@ class _PrimaryCardState extends State<PrimaryCard> {
               // defining the share button
               IconButton(
                 icon: SvgPicture.asset(
-                  'assets/share.svg',
+                  'assets/icons/share.svg',
                   color: blk,
                   width: 22,
                 ),
