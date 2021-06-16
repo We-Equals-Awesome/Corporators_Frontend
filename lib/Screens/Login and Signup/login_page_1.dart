@@ -162,7 +162,7 @@ class _LoginPage1State extends State<LoginPage1> {
                             shape: new RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(30.0),
                             )),
-                      ), // button 1
+                      ), // button 1 ends
                     ])
               ],
             )),
