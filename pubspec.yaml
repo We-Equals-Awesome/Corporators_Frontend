@@ -13,7 +13,7 @@ dependencies:
   flutter_rounded_date_picker: 1.0.4
   image_picker: ^0.7.4
   flutter_svg: ^0.21.0+1
-  bottom_navy_bar: ^6.0.0
+  persistent_bottom_nav_bar: ^4.0.2
   multi_image_picker: ^4.8.0 
   google_maps_flutter: ^2.0.5
   permission_handler: ^8.0.0+2
@@ -40,8 +40,11 @@ flutter:
     - assets/icons/text-font.svg
     - assets/icons/share.svg
     - assets/icons/alert-octagon.svg
+    - assets/icons/camera.svg
+    - assets/icons/logo.png
     - assets/icons/home.svg
     - assets/icons/user.svg
+    - assets/icons/user.png
 
 
   fonts:
