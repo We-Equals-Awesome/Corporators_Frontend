@@ -55,6 +55,9 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
           onEditingComplete: () {
             FocusScope.of(context).nextFocus();
           },
+          initialValue: s == 'Title'
+              ? "Sewage Issue"
+              : "There is an issue with sewage here.", //this sets the initial value of field
           style: s == 'Title'
               ? TextStyle(
                   color: text,
@@ -118,8 +121,12 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
   Widget button(String s, BuildContext context) {
     return ElevatedButton(
       onPressed: pickImages,
-      child:
-          Text(s, style: TextStyle(color: navIcon, fontFamily: 'ProductSans')),
+      child: Text(s,
+          style: TextStyle(
+              color: navIcon,
+              fontSize: 13,
+              fontFamily: 'ProductSans',
+              fontWeight: FontWeight.bold)),
       style: ElevatedButton.styleFrom(
           primary: submitGrey,
           padding: EdgeInsets.symmetric(
@@ -243,9 +250,12 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
           child: FloatingActionButton.extended(
             onPressed: _submitDetails,
             label: Text(
-              'Post',
+              'Update',
               style: TextStyle(
-                  color: navIcon, fontSize: 13.0, fontFamily: 'ProductSans'),
+                  color: navIcon,
+                  fontSize: 13.0,
+                  fontFamily: 'ProductSans',
+                  fontWeight: FontWeight.bold),
             ),
             backgroundColor: submitGrey,
           ),
