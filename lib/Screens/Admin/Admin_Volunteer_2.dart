@@ -33,40 +33,13 @@ class _volunteerListState extends State<volunteerList> {
                 ),
               ),
               //_card function is called which is defined below
-              _card('abcdefgh', '12', context),
-              _card('efgh', '12', context),
-              _card('abcdefghijklmnop', '12', context),
-              _card('hello', '12', context),
-              _card('agh', '12', context),
-              _card('abcdefgh', '12', context),
-              _card('efgh', '12', context),
-              _card('abcdefghijklmnopqrstuvwx', '12', context),
-              _card('hello', '12', context),
-              _card('agh', '12', context),
+              _card('Pritam', '12', context),
+              _card('Micheal Scott', '12', context),
+              _card('Joey Tribbiani', '13', context),
             ],
           ),
         ),
       ),
-      //to display the floating action button
-      // floatingActionButton: SizedBox(
-      //   width: 150,
-      //   height: 41,
-      //   child: FloatingActionButton.extended(
-      //     onPressed: () {},
-      //     label: Padding(
-      //       padding: const EdgeInsets.all(8.0),
-      //       child: Text(
-      //         '??',
-      //         style: TextStyle(
-      //           fontFamily: 'ProductSans',
-      //           color: navIcon,
-      //           fontSize: 14.0,
-      //         ),
-      //       ),
-      //     ),
-      //     backgroundColor: submitGrey,
-      //   ),
-      // ),
     );
   }
 

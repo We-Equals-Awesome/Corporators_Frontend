@@ -98,3 +98,10 @@ var descriptionStyle = TextStyle(
   fontSize: 15.0,
   height: 2.0,
 );
+
+var buttonstyle = TextStyle(
+  fontFamily: 'ProductSans',
+  fontSize: 15.0,
+  fontWeight: FontWeight.normal,
+  color: background,
+);

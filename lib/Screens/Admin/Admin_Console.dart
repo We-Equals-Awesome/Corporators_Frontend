@@ -251,7 +251,7 @@ Widget _WallFeedcard(BuildContext context) {
             side: BorderSide(width: 1)),
         color: textBoxBack,
         child: Padding(
-          padding: EdgeInsets.all(5),
+          padding: EdgeInsets.symmetric(horizontal: 10.00, vertical: 10.00),
           child: Row(
             children: [
               Expanded(
@@ -311,7 +311,7 @@ Widget _WallFeed(String title, BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SvgPicture.asset(
-            'assets/icon/share.svg',
+            'assets/icons/share.svg',
             color: Colors.black,
             width: 22,
           ),
@@ -335,14 +335,14 @@ Widget _Complaintcard(BuildContext context) {
   return GestureDetector(
     child: Container(
       child: Card(
-        elevation: 1,
+        elevation: 3,
         shadowColor: Colors.black,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
             side: BorderSide(width: 1)),
         color: textBoxBack,
         child: Padding(
-          padding: EdgeInsets.only(left: 15, top: 10),
+          padding: EdgeInsets.symmetric(vertical: 15.00, horizontal: 20.00),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

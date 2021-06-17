@@ -18,7 +18,7 @@ class _Navigation_BarState extends State<Navigation_Bar> {
   //index of Notification is 0 , HomeFeed is 1 , Profile is 2
   //Default index is 1 so when the app start it will display the News Feed(HomeFeed)  page as a default selection
   PersistentTabController _controller =
-  PersistentTabController(initialIndex: 1);
+      PersistentTabController(initialIndex: 1);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class _Navigation_BarState extends State<Navigation_Bar> {
         duration: Duration(milliseconds: 200),
       ),
       navBarStyle:
-      NavBarStyle.style1, // Choose the nav bar style with this property.
+          NavBarStyle.style1, // Choose the nav bar style with this property.
     );
   }
 }
@@ -88,7 +88,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       title: ('Complaints'),
       icon: SvgPicture.asset(
         'assets/icons/alert-octagon.svg',
-        width: 25,
+        width: 45,
         color: navIcon,
       ),
       activeColorPrimary: navIcon,
@@ -96,6 +96,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
     ),
     PersistentBottomNavBarItem(
       title: ('News Feed'),
+      textStyle: TextStyle(fontSize: 23),
       icon: SvgPicture.asset(
         'assets/icons/home.svg',
         width: 25,

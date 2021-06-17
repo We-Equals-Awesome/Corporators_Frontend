@@ -19,7 +19,6 @@ class ComplaintsView extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) => ComplaintsPage2(Coordinates(0, 0), 0),
                 //builder: (context) => ReadFeeds(news: trending),
-
               ),
             );
           },
@@ -28,7 +27,7 @@ class ComplaintsView extends StatelessWidget {
           //icon: Icon(Icons.edit),
           label: Text(
             'New Complaint',
-            style: TextStyle(color: background, fontFamily: 'ProductSans'),
+            style: buttonstyle,
           ),
         ),
         body: SafeArea(
@@ -153,24 +152,24 @@ class _ComplaintsCardState extends State<ComplaintsCard> {
                   children: [
                     Container(
                         child: Text(
-                          widget.complaint.time,
-                          textAlign: TextAlign.left,
-                          style: headlineSmall2,
-                        )),
+                      widget.complaint.time,
+                      textAlign: TextAlign.left,
+                      style: headlineSmall2,
+                    )),
                   ],
                 ),
                 Row(
                   children: [
                     Container(
                         child: Text(
-                          "Status: ",
-                          style: headlineSmall2,
-                        )),
+                      "Status: ",
+                      style: headlineSmall2,
+                    )),
                     Container(
                         child: Text(
-                          widget.complaint.status,
-                          style: headlineSmall2,
-                        )),
+                      widget.complaint.status,
+                      style: headlineSmall2,
+                    )),
                   ],
                 ),
               ],
