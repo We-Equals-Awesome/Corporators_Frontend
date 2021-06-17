@@ -151,8 +151,11 @@ class _ComplaintsPage2State extends State<ComplaintsPage2> {
                   builder: (context) =>
                       MapPage(Coordinates(12.9716, 77.5946))));
             },
-      child:
-          Text(s, style: TextStyle(color: navIcon, fontFamily: 'product-sans')),
+      child: Text(s,
+          style: TextStyle(
+              color: navIcon,
+              fontFamily: 'product-sans',
+              fontWeight: FontWeight.bold)),
       style: ElevatedButton.styleFrom(
           primary: submitGrey,
           padding: EdgeInsets.symmetric(

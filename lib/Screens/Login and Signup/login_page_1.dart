@@ -75,7 +75,7 @@ class _LoginPage1State extends State<LoginPage1> {
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => adminConsole()));
               } else if (phoneNumber == '2') {
-                //if phoneNumber is 1 then it leads to volenteer View
+                //if phoneNumber is 2 then it leads to volenteer View
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) => viewAll()));
               } else {
