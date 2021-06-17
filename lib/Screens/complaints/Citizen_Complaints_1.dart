@@ -1,11 +1,8 @@
-import 'package:Corporator_Mobile_App/Dummy_Data/Admin-complaint.dart';
 import 'package:Corporator_Mobile_App/Dummy_Data/complaint.dart';
-import 'package:Corporator_Mobile_App/Screens/Complaints/Citizen_Complaints_2.dart';
+import 'package:Corporator_Mobile_App/Screens/complaints/Citizen_Complaints_2.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:Corporator_Mobile_App/Utils/Colors.dart';
-
-import 'New_Complaint.dart';
 
 class ComplaintsView extends StatelessWidget {
   @override
@@ -22,6 +19,7 @@ class ComplaintsView extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) => ComplaintsPage2(Coordinates(0, 0), 0),
                 //builder: (context) => ReadFeeds(news: trending),
+
               ),
             );
           },
@@ -77,10 +75,40 @@ class ComplaintsView extends StatelessWidget {
   }
 }
 
-class ComplaintsCard extends StatefulWidget {
-  final Complaintfromstatic complaintfromhere;
+class ComplaintInfo extends StatefulWidget {
+  @override
+  _ComplaintInfoState createState() => _ComplaintInfoState();
+}
 
-  ComplaintsCard({this.complaintfromhere});
+class _ComplaintInfoState extends State<ComplaintInfo> {
+  @override
+  Widget build(BuildContext context) {
+    //as there is n number of news so there will be n number of the FeedView card so here we will be using the ListView.Builder
+
+    return ListView.builder(
+      itemCount: complaintList2.length,
+      scrollDirection: Axis.vertical,
+      shrinkWrap: true,
+      physics: BouncingScrollPhysics(),
+      itemBuilder: (context, index) {
+        var totalComplaint = complaintList2[index];
+
+        //on taping any card user will be pushed to the new Page where they can read the news in the detail
+
+        return Container(
+            width: double.infinity,
+            color: background,
+            margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
+            child: ComplaintsCard(complaint: totalComplaint));
+      },
+    );
+  }
+}
+
+class ComplaintsCard extends StatefulWidget {
+  final Complaintfromstatic complaint;
+
+  ComplaintsCard({this.complaint});
 
   @override
   _ComplaintsCardState createState() => _ComplaintsCardState();
@@ -108,7 +136,7 @@ class _ComplaintsCardState extends State<ComplaintsCard> {
             width: width / 2.3,
             // height: ,
             child: Text(
-              widget.complaintfromhere.title,
+              widget.complaint.title,
               style: headline1,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
@@ -125,24 +153,24 @@ class _ComplaintsCardState extends State<ComplaintsCard> {
                   children: [
                     Container(
                         child: Text(
-                      widget.complaintfromhere.time,
-                      textAlign: TextAlign.left,
-                      style: headlineSmall2,
-                    )),
+                          widget.complaint.time,
+                          textAlign: TextAlign.left,
+                          style: headlineSmall2,
+                        )),
                   ],
                 ),
                 Row(
                   children: [
                     Container(
                         child: Text(
-                      "Status: ",
-                      style: headlineSmall2,
-                    )),
+                          "Status: ",
+                          style: headlineSmall2,
+                        )),
                     Container(
                         child: Text(
-                      widget.complaintfromhere.status,
-                      style: headlineSmall2,
-                    )),
+                          widget.complaint.status,
+                          style: headlineSmall2,
+                        )),
                   ],
                 ),
               ],
@@ -150,37 +178,6 @@ class _ComplaintsCardState extends State<ComplaintsCard> {
           )
         ],
       ),
-    );
-  }
-}
-
-class ComplaintInfo extends StatefulWidget {
-  @override
-  _ComplaintInfoState createState() => _ComplaintInfoState();
-}
-
-class _ComplaintInfoState extends State<ComplaintInfo> {
-  @override
-  Widget build(BuildContext context) {
-    //as there is n number of news so there will be n number of the FeedView card so here we will be using the ListView.Builder
-
-    // TODO Check here with the list again
-    return ListView.builder(
-      itemCount: complaintListfromadmin.length,
-      scrollDirection: Axis.vertical,
-      shrinkWrap: true,
-      physics: BouncingScrollPhysics(),
-      itemBuilder: (context, index) {
-        var totalComplaint = complaintListfromadmin[index];
-
-        //on taping any card user will be pushed to the new Page where they can read the news in the detail
-
-        // return Container(
-        //     width: double.infinity,
-        //     color: background,
-        //     margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
-        // child: ComplaintsCard(complaintfromhere: totalComplaint));
-      },
     );
   }
 }

@@ -21,7 +21,7 @@ Color entryBox = Color(0xffF2D492);
 // nav bar colours
 Color navBarBackground = Color(0xff1C1C1E); // background of the nav bar
 Color navIcon = Color(0xffFFBC53);
-Color navBarSelectedGrey = Color(0xff636366); //nav bar selected color
+Color navBarSelectedGrey = Color(0xffffdaa0); //nav bar selected color
 
 var blk = Color(0xFF000000);
 // colour of all the texts and the stepper
