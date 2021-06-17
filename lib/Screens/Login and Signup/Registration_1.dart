@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:Corporator_Mobile_App/Utils/Colors.dart';
-
 import 'Registration_2.dart';
 import 'Registration_3.dart';
 
@@ -44,7 +43,7 @@ class _RegisterPage1State extends State<RegisterPage1> {
   Future<void> OpenAlter() async {
     return showDialog(
         context: context,
-        barrierDismissible: false,
+        barrierDismissible: true,
         builder: (BuildContext context) {
           return AlertDialog(
             insetPadding: EdgeInsets.symmetric(horizontal: 50),
@@ -252,13 +251,15 @@ class _RegisterPage1State extends State<RegisterPage1> {
       if (!formState.validate()) {
         showSnackBarMessage('Please fill all fields');
       } else {
+        formState.save();
+        print('voter id is $data.voterId');
+        print('addhar num is $data.aadharNumber');
         //show alter box if voter id doesnt below to the ward
         if (data.voterId == '1') {
-          print('Voter id 1');
+          print('insie if Voter id 1');
           OpenAlter();
         } else {
           //save current form state if validation returns true
-          formState.save();
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => RegisterPage2()));
         }

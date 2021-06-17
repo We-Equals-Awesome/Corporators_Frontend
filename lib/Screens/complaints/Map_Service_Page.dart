@@ -3,7 +3,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:geocoder/geocoder.dart';
-
 import 'Citizen_Complaints_2.dart';
 
 class MapPage extends StatefulWidget {
