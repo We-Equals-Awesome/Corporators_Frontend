@@ -1,5 +1,11 @@
 import 'package:Corporator_Mobile_App/Dummy_Data/complaint.dart';
+<<<<<<< HEAD
 import 'package:Corporator_Mobile_App/Screens/complaints/Citizen_Complaints_2.dart';
+=======
+import 'package:Corporator_Mobile_App/Screens/Complaints/Citizen_Complaints_2.dart';
+import 'package:flutter/material.dart';
+import 'package:geocoder/geocoder.dart';
+>>>>>>> a1008257b784002fb5e67d6a4df3f5dfac38f4d6
 import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
@@ -18,6 +24,10 @@ class ComplaintsView extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => ComplaintsPage2(Coordinates(0, 0), 0),
+<<<<<<< HEAD
+=======
+                //builder: (context) => ReadFeeds(news: trending),
+>>>>>>> a1008257b784002fb5e67d6a4df3f5dfac38f4d6
               ),
             );
           },

@@ -40,8 +40,11 @@ flutter:
     - assets/icons/text-font.svg
     - assets/icons/share.svg
     - assets/icons/alert-octagon.svg
+    - assets/icons/camera.svg
+    - assets/icons/logo.png
     - assets/icons/home.svg
     - assets/icons/user.svg
+    - assets/icons/user.png
 
 
   fonts:
