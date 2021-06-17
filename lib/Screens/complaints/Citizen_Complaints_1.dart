@@ -1,14 +1,8 @@
 import 'package:Corporator_Mobile_App/Dummy_Data/complaint.dart';
-<<<<<<< HEAD
 import 'package:Corporator_Mobile_App/Screens/complaints/Citizen_Complaints_2.dart';
-=======
-import 'package:Corporator_Mobile_App/Screens/Complaints/Citizen_Complaints_2.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
->>>>>>> a1008257b784002fb5e67d6a4df3f5dfac38f4d6
 import 'package:Corporator_Mobile_App/Utils/Colors.dart';
-import 'package:flutter/material.dart';
-import 'package:geocoder/geocoder.dart';
 
 class ComplaintsView extends StatelessWidget {
   @override
@@ -24,10 +18,8 @@ class ComplaintsView extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) => ComplaintsPage2(Coordinates(0, 0), 0),
-<<<<<<< HEAD
-=======
                 //builder: (context) => ReadFeeds(news: trending),
->>>>>>> a1008257b784002fb5e67d6a4df3f5dfac38f4d6
+
               ),
             );
           },
@@ -161,24 +153,24 @@ class _ComplaintsCardState extends State<ComplaintsCard> {
                   children: [
                     Container(
                         child: Text(
-                      widget.complaint.time,
-                      textAlign: TextAlign.left,
-                      style: headlineSmall2,
-                    )),
+                          widget.complaint.time,
+                          textAlign: TextAlign.left,
+                          style: headlineSmall2,
+                        )),
                   ],
                 ),
                 Row(
                   children: [
                     Container(
                         child: Text(
-                      "Status: ",
-                      style: headlineSmall2,
-                    )),
+                          "Status: ",
+                          style: headlineSmall2,
+                        )),
                     Container(
                         child: Text(
-                      widget.complaint.status,
-                      style: headlineSmall2,
-                    )),
+                          widget.complaint.status,
+                          style: headlineSmall2,
+                        )),
                   ],
                 ),
               ],

@@ -1,31 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 import 'package:Corporator_Mobile_App/Screens/complaints/Citizen_Complaints_1.dart';
-=======
->>>>>>> parent of e04056b (reformat code)
-=======
->>>>>>> parent of e04056b (reformat code)
-=======
-import 'package:Corporator_Mobile_App/Screens/Complaints/Citizen_Complaints_1.dart';
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
->>>>>>> a1008257b784002fb5e67d6a4df3f5dfac38f4d6
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:geocoder/geocoder.dart';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
-
 import '../Screens/Login and Signup/Login_Page_1.dart';
-=======
->>>>>>> parent of e04056b (reformat code)
-=======
->>>>>>> parent of e04056b (reformat code)
 import '../Screens/User/Home_Page.dart';
-import '../Screens/Login and Signup/Login_Page_1.dart';
-import '../Screens/complaints/Citizen_Complaints_2.dart';
 import 'Colors.dart';
 
 // creating the stateful  of BottomNav( Bottom Navigation Bar)
@@ -40,7 +18,7 @@ class _Navigation_BarState extends State<Navigation_Bar> {
   //index of Notification is 0 , HomeFeed is 1 , Profile is 2
   //Default index is 1 so when the app start it will display the News Feed(HomeFeed)  page as a default selection
   PersistentTabController _controller =
-      PersistentTabController(initialIndex: 1);
+  PersistentTabController(initialIndex: 1);
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +57,7 @@ class _Navigation_BarState extends State<Navigation_Bar> {
         duration: Duration(milliseconds: 200),
       ),
       navBarStyle:
-          NavBarStyle.style1, // Choose the nav bar style with this property.
+      NavBarStyle.style1, // Choose the nav bar style with this property.
     );
   }
 }
