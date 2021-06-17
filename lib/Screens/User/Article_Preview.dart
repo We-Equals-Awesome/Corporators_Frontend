@@ -35,15 +35,6 @@ class _ReadFeedsState extends State<ReadFeeds> {
             fit: BoxFit.fill,
           ),
           color: background,
-          boxShadow: [
-            BoxShadow(
-              color: blk,
-              blurRadius: 2.0,
-              spreadRadius: 0.0,
-              offset: Offset(
-                  2.0, 2.0), // shadow direction: bottom right
-            )
-          ],
           borderRadius: BorderRadius.circular(21.0),
           // border: Border.all(color: Colors.grey, width: 2.0)
         ),
