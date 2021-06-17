@@ -73,6 +73,27 @@ class _AdminComplaintAllotState extends State<AdminComplaintAllot> {
               Container(
                 width: width,
                 padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Status : ",
+                      textAlign: TextAlign.left,
+                      style: headlineSmall2.copyWith(fontSize: 21),
+                    ),
+                    Text(
+                      widget.adminComplaint.status,
+                      textAlign: TextAlign.left,
+                      style: headlineSmall2.copyWith(
+                          fontWeight: FontWeight.normal),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: width,
+                padding: EdgeInsets.fromLTRB(5, 10, 5, 10),
                 child: Text(
                   "Details",
                   textAlign: TextAlign.left,

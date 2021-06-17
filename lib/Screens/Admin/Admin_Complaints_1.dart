@@ -1,6 +1,7 @@
 import 'package:Corporator_Mobile_App/Dummy_Data/Admin-complaint.dart';
-import 'package:flutter/material.dart';
 import 'package:Corporator_Mobile_App/Utils/Colors.dart';
+import 'package:flutter/material.dart';
+
 import 'Admin_Complaints_2.dart';
 
 class AdminComplaintview extends StatelessWidget {
@@ -16,7 +17,7 @@ class AdminComplaintview extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.fromLTRB(15, 25, 15, 5),
+                padding: EdgeInsets.fromLTRB(15, 10, 15, 5),
                 width: width,
                 //height: 80,
                 child: Text(
@@ -87,7 +88,9 @@ class _AdminComplaintInfoState extends State<AdminComplaintInfo> {
 
 class AdminComplaintsCard extends StatefulWidget {
   final AdminComplaint complaint;
+
   AdminComplaintsCard({this.complaint});
+
   @override
   _AdminComplaintsCardState createState() => _AdminComplaintsCardState();
 }
