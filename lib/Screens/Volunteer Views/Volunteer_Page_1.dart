@@ -34,16 +34,10 @@ class _viewAllState extends State<viewAll> {
               ),
             ),
             //calling the _card function which is defined below
-            _card('213/A', 'abcdefghijklmnop', '15', '21/21/21', context),
-            _card('123/B', 'Hellllllo World', '78', '21/21/21', context),
-            _card('328/B', 'Welcome Back ', '12', '21/21/2001', context),
-            _card('308/Z', 'Flutter Hello World', '127', '21/21/21', context),
-            _card('217/M', 'hello', '75', '21/21/21', context),
-            _card('213/T', 'abcd', '15', '21/21/21', context),
-            _card('120/Z', 'mnopqrstuvwxyz', '12', '21/21/21', context),
-            _card('211/V', 'abcd', '36', '21/21/21', context),
-            _card('210/P', 'a', '89', '21/21/21', context),
-            _card('213/C', 'mkolpuhb', '4', '21/21/21', context),
+            _card('213/A', 'Bhoomika', '15', '21/21/21', context),
+            _card('123/B', 'Apoorva', '78', '21/21/21', context),
+            _card('328/B', 'Srikanth', '12', '21/21/2001', context),
+            _card('308/Z', 'Amritha', '127', '21/21/21', context),
           ],
         ),
       ),
@@ -61,7 +55,7 @@ class _viewAllState extends State<viewAll> {
             );
           },
           label: Text(
-            'New Home',
+            'New House',
             style: TextStyle(
               fontFamily: 'ProductSans',
               color: navIcon,

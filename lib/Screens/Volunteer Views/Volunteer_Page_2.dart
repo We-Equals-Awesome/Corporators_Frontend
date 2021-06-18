@@ -41,13 +41,13 @@ final people = <Person>[
 //constructor to get the Street and House number from the other pages whenever necessary
 class dataEntry extends StatefulWidget {
   //address list to store the street and house number
-  var address = new List();
+  // var address = new List();
   //sflag to check if the family member is head of family or a different member
   int sflag;
   //constructor of the dataEntry class
-  dataEntry({this.address, this.sflag});
+  dataEntry({this.sflag});
   @override
-  _dataEntryState createState() => _dataEntryState(address, sflag);
+  _dataEntryState createState() => _dataEntryState(sflag);
 }
 
 class _dataEntryState extends State<dataEntry> {
@@ -56,17 +56,19 @@ class _dataEntryState extends State<dataEntry> {
   //selectedPerson represents the relationship selected
   Person selectedPerson;
   //address list to store the street and house number
-  var address = new List();
+  //var address = new List();
   //sflag to check if the family member is head of family or a different member
   int sflag = 0;
   //constructor of the _dataEntryState class
-  _dataEntryState(this.address, this.sflag);
+  _dataEntryState(this.sflag);
 
   //to set the Details and Address list to empty when a new state is begun
   void initState() {
     Details = [];
     Address = [];
   }
+
+  List Data;
 
   //variable for the stepper count
   int _currentStep = 0;
@@ -77,12 +79,32 @@ class _dataEntryState extends State<dataEntry> {
   final _formKey = GlobalKey<FormState>();
 
   //TextEditingControllers for storing the date
-  final TextEditingController _dateController = new TextEditingController();
+  TextEditingController _dateController = new TextEditingController();
+  final TextEditingController _firstnameController = new TextEditingController();
+  final TextEditingController _lastnameController = new TextEditingController();
+  final TextEditingController _phoneController = new TextEditingController();
+  final TextEditingController _emailController = new TextEditingController();
+  final TextEditingController _voterController = new TextEditingController();
+  final TextEditingController _aadharController = new TextEditingController();
+  final TextEditingController _houseNoController = new TextEditingController();
+  final TextEditingController _relationController = new TextEditingController();
 
+
+  TextEditingController text;
   @override
   Widget build(BuildContext context) {
     //storing the date clicked by the user in the TextEditingController
     _dateController.text = "${selectedDate.toLocal()}".split(' ')[0];
+    if (sflag == 2) {
+      _firstnameController.text = "Bhoomika";
+      _lastnameController.text = "J S";
+      _phoneController.text = "123456789";
+      _emailController.text = "b@gmail.com";
+      _voterController.text = "132147896";
+      _aadharController.text = "789258963";
+      _dateController.text = "2021-01-03";
+      _relationController.text = "Sister";
+    } 
     return Scaffold(
       backgroundColor: background,
       body: SafeArea(
@@ -189,8 +211,8 @@ class _dataEntryState extends State<dataEntry> {
                           content: Column(
                             children: [
                               //calling the _textForm function which is defined below
-                              _textForm('First Name', context),
-                              _textForm('Last Name', context)
+                              _textForm('First Name', _firstnameController, context),
+                              _textForm('Last Name', _lastnameController, context)
                             ],
                           ),
                         ),
@@ -214,11 +236,11 @@ class _dataEntryState extends State<dataEntry> {
                                   : SizedBox(width: 0, height: 0),
                               sflag == 1
                                   //calling the _textForm function which is defined below
-                                  ? _textForm('House Number', context)
+                                  ? _textForm('House Number', _houseNoController, context)
                                   : SizedBox(width: 0, height: 0),
                               //calling the _textForm function which is defined below
-                              _textForm('Phone Number', context),
-                              _textForm('Email', context)
+                              _textForm('Phone Number', _phoneController, context),
+                              _textForm('Email', _emailController, context)
                             ],
                           ),
                         ),
@@ -269,27 +291,32 @@ class _dataEntryState extends State<dataEntry> {
                                       ),
                                     ),
                                   ),
-                                  //IconButton with Calender icon of svg type
-                                  IconButton(
-                                    padding: EdgeInsets.only(left: 15),
-                                    icon: SvgPicture.asset(
-                                      calendar,
+                                  SizedBox(
                                       width: MediaQuery.of(context).size.width *
-                                          0.2,
-                                    ),
-                                    //calling the different calendars based on the platforms
-                                    onPressed: () {
-                                      if (Platform.isIOS)
-                                        _iosDate();
-                                      else
-                                        _androidDate(context);
-                                    },
-                                  ),
+                                          0.01),
+                                  SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.1,
+                                      height: 50,
+                                      child: TextButton(
+                                        child: SvgPicture.asset(calendar,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .06),
+                                        onPressed: () {
+                                          if (Platform.isAndroid)
+                                            _androidDate(context);
+                                          else {
+                                            _iosDate();
+                                          }
+                                        },
+                                      )),
                                 ],
                               ),
                               //calling the _textForm function which is defined below
-                              _textForm('Voter ID', context),
-                              _textForm('Aadhar Number', context)
+                              _textForm('Voter ID', _voterController, context),
+                              _textForm('Aadhar Number', _aadharController, context)
                             ],
                           ),
                         ),
@@ -323,7 +350,7 @@ class _dataEntryState extends State<dataEntry> {
         child: FloatingActionButton.extended(
           onPressed: _submitDetails,
           label: Text(
-            'Submit',
+            sflag == 2 ? 'Back' : 'Submit',
             style: TextStyle(
               fontFamily: 'ProductSans',
               color: navIcon,
@@ -349,12 +376,16 @@ class _dataEntryState extends State<dataEntry> {
     _currentStep > 0 ? setState(() => _currentStep -= 1) : null;
   }
 
+
+  
   //function to display the TextFormFeild
-  Widget _textForm(String a, BuildContext context) {
+  Widget _textForm(String a, TextEditingController b, BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 10),
       child: Container(
         child: TextFormField(
+          
+          controller: b,
           textInputAction: TextInputAction.next,
           autocorrect: false,
           //saving the entered details into the Details List
@@ -420,10 +451,9 @@ class _dataEntryState extends State<dataEntry> {
       }
       Address.add(Details[3]);
       Address.add(Details[2]);
-      address = Address;
-      Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => resident(address: address),
-      ));
+      print(Details);
+      //address = Address;
+      Navigator.pop(context);
     }
   }
 
@@ -625,7 +655,7 @@ class _dataEntryState extends State<dataEntry> {
       child: Padding(
         padding: const EdgeInsets.only(left: 5, top: 10),
         child: Text(
-          'Head of the Family',
+          sflag == 2 ? _relationController.text :'Head of the Family',
           style: TextStyle(
             fontSize: 18,
             fontFamily: 'ProductSans',
