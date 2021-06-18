@@ -112,15 +112,17 @@ class _WallFeedNewState extends State<WallFeedNew> {
   Widget button(String s, BuildContext context) {
     return ElevatedButton(
       onPressed: pickImages,
-      child:
-          Text(s, style: TextStyle(color: navIcon, fontFamily: 'ProductSans')),
+      child: Text(s,
+          style: TextStyle(
+              color: navIcon,
+              fontSize: 13,
+              fontFamily: 'ProductSans',
+              fontWeight: FontWeight.bold)),
       style: ElevatedButton.styleFrom(
           primary: submitGrey,
           padding: EdgeInsets.symmetric(
-              horizontal: s == 'Create'
-                  ? MediaQuery.of(context).size.width * 0.12
-                  : MediaQuery.of(context).size.width * 0.07,
-              vertical: MediaQuery.of(context).size.height * 0.01),
+            horizontal: MediaQuery.of(context).size.width * 0.03,
+          ),
           textStyle: TextStyle(
             fontSize: MediaQuery.of(context).size.height * 0.015,
           ),
@@ -162,14 +164,21 @@ class _WallFeedNewState extends State<WallFeedNew> {
                           Asset asset = images[index];
                           return Stack(
                             children: <Widget>[
-                              AssetThumb(
-                                asset: asset,
+                              Container(
                                 width: 100,
-                                height: 100,
+                                height: 120,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 5),
+                                child: AssetThumb(
+                                  asset: asset,
+                                  width: 90,
+                                  height: 90,
+                                ),
                               ),
                               Positioned(
-                                  right: -2,
-                                  top: -9,
+                                  right: -13,
+                                  top: -15,
                                   child: IconButton(
                                       icon: Icon(
                                         Icons.cancel_rounded,
@@ -189,14 +198,17 @@ class _WallFeedNewState extends State<WallFeedNew> {
           ),
         ),
         floatingActionButton: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.3,
-          height: MediaQuery.of(context).size.height * 0.06,
+          width: 80,
+          height: 40,
           child: FloatingActionButton.extended(
             onPressed: _submitDetails,
             label: Text(
               'Post',
               style: TextStyle(
-                  color: navIcon, fontSize: 13.0, fontFamily: 'ProductSans'),
+                  color: navIcon,
+                  fontSize: 13.0,
+                  fontFamily: 'ProductSans',
+                  fontWeight: FontWeight.bold),
             ),
             backgroundColor: submitGrey,
           ),
