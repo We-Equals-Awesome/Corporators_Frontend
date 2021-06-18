@@ -27,6 +27,14 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+            toolbarHeight: 40,
+            backgroundColor: submitGrey,
+            title: Text(''), // You can add title here
+            leading: new IconButton(
+              icon: new Icon(Icons.arrow_back_ios, color: navIcon),
+              onPressed: () => Navigator.of(context).pop(),
+            )),
         body: Container(
           child: GoogleMap(
             onTap: handleTap,
@@ -36,6 +44,7 @@ class _MapPageState extends State<MapPage> {
                 CameraPosition(target: LatLng(12.9716, 77.5946), zoom: 15),
           ),
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
         floatingActionButton: SizedBox(
           width: MediaQuery.of(context).size.width * 0.3,
           height: MediaQuery.of(context).size.height * 0.06,

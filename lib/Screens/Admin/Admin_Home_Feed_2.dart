@@ -48,7 +48,7 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
   //function that returns a texteformfield
   Widget txtformfield(String s, BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.only(top: 5),
       child: Container(
         height: s == 'Title' ? 40 : MediaQuery.of(context).size.height * 0.35,
         child: TextFormField(
@@ -57,7 +57,7 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
           },
           initialValue: s == 'Title'
               ? "Sewage Issue"
-              : "There is an issue with sewage here.", //this sets the initial value of field
+              : "There is an issue with sewage here.Untreated sewage is the leading polluter of water sources in India, causing a host of diseases including diarrhea (which kills 350,000 Indian children annually2), agricultural contamination, and environmental degradation. The urban poor often live alongside dirty drains and canals in which mosquitoes and germs breed.CDD has more than 150 clients in 13 Indian states. It also has 25 clients in Nepal and Afghanistan. And the organization is poised to do much more. ", //this sets the initial value of field
           style: s == 'Title'
               ? TextStyle(
                   color: text,
@@ -82,8 +82,7 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
               return null;
           },
           decoration: new InputDecoration(
-              contentPadding:
-                  EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+              contentPadding: EdgeInsets.symmetric(vertical: 10.0),
               fillColor: background,
               filled: true,
               hintText: s,
@@ -92,7 +91,7 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
                   fontFamily: 'ProductSans',
                   fontWeight:
                       s == 'Title' ? FontWeight.bold : FontWeight.normal,
-                  fontSize: s == 'Title' ? 25 : 15),
+                  fontSize: s == 'Title' ? 25 : 17),
               border: InputBorder.none),
         ),
       ),
@@ -104,11 +103,11 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
     return Align(
       alignment: Alignment.centerLeft,
       child: Padding(
-        padding: const EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.only(top: 5),
         child: Text(
           a,
           style: TextStyle(
-              fontSize: a == 'Details' ? 20 : 15,
+              fontSize: a == 'Details' ? 20 : 17,
               fontWeight: a == 'Details' ? FontWeight.bold : FontWeight.normal,
               fontFamily: 'ProductSans',
               color: text),
@@ -130,10 +129,8 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
       style: ElevatedButton.styleFrom(
           primary: submitGrey,
           padding: EdgeInsets.symmetric(
-              horizontal: s == 'Create'
-                  ? MediaQuery.of(context).size.width * 0.12
-                  : MediaQuery.of(context).size.width * 0.07,
-              vertical: MediaQuery.of(context).size.height * 0.01),
+            horizontal: MediaQuery.of(context).size.width * 0.03,
+          ),
           textStyle: TextStyle(
             fontSize: MediaQuery.of(context).size.height * 0.015,
           ),
@@ -170,82 +167,66 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: background,
-        body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: SingleChildScrollView(
-            controller: _scrollController,
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: 50),
-                  txtformfield('Title', context),
-                  SizedBox(height: 10),
-                  //adding the likes and share icon in a row
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 50,
-                    child: RichText(
-                      text: TextSpan(
-                        children: [
-                          WidgetSpan(
-                            child: Icon(Icons.favorite, size: 23),
-                          ),
-                          shareLike(context, 'likes'),
-                          WidgetSpan(
-                              child: SvgPicture.asset("assets/icons/share.svg",
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.03,
-                                  width: MediaQuery.of(context).size.width *
-                                      .035)),
-                          shareLike(context, 'shares')
-                        ],
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: SingleChildScrollView(
+              controller: _scrollController,
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 50),
+                    txtformfield('Title', context),
+                    SizedBox(height: 10),
+                    //adding the likes and share icon in a row
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 35,
+                      child: RichText(
+                        text: TextSpan(
+                          children: [
+                            WidgetSpan(
+                              child: Icon(Icons.favorite, size: 23),
+                            ),
+                            shareLike(context, 'likes'),
+                            WidgetSpan(
+                                child: SvgPicture.asset(
+                                    "assets/icons/share.svg",
+                                    height: MediaQuery.of(context).size.height *
+                                        0.03,
+                                    width: MediaQuery.of(context).size.width *
+                                        .035)),
+                            shareLike(context, 'shares')
+                          ],
+                        ),
                       ),
                     ),
-                  ),
 
-                  txtformfield('Start Typing...', context),
-                  SizedBox(height: 10),
-                  textbox('Add Images/Videos', context),
-                  button('Pick Images', context), SizedBox(height: 10),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 120,
-                    child: ListView.builder(
-                        itemCount: images.length,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) {
-                          Asset asset = images[index];
-                          return Stack(
-                            children: <Widget>[
-                              AssetThumb(
-                                asset: asset,
-                                width: 100,
-                                height: 100,
-                              ),
-                              Positioned(
-                                  right: -2,
-                                  top: -9,
-                                  child: IconButton(
-                                      icon: Icon(
-                                        Icons.cancel_rounded,
-                                        color: Colors.black.withOpacity(0.8),
-                                        size: 20,
-                                      ),
-                                      onPressed: () => setState(() {
-                                            images.removeAt(index);
-                                          })))
-                            ],
-                          );
-                        }),
-                  ),
-                ],
+                    txtformfield('Start Typing...', context),
+                    SizedBox(height: 10),
+                    textbox('Add Images/Videos', context),
+                    button('Add Images', context), SizedBox(height: 10),
+                    Container(
+                      height: 90,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: 10,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              width: 90,
+                              child: _WallFeedcard(context),
+                            );
+                          }),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
         ),
         floatingActionButton: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.25,
+          width: MediaQuery.of(context).size.width * 0.23,
           height: MediaQuery.of(context).size.height * 0.045,
           child: FloatingActionButton.extended(
             onPressed: _submitDetails,
@@ -274,4 +255,57 @@ class _WallFeedUpdatedState extends State<WallFeedUpdated> {
       print('data saved');
     }
   }
+}
+
+Widget _WallFeedcard(BuildContext context) {
+  return GestureDetector(
+    child: Container(
+      child: Card(
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        color: background,
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                      child: Stack(
+                    children: [
+                      Container(),
+                      Padding(
+                        padding: EdgeInsets.all(5),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    "https://media.istockphoto.com/photos/broken-road-in-the-woods-picture-id531854696?s=612x612"),
+                                fit: BoxFit.fill),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                          right: -15,
+                          top: -15,
+                          child: IconButton(
+                              icon: Icon(
+                                Icons.cancel_rounded,
+                                color: Colors.black.withOpacity(0.8),
+                                size: 20,
+                              ),
+                              onPressed: () => {}))
+                    ],
+                  )),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
 }
