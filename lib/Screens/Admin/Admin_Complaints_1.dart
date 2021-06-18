@@ -1,5 +1,6 @@
 import 'package:Corporator_Mobile_App/Dummy_Data/Admin-complaint.dart';
 import 'package:Corporator_Mobile_App/Utils/Colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'Admin_Complaints_2.dart';
@@ -102,46 +103,84 @@ class _AdminComplaintsCardState extends State<AdminComplaintsCard> {
     var width = screenSize.width;
     var height = screenSize.height;
     return Container(
-      height: 80,
+      // height: 110,
       padding: EdgeInsets.only(left: 15.0, right: 15.0, top: 5.0, bottom: 10.0),
       //box decoration of the card
       decoration: BoxDecoration(
           color: textBoxBack,
           borderRadius: BorderRadius.circular(15.0),
           border: Border.all(color: blk, width: 1.0)),
-      child: Row(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Container(
-            alignment: Alignment.centerLeft,
-            width: width / 2.3,
-            child: Text(
-              widget.complaint.complaintNumber,
-              style: headline1,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                width: width / 2.3,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      widget.complaint.complaintNumber,
+                      style: headline1,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                            child: Text(
+                              "Status: ",
+                              style: headlineSmall2,
+                            )),
+                        Container(
+                            child: Text(
+                              widget.complaint.status,
+                              style: headlineSmall2,
+                            )),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Spacer(),
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                        child: Text(
+                      "Booth No : " + widget.complaint.booth,
+                      textAlign: TextAlign.left,
+                      style: headlineSmall2,
+                    )),
+                    Container(
+                        child: Text(
+                      widget.complaint.time,
+                      style: headlineSmall2,
+                    )),
+                  ],
+                ),
+              )
+            ],
           ),
-          Spacer(),
-          Container(
-            alignment: Alignment.centerLeft,
-            padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                    child: Text(
-                  "Booth No : " + widget.complaint.booth,
-                  textAlign: TextAlign.left,
-                  style: headlineSmall2,
-                )),
-                Container(
-                    child: Text(
-                  widget.complaint.time,
-                  style: headlineSmall2,
-                )),
-              ],
-            ),
-          )
+          SizedBox(height: 7,),
+          Row(
+            children: [
+              Container(
+                width: width-100,
+                child: Text(widget.complaint.title,
+                  style: headlineSmall2.copyWith(fontSize: 22),
+                  ),
+              )
+            ],
+          ),
         ],
       ),
     );
