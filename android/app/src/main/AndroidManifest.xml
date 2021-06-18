@@ -4,6 +4,8 @@
    <application
         android:label="cropapp"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name = "com.google.android.geo.API_KEY"
+        android:value= "AIzaSyDHCJU8ZRzuQvFLWd98u0P2Wp4PkCf4fo0"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
