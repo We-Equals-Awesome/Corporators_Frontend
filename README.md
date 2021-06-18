@@ -1,31 +1,3 @@
-# Corporators_Frontend
-This Repository Handles Frontend for Corporator's Application
-
-## Login And Sign Up Page
-
-<p>Login by providing your phone number</p>
-
-<img src="https://i.postimg.cc/Hk06cxMT/Whats-App-Image-2021-06-10-at-6-38-29-PM-5.jpg" width="200" height="400">
-
-<p>Create an account by filling up the details in the three steps.</p>
-
-*  Step 1 - Personal Details
-
-<img src="https://i.postimg.cc/6QkVMxnM/Whats-App-Image-2021-06-10-at-6-38-29-PM-4.jpg)" width="200" height="400">
-
-*  Step 2 - Contact Details
-
-<img src="https://i.postimg.cc/660jpTdw/Whats-App-Image-2021-06-10-at-6-38-29-PM-3.jpg" width="200" height="400">
-
-*  Step 3 - Voter Details
-
-<img src="https://i.postimg.cc/tJSNtZ5x/Whats-App-Image-2021-06-10-at-6-38-29-PM-2.jpg" width="200" height="400">
-   
-## Setting Up Profile
-<p>Set up your profile by adding a profile picture</p>
-
-<img src="https://i.postimg.cc/wBgRMx58/Whats-App-Image-2021-06-10-at-6-38-29-PM-1.jpg" width="200" height="400">
- 
 
 ## Adding Google Maps to your app
 
