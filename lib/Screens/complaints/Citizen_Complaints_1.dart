@@ -1,8 +1,9 @@
 import 'package:Corporator_Mobile_App/Dummy_Data/complaint.dart';
+import 'package:Corporator_Mobile_App/Screens/complaints/Citizen_Complaint_View.dart';
 import 'package:Corporator_Mobile_App/Screens/complaints/Citizen_Complaints_2.dart';
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
-import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 
 class ComplaintsView extends StatelessWidget {
   @override
@@ -35,7 +36,7 @@ class ComplaintsView extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.fromLTRB(15, 25, 15, 5),
+                padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
                 width: width,
                 //height: 80,
                 child: Text(
@@ -98,7 +99,18 @@ class _ComplaintInfoState extends State<ComplaintInfo> {
             width: double.infinity,
             color: background,
             margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
-            child: ComplaintsCard(complaint: totalComplaint));
+            child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CitizenComplaintView(
+                        citizenComplaint: totalComplaint,
+                      ),
+                    ),
+                  );
+                },
+                child: ComplaintsCard(complaint: totalComplaint)));
       },
     );
   }
