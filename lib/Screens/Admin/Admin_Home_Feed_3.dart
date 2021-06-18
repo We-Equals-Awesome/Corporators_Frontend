@@ -86,7 +86,7 @@ class _wallFeedState extends State<wallFeed> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  width: 140,
+                  //width: 140,
                   //calling the _leftText function which is defined below
                   child: _leftText(a, context),
                 ),
@@ -130,12 +130,13 @@ class _wallFeedState extends State<wallFeed> {
 
   //function to display the text on the left of the card
   Widget _leftText(String a, BuildContext context) {
-    return FittedBox(
-      fit: BoxFit.fitWidth,
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.4,
       child: Text(
         a,
+        textAlign: TextAlign.center,
         style: TextStyle(
-          fontSize: 25,
+          fontSize: 22,
           letterSpacing: 1,
           fontFamily: 'ProductSans',
           fontWeight: FontWeight.bold,
