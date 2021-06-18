@@ -91,6 +91,7 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
         width: 45,
         color: navIcon,
       ),
+      iconSize: 40.00,
       activeColorPrimary: navIcon,
       inactiveColorPrimary: navBarSelectedGrey,
     ),

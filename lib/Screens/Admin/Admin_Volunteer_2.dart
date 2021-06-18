@@ -3,6 +3,8 @@ import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import 'Admin_Volunteer_1.dart';
+
 //page to display all the volunteers who are registered into system
 class volunteerList extends StatefulWidget {
   @override
@@ -53,22 +55,30 @@ class _volunteerListState extends State<volunteerList> {
         child: ConstrainedBox(
           constraints: BoxConstraints.tight(Size(1500, 110)),
           child: GestureDetector(
-            onTap: () {},
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-                side: BorderSide(width: 1),
-              ),
-              color: textBoxBack,
-              child: Padding(
-                padding: EdgeInsets.only(left: 25, top: 10, bottom: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //_text function is called which is defined below
-                    _text('Name: ' + a, context),
-                    _text('Booth No: #' + b, context),
-                  ],
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AddVolunteer()),
+              );
+            },
+            child: Container(
+              height: 50,
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  side: BorderSide(width: 1),
+                ),
+                color: textBoxBack,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 25, top: 10, bottom: 10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      //_text function is called which is defined below
+                      _text('Name: ' + a, context),
+                      _text('Booth No: #' + b, context),
+                    ],
+                  ),
                 ),
               ),
             ),

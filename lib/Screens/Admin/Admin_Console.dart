@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 import 'Admin_Complaints_1.dart';
 
+import 'Admin_Home_Feed_1.dart';
 import 'Admin_Home_Feed_3.dart';
 import 'Admin_Volunteer_2.dart';
 
@@ -92,7 +93,7 @@ class _adminConsoleState extends State<adminConsole> {
                   children: [
                     Padding(
                         padding: const EdgeInsets.only(right: 15),
-                        child: custom_button("New Post", context)),
+                        child: custom_button_for_post("New Post", context)),
                   ],
                 ),
                 Row(
@@ -243,29 +244,31 @@ class _adminConsoleState extends State<adminConsole> {
 Widget _WallFeedcard(BuildContext context) {
   return GestureDetector(
     child: Container(
-      child: Card(
-        elevation: 1,
-        shadowColor: Colors.black,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-            side: BorderSide(width: 1)),
-        color: textBoxBack,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.00, vertical: 10.00),
-          child: Row(
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _WallFeed("Title", context),
-                  ],
+      child: Wrap(spacing: 5.0, runSpacing: 5.0, children: [
+        Card(
+          elevation: 1,
+          shadowColor: Colors.black,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+              side: BorderSide(width: 1)),
+          color: textBoxBack,
+          child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _WallFeed("Title", context),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
+      ]),
     ),
   );
 }
@@ -334,30 +337,32 @@ Widget _WallFeed(String title, BuildContext context) {
 Widget _Complaintcard(BuildContext context) {
   return GestureDetector(
     child: Container(
-      child: Card(
-        elevation: 3,
-        shadowColor: Colors.black,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-            side: BorderSide(width: 1)),
-        color: textBoxBack,
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 15.00, horizontal: 20.00),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    _ActiveComplaints("#21", context),
-                  ],
+      child: Wrap(spacing: 5.0, runSpacing: 5.0, children: [
+        Card(
+          elevation: 3,
+          shadowColor: Colors.black,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+              side: BorderSide(width: 1)),
+          color: textBoxBack,
+          child: Padding(
+            padding: EdgeInsets.all(10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _ActiveComplaints("#21", context),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
+      ]),
     ),
   );
 }
@@ -433,6 +438,31 @@ Widget _ActiveComplaints(String cNumber, BuildContext context) {
         ],
       ),
     ],
+  );
+}
+
+Widget custom_button_for_post(String s, BuildContext context) {
+  return ElevatedButton(
+    onPressed: () {
+      var Viewallroute = AddVolunteer();
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => WallFeedNew()),
+      );
+    },
+    child: Text(s, style: TextStyle(color: navIcon, fontFamily: 'ProductSans')),
+    style: ElevatedButton.styleFrom(
+        primary: submitGrey,
+        padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.05,
+            vertical: MediaQuery.of(context).size.height * 0.010),
+        textStyle: TextStyle(
+          fontSize: MediaQuery.of(context).size.height * 0.018,
+          fontWeight: FontWeight.w600,
+        ),
+        shape: new RoundedRectangleBorder(
+          borderRadius: new BorderRadius.circular(30.0),
+        )),
   );
 }
 

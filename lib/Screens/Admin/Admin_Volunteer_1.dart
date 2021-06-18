@@ -60,8 +60,6 @@ class _AddVolunteerState extends State<AddVolunteer> {
                 _textForm("First Name", null, context),
                 _textForm("Last Name", null, context),
                 _textForm("Aadhar Number", null, context),
-                // _passwordFields("Password", "p"),
-                // _passwordFields("Confirm password", "cp"),
                 _textForm("Booth allotted", null, context)
               ],
             ),
