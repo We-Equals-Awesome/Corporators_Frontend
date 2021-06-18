@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:geocoder/geocoder.dart';
+import 'package:flutter_geocoder/geocoder.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
 import 'package:multi_image_picker/multi_image_picker.dart';

@@ -17,7 +17,9 @@ dependencies:
   multi_image_picker: ^4.8.0 
   google_maps_flutter: ^2.0.5
   permission_handler: ^8.0.0+2
-  geocoder: ^0.2.1
+  flutter_geocoder:
+    git:
+      url: https://github.com/JCKodel/flutter_geocoder.git
   intl:
   dropdown_below: ^0.0.7
   simple_autocomplete_formfield: ^0.3.0

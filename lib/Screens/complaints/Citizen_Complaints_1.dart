@@ -3,7 +3,7 @@ import 'package:Corporator_Mobile_App/Screens/complaints/Citizen_Complaint_View.
 import 'package:Corporator_Mobile_App/Screens/complaints/Citizen_Complaints_2.dart';
 import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 import 'package:flutter/material.dart';
-import 'package:geocoder/geocoder.dart';
+import 'package:flutter_geocoder/geocoder.dart';
 
 class ComplaintsView extends StatelessWidget {
   @override

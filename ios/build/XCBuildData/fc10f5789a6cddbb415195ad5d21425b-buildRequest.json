@@ -1,0 +1,84 @@
+{
+  "buildCommand" : "prepareForIndexing",
+  "configuredTargets" : [
+    {
+      "guid" : "05d472458e70e113630515fcb5a924268143cfc712f4d7dbd051fd0ba83ff7f0"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a9242679eda14e6c6dfb8df63a13084e1cd81b"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a9242638e4e1bfda5c5269d39acd799befb5fe"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a9242619add93c2ea11233f216d3b61db6c768"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a924269da425bb6d6d5d8dbb95e4afffb82217"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a9242618352c54edac2258b91768852065ce5e"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a92426312b4bc59bbbe2c06c205bf4da6737f5"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a92426d7dc98cef9fb189351389fb4476266da"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a92426d4392de6bb60b195d0ae2bce218962aa"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a92426bf764fd5de43d0e244cbe6e2f69c1731"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a92426ac9237f3511ea621b210d606d16403c8"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a92426de61db8d8ef7f5a6a5a778a622626318"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a924260584f203fe70709d4ed76b56f7c8ce9c"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a92426e8cd2c510461aaa30819666e6706f51b"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a9242644e7c30f967758063ef1581c62ef72e2"
+    },
+    {
+      "guid" : "05d472458e70e113630515fcb5a92426857bd5cc69376a994ea9cb4969e9388e"
+    }
+  ],
+  "continueBuildingAfterErrors" : true,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "",
+      "buildProductsPath" : "",
+      "derivedDataPath" : "/Users/Srikanth_Kandarp/Library/Developer/Xcode/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/Srikanth_Kandarp/Library/Developer/Xcode/DerivedData/Pods-aeklvawiagyholcwtzwzvsocnkxa/Index/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/Srikanth_Kandarp/Library/Developer/Xcode/DerivedData/Pods-aeklvawiagyholcwtzwzvsocnkxa/Index/PrecompiledHeaders",
+      "pchPath" : ""
+    },
+    "configurationName" : "Release",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ENABLE_PREVIEWS" : "NO"
+        }
+      }
+    }
+  },
+  "qos" : "default",
+  "schemeCommand" : "launch",
+  "shouldCollectMetrics" : false,
+  "showNonLoggedProgress" : true,
+  "useDryRun" : true,
+  "useImplicitDependencies" : false,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : false
+}
