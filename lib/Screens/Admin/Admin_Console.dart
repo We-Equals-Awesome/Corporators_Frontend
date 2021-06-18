@@ -1,6 +1,11 @@
-import 'package:cropapp/Utils/colours.dart';
+import 'package:Corporator_Mobile_App/Screens/Admin/Admin_Volunteer_1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
+import 'Admin_Complaints_1.dart';
+
+import 'Admin_Home_Feed_3.dart';
+import 'Admin_Volunteer_2.dart';
 
 class adminConsole extends StatefulWidget {
   adminConsole({Key key}) : super(key: key);
@@ -60,11 +65,10 @@ class _adminConsoleState extends State<adminConsole> {
                         ),
                         onTap: () {
                           // Have to add the view all wala list here to navigate
-                          var Viewallroute;
+
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => Viewallroute),
+                            MaterialPageRoute(builder: (context) => wallFeed()),
                           );
                         },
                       ),
@@ -117,12 +121,10 @@ class _adminConsoleState extends State<adminConsole> {
                               color: text),
                         ),
                         onTap: () {
-                          // Have to add the view all wala list here to navigate
-                          var Viewallroute;
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Viewallroute),
+                                builder: (context) => AdminComplaintview()),
                           );
                         },
                       ),
@@ -209,11 +211,11 @@ class _adminConsoleState extends State<adminConsole> {
                         ),
                         onTap: () {
                           // Have to add the view all wala list here to navigate
-                          var Viewallroute;
+
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Viewallroute),
+                                builder: (context) => volunteerList()),
                           );
                         },
                       ),
@@ -249,7 +251,7 @@ Widget _WallFeedcard(BuildContext context) {
             side: BorderSide(width: 1)),
         color: textBoxBack,
         child: Padding(
-          padding: EdgeInsets.all(5),
+          padding: EdgeInsets.symmetric(horizontal: 10.00, vertical: 10.00),
           child: Row(
             children: [
               Expanded(
@@ -309,7 +311,7 @@ Widget _WallFeed(String title, BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SvgPicture.asset(
-            'assets/icon/share.svg',
+            'assets/icons/share.svg',
             color: Colors.black,
             width: 22,
           ),
@@ -333,14 +335,14 @@ Widget _Complaintcard(BuildContext context) {
   return GestureDetector(
     child: Container(
       child: Card(
-        elevation: 1,
+        elevation: 3,
         shadowColor: Colors.black,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15),
             side: BorderSide(width: 1)),
         color: textBoxBack,
         child: Padding(
-          padding: EdgeInsets.only(left: 15, top: 10),
+          padding: EdgeInsets.symmetric(vertical: 15.00, horizontal: 20.00),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -437,7 +439,7 @@ Widget _ActiveComplaints(String cNumber, BuildContext context) {
 Widget custom_button(String s, BuildContext context) {
   return ElevatedButton(
     onPressed: () {
-      var Viewallroute;
+      var Viewallroute = AddVolunteer();
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Viewallroute),

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:cropapp/Utils/colours.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:intl/intl.dart';
-import 'package:cropapp/Screens/Complaints/map_page.dart';
 import 'dart:async';
 import 'package:multi_image_picker/multi_image_picker.dart';
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
+
+import 'Map_Service_Page.dart';
 
 class ComplaintsPage2 extends StatefulWidget {
   final Coordinates c;

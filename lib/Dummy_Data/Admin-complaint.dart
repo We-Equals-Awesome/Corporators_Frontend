@@ -1,6 +1,6 @@
 //class complaints
 // Dummy complaint
-String allotment1 = 'kishore' ;
+String allotment1 = 'kishore';
 String allotment2 = 'RD burman';
 
 class AdminComplaint {
@@ -27,7 +27,7 @@ class AdminComplaint {
   });
 }
 
-List<AdminComplaint> complaintList = [
+List<AdminComplaint> complaintListfromadmin = [
   AdminComplaint(
     title: "Title",
     time: "20/11/20",

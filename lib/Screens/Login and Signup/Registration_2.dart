@@ -1,9 +1,10 @@
 import 'dart:io';
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:cropapp/Utils/colours.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'login_page_1.dart';
+
+import 'Login_Page_1.dart';
 
 //almost done page
 class RegisterPage2 extends StatefulWidget {

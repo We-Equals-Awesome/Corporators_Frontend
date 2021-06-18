@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:cropapp/Utils/colours.dart';
 import 'dart:async';
 import 'package:multi_image_picker/multi_image_picker.dart';
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 
 class WallFeedNew extends StatefulWidget {
   @override

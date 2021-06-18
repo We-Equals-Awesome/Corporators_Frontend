@@ -1,5 +1,5 @@
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 import 'package:flutter/material.dart';
-import 'package:newsfeed_screen/Utils/colours.dart';
 import 'Volunteer_Page_1.dart';
 import 'Volunteer_Page_2.dart';
 
@@ -62,16 +62,9 @@ class _residentState extends State<resident> {
             Wrap(
               children: [
                 //calling the relationName functioin which is defined below
-                relationName('Father', context),
-                relationName('Mother', context),
                 relationName('Son', context),
                 relationName('Daughter', context),
                 relationName('Wife', context),
-                relationName('Brother', context),
-                relationName('Sister', context),
-                relationName('Grand Father', context),
-                relationName('Father-In-Law', context),
-                relationName('Neice', context),
                 SizedBox(
                   width: 90,
                   child: Padding(
@@ -81,7 +74,7 @@ class _residentState extends State<resident> {
                         sflag = 0;
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
-                              dataEntry(address: address, sflag: sflag),
+                              dataEntry( sflag: sflag),
                         ));
                       },
                       icon: Icon(
@@ -131,7 +124,13 @@ class _residentState extends State<resident> {
         child: Column(
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                sflag = 2;
+                Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => dataEntry(sflag:sflag)),
+            );
+              },
               icon: Icon(
                 Icons.account_circle_outlined,
                 size: 38,

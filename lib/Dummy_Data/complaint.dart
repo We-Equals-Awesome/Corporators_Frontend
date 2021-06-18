@@ -1,49 +1,47 @@
 //class complaints
 // Dummy complaint
 
-class Complaint {
+class Complaintfromstatic {
   final String title;
   final String time;
   final String status;
 
-
-  Complaint({
-
+  Complaintfromstatic({
     this.title,
     this.time,
     this.status,
   });
 }
 
-List<Complaint> complaintList = [
-  Complaint(
+List<Complaintfromstatic> complaintList2 = [
+  Complaintfromstatic(
     title: "Title",
     time: "20/11/20",
-    status:"Active",
+    status: "Active",
   ),
-  Complaint(
+  Complaintfromstatic(
     title: "Drainage",
     time: "20/11/20",
-    status:"Active",
+    status: "Active",
   ),
-  Complaint(
+  Complaintfromstatic(
     title: "Electric",
     time: "11/11/20",
-    status:"Active",
+    status: "Active",
   ),
-  Complaint(
+  Complaintfromstatic(
     title: "Sewage",
     time: "22/05/20",
-    status:"Closed",
+    status: "Closed",
   ),
-  Complaint(
+  Complaintfromstatic(
     title: "Issue No 23",
     time: "01/11/20",
-    status:"Active",
+    status: "Active",
   ),
-  Complaint(
+  Complaintfromstatic(
     title: "Drainage text over flow check",
     time: "20/11/20",
-    status:"Closed",
+    status: "Closed",
   ),
 ];

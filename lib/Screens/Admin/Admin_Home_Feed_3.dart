@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:newsfeed_screen/Utils/colours.dart';
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
+
+import 'Admin_Home_Feed_1.dart';
+import 'Admin_Home_Feed_2.dart';
 
 //page to display the wall feed in the form of cards in a list
 
@@ -31,14 +34,8 @@ class _wallFeedState extends State<wallFeed> {
               ),
             ),
             //calling the _card function which is defined below
-            _card('Hello World', '23', '17', '15/05/21', context),
-            _card('Hiiiiiiiiiiiiii', '56', '20', '06/08/2018', context),
-            _card('Welcome Back', '89', '32', '21/21/21', context),
-            _card('abcdefghijklmnop', '108', '123', '21/21/21', context),
-            _card('Hello World', '23', '17', '15/05/21', context),
-            _card('Hiiiiiiiiiiiiii', '56', '20', '06/08/2018', context),
-            _card('Welcome Back', '89', '32', '21/21/21', context),
-            _card('abcdefghijklmnop', '108', '123', '21/21/21', context),
+            _card('Sewage Issues Resolved', '23', '17', '15/05/21', context),
+            _card('New Road at 12th Cross', '56', '20', '06/08/2018', context),
           ],
         ),
       ),
@@ -47,9 +44,14 @@ class _wallFeedState extends State<wallFeed> {
         width: 125,
         height: 41,
         child: FloatingActionButton.extended(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => WallFeedNew()),
+            );
+          },
           label: Text(
-            '???',
+            'New Post',
             style: TextStyle(
               fontFamily: 'ProductSans',
               color: navIcon,
@@ -67,7 +69,12 @@ class _wallFeedState extends State<wallFeed> {
     return Padding(
       padding: EdgeInsets.only(top: 20, left: 20, right: 20),
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => WallFeedUpdated()),
+          );
+        },
         child: Card(
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
@@ -79,7 +86,7 @@ class _wallFeedState extends State<wallFeed> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                  width: 140,
+                  //width: 140,
                   //calling the _leftText function which is defined below
                   child: _leftText(a, context),
                 ),
@@ -123,12 +130,13 @@ class _wallFeedState extends State<wallFeed> {
 
   //function to display the text on the left of the card
   Widget _leftText(String a, BuildContext context) {
-    return FittedBox(
-      fit: BoxFit.fitWidth,
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.4,
       child: Text(
         a,
+        textAlign: TextAlign.center,
         style: TextStyle(
-          fontSize: 25,
+          fontSize: 22,
           letterSpacing: 1,
           fontFamily: 'ProductSans',
           fontWeight: FontWeight.bold,

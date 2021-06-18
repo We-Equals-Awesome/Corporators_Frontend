@@ -1,3 +1,6 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=29775adbe8112b5c040b1e248c4337b024e3d890
 arguments=
 auto.sync=false
 build.scans.enabled=false
@@ -5,13 +8,7 @@ connection.gradle.distribution=GRADLE_DISTRIBUTION(VERSION(6.8))
 connection.project.dir=
 eclipse.preferences.version=1
 gradle.user.home=
-<<<<<<< HEAD
 java.home=/Library/Java/JavaVirtualMachines/jdk-11.0.9.jdk/Contents/Home
-=======
-
-java.home=C\:/Program Files/Java/jdk-11.0.8
-
->>>>>>> 29775adbe8112b5c040b1e248c4337b024e3d890
 jvm.arguments=
 offline.mode=false
 override.workspace.settings=true

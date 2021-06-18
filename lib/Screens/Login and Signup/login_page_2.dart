@@ -1,8 +1,7 @@
-import 'package:cropapp/Screens/Login%20and%20Signup/Registration_1.dart';
+import 'package:Corporator_Mobile_App/Screens/User/Home_Page.dart';
 import 'package:flutter/material.dart';
-import 'package:cropapp/Utils/colours.dart';
-
-import '../HomePage.dart';
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
+import 'Registration_1.dart';
 
 class LoginPage2 extends StatefulWidget {
   @override

@@ -1,10 +1,10 @@
+import 'package:Corporator_Mobile_App/Dummy_Data/complaint.dart';
+import 'package:Corporator_Mobile_App/Screens/complaints/Citizen_Complaints_2.dart';
 import 'package:flutter/material.dart';
-import 'package:newsfeed_screen/Utils/color.dart';
-import 'package:newsfeed_screen/Utils/Admin-complaint.dart';
-import 'package:newsfeed_screen/Utils/constant.dart';
-import 'package:newsfeed_screen/UI/Admin-ComplaintAllot.dart';
+import 'package:geocoder/geocoder.dart';
+import 'package:Corporator_Mobile_App/Utils/Colors.dart';
 
-class AdminComplaintview extends StatelessWidget {
+class ComplaintsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -12,24 +12,24 @@ class AdminComplaintview extends StatelessWidget {
     var height = screenSize.height;
     return Scaffold(
         backgroundColor: background,
-        // floatingActionButton: FloatingActionButton.extended(
-        //   onPressed: () {
-        //     Navigator.push(
-        //       context,
-        //       MaterialPageRoute(
-        //         builder: (context) => NewComplaint(),
-        //         //builder: (context) => ReadFeeds(news: trending),
-        //       ),
-        //     );
-        //   },
-        //   elevation: 2,
-        //   backgroundColor: submitGrey,
-        //   //icon: Icon(Icons.edit),
-        //   label: Text(
-        //     'New Complaint',
-        //     style: TextStyle(color: background,fontFamily: 'ProductSans'),
-        //   ),
-        // ),  floatin
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ComplaintsPage2(Coordinates(0, 0), 0),
+                //builder: (context) => ReadFeeds(news: trending),
+              ),
+            );
+          },
+          elevation: 2,
+          backgroundColor: submitGrey,
+          //icon: Icon(Icons.edit),
+          label: Text(
+            'New Complaint',
+            style: buttonstyle,
+          ),
+        ),
         body: SafeArea(
           bottom: false,
           child: Column(
@@ -44,16 +44,16 @@ class AdminComplaintview extends StatelessWidget {
                   textAlign: TextAlign.start,
                 ),
               ),
-              // Container(
-              //   padding: EdgeInsets.fromLTRB(15, 10, 15, 5),
-              //   width: width,
-              //   //height: 80,
-              //   child: Text(
-              //     "Recent Complaints",
-              //     style: headline2,
-              //     textAlign: TextAlign.start,
-              //   ),
-              // ),
+              Container(
+                padding: EdgeInsets.fromLTRB(15, 10, 15, 5),
+                width: width,
+                //height: 80,
+                child: Text(
+                  "Recent Complaints",
+                  style: headline2,
+                  textAlign: TextAlign.start,
+                ),
+              ),
               Expanded(
                 child: ListView(
                   children: <Widget>[
@@ -63,7 +63,7 @@ class AdminComplaintview extends StatelessWidget {
                       //and we call FeedView Function here
                       padding: EdgeInsets.fromLTRB(25, 5, 25, 5),
 
-                      child: AdminComplaintInfo(),
+                      child: ComplaintInfo(),
                     ),
                   ],
                 ),
@@ -74,21 +74,23 @@ class AdminComplaintview extends StatelessWidget {
   }
 }
 
-class AdminComplaintInfo extends StatefulWidget {
+class ComplaintInfo extends StatefulWidget {
   @override
-  _AdminComplaintInfoState createState() => _AdminComplaintInfoState();
+  _ComplaintInfoState createState() => _ComplaintInfoState();
 }
 
-class _AdminComplaintInfoState extends State<AdminComplaintInfo> {
+class _ComplaintInfoState extends State<ComplaintInfo> {
   @override
   Widget build(BuildContext context) {
+    //as there is n number of news so there will be n number of the FeedView card so here we will be using the ListView.Builder
+
     return ListView.builder(
-      itemCount: complaintList.length,
+      itemCount: complaintList2.length,
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       physics: BouncingScrollPhysics(),
       itemBuilder: (context, index) {
-        var totalComplaint = complaintList[index];
+        var totalComplaint = complaintList2[index];
 
         //on taping any card user will be pushed to the new Page where they can read the news in the detail
 
@@ -96,32 +98,22 @@ class _AdminComplaintInfoState extends State<AdminComplaintInfo> {
             width: double.infinity,
             color: background,
             margin: EdgeInsets.symmetric(horizontal: 0.0, vertical: 10.0),
-            //child: AdminComplaintsCard(complaint: totalComplaint)
-            //  );
-            child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AdminComplaintAllot(adminComplaint: totalComplaint),
-                      //builder: (context) => ReadFeeds(news: trending),
-                    ),
-                  );
-                },
-                child: AdminComplaintsCard(complaint: totalComplaint)));
+            child: ComplaintsCard(complaint: totalComplaint));
       },
     );
   }
 }
 
-class AdminComplaintsCard extends StatefulWidget {
-  final AdminComplaint complaint;
-  AdminComplaintsCard({this.complaint});
+class ComplaintsCard extends StatefulWidget {
+  final Complaintfromstatic complaint;
+
+  ComplaintsCard({this.complaint});
+
   @override
-  _AdminComplaintsCardState createState() => _AdminComplaintsCardState();
+  _ComplaintsCardState createState() => _ComplaintsCardState();
 }
 
-class _AdminComplaintsCardState extends State<AdminComplaintsCard> {
+class _ComplaintsCardState extends State<ComplaintsCard> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
@@ -143,7 +135,7 @@ class _AdminComplaintsCardState extends State<AdminComplaintsCard> {
             width: width / 2.3,
             // height: ,
             child: Text(
-              widget.complaint.complaintNumber,
+              widget.complaint.title,
               style: headline1,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
@@ -156,17 +148,30 @@ class _AdminComplaintsCardState extends State<AdminComplaintsCard> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                    child: Text(
-                  "Booth No : " + widget.complaint.booth,
-                  textAlign: TextAlign.left,
-                  style: headlineSmall2,
-                )),
-                Container(
-                    child: Text(
-                  widget.complaint.time,
-                  style: headlineSmall2,
-                )),
+                Row(
+                  children: [
+                    Container(
+                        child: Text(
+                      widget.complaint.time,
+                      textAlign: TextAlign.left,
+                      style: headlineSmall2,
+                    )),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Container(
+                        child: Text(
+                      "Status: ",
+                      style: headlineSmall2,
+                    )),
+                    Container(
+                        child: Text(
+                      widget.complaint.status,
+                      style: headlineSmall2,
+                    )),
+                  ],
+                ),
               ],
             ),
           )
