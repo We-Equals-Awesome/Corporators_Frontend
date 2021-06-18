@@ -159,10 +159,8 @@ class _ComplaintsPage2State extends State<ComplaintsPage2> {
       style: ElevatedButton.styleFrom(
           primary: submitGrey,
           padding: EdgeInsets.symmetric(
-              horizontal: s == 'Create'
-                  ? MediaQuery.of(context).size.width * 0.12
-                  : MediaQuery.of(context).size.width * 0.07,
-              vertical: MediaQuery.of(context).size.height * 0.01),
+            horizontal: MediaQuery.of(context).size.width * 0.04,
+          ),
           textStyle: TextStyle(
             fontSize: MediaQuery.of(context).size.height * 0.015,
           ),
@@ -180,100 +178,109 @@ class _ComplaintsPage2State extends State<ComplaintsPage2> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: background,
-        body: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: SingleChildScrollView(
-            controller: _scrollController,
-            child: Form(
-              key: _formKey,
-              child: Column(
-                children: <Widget>[
-                  SizedBox(height: 50),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    child: Text(
-                      formatter.format(now),
-                      textAlign: TextAlign.right,
-                      style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.height * 0.02,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'product-sans',
-                          color: text),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: SingleChildScrollView(
+              controller: _scrollController,
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 30),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      child: Text(
+                        formatter.format(now),
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                            fontSize: MediaQuery.of(context).size.height * 0.02,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'product-sans',
+                            color: text),
+                      ),
                     ),
-                  ),
-                  txtformfield('Title', context),
-                  txtformfield('Context', context),
-                  textbox('Details', context),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: FutureBuilder(
-                          future: getLoc(),
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return TextButton(
-                                onPressed: () => {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => MapPage(widget.c)))
-                                },
-                                child: Text(
-                                  addressString,
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontFamily: 'product-sans',
-                                      color: text),
+                    txtformfield('Title', context),
+                    txtformfield('Context', context),
+                    textbox('Details', context),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: FutureBuilder(
+                            future: getLoc(),
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                return TextButton(
+                                  onPressed: () => {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                MapPage(widget.c)))
+                                  },
+                                  child: Text(
+                                    addressString,
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: 'product-sans',
+                                        color: text),
+                                  ),
+                                );
+                              }
+                              return Text('Add Location');
+                            }),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    button('Add Location', context),
+                    textbox('Add images/videos of the issue', context),
+                    button('Pick Images', context),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 120,
+                      child: ListView.builder(
+                          itemCount: images.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            Asset asset = images[index];
+                            return Stack(
+                              children: <Widget>[
+                                Container(
+                                  width: 100,
+                                  height: 120,
                                 ),
-                              );
-                            }
-                            return Text('Add Location');
+                                Padding(
+                                  padding: EdgeInsets.only(top: 5),
+                                  child: AssetThumb(
+                                    asset: asset,
+                                    width: 90,
+                                    height: 90,
+                                  ),
+                                ),
+                                Positioned(
+                                    right: -13,
+                                    top: -15,
+                                    child: IconButton(
+                                        icon: Icon(
+                                          Icons.cancel_rounded,
+                                          color: Colors.black.withOpacity(0.8),
+                                          size: 20,
+                                        ),
+                                        onPressed: () => setState(() {
+                                              images.removeAt(index);
+                                            })))
+                              ],
+                            );
                           }),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  button('Add Location', context),
-                  textbox('Add images/videos of the issue', context),
-                  button('Pick Images', context),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height * 0.2,
-                    child: GridView.count(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      children: List.generate(images.length, (index) {
-                        Asset asset = images[index];
-                        return Stack(
-                          children: <Widget>[
-                            AssetThumb(
-                              asset: asset,
-                              width: 100,
-                              height: 100,
-                            ),
-                            Positioned(
-                                right: -2,
-                                top: -9,
-                                child: IconButton(
-                                    icon: Icon(
-                                      Icons.cancel_rounded,
-                                      color: Colors.black.withOpacity(0.8),
-                                      size: 20,
-                                    ),
-                                    onPressed: () => setState(() {
-                                          images.removeAt(index);
-                                        })))
-                          ],
-                        );
-                      }),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
         ),
         floatingActionButton: SizedBox(
-          width: MediaQuery.of(context).size.width * 0.3,
+          width: MediaQuery.of(context).size.width * 0.23,
           height: MediaQuery.of(context).size.height * 0.06,
           child: FloatingActionButton.extended(
             onPressed: _submitDetails,

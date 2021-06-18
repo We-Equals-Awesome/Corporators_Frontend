@@ -125,7 +125,7 @@ List<AdminComplaint> complaintListfromadmin = [
     address: "Ward No 23",
   ),
   AdminComplaint(
-    title: "Drainage text over flow check",
+    title: "Drainage text over flow check alskdj asdki  asd",
     time: "20/11/20",
     status: "Closed",
     booth: "17",
