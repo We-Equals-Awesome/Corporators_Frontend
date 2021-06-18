@@ -13,7 +13,7 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		E94846C939B7CE5C8449C734 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC8370918C1455FC5E90BF9 /* Pods_Runner.framework */; };
+		FA8EB85608470B072A51E3F8 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEC8370918C1455FC5E90BF9 /* Pods_Runner.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E94846C939B7CE5C8449C734 /* Pods_Runner.framework in Frameworks */,
+				FA8EB85608470B072A51E3F8 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,8 +134,8 @@
 				25F25ED081504FBDC59139DD /* [CP] Check Pods Manifest.lock */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
-				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
+				97C146EB1CF9000F007C117D /* Frameworks */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				78C5BD823C555628B05D05FB /* [CP] Embed Pods Frameworks */,
