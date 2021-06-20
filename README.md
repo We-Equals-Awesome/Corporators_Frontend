@@ -1,5 +1,12 @@
+# Frontend Application for Support 
 
-## Adding Google Maps to your app
+## Builds 
+
+### Released a Demo Build on 19/06/2021 Check it on Releases for iOS and Android.
+
+## Working with the Applicatoin 
+
+### Adding Google Maps to your app
 
 <p>To add goggle maps to your app, you need to make the the following two changes.</p>
 
